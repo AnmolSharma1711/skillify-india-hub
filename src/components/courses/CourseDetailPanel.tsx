@@ -20,12 +20,18 @@ export function CourseDetailPanel({
   open,
   onClose,
   side = "right",
+  onPanelMouseEnter,
+  onPanelMouseLeave,
 }: {
   course: Course;
   open: boolean;
   onClose: () => void;
   /** Which edge of the viewport the panel slides in from. */
   side?: "left" | "right";
+  /** Fired when the cursor enters the panel (used to cancel auto-close). */
+  onPanelMouseEnter?: () => void;
+  /** Fired when the cursor leaves the panel (used to re-arm auto-close). */
+  onPanelMouseLeave?: () => void;
 }) {
   // Close on Escape for keyboard users.
   useEffect(() => {
