@@ -38,8 +38,14 @@ function CoursesPage() {
       </header>
 
       <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {COURSES.map((c) => (
-          <CourseCard key={c.id} course={c} />
+        {COURSES.map((c, i) => (
+          // Cards in the right half of the grid open a LEFT-anchored panel so
+          // the panel never lands on top of the card and triggers a hover loop.
+          <CourseCard
+            key={c.id}
+            course={c}
+            side={i >= Math.ceil(COURSES.length / 2) ? "left" : "right"}
+          />
         ))}
       </div>
     </section>
