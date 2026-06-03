@@ -1,12 +1,9 @@
 /**
  * Top navigation bar — sticky, white/light, professional government style.
- * Gains a box-shadow on scroll for depth.
- * Uses fallback logos when asset URLs aren't available.
+ * Uses SVG logos embedded directly.
  */
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import iiitdLogo from "@/assets/iiitd-logo.png.asset.json";
-import meitLogo from "@/assets/meit-logo.png.asset.json";
 
 const links = [
   { to: "/", label: "Home" },
@@ -14,14 +11,13 @@ const links = [
   { to: "/about", label: "About" },
 ] as const;
 
-/** Fallback logo SVGs for when asset URLs don't load */
-const IIITD_FALLBACK = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect fill='%231B3A6B' width='40' height='40'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='20' font-weight='bold' text-anchor='middle' dy='.3em'%3EIITD%3C/text%3E%3C/svg%3E`;
+// SVG logos embedded as data URIs
+const IIITD_LOGO_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%231B3A6B'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-family='system-ui' font-size='16' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EIITD%3C/text%3E%3C/svg%3E";
 
-const MEIT_FALLBACK = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect fill='%231B3A6B' width='40' height='40'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='18' font-weight='bold' text-anchor='middle' dy='.3em'%3EMEIT%3C/text%3E%3C/svg%3E`;
+const MEIT_LOGO_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%231B3A6B'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-family='system-ui' font-size='12' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EMEIT%3C/text%3E%3C/svg%3E";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [logosLoaded, setLogosLoaded] = useState({ iiitd: false, meit: false });
 
   /* Add shadow once user scrolls past 20px */
   useEffect(() => {
@@ -53,14 +49,10 @@ export function Navbar() {
         <Link to="/" className="flex items-center gap-2">
           <div className="h-10 flex items-center">
             <img
-              src={iiitdLogo.url || IIITD_FALLBACK}
+              src={IIITD_LOGO_SVG}
               alt="IIIT Delhi"
               className="h-full w-auto object-contain"
               loading="lazy"
-              onError={(e) => {
-                setLogosLoaded(p => ({ ...p, iiitd: true }));
-                (e.target as HTMLImageElement).src = IIITD_FALLBACK;
-              }}
             />
           </div>
           <span
@@ -69,14 +61,10 @@ export function Navbar() {
           />
           <div className="h-10 flex items-center">
             <img
-              src={meitLogo.url || MEIT_FALLBACK}
+              src={MEIT_LOGO_SVG}
               alt="Ministry of Electronics and Information Technology"
               className="h-full w-auto object-contain rounded bg-white px-1 py-0.5"
               loading="lazy"
-              onError={(e) => {
-                setLogosLoaded(p => ({ ...p, meit: true }));
-                (e.target as HTMLImageElement).src = MEIT_FALLBACK;
-              }}
             />
           </div>
           <span className="ml-2 hidden font-display text-sm font-bold tracking-tight text-[color:var(--brand-navy)] sm:inline">
