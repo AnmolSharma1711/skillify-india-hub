@@ -1,38 +1,25 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { Hero } from "@/components/home/Hero";
 import { MissionSection } from "@/components/home/MissionSection";
 import { CoursesGrid } from "@/components/courses/CoursesGrid";
 import { COURSES } from "@/config/courses";
-import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Skillify IIITD × MEIT — Free Tech Courses" },
-      {
-        name: "description",
-        content:
-          "Free, mentor-led Python, Machine Learning and Generative AI courses by IIIT Delhi, powered by MEIT.",
-      },
-      { property: "og:title", content: "Skillify IIITD × MEIT" },
-      {
-        property: "og:description",
-        content:
-          "Skill the future of Digital India — free programs by IIIT Delhi.",
-      },
-    ],
-  }),
-  component: Index,
-});
-
-function Index() {
+export default function Index() {
   return (
     <>
+      <Helmet>
+        <title>Skillify IIITD &times; MEIT — Free Tech Courses</title>
+        <meta
+          name="description"
+          content="Free, mentor-led Python, Machine Learning and Generative AI courses by IIIT Delhi, powered by MEIT."
+        />
+      </Helmet>
+
       <Hero />
       <MissionSection />
 
-      {/* Courses preview section */}
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <div className="mb-10 flex items-end justify-between">
           <div>

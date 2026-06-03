@@ -1,12 +1,5 @@
-/**
- * Hero — landing page banner with:
- *   - Three.js particle canvas behind the content (HeroCanvas)
- *   - GSAP fade-up entrance animations
- *   - Professional light theme with navy/saffron accents
- *   - Tricolor stripe at very top (Indian flag palette)
- */
 import { useEffect, useRef } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { gsap } from "gsap";
 import { HeroCanvas } from "./HeroCanvas";
@@ -14,7 +7,6 @@ import { HeroCanvas } from "./HeroCanvas";
 export function Hero() {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  /* Staggered entrance: each [data-animate] child fades up on mount */
   useEffect(() => {
     if (!contentRef.current) return;
     const els = contentRef.current.querySelectorAll("[data-animate]");
@@ -27,7 +19,6 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* India tricolor bar: saffron | white | navy */}
       <div
         aria-hidden
         className="h-1 w-full"
@@ -37,10 +28,8 @@ export function Hero() {
         }}
       />
 
-      {/* Three.js canvas — pointer-events none so it doesn't block clicks */}
       <HeroCanvas className="pointer-events-none absolute inset-0 z-0 h-full w-full" />
 
-      {/* Light gradient wash keeping text readable over canvas */}
       <div
         aria-hidden
         className="absolute inset-0 z-[1]"
@@ -50,15 +39,12 @@ export function Hero() {
         }}
       />
 
-      {/* Dot texture overlay */}
       <div aria-hidden className="absolute inset-0 z-[2] bg-dots opacity-25" />
 
-      {/* Page content */}
       <div
         ref={contentRef}
         className="relative z-10 mx-auto max-w-5xl px-4 pb-24 pt-20 text-center sm:px-6 sm:pt-28"
       >
-        {/* Initiative badge */}
         <div
           data-animate
           className="mx-auto inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-teal)]/40 bg-white/80 px-4 py-1.5 text-xs font-semibold text-[color:var(--brand-navy)] shadow-sm backdrop-blur"
@@ -67,7 +53,6 @@ export function Hero() {
           A MEIT-powered initiative at IIIT Delhi
         </div>
 
-        {/* Main headline */}
         <h1
           data-animate
           className="mt-6 font-display text-5xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-6xl md:text-7xl"
@@ -76,17 +61,14 @@ export function Hero() {
           <span className="text-gradient-brand">Digital India.</span>
         </h1>
 
-        {/* Sub-headline */}
         <p
           data-animate
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)] sm:text-lg"
         >
-          Free, mentor-led programs in Python, Machine Learning and Generative AI —
-          designed by IIIT Delhi faculty, powered by the Ministry of Electronics
-          and Information Technology.
+          Free, mentor-led programs in Python, Machine Learning and Generative AI — designed by
+          IIIT Delhi faculty, powered by the Ministry of Electronics and Information Technology.
         </p>
 
-        {/* CTA buttons */}
         <div
           data-animate
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
@@ -100,17 +82,13 @@ export function Hero() {
           </Link>
           <Link
             to="/about"
-            className="inline-flex h-12 items-center rounded-full border-2 border-[color:var(--brand-navy)]/25 bg-white/75 px-7 text-sm font-semibold text-[color:var(--brand-navy)] backdrop-blur transition-colors hover:bg-white hover:border-[color:var(--brand-navy)]/50"
+            className="inline-flex h-12 items-center rounded-full border-2 border-[color:var(--brand-navy)]/25 bg-white/75 px-7 text-sm font-semibold text-[color:var(--brand-navy)] backdrop-blur transition-colors hover:border-[color:var(--brand-navy)]/50 hover:bg-white"
           >
             About the Programme
           </Link>
         </div>
 
-        {/* Key stats row */}
-        <dl
-          data-animate
-          className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left"
-        >
+        <dl data-animate className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left">
           {[
             { k: "3", v: "Industry-ready courses" },
             { k: "100%", v: "Free for students" },
