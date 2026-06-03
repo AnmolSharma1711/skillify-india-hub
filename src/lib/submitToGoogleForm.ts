@@ -18,6 +18,7 @@ export type EnrollmentPayload = {
   phone: string;
   institution: string;
   year: string;
+  designation: string;
   motivation: string;
 };
 
@@ -35,6 +36,7 @@ export async function submitToGoogleForm(
   body.append(fields.phone, payload.phone);
   body.append(fields.institution, payload.institution);
   body.append(fields.year, payload.year);
+  if (fields.designation) body.append(fields.designation, payload.designation);
   body.append(fields.motivation, payload.motivation);
 
   await fetch(url, {

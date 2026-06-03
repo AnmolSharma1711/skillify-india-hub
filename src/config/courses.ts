@@ -34,6 +34,7 @@ export type Course = {
       phone: string;
       institution: string;
       year: string;
+      designation: string;
       motivation: string;
     };
   };
