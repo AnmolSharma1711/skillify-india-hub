@@ -1,10 +1,5 @@
-/**
- * Footer — dark navy section with logos and attribution.
- */
-// SVG logos embedded as data URIs
-const IIITD_LOGO_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='white' opacity='0.9'/%3E%3Ctext x='50%25' y='50%25' fill='%231B3A6B' font-family='system-ui' font-size='24' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EIITD%3C/text%3E%3C/svg%3E";
-
-const MEIT_LOGO_SVG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%231B3A6B'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-family='system-ui' font-size='16' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EMEIT%3C/text%3E%3C/svg%3E";
+import iiitdLogo from "../../assets/iiitd_logo-removebg-preview.svg";
+import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
 
 export function Footer() {
   return (
@@ -12,19 +7,19 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         {/* Logos row */}
         <div className="flex flex-wrap items-center justify-center gap-8 sm:justify-start">
-          <div className="h-16 flex items-center">
+          <div className="h-20 flex items-center">
             <img
-              src={IIITD_LOGO_SVG}
+              src={iiitdLogo}
               alt="IIIT Delhi"
-              className="h-full w-auto object-contain filter brightness-200"
+              className="h-full w-auto object-contain"
               loading="lazy"
             />
           </div>
           <div className="h-16 flex items-center">
             <img
-              src={MEIT_LOGO_SVG}
+              src={meitLogo}
               alt="Ministry of Electronics and Information Technology"
-              className="h-full w-auto object-contain rounded bg-white p-1"
+              className="h-full w-auto object-contain"
               loading="lazy"
             />
           </div>

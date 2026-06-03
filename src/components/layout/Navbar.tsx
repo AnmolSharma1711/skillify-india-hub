@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import iiitdLogo from "../../assets/iiitd_logo-removebg-preview.svg";
+import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/courses", label: "Courses" },
   { to: "/about", label: "About" },
 ] as const;
-
-const IIITD_LOGO_SVG =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%231B3A6B'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-family='system-ui' font-size='16' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EIITD%3C/text%3E%3C/svg%3E";
-
-const MEIT_LOGO_SVG =
-  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Crect width='60' height='60' fill='%231B3A6B'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-family='system-ui' font-size='12' font-weight='bold' text-anchor='middle' dominant-baseline='middle'%3EMEIT%3C/text%3E%3C/svg%3E";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -38,16 +34,16 @@ export function Navbar() {
       />
 
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-10 items-center">
-            <img src={IIITD_LOGO_SVG} alt="IIIT Delhi" className="h-full w-auto object-contain" />
+        <Link to="/" className="flex items-center gap-3">
+          <div className="flex h-12 items-center">
+            <img src={iiitdLogo} alt="IIIT Delhi" className="h-full w-auto object-contain" />
           </div>
           <span aria-hidden className="h-6 w-px bg-[color:var(--border)]" />
           <div className="flex h-10 items-center">
             <img
-              src={MEIT_LOGO_SVG}
+              src={meitLogo}
               alt="Ministry of Electronics and Information Technology"
-              className="h-full w-auto rounded bg-white object-contain px-1 py-0.5"
+              className="h-full w-auto object-contain"
             />
           </div>
           <span className="ml-2 hidden font-display text-sm font-bold tracking-tight text-[color:var(--brand-navy)] sm:inline">
