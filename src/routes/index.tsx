@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/home/Hero";
 import { MissionSection } from "@/components/home/MissionSection";
-import { CourseCard } from "@/components/courses/CourseCard";
+import { CoursesGrid } from "@/components/courses/CoursesGrid";
 import { COURSES } from "@/config/courses";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
@@ -50,15 +50,10 @@ function Index() {
           </Link>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          {COURSES.map((c, i) => (
-            <CourseCard
-              key={c.id}
-              course={c}
-              side={i >= Math.ceil(COURSES.length / 2) ? "left" : "right"}
-            />
-          ))}
-        </div>
+        <CoursesGrid
+          courses={COURSES}
+          className="grid gap-5 md:grid-cols-3"
+        />
       </section>
     </>
   );

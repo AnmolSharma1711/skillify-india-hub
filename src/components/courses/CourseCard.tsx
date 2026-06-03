@@ -1,12 +1,11 @@
 /**
- * Course card. On desktop, hovering opens a slide-in detail panel (anchored
- * to the top-right of the viewport). On mobile, tapping the card toggles it.
+ * Course card. On desktop, hovering opens a slide-in detail panel anchored
+ * to one edge of the viewport. On mobile, tapping the card toggles it.
  *
- * The panel + card share an open state managed here. We close on mouse leave
- * for the card itself; the panel handles its own dismissal for Escape /
- * backdrop tap.
+ * Open/close state is OWNED BY the parent `CoursesGrid` so only one panel is
+ * visible at a time and a delayed close timer is shared across cards. This
+ * card only reports user intent via callbacks.
  */
-import { useRef, useState } from "react";
 import { ArrowUpRight, Clock, GraduationCap } from "lucide-react";
 
 import type { Course } from "@/config/courses";
@@ -15,47 +14,36 @@ import { CourseDetailPanel } from "./CourseDetailPanel";
 export function CourseCard({
   course,
   side = "right",
+  open,
+  onOpen,
+  onScheduleClose,
+  onCancelClose,
+  onCloseNow,
 }: {
   course: Course;
-  /**
-   * Which edge the slide-in panel anchors to. Choose the edge OPPOSITE the
-   * card's screen position so the panel never overlaps the card and causes
-   * a hover open/close loop.
-   */
+  /** Which edge the panel anchors to (opposite the card to avoid hover loops). */
   side?: "left" | "right";
+  /** True when THIS card's panel is the open one. */
+  open: boolean;
+  /** User wants this card open right now (hover, focus, tap). */
+  onOpen: () => void;
+  /** Start the grace-period close timer (cursor left card/panel). */
+  onScheduleClose: () => void;
+  /** Cancel a pending close (cursor re-entered card/panel). */
+  onCancelClose: () => void;
+  /** Close immediately (Escape, close button, backdrop tap). */
+  onCloseNow: () => void;
 }) {
-  const [open, setOpen] = useState(false);
-  // Delay closing on mouse-leave so the user has time to move the cursor from
-  // the card to the slide-in panel without it disappearing on them.
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const cancelClose = () => {
-    if (closeTimer.current) {
-      clearTimeout(closeTimer.current);
-      closeTimer.current = null;
-    }
-  };
-
-  const scheduleClose = () => {
-    cancelClose();
-    closeTimer.current = setTimeout(() => setOpen(false), 2500);
-  };
-
-  const openNow = () => {
-    cancelClose();
-    setOpen(true);
-  };
-
   return (
     <>
       <article
-        // Desktop: hover opens immediately, closing is deferred so the user
-        // can cross the gap into the panel. Mobile uses the click handler.
-        onMouseEnter={openNow}
-        onMouseLeave={scheduleClose}
-        onClick={() => setOpen((v) => !v)}
-        onFocus={openNow}
-        onBlur={scheduleClose}
+        // Hover opens immediately; close is deferred so the cursor can travel
+        // into the panel. Tap toggles on mobile/keyboard.
+        onMouseEnter={onOpen}
+        onMouseLeave={onScheduleClose}
+        onClick={() => (open ? onCloseNow() : onOpen())}
+        onFocus={onOpen}
+        onBlur={onScheduleClose}
         tabIndex={0}
         role="button"
         aria-expanded={open}
@@ -105,14 +93,11 @@ export function CourseCard({
       <CourseDetailPanel
         course={course}
         open={open}
-        onClose={() => {
-          cancelClose();
-          setOpen(false);
-        }}
+        onClose={onCloseNow}
         // Keep the panel open while the cursor is over it; re-arm the close
         // timer when the cursor leaves it.
-        onPanelMouseEnter={cancelClose}
-        onPanelMouseLeave={scheduleClose}
+        onPanelMouseEnter={onCancelClose}
+        onPanelMouseLeave={onScheduleClose}
         side={side}
       />
     </>
