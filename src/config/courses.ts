@@ -26,6 +26,8 @@ export type Course = {
   syllabus: string[];
   /** Tailwind gradient class fragment used for the card accent. */
   accent: "cyan" | "violet" | "mixed";
+  /** Icon name from lucide-react for the course card header */
+  icon: string;
   /** Tech stack badges — icon name from lucide-react + label. */
   techs: Array<{ icon: string; label: string }>;
   googleForm: {
@@ -46,6 +48,7 @@ export const COURSES: Course[] = [
   {
     id: "python",
     title: "Python Programming",
+    icon: "Snake",
     tagline: "From zero to writing real-world Python in 6 weeks.",
     duration: "6 weeks · 3 hrs/week",
     level: "Beginner friendly",
@@ -84,6 +87,7 @@ export const COURSES: Course[] = [
   {
     id: "ml",
     title: "Machine Learning",
+    icon: "Brain",
     tagline: "Build real ML models — from regression to neural networks.",
     duration: "8 weeks · 4 hrs/week",
     level: "Intermediate",
@@ -122,6 +126,7 @@ export const COURSES: Course[] = [
   {
     id: "genai",
     title: "Generative AI",
+    icon: "Sparkles",
     tagline: "Ship AI products with LLMs, embeddings & agents.",
     duration: "6 weeks · 4 hrs/week",
     level: "Intermediate · Advanced",

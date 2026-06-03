@@ -1,6 +1,5 @@
 /**
  * Footer — dark navy section with logos and attribution.
- * Uses the `.dark` class so light-mode tokens invert here.
  */
 import iiitdLogo from "@/assets/iiitd-logo.png.asset.json";
 import meitLogo from "@/assets/meit-logo.png.asset.json";
@@ -11,16 +10,22 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         {/* Logos row */}
         <div className="flex flex-wrap items-center justify-center gap-8 sm:justify-start">
-          <img
-            src={iiitdLogo.url}
-            alt="IIIT Delhi"
-            className="h-12 w-auto brightness-0 invert"
-          />
-          <img
-            src={meitLogo.url}
-            alt="Ministry of Electronics and Information Technology"
-            className="h-12 w-auto rounded bg-white/90 px-2 py-1"
-          />
+          <div className="h-14 flex items-center">
+            <img
+              src={iiitdLogo.url}
+              alt="IIIT Delhi"
+              className="h-full w-auto object-contain filter brightness-200"
+              loading="lazy"
+            />
+          </div>
+          <div className="h-14 flex items-center">
+            <img
+              src={meitLogo.url}
+              alt="Ministry of Electronics and Information Technology"
+              className="h-full w-auto object-contain rounded bg-white p-1"
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* Divider */}

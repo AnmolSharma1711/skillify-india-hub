@@ -71,14 +71,27 @@ export function CourseCard({
           aria-hidden
         />
 
-        <div className="mt-1 flex items-start justify-between">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
-            Course
-          </p>
+        <div className="flex items-start justify-between">
+          {/* Course icon */}
+          <div
+            className="grid h-11 w-11 place-items-center rounded-lg text-white"
+            style={{ background: accent.bg }}
+          >
+            {(() => {
+              const IconComponent = Icons[course.icon as keyof typeof Icons] as any;
+              return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
+            })()}
+          </div>
           <ArrowUpRight
             className="h-4 w-4 text-[color:var(--muted-foreground)] transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
             style={{ color: open ? accent.icon : undefined }}
           />
+        </div>
+
+        <div className="mt-1 flex items-start justify-between">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
+            Course
+          </p>
         </div>
 
         <h3 className="mt-3 font-display text-xl font-bold leading-tight text-[color:var(--brand-navy)]">

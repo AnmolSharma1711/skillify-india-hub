@@ -44,18 +44,28 @@ export function Navbar() {
 
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Brand logos */}
-        <Link to="/" className="flex items-center gap-3">
-          <img src={iiitdLogo.url} alt="IIIT Delhi" className="h-9 w-auto" />
+        <Link to="/" className="flex items-center gap-2">
+          <div className="h-10 flex items-center">
+            <img
+              src={iiitdLogo.url}
+              alt="IIIT Delhi"
+              className="h-full w-auto object-contain"
+              loading="lazy"
+            />
+          </div>
           <span
             aria-hidden
-            className="h-7 w-px bg-[color:var(--border)]"
+            className="h-6 w-px bg-[color:var(--border)]"
           />
-          <img
-            src={meitLogo.url}
-            alt="Ministry of Electronics and Information Technology"
-            className="h-9 w-auto rounded bg-white px-1 py-0.5"
-          />
-          <span className="ml-1 hidden font-display text-sm font-bold tracking-tight text-[color:var(--brand-navy)] sm:inline">
+          <div className="h-10 flex items-center">
+            <img
+              src={meitLogo.url}
+              alt="Ministry of Electronics and Information Technology"
+              className="h-full w-auto object-contain rounded bg-white px-1 py-0.5"
+              loading="lazy"
+            />
+          </div>
+          <span className="ml-2 hidden font-display text-sm font-bold tracking-tight text-[color:var(--brand-navy)] sm:inline">
             Skillify
           </span>
         </Link>

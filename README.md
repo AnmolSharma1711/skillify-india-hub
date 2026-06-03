@@ -130,31 +130,47 @@ src/
 
 ---
 
-## Course tech badges
+## Course icons & badges
 
-Each course displays 3 tech badges at the top of the card (Python, NumPy, PyTorch, etc.). These are defined in `src/config/courses.ts`:
+Each course has:
+
+1. **Main icon** — displayed in a gradient badge at the top of the card:
+   - Python: `Snake` 🐍
+   - Machine Learning: `Brain` 🧠
+   - Generative AI: `Sparkles` ✨
+
+2. **Tech stack badges** — 3 small tags showing the tools/libraries used (Python, NumPy, PyTorch, etc.)
+
+Both are defined in `src/config/courses.ts`. To customize:
 
 ```typescript
-techs: [
-  { icon: "Code", label: "Python" },
-  { icon: "Database", label: "JSON" },
-  { icon: "GitBranch", label: "Git" },
-]
+{
+  id: "python",
+  title: "Python Programming",
+  icon: "Snake",  // Main course icon (lucide-react name)
+  // ...
+  techs: [
+    { icon: "Code", label: "Python" },
+    { icon: "Database", label: "JSON" },
+  ],
+}
 ```
 
-The `icon` field must be a valid **lucide-react** icon name (imported dynamically). Common options:
+Valid icon names are any **lucide-react** icon. Common options:
 
 | Icon | Use |
 |---|---|
-| `Code` | Programming, Python, JavaScript |
-| `Database` | Data, JSON, SQL |
-| `GitBranch` | Version control, Git |
-| `BarChart3` | Data visualization, NumPy |
-| `TrendingUp` | Statistics, Scikit-learn |
-| `Zap` | Performance, PyTorch, Fast |
-| `Brain` | AI, LLMs, Machine Learning |
-| `Network` | Embeddings, Neural networks |
-| `Workflow` | Agents, Pipelines, Orchestration |
+| `Snake` | Python |
+| `Brain` | AI, ML, Thinking |
+| `Sparkles` | Generative, Magic, Advanced |
+| `Code` | Programming, Coding |
+| `Database` | Data, Storage |
+| `GitBranch` | Git, Version control |
+| `BarChart3` | Data visualization |
+| `TrendingUp` | Growth, Statistics |
+| `Zap` | Speed, Power, Lightning |
+| `Network` | Networking, Connections |
+| `Workflow` | Pipelines, Automation |
 
 ---
 
@@ -289,7 +305,28 @@ If it doesn't appear:
 
 ---
 
-## License
+## Logo integration
+
+The IIIT Delhi and MEIT logos are stored as asset JSON files in `src/assets/`:
+
+- `iiitd-logo.png.asset.json` — Bolt-managed asset with CDN URL
+- `meit-logo.png.asset.json` — Bolt-managed asset with CDN URL
+
+These are imported in components and rendered via `<img src={logo.url}>`:
+
+```typescript
+import iiitdLogo from "@/assets/iiitd-logo.png.asset.json";
+
+<img src={iiitdLogo.url} alt="IIIT Delhi" className="h-10 w-auto" />
+```
+
+If logos don't appear:
+1. Check browser DevTools → Network tab — are the image URLs returning 200?
+2. Verify asset URLs are accessible (not blocked by CORS)
+3. Ensure running `npm run dev` (dev server required for asset resolution)
+4. Try opening in an incognito window (clears cache)
+
+---
 
 Programme content © IIIT Delhi & MEIT. Codebase is internal — contact the
 programme team before reuse.
