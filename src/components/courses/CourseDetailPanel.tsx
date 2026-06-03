@@ -10,7 +10,7 @@
  *   - mobile/keyboard: backdrop click, close button, Escape key
  */
 import { useEffect } from "react";
-import { X, Clock, GraduationCap, CheckCircle2 } from "lucide-react";
+import { X, Clock, GraduationCap, CircleCheck as CheckCircle2 } from "lucide-react";
 
 import type { Course } from "@/config/courses";
 import { EnrollmentForm } from "./EnrollmentForm";

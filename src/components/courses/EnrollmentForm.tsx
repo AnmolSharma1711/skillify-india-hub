@@ -8,7 +8,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CircleCheck as CheckCircle2, Loader as Loader2 } from "lucide-react";
 
 import type { Course } from "@/config/courses";
 import { submitToGoogleForm } from "@/lib/submitToGoogleForm";

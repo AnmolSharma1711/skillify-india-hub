@@ -4,7 +4,7 @@
  * Light theme: white cards, navy headings, teal icons.
  */
 import { useEffect, useRef } from "react";
-import { GraduationCap, Code2, Rocket } from "lucide-react";
+import { GraduationCap, Code as Code2, Rocket } from "lucide-react";
 import { gsap } from "gsap";
 
 const pillars = [
