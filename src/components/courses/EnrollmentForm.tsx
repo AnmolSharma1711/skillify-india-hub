@@ -24,6 +24,7 @@ const schema = z.object({
     .regex(/^[0-9+\-\s]{7,15}$/, "Enter a valid phone number"),
   institution: z.string().trim().min(2, "Required").max(200),
   year: z.string().trim().min(1, "Required").max(50),
+  designation: z.string().trim().min(2, "Required").max(100),
   motivation: z.string().trim().max(500).optional().or(z.literal("")),
 });
 
@@ -56,6 +57,7 @@ export function EnrollmentForm({ course }: { course: Course }) {
         phone: parsed.data.phone,
         institution: parsed.data.institution,
         year: parsed.data.year,
+        designation: parsed.data.designation,
         motivation: parsed.data.motivation ?? "",
       });
       setDone(true);
@@ -88,6 +90,7 @@ export function EnrollmentForm({ course }: { course: Course }) {
       <Field label="Phone" name="phone" error={errors.phone} />
       <Field label="College / Institution" name="institution" error={errors.institution} />
       <Field label="Year of study" name="year" placeholder="e.g. 2nd year B.Tech" error={errors.year} />
+      <Field label="Designation" name="designation" placeholder="e.g. Student, Faculty, Working Professional" error={errors.designation} />
       <div>
         <label className="mb-1 block text-xs font-medium text-muted-foreground">
           Why are you interested? <span className="opacity-60">(optional)</span>

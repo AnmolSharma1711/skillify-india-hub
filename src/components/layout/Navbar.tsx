@@ -3,6 +3,8 @@
  * Used inside __root.tsx so it renders on every route.
  */
 import { Link } from "@tanstack/react-router";
+import iiitdLogo from "@/assets/iiitd-logo.png.asset.json";
+import meitLogo from "@/assets/meit-logo.png.asset.json";
 
 const links = [
   { to: "/", label: "Home" },
@@ -15,11 +17,19 @@ export function Navbar() {
     <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2">
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-[image:var(--gradient-brand)] font-display text-sm font-bold text-background">
-            S
-          </span>
-          <span className="font-display text-base font-semibold tracking-tight">
-            Skillify <span className="text-muted-foreground">· IIITD × MEIT</span>
+          <img
+            src={iiitdLogo.url}
+            alt="IIIT Delhi"
+            className="h-9 w-auto"
+          />
+          <span className="h-7 w-px bg-border/80" aria-hidden />
+          <img
+            src={meitLogo.url}
+            alt="Ministry of Electronics and Information Technology"
+            className="h-9 w-auto bg-white/90 rounded px-1 py-0.5"
+          />
+          <span className="ml-2 hidden font-display text-sm font-semibold tracking-tight sm:inline">
+            Skillify
           </span>
         </Link>
 

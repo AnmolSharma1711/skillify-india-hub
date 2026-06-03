@@ -34,6 +34,7 @@ export type Course = {
       phone: string;
       institution: string;
       year: string;
+      designation: string;
       motivation: string;
     };
   };
@@ -68,6 +69,7 @@ export const COURSES: Course[] = [
         phone: "entry.3333333333",
         institution: "entry.4444444444",
         year: "entry.5555555555",
+        designation: "entry.7777777777",
         motivation: "entry.6666666666",
       },
     },
@@ -100,6 +102,7 @@ export const COURSES: Course[] = [
         phone: "entry.3333333333",
         institution: "entry.4444444444",
         year: "entry.5555555555",
+        designation: "entry.7777777777",
         motivation: "entry.6666666666",
       },
     },
@@ -132,6 +135,7 @@ export const COURSES: Course[] = [
         phone: "entry.3333333333",
         institution: "entry.4444444444",
         year: "entry.5555555555",
+        designation: "entry.7777777777",
         motivation: "entry.6666666666",
       },
     },
