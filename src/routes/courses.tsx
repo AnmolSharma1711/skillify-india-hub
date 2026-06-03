@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CourseCard } from "@/components/courses/CourseCard";
+import { CoursesGrid } from "@/components/courses/CoursesGrid";
 import { COURSES } from "@/config/courses";
 
 export const Route = createFileRoute("/courses")({
@@ -37,17 +37,10 @@ function CoursesPage() {
         </p>
       </header>
 
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {COURSES.map((c, i) => (
-          // Cards in the right half of the grid open a LEFT-anchored panel so
-          // the panel never lands on top of the card and triggers a hover loop.
-          <CourseCard
-            key={c.id}
-            course={c}
-            side={i >= Math.ceil(COURSES.length / 2) ? "left" : "right"}
-          />
-        ))}
-      </div>
+      <CoursesGrid
+        courses={COURSES}
+        className="mt-14 grid gap-6 md:grid-cols-3"
+      />
     </section>
   );
 }
