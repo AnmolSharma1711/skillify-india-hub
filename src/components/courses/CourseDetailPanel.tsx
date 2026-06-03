@@ -19,10 +19,13 @@ export function CourseDetailPanel({
   course,
   open,
   onClose,
+  side = "right",
 }: {
   course: Course;
   open: boolean;
   onClose: () => void;
+  /** Which edge of the viewport the panel slides in from. */
+  side?: "left" | "right";
 }) {
   // Close on Escape for keyboard users.
   useEffect(() => {
@@ -50,10 +53,16 @@ export function CourseDetailPanel({
         role="dialog"
         aria-label={`${course.title} details`}
         aria-hidden={!open}
-        className={`fixed right-0 top-0 z-50 flex h-dvh w-full max-w-[440px] flex-col border-l border-border/80 bg-card/95 shadow-[var(--shadow-glow-violet)] backdrop-blur-xl transition-all duration-300 ease-out ${
+        className={`fixed top-0 z-50 flex h-dvh w-full max-w-[440px] flex-col bg-card/95 shadow-[var(--shadow-glow-violet)] backdrop-blur-xl transition-all duration-300 ease-out ${
+          side === "right"
+            ? "right-0 border-l border-border/80"
+            : "left-0 border-r border-border/80"
+        } ${
           open
             ? "translate-x-0 opacity-100"
-            : "pointer-events-none translate-x-6 opacity-0"
+            : `pointer-events-none opacity-0 ${
+                side === "right" ? "translate-x-6" : "-translate-x-6"
+              }`
         }`}
       >
         {/* Header */}
