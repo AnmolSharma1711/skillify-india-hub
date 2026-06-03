@@ -6,6 +6,7 @@
  * visible at a time and a delayed close timer is shared across cards.
  */
 import { ArrowUpRight, Clock, GraduationCap } from "lucide-react";
+import * as Icons from "lucide-react";
 
 import type { Course } from "@/config/courses";
 import { CourseDetailPanel } from "./CourseDetailPanel";
@@ -87,7 +88,23 @@ export function CourseCard({
           {course.tagline}
         </p>
 
-        <div className="mt-5 flex flex-wrap gap-2 text-xs text-[color:var(--muted-foreground)]">
+        {/* Tech stack badges */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          {course.techs.map((tech) => {
+            const IconComponent = Icons[tech.icon as keyof typeof Icons] as any;
+            return (
+              <span
+                key={tech.label}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--brand-teal)]/30 bg-[color:var(--brand-teal)]/8 px-2.5 py-1 text-xs font-medium text-[color:var(--brand-teal)]"
+              >
+                {IconComponent && <IconComponent className="h-3 w-3" />}
+                {tech.label}
+              </span>
+            );
+          })}
+        </div>
+
+        <div className="mt-4 flex flex-wrap gap-2 text-xs text-[color:var(--muted-foreground)]">
           <span className="inline-flex items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2.5 py-1">
             <Clock className="h-3 w-3" /> {course.duration}
           </span>

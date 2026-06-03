@@ -118,15 +118,43 @@ src/
 │  │  └─ MissionSection.tsx  Three-pillar section with scroll animations
 │  └─ courses/
 │     ├─ CoursesGrid.tsx        Manages which card is open
-│     ├─ CourseCard.tsx         Hover/tap-triggered course tile
+│     ├─ CourseCard.tsx         Hover/tap-triggered course tile with tech badges
 │     ├─ CourseDetailPanel.tsx  Slide-in panel (navy header, light body)
 │     └─ EnrollmentForm.tsx     Validated form → Google Form POST
 ├─ config/
-│  └─ courses.ts          ⭐ Course catalog + Google Form mapping
+│  └─ courses.ts          ⭐ Course catalog, tech stack, Google Form mapping
 ├─ lib/
 │  └─ submitToGoogleForm.ts     Encodes + POSTs with no-cors
 └─ styles.css             Tailwind v4 tokens (light government theme)
 ```
+
+---
+
+## Course tech badges
+
+Each course displays 3 tech badges at the top of the card (Python, NumPy, PyTorch, etc.). These are defined in `src/config/courses.ts`:
+
+```typescript
+techs: [
+  { icon: "Code", label: "Python" },
+  { icon: "Database", label: "JSON" },
+  { icon: "GitBranch", label: "Git" },
+]
+```
+
+The `icon` field must be a valid **lucide-react** icon name (imported dynamically). Common options:
+
+| Icon | Use |
+|---|---|
+| `Code` | Programming, Python, JavaScript |
+| `Database` | Data, JSON, SQL |
+| `GitBranch` | Version control, Git |
+| `BarChart3` | Data visualization, NumPy |
+| `TrendingUp` | Statistics, Scikit-learn |
+| `Zap` | Performance, PyTorch, Fast |
+| `Brain` | AI, LLMs, Machine Learning |
+| `Network` | Embeddings, Neural networks |
+| `Workflow` | Agents, Pipelines, Orchestration |
 
 ---
 
@@ -146,34 +174,98 @@ containing the enrollment form.
 
 ## How to wire a real Google Form
 
-1. Create a Google Form with these fields (in order):
-   Full name · Email · Phone · College / Institution · Year of study ·
-   Designation · Why interested
-2. From the form's Send dialog, copy the link. The ID between
-   `/forms/d/e/<FORM_ID>/viewform` is your `formId`.
-3. Open the 3-dot menu → "Get pre-filled link". Fill every field with a dummy
-   value, click "Get link". The URL contains `entry.123=Dummy` pairs — the
-   numbers are your field IDs.
-4. Paste into `src/config/courses.ts`:
-   ```ts
-   googleForm: {
-     formId: "1FAIpQLSe...Xyz",
-     fields: {
-       name:        "entry.1234567890",
-       email:       "entry.2345678901",
-       phone:       "entry.3456789012",
-       institution: "entry.4567890123",
-       year:        "entry.5678901234",
-       designation: "entry.6789012345",
-       motivation:  "entry.7890123456",
-     },
-   },
-   ```
-5. Test: submit once and confirm the response in the Google Form "Responses" tab.
+### Step 1: Create the Google Form
 
-> Submissions use `fetch(..., { mode: "no-cors" })`. The browser cannot read
-> the response (Google Forms returns no CORS headers), so the code treats a
-> resolved fetch as success. This is the standard pattern.
+1. Go to [forms.google.com](https://forms.google.com)
+2. Create a new form, title it `[Course Name] - Enrollment Form`
+3. Add fields **in this exact order**:
+   - **Full name** (short answer)
+   - **Email** (short answer)
+   - **Phone** (short answer)
+   - **College / Institution** (short answer)
+   - **Year of study** (short answer)
+   - **Designation** (short answer)
+   - **Why are you interested?** (paragraph)
+
+4. At the top, add a description: "Free enrollment for [Course Name], taught by IIIT Delhi faculty."
+5. Click "Send" button → under "Send responses to email" → copy the Google Form URL (save it, you'll need the ID)
+
+### Step 2: Extract the Form ID
+
+From the form URL:
+```
+https://forms.gle/abc123XYZ   OR
+https://docs.google.com/forms/d/e/1FAIpQLSeXXXXXXXXX/viewform?usp=sf_link
+```
+
+The ID is the long string between `/d/e/` and `/viewform`. Example: `1FAIpQLSeXXXXXXXXX`
+
+### Step 3: Get Field Entry IDs
+
+1. Click the 3-dot menu on your form → **"Get pre-filled link"**
+2. Fill EVERY field with a test value (e.g., "Test Name", "test@example.com", etc.)
+3. Click **"Get link"** button at the bottom
+4. Copy the generated URL. It will look like:
+   ```
+   https://docs.google.com/forms/d/e/1FAIpQLSeXXXXXXXXX/viewform?entry.1111111111=Test+Name&entry.2222222222=test%40example.com&entry.3333333333=1234567890&entry.4444444444=Test+College...
+   ```
+
+Extract the `entry.XXXXXXXXX` values for each field (in order):
+- `entry.1111111111` = Full name
+- `entry.2222222222` = Email
+- `entry.3333333333` = Phone
+- `entry.4444444444` = Institution
+- `entry.5555555555` = Year of study
+- `entry.7777777777` = Designation
+- `entry.6666666666` = Motivation
+
+### Step 4: Update the Course Config
+
+Edit `src/config/courses.ts` for each course:
+
+```typescript
+{
+  id: "python",
+  title: "Python Programming",
+  // ... other fields ...
+  googleForm: {
+    formId: "1FAIpQLSeXXXXXXXXX",  // Replace with your form ID
+    fields: {
+      name:        "entry.1111111111",     // Replace with your field ID
+      email:       "entry.2222222222",
+      phone:       "entry.3333333333",
+      institution: "entry.4444444444",
+      year:        "entry.5555555555",
+      designation: "entry.7777777777",
+      motivation:  "entry.6666666666",
+    },
+  },
+}
+```
+
+### Step 5: Test the Enrollment
+
+1. Start the dev server: `npm run dev`
+2. Go to http://localhost:5173/courses
+3. Click a course card
+4. Fill the enrollment form **using the exact same test values** you used in Step 3
+5. Click "Enroll" button
+6. Open your Google Form's "Responses" tab — you should see the submission appear
+
+If it doesn't appear:
+- Check the browser console (Inspect → Console) for error messages
+- Verify the form ID and entry IDs match exactly
+- Ensure no typos in the `googleForm` config
+- Test the pre-filled link directly in the browser to confirm it works
+
+### How it works
+
+- The form submission uses `fetch(..., { mode: "no-cors" })` (no CORS headers)
+- Browsers cannot read Google Forms' response, so any resolved fetch = success
+- After submission, the form shows "You're in!" confirmation
+- A toast notification confirms enrollment
+
+---
 
 ---
 

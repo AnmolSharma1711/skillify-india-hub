@@ -26,6 +26,8 @@ export type Course = {
   syllabus: string[];
   /** Tailwind gradient class fragment used for the card accent. */
   accent: "cyan" | "violet" | "mixed";
+  /** Tech stack badges — icon name from lucide-react + label. */
+  techs: Array<{ icon: string; label: string }>;
   googleForm: {
     formId: string;
     fields: {
@@ -48,6 +50,11 @@ export const COURSES: Course[] = [
     duration: "6 weeks · 3 hrs/week",
     level: "Beginner friendly",
     accent: "cyan",
+    techs: [
+      { icon: "Code", label: "Python" },
+      { icon: "Database", label: "JSON" },
+      { icon: "GitBranch", label: "Git" },
+    ],
     highlights: [
       "Live mentor sessions",
       "Hands-on capstone project",
@@ -81,6 +88,11 @@ export const COURSES: Course[] = [
     duration: "8 weeks · 4 hrs/week",
     level: "Intermediate",
     accent: "mixed",
+    techs: [
+      { icon: "BarChart3", label: "NumPy" },
+      { icon: "TrendingUp", label: "Scikit-learn" },
+      { icon: "Zap", label: "PyTorch" },
+    ],
     highlights: [
       "Real-world datasets",
       "Kaggle-style competition",
@@ -114,6 +126,11 @@ export const COURSES: Course[] = [
     duration: "6 weeks · 4 hrs/week",
     level: "Intermediate · Advanced",
     accent: "violet",
+    techs: [
+      { icon: "Brain", label: "LLMs" },
+      { icon: "Network", label: "Embeddings" },
+      { icon: "Workflow", label: "Agents" },
+    ],
     highlights: [
       "Build with modern LLM APIs",
       "RAG, agents & evaluations",
