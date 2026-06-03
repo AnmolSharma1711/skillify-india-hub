@@ -32,28 +32,26 @@ function Index() {
       <Hero />
       <MissionSection />
 
-      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
+      {/* Courses preview section */}
+      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <div className="mb-10 flex items-end justify-between">
           <div>
-            <p className="text-xs uppercase tracking-widest text-muted-foreground">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
               Programmes
             </p>
-            <h2 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
+            <h2 className="mt-2 font-display text-3xl font-bold text-[color:var(--brand-navy)] sm:text-4xl">
               Choose your <span className="text-gradient-brand">track</span>
             </h2>
           </div>
           <Link
             to="/courses"
-            className="hidden items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
+            className="hidden items-center gap-1 text-sm font-medium text-[color:var(--brand-teal)] transition-colors hover:text-[color:var(--brand-navy)] sm:inline-flex"
           >
             All courses <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <CoursesGrid
-          courses={COURSES}
-          className="grid gap-5 md:grid-cols-3"
-        />
+        <CoursesGrid courses={COURSES} className="grid gap-5 md:grid-cols-3" />
       </section>
     </>
   );

@@ -2,14 +2,32 @@
  * Course card. On desktop, hovering opens a slide-in detail panel anchored
  * to one edge of the viewport. On mobile, tapping the card toggles it.
  *
- * Open/close state is OWNED BY the parent `CoursesGrid` so only one panel is
- * visible at a time and a delayed close timer is shared across cards. This
- * card only reports user intent via callbacks.
+ * Open/close state is OWNED BY the parent CoursesGrid so only one panel is
+ * visible at a time and a delayed close timer is shared across cards.
  */
 import { ArrowUpRight, Clock, GraduationCap } from "lucide-react";
 
 import type { Course } from "@/config/courses";
 import { CourseDetailPanel } from "./CourseDetailPanel";
+
+/** Accent colours per course type (navy/teal/saffron). */
+const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: string }> = {
+  cyan: {
+    border: "var(--brand-teal)",
+    bg: "linear-gradient(135deg, var(--brand-teal), oklch(0.68 0.12 200))",
+    icon: "var(--brand-teal)",
+  },
+  mixed: {
+    border: "var(--brand-navy)",
+    bg: "var(--gradient-brand)",
+    icon: "var(--brand-navy)",
+  },
+  violet: {
+    border: "var(--brand-saffron)",
+    bg: "var(--gradient-saffron)",
+    icon: "var(--brand-saffron)",
+  },
+};
 
 export function CourseCard({
   course,
@@ -21,24 +39,18 @@ export function CourseCard({
   onCloseNow,
 }: {
   course: Course;
-  /** Which edge the panel anchors to (opposite the card to avoid hover loops). */
   side?: "left" | "right";
-  /** True when THIS card's panel is the open one. */
   open: boolean;
-  /** User wants this card open right now (hover, focus, tap). */
   onOpen: () => void;
-  /** Start the grace-period close timer (cursor left card/panel). */
   onScheduleClose: () => void;
-  /** Cancel a pending close (cursor re-entered card/panel). */
   onCancelClose: () => void;
-  /** Close immediately (Escape, close button, backdrop tap). */
   onCloseNow: () => void;
 }) {
+  const accent = ACCENT[course.accent];
+
   return (
     <>
       <article
-        // Hover opens immediately; close is deferred so the cursor can travel
-        // into the panel. Tap toggles on mobile/keyboard.
         onMouseEnter={onOpen}
         onMouseLeave={onScheduleClose}
         onClick={() => (open ? onCloseNow() : onOpen())}
@@ -48,45 +60,47 @@ export function CourseCard({
         role="button"
         aria-expanded={open}
         aria-label={`${course.title} — view details and enroll`}
-        className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/60 bg-card/60 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--brand-cyan)]/60 hover:shadow-[var(--shadow-glow)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-cyan)]/60"
+        className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)]"
+        style={open ? { borderColor: accent.border, boxShadow: "var(--shadow-navy)" } : {}}
       >
-        {/* Gradient accent that intensifies on hover. */}
+        {/* Top colour accent bar */}
         <div
-          className="absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-30 blur-3xl transition-opacity group-hover:opacity-60"
-          style={{
-            backgroundImage:
-              course.accent === "violet"
-                ? "radial-gradient(circle, var(--brand-violet), transparent 70%)"
-                : course.accent === "mixed"
-                ? "var(--gradient-brand)"
-                : "radial-gradient(circle, var(--brand-cyan), transparent 70%)",
-          }}
+          className="absolute left-0 top-0 h-1 w-full rounded-t-2xl transition-all duration-300"
+          style={{ background: accent.bg }}
           aria-hidden
         />
 
-        <div className="flex items-start justify-between">
-          <p className="text-[11px] uppercase tracking-widest text-muted-foreground">
+        <div className="mt-1 flex items-start justify-between">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
             Course
           </p>
-          <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[color:var(--brand-cyan)]" />
+          <ArrowUpRight
+            className="h-4 w-4 text-[color:var(--muted-foreground)] transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            style={{ color: open ? accent.icon : undefined }}
+          />
         </div>
 
-        <h3 className="mt-3 font-display text-xl font-bold leading-tight">
+        <h3 className="mt-3 font-display text-xl font-bold leading-tight text-[color:var(--brand-navy)]">
           {course.title}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground">{course.tagline}</p>
+        <p className="mt-2 text-sm leading-relaxed text-[color:var(--muted-foreground)]">
+          {course.tagline}
+        </p>
 
-        <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted-foreground">
-          <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
+        <div className="mt-5 flex flex-wrap gap-2 text-xs text-[color:var(--muted-foreground)]">
+          <span className="inline-flex items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2.5 py-1">
             <Clock className="h-3 w-3" /> {course.duration}
           </span>
-          <span className="inline-flex items-center gap-1 rounded-full border border-border/60 px-2.5 py-1">
+          <span className="inline-flex items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2.5 py-1">
             <GraduationCap className="h-3 w-3" /> {course.level}
           </span>
         </div>
 
-        <div className="mt-6 inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors group-hover:text-[color:var(--brand-cyan)]">
-          Hover or tap to view details
+        <div
+          className="mt-6 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+          style={{ color: accent.icon }}
+        >
+          Hover or tap to view details &amp; enroll
         </div>
       </article>
 
@@ -94,8 +108,6 @@ export function CourseCard({
         course={course}
         open={open}
         onClose={onCloseNow}
-        // Keep the panel open while the cursor is over it; re-arm the close
-        // timer when the cursor leaves it.
         onPanelMouseEnter={onCancelClose}
         onPanelMouseLeave={onScheduleClose}
         side={side}

@@ -1,7 +1,8 @@
 # Skillify — IIIT Delhi × MEIT
 
-A dark, technology-themed marketing site for the IIIT Delhi skilling initiative
-powered by the Ministry of Electronics and Information Technology (MEIT).
+A professional, light-themed marketing and enrollment site for the IIIT Delhi
+skilling initiative powered by the Ministry of Electronics and Information
+Technology (MEIT), Government of India.
 
 The site introduces three free, mentor-led programmes — **Python**,
 **Machine Learning** and **Generative AI** — and captures enrollments by
@@ -11,26 +12,90 @@ silently submitting a styled in-app form to a Google Form behind the scenes.
 
 ## Tech stack
 
-- **TanStack Start v1** (React 19 + Vite 7, SSR-ready)
-- **Tailwind CSS v4** (CSS-first, design tokens in `src/styles.css`)
-- **shadcn/ui** primitives (button, input, sonner, …)
-- **Zod** for client-side form validation
-- **Sonner** for toast notifications
-- **lucide-react** for icons
+| Layer | Tech |
+|---|---|
+| Framework | **TanStack Start v1** (React 19 + Vite 7, SSR-ready) |
+| Styling | **Tailwind CSS v4** (CSS-first, design tokens in `src/styles.css`) |
+| 3D Background | **Three.js** — animated particle canvas in the hero section |
+| Animations | **GSAP** — entrance / scroll animations |
+| UI primitives | **shadcn/ui** (button, input, sonner, …) |
+| Validation | **Zod** (client-side form) |
+| Toasts | **Sonner** |
+| Icons | **lucide-react** |
 
-No backend is required to run the site. A Django backend can be added later
-(see _Plugging in Django_ at the bottom of this file).
+No backend is required to run the site.
 
 ---
 
 ## Running locally
 
 ```bash
-bun install
-bun run dev
+npm install
+npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) (or the URL printed by Vite).
+Open [http://localhost:5173](http://localhost:5173).
+
+---
+
+## Design system
+
+### Color palette — professional light / government standard
+
+The site uses a light base with Indian government-inspired brand colors:
+
+| Token | Value | Use |
+|---|---|---|
+| `--brand-navy` | Deep government navy | Primary text, buttons, headings |
+| `--brand-saffron` | Indian saffron / gold | Accent dots, badges, CTA highlights |
+| `--brand-teal` | Teal-blue | Section labels, links, icon accents |
+| `--gradient-brand` | Navy → teal | CTA buttons, gradient text |
+| `--gradient-saffron` | Saffron → amber | Card accent variant |
+
+A tricolor stripe (saffron / white / navy) appears at the very top of the
+navbar and in the hero section as a nod to the Indian tricolor.
+
+The footer uses a dark navy background — the only "dark" section on the page —
+providing strong contrast and a clear visual close to the page.
+
+All colors are defined in **`src/styles.css`** using `oklch` format and
+exposed to Tailwind via `@theme inline`. Never write raw color classes in
+components — always use semantic tokens or CSS variables.
+
+### Typography
+
+- **Display / Headings:** Space Grotesk (bold, tight tracking)
+- **Body:** Inter (regular weight, relaxed line height)
+
+---
+
+## Three.js hero canvas
+
+`src/components/home/HeroCanvas.tsx` renders a field of wireframe icosahedrons
+in navy, teal, and saffron that drift gently across the canvas. Subtle
+connection lines are drawn between particles that come within 18 units.
+
+Mouse movement creates a parallax camera drift. Particle count automatically
+reduces on low-DPI devices for performance.
+
+The canvas sits `z-index: 0` behind a white gradient wash, so text remains
+readable regardless of particle density.
+
+---
+
+## GSAP animations
+
+Two patterns are used:
+
+1. **Entrance (Hero)** — `gsap.fromTo` runs on component mount, staggering each
+   `[data-animate]` child upward with `y: 28 → 0, opacity: 0 → 1`.
+2. **Scroll reveal (MissionSection)** — `IntersectionObserver` fires the same
+   animation when the section enters the viewport. Disconnect after first
+   trigger so it doesn't re-play on scroll back.
+
+Add `data-animate` to any element inside `Hero` to include it in the stagger
+sequence. For other sections, wrap an `IntersectionObserver` around
+`[data-card]` children.
 
 ---
 
@@ -38,150 +103,97 @@ Open [http://localhost:5173](http://localhost:5173) (or the URL printed by Vite)
 
 ```
 src/
-├─ routes/                       # File-based routes (TanStack Router)
-│  ├─ __root.tsx                 # App shell: navbar, footer, toaster
-│  ├─ index.tsx                  # Landing page (/)
-│  ├─ courses.tsx                # Course grid (/courses)
-│  └─ about.tsx                  # About the project (/about)
+├─ routes/
+│  ├─ __root.tsx          App shell: navbar, footer, toaster
+│  ├─ index.tsx           Landing page (/)
+│  ├─ courses.tsx         Course grid (/courses)
+│  └─ about.tsx           About page (/about)
 ├─ components/
-│  ├─ layout/                    # Navbar, Footer
-│  ├─ home/                      # Hero, MissionSection
+│  ├─ layout/
+│  │  ├─ Navbar.tsx       Sticky white nav with scroll shadow + tricolor bar
+│  │  └─ Footer.tsx       Dark navy footer
+│  ├─ home/
+│  │  ├─ Hero.tsx         Hero with Three.js canvas + GSAP entrance
+│  │  ├─ HeroCanvas.tsx   Three.js particle scene
+│  │  └─ MissionSection.tsx  Three-pillar section with scroll animations
 │  └─ courses/
-│     ├─ CourseCard.tsx          # Hover-to-open course tile
-│     ├─ CourseDetailPanel.tsx   # The slide-in panel anchored top-right
-│     └─ EnrollmentForm.tsx      # Validated form → Google Form POST
+│     ├─ CoursesGrid.tsx        Manages which card is open
+│     ├─ CourseCard.tsx         Hover/tap-triggered course tile
+│     ├─ CourseDetailPanel.tsx  Slide-in panel (navy header, light body)
+│     └─ EnrollmentForm.tsx     Validated form → Google Form POST
 ├─ config/
-│  └─ courses.ts                 # ⭐ Course catalog + Google Form mapping
+│  └─ courses.ts          ⭐ Course catalog + Google Form mapping
 ├─ lib/
-│  └─ submitToGoogleForm.ts      # Helper that POSTs to Google Forms
-└─ styles.css                    # Tailwind v4 design tokens (dark theme)
+│  └─ submitToGoogleForm.ts     Encodes + POSTs with no-cors
+└─ styles.css             Tailwind v4 tokens (light government theme)
 ```
 
 ---
 
 ## How the hover panel works
 
-`CourseCard` owns an `open` boolean state. It opens on `mouseenter` (desktop)
-or `click` (mobile/keyboard) and closes on `mouseleave` / Escape / backdrop tap.
+`CourseCard` reports user intent (hover in, hover out, click) to the parent
+`CoursesGrid`. The grid owns `openId` (only one panel visible at a time) and
+a shared grace-period timer so the cursor can travel from card into panel
+without triggering a close.
 
 `CourseDetailPanel` is a `position: fixed` element pinned to the top-right of
-the viewport. It animates in/out using Tailwind transitions on `translate-x`
-and `opacity` — no animation library. The panel embeds the `EnrollmentForm`.
-
-The panel form is unmounted while closed so its state resets between opens.
-
----
-
-## How to edit a course
-
-All course content lives in **`src/config/courses.ts`**. Update the fields:
-
-```ts
-{
-  id: "python",
-  title: "Python Programming",
-  tagline: "...",
-  duration: "6 weeks · 3 hrs/week",
-  level: "Beginner friendly",
-  highlights: [ ... ],
-  syllabus: [ ... ],
-  googleForm: { formId: "...", fields: { ... } },
-}
-```
-
-No component code needs to change.
+the viewport. It animates via Tailwind transitions on `translate-x` and
+`opacity`. The panel has a dark navy header and a white scrollable body
+containing the enrollment form.
 
 ---
 
-## How to wire a real Google Form (per course)
+## How to wire a real Google Form
 
-The site ships with placeholder `formId`s and `entry.XXX` field IDs.
-**Submissions will fail silently until you replace them.** Steps:
-
-1. **Create the form.** In Google Forms, create fields in this order:
-   - Full name (Short answer)
-   - Email (Short answer)
-   - Phone (Short answer)
-   - College / Institution (Short answer)
-   - Year of study (Short answer)
-   - Why interested (Paragraph)
-
-2. **Grab the `formId`.** Click **Send → link icon**. The link looks like:
-   ```
-   https://docs.google.com/forms/d/e/1FAIpQLSe...Xyz/viewform
-   ```
-   The chunk between `/e/` and `/viewform` is the `formId`.
-
-3. **Get the `entry.XXXX` field IDs.**
-   - Open the form's 3-dot menu (top right of the editor) →
-     **"Get pre-filled link"**.
-   - Fill every field with a dummy value, then click **"Get link"**.
-   - The resulting URL contains `entry.1234567890=...&entry.0987654321=...`.
-     Each numeric chunk is the field ID for the answer you typed.
-
-4. **Paste into `src/config/courses.ts`:**
+1. Create a Google Form with these fields (in order):
+   Full name · Email · Phone · College / Institution · Year of study ·
+   Designation · Why interested
+2. From the form's Send dialog, copy the link. The ID between
+   `/forms/d/e/<FORM_ID>/viewform` is your `formId`.
+3. Open the 3-dot menu → "Get pre-filled link". Fill every field with a dummy
+   value, click "Get link". The URL contains `entry.123=Dummy` pairs — the
+   numbers are your field IDs.
+4. Paste into `src/config/courses.ts`:
    ```ts
    googleForm: {
      formId: "1FAIpQLSe...Xyz",
      fields: {
-       name: "entry.1234567890",
-       email: "entry.2345678901",
-       phone: "entry.3456789012",
+       name:        "entry.1234567890",
+       email:       "entry.2345678901",
+       phone:       "entry.3456789012",
        institution: "entry.4567890123",
-       year: "entry.5678901234",
-       motivation: "entry.6789012345",
+       year:        "entry.5678901234",
+       designation: "entry.6789012345",
+       motivation:  "entry.7890123456",
      },
    },
    ```
+5. Test: submit once and confirm the response in the Google Form "Responses" tab.
 
-5. **Test.** Submit the in-app form once and confirm a response shows up in
-   the Google Form's "Responses" tab.
-
-> Submissions use `fetch(..., { mode: "no-cors" })`. The browser can't read
-> the response (Google Forms returns no CORS headers), so the code assumes a
-> resolved fetch means success. This is the standard pattern.
+> Submissions use `fetch(..., { mode: "no-cors" })`. The browser cannot read
+> the response (Google Forms returns no CORS headers), so the code treats a
+> resolved fetch as success. This is the standard pattern.
 
 ---
 
-## Design system
+## Accessibility
 
-All colors, fonts and gradients are tokens in `src/styles.css` under the
-`:root` block, exposed to Tailwind via `@theme inline`. Notable tokens:
-
-- `--background`, `--foreground`, `--card`, `--muted`, `--border`
-- `--brand-cyan`, `--brand-violet`
-- `--gradient-brand` — primary CTA / headline gradient
-- `--shadow-glow`, `--shadow-glow-violet`
-
-Custom utilities: `bg-grid`, `text-gradient-brand`.
-
-**Rule:** never write raw color classes (`bg-black`, `text-white`) in
-components — always use semantic tokens.
+- Slide-in panel: `role="dialog"`, `aria-label`, `aria-hidden`.
+- Escape closes the panel; close button always focusable.
+- Course card: `role="button"`, `tabIndex={0}`, opens on focus.
+- Tricolor bar and decorative overlays are `aria-hidden`.
+- Color contrast passes WCAG AA throughout the light theme.
 
 ---
 
 ## Plugging in Django (later)
 
-Two integration points are designed to be swap-friendly:
-
-1. **`src/lib/submitToGoogleForm.ts`** — replace the body with a `fetch` to
-   your Django endpoint (e.g. `POST /api/enrollments`). Keep the
-   `EnrollmentPayload` type as the request body shape.
-2. **`src/config/courses.ts`** — instead of hard-coding courses, fetch them
-   from `GET /api/courses` inside a route loader and remove the static array.
-
-Authentication, payments and admin views can be layered on top once the
-Django side is live.
-
----
-
-## Accessibility notes
-
-- The slide-in panel uses `role="dialog"`, `aria-label`, `aria-hidden`.
-- Escape closes the panel; a focusable close button is always available.
-- The course card is `role="button"`, fully keyboard reachable and opens on
-  focus.
-- Color contrast passes WCAG AA in the dark theme.
+1. **`src/lib/submitToGoogleForm.ts`** — replace the `fetch` body with a call
+   to your Django endpoint (e.g. `POST /api/enrollments`). Keep
+   `EnrollmentPayload` as the request body shape.
+2. **`src/config/courses.ts`** — instead of static data, fetch from
+   `GET /api/courses` inside a TanStack route loader.
 
 ---
 

@@ -25,15 +25,16 @@ function CoursesPage() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
       <header className="mx-auto max-w-2xl text-center">
-        <p className="text-xs uppercase tracking-widest text-muted-foreground">
+        <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
           Our Programmes
         </p>
-        <h1 className="mt-3 font-display text-4xl font-bold sm:text-5xl">
-          Three tracks. One <span className="text-gradient-brand">future-ready</span> you.
+        <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
+          Three tracks. One{" "}
+          <span className="text-gradient-brand">future-ready</span> you.
         </h1>
-        <p className="mt-4 text-muted-foreground">
-          Hover (or tap on mobile) any course to see the full syllabus and
-          enroll instantly.
+        <p className="mt-4 text-[color:var(--muted-foreground)]">
+          Hover (or tap on mobile) any course card to see the full syllabus
+          and enroll instantly.
         </p>
       </header>
 
