@@ -138,9 +138,12 @@ Limited dark mode support via `.dark` class for specific sections (footer, detai
 4. **404** (catch-all)
    - Custom not-found page
 
-### Form Submission
+### Enrollment Form
 
-Enrollment form uses `react-hook-form` + `zod` validation. Submissions are processed client-side and can be integrated with backend APIs or webhooks.
+- Collects: Name, Email, Phone, Institution, Designation, Motivation (optional)
+- Client-side validation with Zod
+- Success message: "For success, we will contact you for the update."
+- Form integrates with Google Forms backend
 
 ---
 
@@ -150,7 +153,7 @@ Enrollment form uses `react-hook-form` + `zod` validation. Submissions are proce
 
 ```bash
 git add .
-git commit -m "Skillify: React + Vite, Tailwind v3, React Router"
+git commit -m "Skillify: React + Vite, Tailwind v3"
 git push origin main
 ```
 
@@ -166,7 +169,7 @@ git push origin main
 
 - ✅ Home page loads at your Vercel URL
 - ✅ All routes work (no 404 errors)
-- ✅ Logos display correctly (embedded SVG)
+- ✅ Logos display correctly (SVG imports)
 - ✅ Animations smooth
 
 **Build time**: ~2-3 minutes
@@ -241,7 +244,7 @@ All Tailwind classes using `var(--color-*)` will update automatically.
 ## Performance Notes
 
 ### Current Bundle Size
-- CSS: ~51 kB (gzipped ~9 kB)
+- CSS: ~66 kB (gzipped ~11 kB)
 - JS: ~1.76 MB (gzipped ~410 kB)
 
 ### Optimization Opportunities
@@ -288,3 +291,4 @@ Built for IIIT Delhi × MEIT. All rights reserved.
 ---
 
 **Status**: ✅ Production-ready, deployed to Vercel, Node 18+ compatible
+

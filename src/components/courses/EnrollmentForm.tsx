@@ -22,7 +22,6 @@ const schema = z.object({
     .trim()
     .regex(/^[0-9+\-\s]{7,15}$/, "Enter a valid phone number"),
   institution: z.string().trim().min(2, "Required").max(200),
-  year: z.string().trim().min(1, "Required").max(50),
   designation: z.string().trim().min(2, "Required").max(100),
   motivation: z.string().trim().max(500).optional().or(z.literal("")),
 });
@@ -57,12 +56,11 @@ export function EnrollmentForm({ course }: { course: Course }) {
         email: parsed.data.email,
         phone: parsed.data.phone,
         institution: parsed.data.institution,
-        year: parsed.data.year,
         designation: parsed.data.designation,
         motivation: parsed.data.motivation ?? "",
       });
       setDone(true);
-      toast.success("You're enrolled! Check your email for next steps.");
+      toast.success("For success, we will contact you for the update.");
     } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -75,11 +73,11 @@ export function EnrollmentForm({ course }: { course: Course }) {
       <div className="rounded-xl border border-[color:var(--brand-teal)]/30 bg-[color:var(--muted)] p-6 text-center">
         <CheckCircle2 className="mx-auto h-10 w-10 text-[color:var(--brand-teal)]" />
         <h4 className="mt-3 font-display text-lg font-semibold text-[color:var(--brand-navy)]">
-          You're in!
+          Thank You!
         </h4>
         <p className="mt-1 text-sm text-[color:var(--muted-foreground)]">
-          We've recorded your interest for <strong>{course.title}</strong>.
-          The IIITD team will reach out shortly.
+          Your enrollment for <strong>{course.title}</strong> has been recorded.
+          We will contact you soon with further updates.
         </p>
       </div>
     );
@@ -91,12 +89,6 @@ export function EnrollmentForm({ course }: { course: Course }) {
       <Field label="Email" name="email" type="email" error={errors.email} />
       <Field label="Phone" name="phone" error={errors.phone} />
       <Field label="College / Institution" name="institution" error={errors.institution} />
-      <Field
-        label="Year of study"
-        name="year"
-        placeholder="e.g. 2nd year B.Tech"
-        error={errors.year}
-      />
       <Field
         label="Designation"
         name="designation"
