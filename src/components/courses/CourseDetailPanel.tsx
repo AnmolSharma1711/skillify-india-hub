@@ -20,12 +20,18 @@ export function CourseDetailPanel({
   open,
   onClose,
   side = "right",
+  onPanelMouseEnter,
+  onPanelMouseLeave,
 }: {
   course: Course;
   open: boolean;
   onClose: () => void;
   /** Which edge of the viewport the panel slides in from. */
   side?: "left" | "right";
+  /** Fired when the cursor enters the panel (used to cancel auto-close). */
+  onPanelMouseEnter?: () => void;
+  /** Fired when the cursor leaves the panel (used to re-arm auto-close). */
+  onPanelMouseLeave?: () => void;
 }) {
   // Close on Escape for keyboard users.
   useEffect(() => {
@@ -53,6 +59,8 @@ export function CourseDetailPanel({
         role="dialog"
         aria-label={`${course.title} details`}
         aria-hidden={!open}
+        onMouseEnter={onPanelMouseEnter}
+        onMouseLeave={onPanelMouseLeave}
         className={`fixed top-0 z-50 flex h-dvh w-full max-w-[440px] flex-col bg-card/95 shadow-[var(--shadow-glow-violet)] backdrop-blur-xl transition-all duration-300 ease-out ${
           side === "right"
             ? "right-0 border-l border-border/80"
