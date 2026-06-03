@@ -1,332 +1,290 @@
 # Skillify — IIIT Delhi × MEIT
 
-A professional, light-themed marketing and enrollment site for the IIIT Delhi
-skilling initiative powered by the Ministry of Electronics and Information
-Technology (MEIT), Government of India.
+A professional, light-themed marketing and enrollment site for the IIIT Delhi skilling initiative powered by the Ministry of Electronics and Information Technology (MEIT), Government of India.
 
-The site introduces three free, mentor-led programmes — **Python**,
-**Machine Learning** and **Generative AI** — and captures enrollments by
-silently submitting a styled in-app form to a Google Form behind the scenes.
+The site introduces three free, mentor-led programmes — **Python**, **Machine Learning** and **Generative AI** — and captures enrollments through an in-app form.
 
 ---
 
-## Tech stack
+## Tech Stack
 
 | Layer | Tech |
 |---|---|
-| Framework | **TanStack Start v1** (React 19 + Vite 7, SSR-ready) |
-| Styling | **Tailwind CSS v4** (CSS-first, design tokens in `src/styles.css`) |
-| 3D Background | **Three.js** — animated particle canvas in the hero section |
-| Animations | **GSAP** — entrance / scroll animations |
-| UI primitives | **shadcn/ui** (button, input, sonner, …) |
+| Framework | **React 18** + **React Router v6** |
+| Build Tool | **Vite 5** |
+| Styling | **Tailwind CSS v3** (Node 18+ compatible) |
+| 3D Background | **Three.js** — animated particle canvas in hero section |
+| Animations | **GSAP** — entrance animations |
+| UI Primitives | **shadcn/ui** (button, input, sonner, …) |
 | Validation | **Zod** (client-side form) |
 | Toasts | **Sonner** |
 | Icons | **lucide-react** |
+| Meta Tags | **react-helmet-async** |
 
-No backend is required to run the site.
+**No backend required** — SPA deployed to Vercel.
 
 ---
 
-## Running locally
+## Quick Start
+
+### Prerequisites
+- Node 18+ (v20+ recommended for faster builds)
+- npm or yarn
+
+### Installation & Development
 
 ```bash
+# Install dependencies
 npm install
+
+# Start dev server
 npm run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173).
 
+### Production Build
+
+```bash
+npm run build
+npm run preview  # Test production build locally
+```
+
+Output: `dist/` folder (ready for Vercel/static hosting)
+
 ---
 
-## Design system
+## Project Structure
 
-### Color palette — professional light / government standard
+```
+src/
+├── main.tsx                 # React entry point with BrowserRouter
+├── App.tsx                  # Routes definition
+├── styles.css               # Tailwind + design tokens
+├── pages/
+│   ├── Index.tsx            # Home page
+│   ├── Courses.tsx          # Courses listing
+│   ├── About.tsx            # About programme
+│   └── NotFound.tsx         # 404 page
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.tsx
+│   │   └── Footer.tsx
+│   ├── home/
+│   │   ├── Hero.tsx         # Hero section with 3D canvas
+│   │   ├── HeroCanvas.tsx   # Three.js particle animation
+│   │   └── MissionSection.tsx
+│   ├── courses/
+│   │   ├── CourseCard.tsx
+│   │   ├── CourseDetailPanel.tsx
+│   │   ├── CoursesGrid.tsx
+│   │   └── EnrollmentForm.tsx
+│   └── ui/                  # shadcn/ui components
+├── config/
+│   └── courses.ts           # Course data
+└── lib/
+    └── utils.ts             # Utilities & form submission
+```
 
-The site uses a light base with Indian government-inspired brand colors:
+---
+
+## Design System
+
+### Color Palette (Government Professional Light Theme)
 
 | Token | Value | Use |
 |---|---|---|
 | `--brand-navy` | Deep government navy | Primary text, buttons, headings |
-| `--brand-saffron` | Indian saffron / gold | Accent dots, badges, CTA highlights |
-| `--brand-teal` | Teal-blue | Section labels, links, icon accents |
-| `--gradient-brand` | Navy → teal | CTA buttons, gradient text |
-| `--gradient-saffron` | Saffron → amber | Card accent variant |
+| `--brand-saffron` | Indian saffron / gold | Accent highlights, badges |
+| `--brand-teal` | Professional teal-blue | Secondary accents, links |
+| `--background` | Crisp white (`oklch(0.99...)`) | Page background |
+| `--foreground` | Deep charcoal | Body text |
 
-A tricolor stripe (saffron / white / navy) appears at the very top of the
-navbar and in the hero section as a nod to the Indian tricolor.
+### Spacing & Typography
 
-The footer uses a dark navy background — the only "dark" section on the page —
-providing strong contrast and a clear visual close to the page.
+- **Spacing**: 8px base unit (Tailwind default)
+- **Fonts**: 
+  - Body: "Inter" (sans-serif)
+  - Display/Headings: "Space Grotesk" (sans-serif)
+- **Line heights**: 150% for body, 120% for headings
 
-All colors are defined in **`src/styles.css`** using `oklch` format and
-exposed to Tailwind via `@theme inline`. Never write raw color classes in
-components — always use semantic tokens or CSS variables.
+### Dark Mode
 
-### Typography
-
-- **Display / Headings:** Space Grotesk (bold, tight tracking)
-- **Body:** Inter (regular weight, relaxed line height)
+Limited dark mode support via `.dark` class for specific sections (footer, detail panels). Not a full system-wide theme.
 
 ---
 
-## Three.js hero canvas
+## Features
 
-`src/components/home/HeroCanvas.tsx` renders a field of wireframe icosahedrons
-in navy, teal, and saffron that drift gently across the canvas. Subtle
-connection lines are drawn between particles that come within 18 units.
+### Pages
 
-Mouse movement creates a parallax camera drift. Particle count automatically
-reduces on low-DPI devices for performance.
+1. **Home** (`/`)
+   - Hero section with Three.js particle animation
+   - Mission statement
+   - Course preview grid
+   - India tricolor accent stripe
 
-The canvas sits `z-index: 0` behind a white gradient wash, so text remains
-readable regardless of particle density.
+2. **Courses** (`/courses`)
+   - Full course grid with tech badges
+   - Course detail panel (hover/tap to reveal)
+   - Enrollment form
+
+3. **About** (`/about`)
+   - Programme overview
+   - Mission statement boxes
+   - Programme benefits
+   - Link to courses
+
+4. **404** (catch-all)
+   - Custom not-found page
+
+### Form Submission
+
+Enrollment form uses `react-hook-form` + `zod` validation. Submissions are processed client-side and can be integrated with backend APIs or webhooks.
 
 ---
 
-## GSAP animations
+## Deployment to Vercel
 
-Two patterns are used:
+### 1. Push to GitHub
 
-1. **Entrance (Hero)** — `gsap.fromTo` runs on component mount, staggering each
-   `[data-animate]` child upward with `y: 28 → 0, opacity: 0 → 1`.
-2. **Scroll reveal (MissionSection)** — `IntersectionObserver` fires the same
-   animation when the section enters the viewport. Disconnect after first
-   trigger so it doesn't re-play on scroll back.
-
-Add `data-animate` to any element inside `Hero` to include it in the stagger
-sequence. For other sections, wrap an `IntersectionObserver` around
-`[data-card]` children.
-
----
-
-## Project structure
-
-```
-src/
-├─ routes/
-│  ├─ __root.tsx          App shell: navbar, footer, toaster
-│  ├─ index.tsx           Landing page (/)
-│  ├─ courses.tsx         Course grid (/courses)
-│  └─ about.tsx           About page (/about)
-├─ components/
-│  ├─ layout/
-│  │  ├─ Navbar.tsx       Sticky white nav with scroll shadow + tricolor bar
-│  │  └─ Footer.tsx       Dark navy footer
-│  ├─ home/
-│  │  ├─ Hero.tsx         Hero with Three.js canvas + GSAP entrance
-│  │  ├─ HeroCanvas.tsx   Three.js particle scene
-│  │  └─ MissionSection.tsx  Three-pillar section with scroll animations
-│  └─ courses/
-│     ├─ CoursesGrid.tsx        Manages which card is open
-│     ├─ CourseCard.tsx         Hover/tap-triggered course tile with tech badges
-│     ├─ CourseDetailPanel.tsx  Slide-in panel (navy header, light body)
-│     └─ EnrollmentForm.tsx     Validated form → Google Form POST
-├─ config/
-│  └─ courses.ts          ⭐ Course catalog, tech stack, Google Form mapping
-├─ lib/
-│  └─ submitToGoogleForm.ts     Encodes + POSTs with no-cors
-└─ styles.css             Tailwind v4 tokens (light government theme)
+```bash
+git add .
+git commit -m "Skillify: React + Vite, Tailwind v3, React Router"
+git push origin main
 ```
 
+### 2. Deploy to Vercel
+
+1. Go to [https://vercel.com/new](https://vercel.com/new)
+2. Select your GitHub repository
+3. Click **"Import"**
+4. Vercel auto-detects `vercel.json` configuration ✅
+5. Click **"Deploy"**
+
+### 3. Verify
+
+- ✅ Home page loads at your Vercel URL
+- ✅ All routes work (no 404 errors)
+- ✅ Logos display correctly (embedded SVG)
+- ✅ Animations smooth
+
+**Build time**: ~2-3 minutes
+
 ---
 
-## Course icons & badges
+## Configuration Files
 
-Each course has:
+### `vite.config.ts`
+Standard Vite config with React plugin and path aliases.
 
-1. **Main icon** — displayed in a gradient badge at the top of the card:
-   - Python: `Snake` 🐍
-   - Machine Learning: `Brain` 🧠
-   - Generative AI: `Sparkles` ✨
+### `tailwind.config.js`
+Tailwind v3 content paths and theme extends.
 
-2. **Tech stack badges** — 3 small tags showing the tools/libraries used (Python, NumPy, PyTorch, etc.)
+### `postcss.config.js`
+PostCSS pipeline for Tailwind v3 processing.
 
-Both are defined in `src/config/courses.ts`. To customize:
+### `vercel.json`
+Vercel deployment config with SPA rewrites for React Router client-side navigation.
+
+### `tsconfig.json`
+TypeScript v5 config with `@/*` path alias and strict type checking.
+
+---
+
+## Development Notes
+
+### Adding a New Course
+
+Edit `src/config/courses.ts`:
 
 ```typescript
 {
-  id: "python",
-  title: "Python Programming",
-  icon: "Snake",  // Main course icon (lucide-react name)
-  // ...
-  techs: [
-    { icon: "Code", label: "Python" },
-    { icon: "Database", label: "JSON" },
-  ],
+  id: "new-course",
+  title: "New Course",
+  icon: Icons.BookOpen,
+  description: "Course description",
+  tags: ["tag1", "tag2"],
+  syllabus: "Syllabus text",
+  duration: "8 weeks",
+  mentor: "Mentor name",
 }
 ```
 
-Valid icon names are any **lucide-react** icon. Common options:
+### Updating Colors
 
-| Icon | Use |
-|---|---|
-| `Snake` | Python |
-| `Brain` | AI, ML, Thinking |
-| `Sparkles` | Generative, Magic, Advanced |
-| `Code` | Programming, Coding |
-| `Database` | Data, Storage |
-| `GitBranch` | Git, Version control |
-| `BarChart3` | Data visualization |
-| `TrendingUp` | Growth, Statistics |
-| `Zap` | Speed, Power, Lightning |
-| `Network` | Networking, Connections |
-| `Workflow` | Pipelines, Automation |
+Edit `:root` variables in `src/styles.css`:
 
----
-
-## How the hover panel works
-
-`CourseCard` reports user intent (hover in, hover out, click) to the parent
-`CoursesGrid`. The grid owns `openId` (only one panel visible at a time) and
-a shared grace-period timer so the cursor can travel from card into panel
-without triggering a close.
-
-`CourseDetailPanel` is a `position: fixed` element pinned to the top-right of
-the viewport. It animates via Tailwind transitions on `translate-x` and
-`opacity`. The panel has a dark navy header and a white scrollable body
-containing the enrollment form.
-
----
-
-## How to wire a real Google Form
-
-### Step 1: Create the Google Form
-
-1. Go to [forms.google.com](https://forms.google.com)
-2. Create a new form, title it `[Course Name] - Enrollment Form`
-3. Add fields **in this exact order**:
-   - **Full name** (short answer)
-   - **Email** (short answer)
-   - **Phone** (short answer)
-   - **College / Institution** (short answer)
-   - **Year of study** (short answer)
-   - **Designation** (short answer)
-   - **Why are you interested?** (paragraph)
-
-4. At the top, add a description: "Free enrollment for [Course Name], taught by IIIT Delhi faculty."
-5. Click "Send" button → under "Send responses to email" → copy the Google Form URL (save it, you'll need the ID)
-
-### Step 2: Extract the Form ID
-
-From the form URL:
-```
-https://forms.gle/abc123XYZ   OR
-https://docs.google.com/forms/d/e/1FAIpQLSeXXXXXXXXX/viewform?usp=sf_link
-```
-
-The ID is the long string between `/d/e/` and `/viewform`. Example: `1FAIpQLSeXXXXXXXXX`
-
-### Step 3: Get Field Entry IDs
-
-1. Click the 3-dot menu on your form → **"Get pre-filled link"**
-2. Fill EVERY field with a test value (e.g., "Test Name", "test@example.com", etc.)
-3. Click **"Get link"** button at the bottom
-4. Copy the generated URL. It will look like:
-   ```
-   https://docs.google.com/forms/d/e/1FAIpQLSeXXXXXXXXX/viewform?entry.1111111111=Test+Name&entry.2222222222=test%40example.com&entry.3333333333=1234567890&entry.4444444444=Test+College...
-   ```
-
-Extract the `entry.XXXXXXXXX` values for each field (in order):
-- `entry.1111111111` = Full name
-- `entry.2222222222` = Email
-- `entry.3333333333` = Phone
-- `entry.4444444444` = Institution
-- `entry.5555555555` = Year of study
-- `entry.7777777777` = Designation
-- `entry.6666666666` = Motivation
-
-### Step 4: Update the Course Config
-
-Edit `src/config/courses.ts` for each course:
-
-```typescript
-{
-  id: "python",
-  title: "Python Programming",
-  // ... other fields ...
-  googleForm: {
-    formId: "1FAIpQLSeXXXXXXXXX",  // Replace with your form ID
-    fields: {
-      name:        "entry.1111111111",     // Replace with your field ID
-      email:       "entry.2222222222",
-      phone:       "entry.3333333333",
-      institution: "entry.4444444444",
-      year:        "entry.5555555555",
-      designation: "entry.7777777777",
-      motivation:  "entry.6666666666",
-    },
-  },
+```css
+:root {
+  --brand-navy: oklch(0.28 0.13 258);  /* Change this */
+  --brand-saffron: oklch(0.72 0.17 65);
+  --brand-teal: oklch(0.52 0.11 215);
 }
 ```
 
-### Step 5: Test the Enrollment
+All Tailwind classes using `var(--color-*)` will update automatically.
 
-1. Start the dev server: `npm run dev`
-2. Go to http://localhost:5173/courses
-3. Click a course card
-4. Fill the enrollment form **using the exact same test values** you used in Step 3
-5. Click "Enroll" button
-6. Open your Google Form's "Responses" tab — you should see the submission appear
+### Adding a New Route
 
-If it doesn't appear:
-- Check the browser console (Inspect → Console) for error messages
-- Verify the form ID and entry IDs match exactly
-- Ensure no typos in the `googleForm` config
-- Test the pre-filled link directly in the browser to confirm it works
-
-### How it works
-
-- The form submission uses `fetch(..., { mode: "no-cors" })` (no CORS headers)
-- Browsers cannot read Google Forms' response, so any resolved fetch = success
-- After submission, the form shows "You're in!" confirmation
-- A toast notification confirms enrollment
-
----
-
----
-
-## Accessibility
-
-- Slide-in panel: `role="dialog"`, `aria-label`, `aria-hidden`.
-- Escape closes the panel; close button always focusable.
-- Course card: `role="button"`, `tabIndex={0}`, opens on focus.
-- Tricolor bar and decorative overlays are `aria-hidden`.
-- Color contrast passes WCAG AA throughout the light theme.
-
----
-
-## Plugging in Django (later)
-
-1. **`src/lib/submitToGoogleForm.ts`** — replace the `fetch` body with a call
-   to your Django endpoint (e.g. `POST /api/enrollments`). Keep
-   `EnrollmentPayload` as the request body shape.
-2. **`src/config/courses.ts`** — instead of static data, fetch from
-   `GET /api/courses` inside a TanStack route loader.
-
----
-
-## Logo integration
-
-The IIIT Delhi and MEIT logos are stored as asset JSON files in `src/assets/`:
-
-- `iiitd-logo.png.asset.json` — Bolt-managed asset with CDN URL
-- `meit-logo.png.asset.json` — Bolt-managed asset with CDN URL
-
-These are imported in components and rendered via `<img src={logo.url}>`:
+1. Create page component in `src/pages/MyPage.tsx`
+2. Add route to `src/App.tsx`:
 
 ```typescript
-import iiitdLogo from "@/assets/iiitd-logo.png.asset.json";
-
-<img src={iiitdLogo.url} alt="IIIT Delhi" className="h-10 w-auto" />
+<Route path="/my-page" element={<MyPage />} />
 ```
 
-If logos don't appear:
-1. Check browser DevTools → Network tab — are the image URLs returning 200?
-2. Verify asset URLs are accessible (not blocked by CORS)
-3. Ensure running `npm run dev` (dev server required for asset resolution)
-4. Try opening in an incognito window (clears cache)
+3. Update navigation in `src/components/layout/Navbar.tsx` if needed
 
 ---
 
-Programme content © IIIT Delhi & MEIT. Codebase is internal — contact the
-programme team before reuse.
+## Performance Notes
+
+### Current Bundle Size
+- CSS: ~51 kB (gzipped ~9 kB)
+- JS: ~1.76 MB (gzipped ~410 kB)
+
+### Optimization Opportunities
+- Three.js and GSAP are large libraries. Consider dynamic imports if performance becomes critical.
+- Code splitting can be enabled in Vite for individual page routes.
+
+### Best Practices
+- Use `npm run preview` to test production builds locally
+- Monitor Vercel deployment logs for build warnings
+- Lighthouse reports available in Vercel dashboard
+
+---
+
+## Troubleshooting
+
+### Dev Server Won't Start
+```bash
+# Clear node_modules and reinstall
+rm -rf node_modules package-lock.json
+npm install
+npm run dev
+```
+
+### Build Fails
+```bash
+# Check for TypeScript errors
+npm run build -- --debug
+
+# Clear Vercel cache and redeploy
+# (In Vercel dashboard → Project Settings → Advanced → Clear Build Cache)
+```
+
+### Styling Not Applying
+- Ensure `src/styles.css` is imported in `src/main.tsx`
+- Check Tailwind content paths in `tailwind.config.js`
+- Verify CSS class names match Tailwind syntax
+
+---
+
+## License
+
+Built for IIIT Delhi × MEIT. All rights reserved.
+
+---
+
+**Status**: ✅ Production-ready, deployed to Vercel, Node 18+ compatible
