@@ -13,7 +13,7 @@ import type { Course } from "@/config/courses";
 import { CourseCard } from "./CourseCard";
 
 /** Grace period (ms) before a panel closes after the cursor leaves. */
-const CLOSE_DELAY_MS = 1500;
+const CLOSE_DELAY_MS = 1000;
 
 export function CoursesGrid({
   courses,
