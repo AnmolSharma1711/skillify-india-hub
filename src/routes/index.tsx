@@ -51,8 +51,12 @@ function Index() {
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {COURSES.map((c) => (
-            <CourseCard key={c.id} course={c} />
+          {COURSES.map((c, i) => (
+            <CourseCard
+              key={c.id}
+              course={c}
+              side={i >= Math.ceil(COURSES.length / 2) ? "left" : "right"}
+            />
           ))}
         </div>
       </section>

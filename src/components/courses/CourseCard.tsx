@@ -12,7 +12,18 @@ import { ArrowUpRight, Clock, GraduationCap } from "lucide-react";
 import type { Course } from "@/config/courses";
 import { CourseDetailPanel } from "./CourseDetailPanel";
 
-export function CourseCard({ course }: { course: Course }) {
+export function CourseCard({
+  course,
+  side = "right",
+}: {
+  course: Course;
+  /**
+   * Which edge the slide-in panel anchors to. Choose the edge OPPOSITE the
+   * card's screen position so the panel never overlaps the card and causes
+   * a hover open/close loop.
+   */
+  side?: "left" | "right";
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -74,6 +85,7 @@ export function CourseCard({ course }: { course: Course }) {
         course={course}
         open={open}
         onClose={() => setOpen(false)}
+        side={side}
       />
     </>
   );
