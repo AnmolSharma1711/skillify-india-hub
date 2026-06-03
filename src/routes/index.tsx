@@ -1,29 +1,61 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/home/Hero";
+import { MissionSection } from "@/components/home/MissionSection";
+import { CourseCard } from "@/components/courses/CourseCard";
+import { COURSES } from "@/config/courses";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Skillify IIITD × MEIT — Free Tech Courses" },
+      {
+        name: "description",
+        content:
+          "Free, mentor-led Python, Machine Learning and Generative AI courses by IIIT Delhi, powered by MEIT.",
+      },
+      { property: "og:title", content: "Skillify IIITD × MEIT" },
+      {
+        property: "og:description",
+        content:
+          "Skill the future of Digital India — free programs by IIIT Delhi.",
+      },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Hero />
+      <MissionSection />
+
+      <section className="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
+        <div className="mb-10 flex items-end justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">
+              Programmes
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-bold sm:text-4xl">
+              Choose your <span className="text-gradient-brand">track</span>
+            </h2>
+          </div>
+          <Link
+            to="/courses"
+            className="hidden items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
+          >
+            All courses <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3">
+          {COURSES.map((c) => (
+            <CourseCard key={c.id} course={c} />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
