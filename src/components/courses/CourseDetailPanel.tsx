@@ -59,6 +59,8 @@ export function CourseDetailPanel({
         role="dialog"
         aria-label={`${course.title} details`}
         aria-hidden={!open}
+        onMouseEnter={onPanelMouseEnter}
+        onMouseLeave={onPanelMouseLeave}
         className={`fixed top-0 z-50 flex h-dvh w-full max-w-[440px] flex-col bg-card/95 shadow-[var(--shadow-glow-violet)] backdrop-blur-xl transition-all duration-300 ease-out ${
           side === "right"
             ? "right-0 border-l border-border/80"
