@@ -33,7 +33,7 @@ export function Navbar() {
         }}
       />
 
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
+      <nav className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-6 sm:px-8">
         <Link to="/" className="flex items-center gap-3">
           <div className="flex h-12 items-center">
             <img src={iiitdLogo} alt="IIIT Delhi" className="h-full w-auto object-contain" />
@@ -46,7 +46,7 @@ export function Navbar() {
               className="h-full w-auto object-contain"
             />
           </div>
-          <span className="ml-2 hidden font-display text-sm font-bold tracking-tight text-[color:var(--brand-navy)] sm:inline">
+          <span className="ml-2 hidden font-display text-4xl font-bold tracking-tight text-[color:var(--brand-navy)] sm:inline">
             Skillify
           </span>
         </Link>

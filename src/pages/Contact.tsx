@@ -104,79 +104,52 @@ export default function Contact() {
               </div>
             </div>
 
-            <form
-              onSubmit={handleSubmit}
-              className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-[var(--shadow-navy)] sm:p-8"
-            >
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="space-y-2 text-sm font-medium text-[color:var(--brand-navy)]">
-                  Full name
-                  <Input required name="name" placeholder="Your name" className="h-11 bg-white" />
-                </label>
-                <label className="space-y-2 text-sm font-medium text-[color:var(--brand-navy)]">
-                  Email
-                  <Input
-                    required
-                    name="email"
-                    type="email"
-                    placeholder="you@example.com"
-                    className="h-11 bg-white"
-                  />
-                </label>
-              </div>
+            <div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm">
+          <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)]">
+            Contact Information
+          </h2>
 
-              <div className="mt-5 grid gap-5 sm:grid-cols-2">
-                <label className="space-y-2 text-sm font-medium text-[color:var(--brand-navy)]">
-                  Phone
-                  <Input name="phone" type="tel" placeholder="+91" className="h-11 bg-white" />
-                </label>
-                <label className="space-y-2 text-sm font-medium text-[color:var(--brand-navy)]">
-                  Interest
-                  <select
-                    name="course"
-                    className="h-11 w-full rounded-md border border-input bg-white px-3 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Select a course
-                    </option>
-                    {COURSES.map((course) => (
-                      <option key={course.id} value={course.id}>
-                        {course.title}
-                      </option>
-                    ))}
-                    <option value="partnership">Partnership</option>
-                    <option value="other">Other</option>
-                  </select>
-                </label>
-              </div>
+          <div className="mt-4 space-y-4">
+            <div>
+              <p className="text-sm font-semibold text-[color:var(--brand-navy)]">
+                Faculty Coordinator
+              </p>
+              <p className="text-sm text-[color:var(--muted-foreground)]">
+                Dr. XYZ
+              </p>
+            </div>
 
-              <label className="mt-5 block space-y-2 text-sm font-medium text-[color:var(--brand-navy)]">
-                Message
-                <Textarea
-                  required
-                  name="message"
-                  placeholder="Tell us what you need help with"
-                  className="min-h-36 bg-white"
-                />
-              </label>
+            <div>
+              <p className="text-sm font-semibold text-[color:var(--brand-navy)]">
+                Email
+              </p>
+              <a
+                href="mailto:skillify@iiitd.ac.in"
+                className="text-[color:var(--brand-teal)] hover:underline"
+              >
+                skillify@iiitd.ac.in
+              </a>
+            </div>
 
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <Button
-                  type="submit"
-                  className="h-11 rounded-full bg-[image:var(--gradient-brand)] px-6 font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"
-                >
-                  Send Message
-                  <Send className="h-4 w-4" />
-                </Button>
-                <Link
-                  to="/courses"
-                  className="text-sm font-semibold text-[color:var(--brand-teal)] hover:text-[color:var(--brand-navy)]"
-                >
-                  Browse courses
-                </Link>
-              </div>
-            </form>
+            <div>
+              <p className="text-sm font-semibold text-[color:var(--brand-navy)]">
+                Phone
+              </p>
+              <p className="text-sm text-[color:var(--muted-foreground)]">
+                +91 XXXXX XXXXX
+              </p>
+            </div>
+
+            <div>
+              <p className="text-sm font-semibold text-[color:var(--brand-navy)]">
+                Address
+              </p>
+              <p className="text-sm text-[color:var(--muted-foreground)]">
+                IIIT Delhi, Okhla Industrial Estate, New Delhi - 110020
+              </p>
+            </div>
+          </div>
+        </div>
           </div>
         </div>
       </section>

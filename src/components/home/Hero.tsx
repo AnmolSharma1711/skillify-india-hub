@@ -19,7 +19,7 @@ export function Hero() {
         src={heroClassroomBg}
         alt=""
         aria-hidden
-        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[0.18]"
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[1]"
       />
 
       <HeroCanvas className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-60" />
@@ -29,14 +29,14 @@ export function Hero() {
         className="absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, oklch(0.99 0.003 240 / 0.88) 0%, oklch(0.99 0.003 240 / 0.78) 48%, oklch(0.99 0.003 240 / 0.94) 100%)",
+            "linear-gradient(180deg, oklch(0.99 0.003 240 / 0.78) 0%, oklch(0.99 0.003 240 / 0.68) 48%, oklch(0.99 0.003 240 / 0.84) 100%)",
         }}
       />
 
       <div aria-hidden className="absolute inset-0 z-[3] bg-dots opacity-20" />
 
       <div
-        className="relative z-10 mx-auto max-w-5xl px-4 pb-24 pt-20 text-center sm:px-6 sm:pt-28"
+        className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-20 text-center sm:px-6 sm:pt-28"
         style={{
           animation: "fadeInUp 0.6s ease-out, staggerChildren 0.8s ease-out",
         }}
@@ -50,7 +50,7 @@ export function Hero() {
         </div>
 
         <h1
-          className="mt-6 font-display text-5xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-6xl md:text-7xl"
+          className="mt-6 font-display text-12xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-12xl md:text-7xl"
           style={{ animationDelay: "0.1s" }}
         >
           <span className="text-gradient-brand">Skillify:</span> Skill the future of <br />
@@ -58,11 +58,24 @@ export function Hero() {
         </h1>
 
         <p
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)] sm:text-lg"
+          className="mx-auto mt-8 max-w-5xl text-xl leading-relaxed text-gray-800 sm:text-3xl"
           style={{ animationDelay: "0.2s" }}
         >
-          Free, mentor-led programs in Python, Machine Learning and Generative AI — designed by
-          IIIT Delhi faculty, powered by the Ministry of Electronics and Information Technology.
+          <>
+  Free, mentor-led programs in{" "}
+  <span className="font-semibold text-[color:var(--brand-navy)]">
+    Python
+  </span>
+  ,{" "}
+  <span className="font-semibold text-[color:var(--brand-navy)]">
+    Machine Learning
+  </span>
+  {" "}and{" "}
+  <span className="font-semibold text-[color:var(--brand-navy)]">
+    Generative AI
+  </span>
+  {" "}— designed by IIIT Delhi faculty, powered by the Ministry of Electronics and Information Technology.
+</>
         </p>
 
         <div
