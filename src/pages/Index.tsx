@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Hero } from "@/components/home/Hero";
-import { MissionSection } from "@/components/home/MissionSection";
+import { ProjectOverview } from "@/components/home/ProjectOverview";
 import { CoursesGrid } from "@/components/courses/CoursesGrid";
 import { COURSES } from "@/config/courses";
 import { ArrowRight } from "lucide-react";
@@ -13,12 +13,12 @@ export default function Index() {
         <title>Skillify IIITD &times; MEIT — Free Tech Courses</title>
         <meta
           name="description"
-          content="Free, mentor-led Python, Machine Learning and Generative AI courses by IIIT Delhi, powered by MEIT."
+          content="MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies by IIIT Delhi, powered by MEIT."
         />
       </Helmet>
 
       <Hero />
-      <MissionSection />
+      <ProjectOverview />
 
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <div className="mb-10 flex items-end justify-between">

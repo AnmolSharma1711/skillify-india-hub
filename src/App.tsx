@@ -4,7 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import Index from "@/pages/Index";
 import Courses from "@/pages/Courses";
-import About from "@/pages/About";
+import CourseDetail from "@/pages/CourseDetail";
 import NotFound from "@/pages/NotFound";
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/courses" element={<Courses />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/courses/:id" element={<CourseDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

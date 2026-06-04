@@ -19,11 +19,14 @@
 export type Course = {
   id: "python" | "ml" | "genai";
   title: string;
+  category: string;
   tagline: string;
+  description?: string;
   duration: string;
   level: string;
   highlights: string[];
   syllabus: string[];
+  stats?: Array<{ label: string; value: string }>;
   /** Tailwind gradient class fragment used for the card accent. */
   accent: "cyan" | "violet" | "mixed";
   /** Icon name from lucide-react for the course card header */
@@ -48,11 +51,19 @@ export const COURSES: Course[] = [
   {
     id: "python",
     title: "Python Programming",
+    category: "Programming",
     icon: "Code2",
     tagline: "From zero to writing real-world Python in 6 weeks.",
+    description: "Master Python fundamentals through hands-on learning. Build practical projects while learning from IIIT Delhi faculty in this beginner-friendly program.",
     duration: "6 weeks · 3 hrs/week",
     level: "Beginner friendly",
     accent: "cyan",
+    stats: [
+      { label: "Course Duration", value: "6 Weeks" },
+      { label: "Weekly Commitment", value: "3 Hours" },
+      { label: "Batches Run", value: "Multiple" },
+      { label: "Certification", value: "IIITD + MEIT" },
+    ],
     techs: [
       { icon: "Code", label: "Python" },
       { icon: "Database", label: "JSON" },
@@ -87,11 +98,19 @@ export const COURSES: Course[] = [
   {
     id: "ml",
     title: "Machine Learning",
+    category: "Data Science",
     icon: "Brain",
     tagline: "Build real ML models — from regression to neural networks.",
+    description: "Learn machine learning fundamentals and build real-world ML models. Work with industry-standard datasets and compete in Kaggle-style competitions.",
     duration: "8 weeks · 4 hrs/week",
     level: "Intermediate",
     accent: "mixed",
+    stats: [
+      { label: "Course Duration", value: "8 Weeks" },
+      { label: "Weekly Commitment", value: "4 Hours" },
+      { label: "Batches Run", value: "Multiple" },
+      { label: "Certification", value: "IIITD + MEIT" },
+    ],
     techs: [
       { icon: "BarChart3", label: "NumPy" },
       { icon: "TrendingUp", label: "Scikit-learn" },
@@ -126,11 +145,19 @@ export const COURSES: Course[] = [
   {
     id: "genai",
     title: "Generative AI",
+    category: "AI & LLMs",
     icon: "Sparkles",
     tagline: "Ship AI products with LLMs, embeddings & agents.",
+    description: "Learn to build and deploy generative AI applications. Master LLM APIs, embeddings, RAG systems, and intelligent agents in this advanced bootcamp.",
     duration: "6 weeks · 4 hrs/week",
     level: "Intermediate · Advanced",
     accent: "violet",
+    stats: [
+      { label: "Course Duration", value: "6 Weeks" },
+      { label: "Weekly Commitment", value: "4 Hours" },
+      { label: "Batches Run", value: "Multiple" },
+      { label: "Certification", value: "IIITD + MEIT" },
+    ],
     techs: [
       { icon: "Brain", label: "LLMs" },
       { icon: "Network", label: "Embeddings" },

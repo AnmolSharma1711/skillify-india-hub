@@ -69,12 +69,6 @@ export function Hero() {
             Explore Courses
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
-          <Link
-            to="/about"
-            className="inline-flex h-12 items-center rounded-full border-2 border-[color:var(--brand-navy)]/25 bg-white/75 px-7 text-sm font-semibold text-[color:var(--brand-navy)] backdrop-blur transition-colors hover:border-[color:var(--brand-navy)]/50 hover:bg-white"
-          >
-            About the Programme
-          </Link>
         </div>
 
         <dl className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left" style={{ animationDelay: "0.4s" }}>

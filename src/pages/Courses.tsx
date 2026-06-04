@@ -9,21 +9,20 @@ export default function Courses() {
         <title>Courses — Skillify IIITD &times; MEIT</title>
         <meta
           name="description"
-          content="Browse all free programmes — Python, Machine Learning and Generative AI — by IIIT Delhi, powered by MEIT."
+          content="Browse all industry-aligned courses in Emerging Technologies — Python, Machine Learning and Generative AI — by IIIT Delhi, powered by MEIT."
         />
       </Helmet>
 
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <header className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
-            Our Programmes
+            Courses Offered
           </p>
           <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
-            Three tracks. One{" "}
-            <span className="text-gradient-brand">future-ready</span> you.
+            Three industry-ready <span className="text-gradient-brand">courses</span>
           </h1>
           <p className="mt-4 text-[color:var(--muted-foreground)]">
-            Hover any course card to see details and enroll instantly.
+            Click on any course to learn more, view batch details, feedback, and register for the program.
           </p>
         </header>
 
