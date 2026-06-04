@@ -148,6 +148,3 @@ export function CourseCardLight({ course }: { course: Course }) {
     </>
   );
 }
-
-
-export { CourseCardLight }
