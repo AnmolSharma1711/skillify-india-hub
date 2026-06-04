@@ -1,5 +1,4 @@
-import iiitdLogo from "../../assets/iiitd_logo-removebg-preview.svg";
-import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
+import meitLogo from "../../assets/meit_logo-removebg-preview_(1).svg";
 
 export function Footer() {
   return (
@@ -7,14 +6,6 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
         {/* Logos row */}
         <div className="flex flex-wrap items-center justify-center gap-8 sm:justify-start">
-          <div className="h-20 flex items-center">
-            <img
-              src={iiitdLogo}
-              alt="IIIT Delhi"
-              className="h-full w-auto object-contain"
-              loading="lazy"
-            />
-          </div>
           <div className="h-16 flex items-center">
             <img
               src={meitLogo}

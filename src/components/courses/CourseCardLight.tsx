@@ -58,8 +58,23 @@ export function CourseCardLight({ course }: { course: Course }) {
 
   return (
     <>
+      <style>{`
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      `}</style>
       <article
         className="group relative overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] cursor-pointer"
+        style={{
+          animation: "fadeInScale 0.5s ease-out",
+        }}
         onMouseEnter={handleCardMouseEnter}
         onMouseLeave={handleCardMouseLeave}
         onClick={() => {

@@ -58,7 +58,7 @@ export function CourseDetailOverlay({
         className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
         onClick={onClose}
         style={{
-          animation: "fadeIn 0.3s ease-out",
+          animation: "backdropFadeIn 0.4s ease-out",
         }}
         aria-hidden
       />
@@ -67,7 +67,7 @@ export function CourseDetailOverlay({
       <div
         className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
         style={{
-          animation: "fadeIn 0.3s ease-out",
+          animation: "contentFadeIn 0.4s ease-out",
         }}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
@@ -75,7 +75,7 @@ export function CourseDetailOverlay({
         <div
           className="w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-3xl shadow-2xl pointer-events-auto"
           style={{
-            animation: "slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+            animation: "slideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
           {/* Header with close button */}
@@ -203,7 +203,15 @@ export function CourseDetailOverlay({
       </div>
 
       <style>{`
-        @keyframes fadeIn {
+        @keyframes backdropFadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes contentFadeIn {
           from {
             opacity: 0;
           }
@@ -214,11 +222,11 @@ export function CourseDetailOverlay({
         @keyframes slideUp {
           from {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(50px) scale(0.95);
           }
           to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
           }
         }
       `}</style>
