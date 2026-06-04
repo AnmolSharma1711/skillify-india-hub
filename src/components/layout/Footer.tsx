@@ -15,7 +15,7 @@ export function Footer() {
               loading="lazy"
             />
           </div>
-          <div className="h-16 flex items-center">
+          <div className="h-20 flex items-center">
             <img
               src={meitLogo}
               alt="Ministry of Electronics and Information Technology"
