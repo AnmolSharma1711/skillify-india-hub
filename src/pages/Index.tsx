@@ -2,8 +2,6 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Hero } from "@/components/home/Hero";
 import { ProjectOverview } from "@/components/home/ProjectOverview";
-import { CoursesGrid } from "@/components/courses/CoursesGrid";
-import { COURSES } from "@/config/courses";
 import { ArrowRight } from "lucide-react";
 
 export default function Index() {
@@ -20,25 +18,22 @@ export default function Index() {
       <Hero />
       <ProjectOverview />
 
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-        <div className="mb-10 flex items-end justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
-              Programmes
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-bold text-[color:var(--brand-navy)] sm:text-4xl">
-              Choose your <span className="text-gradient-brand">track</span>
-            </h2>
-          </div>
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <div className="text-center">
+          <h2 className="font-display text-3xl font-bold text-[color:var(--brand-navy)] sm:text-4xl">
+            Ready to upskill? <span className="text-gradient-brand">Get started today</span>
+          </h2>
+          <p className="mt-4 text-[color:var(--muted-foreground)] max-w-2xl mx-auto">
+            Explore our industry-ready courses in Python Programming, Machine Learning, and Generative AI.
+          </p>
           <Link
             to="/courses"
-            className="hidden items-center gap-1 text-sm font-medium text-[color:var(--brand-teal)] transition-colors hover:text-[color:var(--brand-navy)] sm:inline-flex"
+            className="mt-8 inline-flex h-12 items-center gap-2 rounded-full bg-[image:var(--gradient-brand)] px-7 text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] focus:ring-offset-2"
           >
-            All courses <ArrowRight className="h-4 w-4" />
+            Explore Courses
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>
-
-        <CoursesGrid courses={COURSES} className="grid gap-5 md:grid-cols-3" />
       </section>
     </>
   );
