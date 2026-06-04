@@ -23,11 +23,11 @@ export default function Courses() {
             <span className="text-gradient-brand">future-ready</span> you.
           </h1>
           <p className="mt-4 text-[color:var(--muted-foreground)]">
-            Hover (or tap on mobile) any course card to see the full syllabus and enroll instantly.
+            Hover any course card to see details and enroll instantly.
           </p>
         </header>
 
-        <CoursesGrid courses={COURSES} className="mt-14 grid gap-6 md:grid-cols-3" />
+        <CoursesGrid courses={COURSES} className="mt-14" />
       </section>
     </>
   );

@@ -1,22 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { gsap } from "gsap";
 import { HeroCanvas } from "./HeroCanvas";
 
 export function Hero() {
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!contentRef.current) return;
-    const els = contentRef.current.querySelectorAll("[data-animate]");
-    gsap.fromTo(
-      els,
-      { opacity: 0, y: 28 },
-      { opacity: 1, y: 0, duration: 0.7, stagger: 0.12, ease: "power2.out" },
-    );
-  }, []);
-
   return (
     <section className="relative overflow-hidden">
       <div
@@ -42,36 +29,38 @@ export function Hero() {
       <div aria-hidden className="absolute inset-0 z-[2] bg-dots opacity-25" />
 
       <div
-        ref={contentRef}
         className="relative z-10 mx-auto max-w-5xl px-4 pb-24 pt-20 text-center sm:px-6 sm:pt-28"
+        style={{
+          animation: "fadeInUp 0.6s ease-out, staggerChildren 0.8s ease-out"
+        }}
       >
         <div
-          data-animate
           className="mx-auto inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-teal)]/40 bg-white/80 px-4 py-1.5 text-xs font-semibold text-[color:var(--brand-navy)] shadow-sm backdrop-blur"
+          style={{ animationDelay: "0s" }}
         >
           <Sparkles className="h-3.5 w-3.5 text-[color:var(--brand-saffron)]" />
           A MEIT-powered initiative at IIIT Delhi
         </div>
 
         <h1
-          data-animate
           className="mt-6 font-display text-5xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-6xl md:text-7xl"
+          style={{ animationDelay: "0.1s" }}
         >
-          Skill the future of <br />
+          <span className="text-gradient-brand">Skillify:</span> Skill the future of <br />
           <span className="text-gradient-brand">Digital India.</span>
         </h1>
 
         <p
-          data-animate
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)] sm:text-lg"
+          style={{ animationDelay: "0.2s" }}
         >
           Free, mentor-led programs in Python, Machine Learning and Generative AI — designed by
           IIIT Delhi faculty, powered by the Ministry of Electronics and Information Technology.
         </p>
 
         <div
-          data-animate
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          style={{ animationDelay: "0.3s" }}
         >
           <Link
             to="/courses"
@@ -88,7 +77,7 @@ export function Hero() {
           </Link>
         </div>
 
-        <dl data-animate className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left">
+        <dl className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left" style={{ animationDelay: "0.4s" }}>
           {[
             { k: "3", v: "Industry-ready courses" },
             { k: "100%", v: "Free for students" },
@@ -104,6 +93,30 @@ export function Hero() {
           ))}
         </dl>
       </div>
+
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(28px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes staggerChildren {
+          0% {
+            animation-delay: 0s !important;
+          }
+          100% {
+            animation-delay: 0.12s !important;
+          }
+        }
+        [style*="animationDelay"] {
+          animation: fadeInUp 0.7s ease-out forwards;
+        }
+      `}</style>
     </section>
   );
 }

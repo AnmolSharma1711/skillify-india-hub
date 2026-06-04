@@ -48,7 +48,7 @@ export const COURSES: Course[] = [
   {
     id: "python",
     title: "Python Programming",
-    icon: "Snake",
+    icon: "Code2",
     tagline: "From zero to writing real-world Python in 6 weeks.",
     duration: "6 weeks · 3 hrs/week",
     level: "Beginner friendly",

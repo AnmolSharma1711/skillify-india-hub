@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import iiitdLogo from "../assets/iiitd_logo-removebg-preview.svg";
+import meitLogo from "../assets/meit_logo-removebg-preview.svg";
 
 export default function About() {
   return (
@@ -13,7 +15,7 @@ export default function About() {
         />
       </Helmet>
 
-      <section className="mx-auto max-w-3xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-4xl px-4 py-20 sm:px-6">
         <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
           About the Project
         </p>
@@ -21,6 +23,33 @@ export default function About() {
         <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
           Skilling the youth of <span className="text-gradient-brand">India</span>.
         </h1>
+
+        {/* Logo Section with Animation */}
+        <div className="mt-12 mb-12 flex justify-center items-center gap-8 sm:gap-12">
+          <div
+            className="h-24 sm:h-28 flex items-center opacity-0 animate-fadeInScale"
+            style={{ animationDelay: "0.1s", animationDuration: "0.8s", animationFillMode: "forwards" }}
+          >
+            <img
+              src={iiitdLogo}
+              alt="IIIT Delhi"
+              className="h-full w-auto object-contain"
+            />
+          </div>
+          <div className="text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] opacity-0 animate-fadeInScale" style={{ animationDelay: "0.2s", animationDuration: "0.8s", animationFillMode: "forwards" }}>
+            ×
+          </div>
+          <div
+            className="h-20 sm:h-24 flex items-center opacity-0 animate-fadeInScale"
+            style={{ animationDelay: "0.3s", animationDuration: "0.8s", animationFillMode: "forwards" }}
+          >
+            <img
+              src={meitLogo}
+              alt="Ministry of Electronics and Information Technology"
+              className="h-full w-auto object-contain"
+            />
+          </div>
+        </div>
 
         <div className="mt-8 space-y-6 text-[color:var(--muted-foreground)]">
           <p className="text-base leading-relaxed">
@@ -90,6 +119,22 @@ export default function About() {
           </Link>
         </div>
       </section>
+
+      <style>{`
+        @keyframes fadeInScale {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fadeInScale {
+          animation: fadeInScale 0.8s ease-out;
+        }
+      `}</style>
     </>
   );
 }
