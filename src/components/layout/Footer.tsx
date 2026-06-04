@@ -1,5 +1,5 @@
 import iiitdLogo from "../../assets/iiitd_logo-removebg-preview.svg";
-import meitLogo from "../../assets/meit_logo-removebg-preview_(1).svg";
+import meitLogo from "../../assets/meit_footer.svg";
 
 export function Footer() {
   return (
@@ -15,7 +15,7 @@ export function Footer() {
               loading="lazy"
             />
           </div>
-          <div className="h-20 flex items-center">
+          <div className="h-28 flex items-center">
             <img
               src={meitLogo}
               alt="Ministry of Electronics and Information Technology"
