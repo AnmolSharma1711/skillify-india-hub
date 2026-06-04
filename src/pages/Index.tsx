@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Hero } from "@/components/home/Hero";
 import { ProjectOverview } from "@/components/home/ProjectOverview";
+import { CoursesShowcase } from "@/components/home/CoursesShowcase";
 import { ArrowRight } from "lucide-react";
 
 export default function Index() {
@@ -17,6 +18,7 @@ export default function Index() {
 
       <Hero />
       <ProjectOverview />
+      <CoursesShowcase />
 
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
         <div className="text-center">

@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
+import heroClassroomBg from "@/assets/hero-classroom-bg.jpeg";
 import { HeroCanvas } from "./HeroCanvas";
 
 export function Hero() {
@@ -15,23 +15,30 @@ export function Hero() {
         }}
       />
 
-      <HeroCanvas className="pointer-events-none absolute inset-0 z-0 h-full w-full" />
+      <img
+        src={heroClassroomBg}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[0.18]"
+      />
+
+      <HeroCanvas className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-60" />
 
       <div
         aria-hidden
-        className="absolute inset-0 z-[1]"
+        className="absolute inset-0 z-[2]"
         style={{
           background:
-            "linear-gradient(180deg, oklch(0.99 0.003 240 / 0.85) 0%, oklch(0.99 0.003 240 / 0.70) 50%, oklch(0.99 0.003 240 / 0.92) 100%)",
+            "linear-gradient(180deg, oklch(0.99 0.003 240 / 0.88) 0%, oklch(0.99 0.003 240 / 0.78) 48%, oklch(0.99 0.003 240 / 0.94) 100%)",
         }}
       />
 
-      <div aria-hidden className="absolute inset-0 z-[2] bg-dots opacity-25" />
+      <div aria-hidden className="absolute inset-0 z-[3] bg-dots opacity-20" />
 
       <div
         className="relative z-10 mx-auto max-w-5xl px-4 pb-24 pt-20 text-center sm:px-6 sm:pt-28"
         style={{
-          animation: "fadeInUp 0.6s ease-out, staggerChildren 0.8s ease-out"
+          animation: "fadeInUp 0.6s ease-out, staggerChildren 0.8s ease-out",
         }}
       >
         <div
@@ -71,7 +78,10 @@ export function Hero() {
           </Link>
         </div>
 
-        <dl className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left" style={{ animationDelay: "0.4s" }}>
+        <dl
+          className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left"
+          style={{ animationDelay: "0.4s" }}
+        >
           {[
             { k: "3", v: "Industry-ready courses" },
             { k: "100%", v: "Free for students" },

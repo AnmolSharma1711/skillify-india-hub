@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
+import type { KeyboardEvent } from "react";
 import { Clock, GraduationCap } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
@@ -26,34 +27,17 @@ const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: strin
 export function CourseCardLight({ course }: { course: Course }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [showEnrollModal, setShowEnrollModal] = useState(false);
-  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const accent = ACCENT[course.accent];
 
-  const handleCardMouseEnter = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
+  const openCourseDetails = () => {
     setShowOverlay(true);
   };
 
-  const handleCardMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => {
-      setShowOverlay(false);
-    }, 300);
-  };
-
-  const handleOverlayMouseEnter = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
+  const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openCourseDetails();
     }
-  };
-
-  const handleOverlayMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => {
-      setShowOverlay(false);
-    }, 300);
   };
 
   return (
@@ -75,12 +59,11 @@ export function CourseCardLight({ course }: { course: Course }) {
         style={{
           animation: "fadeInScale 0.5s ease-out",
         }}
-        onMouseEnter={handleCardMouseEnter}
-        onMouseLeave={handleCardMouseLeave}
-        onClick={() => {
-          if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
-          setShowOverlay(true);
-        }}
+        onClick={openCourseDetails}
+        onKeyDown={handleCardKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label={`View details for ${course.title}`}
       >
         {/* Top colour accent bar */}
         <div
@@ -136,7 +119,7 @@ export function CourseCardLight({ course }: { course: Course }) {
           className="mt-6 inline-flex items-center gap-1 text-xs font-medium transition-colors"
           style={{ color: accent.icon }}
         >
-          Hover or click to view details
+          Click to view details
         </div>
       </article>
 
@@ -145,8 +128,6 @@ export function CourseCardLight({ course }: { course: Course }) {
         course={course}
         open={showOverlay}
         onClose={() => setShowOverlay(false)}
-        onMouseEnter={handleOverlayMouseEnter}
-        onMouseLeave={handleOverlayMouseLeave}
         onEnrollClick={() => {
           setShowEnrollModal(true);
           setShowOverlay(false);

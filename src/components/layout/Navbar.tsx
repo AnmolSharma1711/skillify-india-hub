@@ -6,6 +6,7 @@ import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
 const links = [
   { to: "/", label: "Home" },
   { to: "/courses", label: "Courses" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function Navbar() {

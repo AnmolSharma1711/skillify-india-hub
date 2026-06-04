@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Index from "@/pages/Index";
 import Courses from "@/pages/Courses";
 import CourseDetail from "@/pages/CourseDetail";
+import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="/" element={<Index />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetail />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -25,15 +25,11 @@ export function CourseDetailOverlay({
   course,
   open,
   onClose,
-  onMouseEnter,
-  onMouseLeave,
   onEnrollClick,
 }: {
   course: Course;
   open: boolean;
   onClose: () => void;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
   onEnrollClick: () => void;
 }) {
   const accent = ACCENT[course.accent];
@@ -69,8 +65,6 @@ export function CourseDetailOverlay({
         style={{
           animation: "contentFadeIn 0.4s ease-out",
         }}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
       >
         <div
           className="w-full max-w-3xl max-h-[85vh] overflow-y-auto bg-white rounded-3xl shadow-2xl pointer-events-auto"

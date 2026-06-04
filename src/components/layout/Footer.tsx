@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import iiitdLogo from "../../assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "../../assets/meit_footer.svg";
 
@@ -5,9 +6,8 @@ export function Footer() {
   return (
     <footer className="mt-24 bg-[color:var(--brand-navy)]">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-        {/* Logos row */}
         <div className="flex flex-wrap items-center justify-center gap-8 sm:justify-start">
-          <div className="h-20 flex items-center">
+          <div className="flex h-20 items-center">
             <img
               src={iiitdLogo}
               alt="IIIT Delhi"
@@ -15,7 +15,7 @@ export function Footer() {
               loading="lazy"
             />
           </div>
-          <div className="h-28 flex items-center">
+          <div className="flex h-28 items-center">
             <img
               src={meitLogo}
               alt="Ministry of Electronics and Information Technology"
@@ -25,7 +25,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
         <div
           aria-hidden
           className="my-6 h-px w-full"
@@ -35,15 +34,27 @@ export function Footer() {
           }}
         />
 
-        {/* Bottom row */}
-        <div className="flex flex-col gap-2 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} IIIT Delhi · An initiative powered by{" "}
-            <span className="text-white">MEIT</span>.
-          </p>
-          <p className="text-xs text-white/50">
-            Skilling the youth of India · Built for learners, by educators.
-          </p>
+        <div className="flex flex-col gap-5 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p>
+              &copy; {new Date().getFullYear()} IIIT Delhi - An initiative powered by{" "}
+              <span className="text-white">MEIT</span>.
+            </p>
+            <p className="mt-1 text-xs text-white/50">
+              Skilling the youth of India - Built for learners, by educators.
+            </p>
+          </div>
+          <nav aria-label="Footer navigation" className="flex flex-wrap gap-4 text-sm">
+            <Link className="transition-colors hover:text-white" to="/">
+              Home
+            </Link>
+            <Link className="transition-colors hover:text-white" to="/courses">
+              Courses
+            </Link>
+            <Link className="transition-colors hover:text-white" to="/contact">
+              Contact
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
