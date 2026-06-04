@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Clock, GraduationCap } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
@@ -26,15 +26,46 @@ const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: strin
 export function CourseCardLight({ course }: { course: Course }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [showEnrollModal, setShowEnrollModal] = useState(false);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const accent = ACCENT[course.accent];
+
+  const handleCardMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setShowOverlay(true);
+  };
+
+  const handleCardMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setShowOverlay(false);
+    }, 300);
+  };
+
+  const handleOverlayMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const handleOverlayMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setShowOverlay(false);
+    }, 300);
+  };
 
   return (
     <>
       <article
         className="group relative overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] cursor-pointer"
-        onMouseEnter={() => setShowOverlay(true)}
-        onMouseLeave={() => setShowOverlay(false)}
-        onClick={() => setShowOverlay(true)}
+        onMouseEnter={handleCardMouseEnter}
+        onMouseLeave={handleCardMouseLeave}
+        onClick={() => {
+          if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+          setShowOverlay(true);
+        }}
       >
         {/* Top colour accent bar */}
         <div
@@ -99,6 +130,8 @@ export function CourseCardLight({ course }: { course: Course }) {
         course={course}
         open={showOverlay}
         onClose={() => setShowOverlay(false)}
+        onMouseEnter={handleOverlayMouseEnter}
+        onMouseLeave={handleOverlayMouseLeave}
         onEnrollClick={() => {
           setShowEnrollModal(true);
           setShowOverlay(false);
@@ -115,3 +148,6 @@ export function CourseCardLight({ course }: { course: Course }) {
     </>
   );
 }
+
+
+export { CourseCardLight }
