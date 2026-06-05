@@ -56,7 +56,7 @@ export function CoursesShowcase() {
               <Link
                 key={course.id}
                 to={`/courses/${course.id}`}
-                className={`group flex min-h-[260px] flex-col rounded-2xl border ${accent.ring} bg-white/90 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] focus:ring-offset-2`}
+                className={`cursor-target group flex min-h-[260px] flex-col rounded-2xl border ${accent.ring} bg-white/90 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] focus:outline-none focus:ring-2 focus:ring-[color:var(--brand-teal)] focus:ring-offset-2`}
               >
                 <div
                   className="grid h-12 w-12 place-items-center rounded-xl text-white"

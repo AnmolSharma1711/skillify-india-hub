@@ -1,5 +1,6 @@
 import { PillNav } from "./PillNav";
 import iiitdLogo from "../../assets/iiitd_logo-removebg-preview.svg";
+import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
@@ -24,6 +25,8 @@ export function Navbar() {
         <PillNav
           logo={iiitdLogo}
           logoAlt="IIIT Delhi"
+          trailingLogo={meitLogo}
+          trailingLogoAlt="Ministry of Electronics and Information Technology"
           items={NAV_ITEMS}
           baseColor="#ffffff"
           pillColor="#1B3A6B"

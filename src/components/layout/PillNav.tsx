@@ -12,6 +12,8 @@ interface PillNavItem {
 interface PillNavProps {
   logo: string;
   logoAlt?: string;
+  trailingLogo?: string;
+  trailingLogoAlt?: string;
   items: PillNavItem[];
   className?: string;
   ease?: string;
@@ -26,6 +28,8 @@ interface PillNavProps {
 export function PillNav({
   logo,
   logoAlt = "Logo",
+  trailingLogo,
+  trailingLogoAlt = "Logo",
   items,
   className = "",
   ease = "power3.easeOut",
@@ -245,6 +249,12 @@ export function PillNav({
         <Link to="/courses" className="pill-enroll desktop-only">
           Enroll Free
         </Link>
+
+        {trailingLogo && (
+          <div className="pill-logo desktop-only" aria-label={trailingLogoAlt} style={{ marginLeft: 4 }}>
+            <img src={trailingLogo} alt={trailingLogoAlt} />
+          </div>
+        )}
 
         <button
           className="mobile-menu-button mobile-only"
