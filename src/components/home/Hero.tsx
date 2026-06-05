@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroClassroomBg from "@/assets/hero-classroom-bg.jpeg";
-import { HeroCanvas } from "./HeroCanvas";
 
 export function Hero() {
   return (
@@ -21,8 +20,6 @@ export function Hero() {
         aria-hidden
         className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[1]"
       />
-
-      <HeroCanvas className="pointer-events-none absolute inset-0 z-[1] h-full w-full opacity-60" />
 
       <div
         aria-hidden
