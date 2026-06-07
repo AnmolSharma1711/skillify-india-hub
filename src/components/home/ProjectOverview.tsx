@@ -21,10 +21,10 @@ export function ProjectOverview() {
         </h3>
         <ul className="space-y-4">
           {[
-            "Training of 59,000 engineering, non-engineering students, as well as unemployed youth, through the seven selected academic institutes and C-DAC, Kolkata.",
+            "Training of engineering, non-engineering students, as well as unemployed youth, through the seven selected academic institutes and C-DAC, Kolkata.",
             "Provide industry-focused training in the Electronics and IT domains to engineering, non-engineering students, as well as unemployed youth.",
             "To equip students with cutting-edge skills through practical and hands-on training.",
-            "Development of ten (10) industry ready courses by each (07) institution.",
+            "Development of industry ready courses by esteemed institutions.",
             "To conduct Bootcamps in different domains.",
             "To conduct a job fair by inviting industries to enhance the employability of the candidates.",
             "To conduct capacity building and skill enhancement workshops with help of industry experts.",
@@ -47,7 +47,7 @@ export function ProjectOverview() {
         </p>
         <ul className="space-y-3">
           {[
-            "Final/Pre-final year undergraduate and postgraduate (3rd and 4th semesters) Engineering students",
+            "Final/Pre-final year undergraduate and postgraduate Engineering students",
             "Engineering graduates (up to two years of post-graduation)",
             "Students of non-engineering Final/Pre-final year MCA, BCA, MBA, BBA, MCOM, BCOM, M.Sc, B.Sc etc (up to two years of graduation)",
             "PhD Scholars, Research Scholars",

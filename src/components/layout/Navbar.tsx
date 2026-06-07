@@ -4,6 +4,7 @@ import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Courses", href: "/courses" },
   { label: "Contact", href: "/contact" },
 ];
@@ -21,7 +22,7 @@ export function Navbar() {
         }}
       />
 
-      <div className="flex w-full justify-center py-3 px-4">
+      <div className="flex w-full justify-center py-4 px-4">
         <PillNav
           logo={iiitdLogo}
           logoAlt="IIIT Delhi"

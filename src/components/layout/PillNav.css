@@ -15,9 +15,9 @@
 }
 
 .pill-nav {
-  --nav-h: 42px;
-  --logo: 36px;
-  --pill-pad-x: 18px;
+  --nav-h: 60px;
+  --logo: 80px;
+  --pill-pad-x: 60px;
   --pill-gap: 3px;
   width: max-content;
   display: flex;
@@ -58,6 +58,11 @@
   box-shadow: 0 2px 12px -3px rgba(27, 58, 107, 0.18);
   text-decoration: none;
   flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+.pill-logo:hover {
+  transform: rotate(360deg);
 }
 
 .pill-logo img {
@@ -94,7 +99,7 @@
   border-radius: 9999px;
   box-sizing: border-box;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 0;
   text-transform: uppercase;
   letter-spacing: 0.4px;
@@ -166,14 +171,14 @@
   align-items: center;
   justify-content: center;
   height: var(--nav-h);
-  padding: 0 20px;
+  padding: 0 24px;
   background: linear-gradient(135deg, oklch(0.28 0.13 258), oklch(0.52 0.11 215));
   color: #fff;
   text-decoration: none;
   border-radius: 9999px;
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 1;
+  font-weight: 800;
+  font-size: xx-large;
+  line-height: inherit;
   letter-spacing: 0.3px;
   white-space: nowrap;
   cursor: pointer;

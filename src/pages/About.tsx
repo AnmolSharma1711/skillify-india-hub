@@ -5,17 +5,17 @@ import iiitdLogo from "../assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "../assets/meit_logo-removebg-preview.svg";
 
 const OBJECTIVES = [
-  "Training of 59,000 engineering, non-engineering students, as well as unemployed youth, through the seven selected academic institutes and C-DAC, Kolkata.",
+  "Training of engineering, non-engineering students, as well as unemployed youth, through the seven selected academic institutes and C-DAC, Kolkata.",
   "Provide industry-focused training in the Electronics and IT domains to engineering, non-engineering students, as well as unemployed youth.",
   "To equip students with cutting-edge skills through practical and hands-on training.",
-  "Development of ten (10) industry ready courses by each (07) institution.",
+  "Development of industry ready courses by esteemed institutions.",
   "To conduct Bootcamps in different domains.",
   "To conduct a job fair by inviting industries to enhance the employability of the candidates.",
   "To conduct capacity building and skill enhancement workshops with help of industry experts.",
 ];
 
 const BENEFICIARIES = [
-  "Final/Pre-final year undergraduate and postgraduate (3rd and 4th semesters) Engineering students",
+  "Final/Pre-final year undergraduate and postgraduate Engineering students",
   "Engineering graduates (up to two years of post-graduation)",
   "Students of non-engineering Final/Pre-final year MCA, BCA, MBA, BBA, MCOM, BCOM, M.Sc, B.Sc etc (up to two years of graduation)",
   "PhD Scholars, Research Scholars",
@@ -71,21 +71,6 @@ export default function About() {
               . Our goal: give every Indian student — regardless of background — free, world-class
               training in the technologies shaping the next decade.
             </p>
-          </div>
-
-          {/* Logo row */}
-          <div className="mb-16 flex items-center gap-8 sm:gap-12">
-            <div className="flex h-20 items-center sm:h-24">
-              <img src={iiitdLogo} alt="IIIT Delhi" className="h-full w-auto object-contain" />
-            </div>
-            <span className="font-display text-2xl font-bold text-[color:var(--brand-navy)]">×</span>
-            <div className="flex h-16 items-center sm:h-20">
-              <img
-                src={meitLogo}
-                alt="Ministry of Electronics and Information Technology"
-                className="h-full w-auto object-contain"
-              />
-            </div>
           </div>
 
           <div className="grid gap-12 lg:grid-cols-2">
@@ -171,6 +156,26 @@ export default function About() {
                 See the Courses
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
+            </div>
+          </div>
+
+          {/* Logos section at the end */}
+          <div className="mt-32 border-t border-[color:var(--border)] pt-16">
+            <p className="mb-8 text-center text-sm uppercase tracking-widest text-[color:var(--brand-teal)]">
+              A partnership between
+            </p>
+            <div className="flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-12">
+              <div className="flex h-20 items-center sm:h-24">
+                <img src={iiitdLogo} alt="IIIT Delhi" className="h-full w-auto object-contain" />
+              </div>
+              <span className="font-display text-3xl font-bold text-[color:var(--brand-navy)]">×</span>
+              <div className="flex h-16 items-center sm:h-20">
+                <img
+                  src={meitLogo}
+                  alt="Ministry of Electronics and Information Technology"
+                  className="h-full w-auto object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>

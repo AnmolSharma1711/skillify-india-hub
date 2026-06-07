@@ -1,32 +1,27 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CircleCheck as CheckCircle2 } from "lucide-react";
-import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
-import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
 
-const OBJECTIVES = [
-  "Training of 59,000 engineering, non-engineering students, as well as unemployed youth, through the seven selected academic institutes and C-DAC, Kolkata.",
-  "Provide industry-focused training in the Electronics and IT domains to engineering, non-engineering students, as well as unemployed youth.",
-  "To equip students with cutting-edge skills through practical and hands-on training.",
-  "Development of ten (10) industry ready courses by each (07) institution.",
-  "To conduct Bootcamps in different domains.",
-  "To conduct a job fair by inviting industries to enhance the employability of the candidates.",
-  "To conduct capacity building and skill enhancement workshops with help of industry experts.",
+const HOME_HIGHLIGHTS = [
+"Industry-focused training in Electronics and IT designed to build job-ready skills.",
+"Hands-on learning through practical sessions, bootcamps, and real-world projects.",
+"Expert mentorship from leading faculty and industry professionals.",
+"Career enhancement opportunities including workshops, networking, and job fairs.",
 ];
 
-const BENEFICIARIES = [
-  "Final/Pre-final year undergraduate and postgraduate (3rd and 4th semesters) Engineering students",
-  "Engineering graduates (up to two years of post-graduation)",
-  "Students of non-engineering Final/Pre-final year MCA, BCA, MBA, BBA, MCOM, BCOM, M.Sc, B.Sc etc (up to two years of graduation)",
-  "PhD Scholars, Research Scholars",
-  "Unemployed youth, and Working professionals for skill upgradation.",
+const WHO_CAN_JOIN = [
+"Engineering students and graduates",
+"Non-engineering students and graduates",
+"Research scholars and PhD candidates",
+"Working professionals and aspiring job seekers",
 ];
 
-const WHAT_YOU_GET = [
-  "Mentor-led cohorts taught by IIITD faculty and industry experts.",
-  "Real capstone projects that prove your skills to employers.",
-  "A recognised certificate co-issued by IIITD and MEIT.",
-  "A community of learners, mentors and alumni you can grow with.",
+const WHY_JOIN = [
+"Mentor-led cohorts guided by experts.",
+"Industry-relevant projects to strengthen your portfolio.",
+"Recognized certification from prestigious institutions.",
+"Access to a growing community of learners, mentors, and alumni.",
 ];
+
 
 export function AboutSection() {
   return (
@@ -62,21 +57,6 @@ export function AboutSection() {
           </p>
         </div>
 
-        {/* Logo row */}
-        <div className="mb-16 flex items-center gap-8 sm:gap-12">
-          <div className="flex h-20 items-center sm:h-24">
-            <img src={iiitdLogo} alt="IIIT Delhi" className="h-full w-auto object-contain" />
-          </div>
-          <span className="font-display text-2xl font-bold text-[color:var(--brand-navy)]">×</span>
-          <div className="flex h-16 items-center sm:h-20">
-            <img
-              src={meitLogo}
-              alt="Ministry of Electronics and Information Technology"
-              className="h-full w-auto object-contain"
-            />
-          </div>
-        </div>
-
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Left column: Objectives */}
           <div>
@@ -95,10 +75,10 @@ export function AboutSection() {
               Objectives of the Project
             </h3>
             <ul className="space-y-3">
-              {OBJECTIVES.map((obj, idx) => (
+              {HOME_HIGHLIGHTS.map((highlight, idx) => (
                 <li key={idx} className="flex gap-3">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--brand-teal)]" />
-                  <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{obj}</span>
+                  <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{highlight}</span>
                 </li>
               ))}
             </ul>
@@ -111,7 +91,7 @@ export function AboutSection() {
                 What you get
               </h3>
               <div className="grid gap-3">
-                {WHAT_YOU_GET.map((item, idx) => (
+                {WHY_JOIN.map((item, idx) => (
                   <div
                     key={idx}
                     className="flex gap-4 rounded-xl border border-[color:var(--border)] bg-white/80 p-4 shadow-sm backdrop-blur"
@@ -135,7 +115,7 @@ export function AboutSection() {
                 Engineering and non-engineering students, as well as unemployed youth:
               </p>
               <ul className="space-y-2">
-                {BENEFICIARIES.map((b, idx) => (
+                {WHO_CAN_JOIN.map((b, idx) => (
                   <li key={idx} className="flex gap-3">
                     <div
                       className="mt-2 h-2 w-2 flex-shrink-0 rounded-full"
