@@ -3,6 +3,7 @@ import * as Icons from "lucide-react";
 import { Clock, GraduationCap } from "lucide-react";
 import type { Course } from "@/config/courses";
 import { EnrollmentModal } from "@/components/courses/EnrollmentModal";
+import { EnrollmentType } from "@/lib/api";
 import "./FlipCard.css";
 
 const ACCENT: Record<string, { bg: string; text: string }> = {
@@ -22,27 +23,13 @@ const ACCENT: Record<string, { bg: string; text: string }> = {
 
 export function FlipCard({ course }: { course: Course }) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [showEnrollModal, setShowEnrollModal] = useState(false);
+  const [enrollmentType, setEnrollmentType] = useState<EnrollmentType | null>(null);
 
   const accent = ACCENT[course.accent];
   const IconComponent = Icons[course.icon as keyof typeof Icons] as ElementType;
 
-  const handleUniversityEnroll = () => {
-    setShowEnrollModal(true);
-  };
-
-  const handleIndividualEnroll = () => {
-    window.open(
-      `https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`,
-      "_blank"
-    );
-  };
-
-  const handleMentorEnroll = () => {
-    window.open(
-      `https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`,
-      "_blank"
-    );
+  const handleEnroll = (type: EnrollmentType) => {
+    setEnrollmentType(type);
   };
 
   return (
@@ -145,21 +132,21 @@ export function FlipCard({ course }: { course: Course }) {
             {/* Enrollment Buttons */}
             <div className="mt-auto flex flex-col gap-2 pt-4">
               <button
-                onClick={(e) => { e.stopPropagation(); handleIndividualEnroll(); }}
+                onClick={(e) => { e.stopPropagation(); handleEnroll("individual"); }}
                 className="rounded-lg bg-[image:var(--gradient-brand)] px-3 py-2 text-xs font-semibold text-white transition-transform hover:scale-105"
               >
                 Individual Enrollment
               </button>
 
               <button
-                onClick={(e) => { e.stopPropagation(); handleUniversityEnroll(); }}
+                onClick={(e) => { e.stopPropagation(); handleEnroll("institute"); }}
                 className="rounded-lg border border-[color:var(--brand-teal)] px-3 py-2 text-xs font-semibold text-[color:var(--brand-teal)] transition-all hover:bg-[color:var(--brand-teal)] hover:text-white"
               >
                 University Partnership
               </button>
 
               <button
-                onClick={(e) => { e.stopPropagation(); handleMentorEnroll(); }}
+                onClick={(e) => { e.stopPropagation(); handleEnroll("mentor"); }}
                 className="rounded-lg border border-[color:var(--brand-navy)] px-3 py-2 text-xs font-semibold text-[color:var(--brand-navy)] transition-all hover:bg-[color:var(--brand-navy)] hover:text-white"
               >
                 Become a Mentor
@@ -169,10 +156,11 @@ export function FlipCard({ course }: { course: Course }) {
         </div>
       </div>
 
-      {showEnrollModal && (
+      {enrollmentType && (
         <EnrollmentModal
           course={course}
-          onClose={() => setShowEnrollModal(false)}
+          enrollmentType={enrollmentType}
+          onClose={() => setEnrollmentType(null)}
         />
       )}
     </div>

@@ -3,7 +3,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { CircleCheck as CheckCircle2, X, Loader as Loader2 } from "lucide-react";
 import type { Course } from "@/config/courses";
-import { submitToGoogleForm } from "@/lib/submitToGoogleForm";
+import { submitToBackend, EnrollmentType } from "@/lib/api";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
@@ -21,9 +21,11 @@ type FieldErrors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
 export function EnrollmentModal({
   course,
+  enrollmentType,
   onClose,
 }: {
   course: Course;
+  enrollmentType: EnrollmentType;
   onClose: () => void;
 }) {
   const [submitting, setSubmitting] = useState(false);
@@ -48,7 +50,7 @@ export function EnrollmentModal({
     setErrors({});
     setSubmitting(true);
     try {
-      await submitToGoogleForm(course, {
+      await submitToBackend(course, enrollmentType, {
         name: parsed.data.name,
         email: parsed.data.email,
         phone: parsed.data.phone,
@@ -96,8 +98,8 @@ export function EnrollmentModal({
         className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-lg sm:p-8"
       >
         <div className="flex items-center justify-between mb-6">
-          <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)]">
-            Enroll in {course.title}
+          <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)] capitalize">
+            {enrollmentType} Enrollment: {course.title}
           </h2>
           <button
             type="button"

@@ -5,6 +5,7 @@ import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
 import { CourseDetailOverlay } from "./CourseDetailOverlay";
 import { EnrollmentModal } from "./EnrollmentModal";
+import { EnrollmentType } from "@/lib/api";
 
 const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: string }> = {
   cyan: {
@@ -26,7 +27,7 @@ const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: strin
 
 export function CourseCardLight({ course }: { course: Course }) {
   const [showOverlay, setShowOverlay] = useState(false);
-  const [showEnrollModal, setShowEnrollModal] = useState(false);
+  const [enrollmentType, setEnrollmentType] = useState<EnrollmentType | null>(null);
   const accent = ACCENT[course.accent];
 
   const openCourseDetails = () => {
@@ -128,17 +129,18 @@ export function CourseCardLight({ course }: { course: Course }) {
         course={course}
         open={showOverlay}
         onClose={() => setShowOverlay(false)}
-        onEnrollClick={() => {
-          setShowEnrollModal(true);
+        onEnrollClick={(type) => {
+          setEnrollmentType(type);
           setShowOverlay(false);
         }}
       />
 
       {/* Enrollment modal */}
-      {showEnrollModal && (
+      {enrollmentType && (
         <EnrollmentModal
           course={course}
-          onClose={() => setShowEnrollModal(false)}
+          enrollmentType={enrollmentType}
+          onClose={() => setEnrollmentType(null)}
         />
       )}
     </>

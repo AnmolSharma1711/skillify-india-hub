@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { X, Clock, GraduationCap } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
+import { EnrollmentType } from "@/lib/api";
 
 const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: string }> = {
   cyan: {
@@ -30,7 +31,7 @@ export function CourseDetailOverlay({
   course: Course;
   open: boolean;
   onClose: () => void;
-  onEnrollClick: () => void;
+  onEnrollClick: (type: EnrollmentType) => void;
 }) {
   const accent = ACCENT[course.accent];
 
@@ -180,19 +181,19 @@ export function CourseDetailOverlay({
             {/* CTA */}
             <div className="flex flex-col gap-3 pt-4 sm:flex-row">
               <button
-                onClick={() => window.open(`https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`, "_blank")}
+                onClick={() => onEnrollClick("individual")}
                 className="flex-1 inline-flex h-12 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"
               >
                 Individual Enrollment
               </button>
               <button
-                onClick={onEnrollClick}
+                onClick={() => onEnrollClick("institute")}
                 className="flex-1 inline-flex h-12 items-center justify-center rounded-lg border-2 border-[color:var(--brand-teal)] bg-white text-sm font-semibold text-[color:var(--brand-teal)] transition-colors hover:bg-[color:var(--brand-teal)] hover:text-white"
               >
                 University Partnership
               </button>
               <button
-                onClick={() => window.open(`https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`, "_blank")}
+                onClick={() => onEnrollClick("mentor")}
                 className="flex-1 inline-flex h-12 items-center justify-center rounded-lg border-2 border-[color:var(--brand-navy)] bg-white text-sm font-semibold text-[color:var(--brand-navy)] transition-colors hover:bg-[color:var(--brand-navy)] hover:text-white"
               >
                 Become a Mentor
