@@ -69,8 +69,8 @@ export function EnrollmentModal({
 
   if (done) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-0">
-        <div className="w-full max-w-sm rounded-2xl border border-[color:var(--brand-teal)]/30 bg-white p-8 text-center shadow-lg">
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div className="w-full max-w-sm rounded-2xl border border-[color:var(--brand-teal)]/30 bg-white p-6 sm:p-8 text-center shadow-lg">
           <CheckCircle2 className="mx-auto h-12 w-12 text-[color:var(--brand-teal)]" />
           <h4 className="mt-4 font-display text-xl font-semibold text-[color:var(--brand-navy)]">
             Thank You!
@@ -91,14 +91,14 @@ export function EnrollmentModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-0" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={onClose}>
       <form
         onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-6 shadow-lg sm:p-8"
+        className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-2xl bg-white p-5 shadow-lg sm:p-8"
       >
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)] capitalize">
+        <div className="flex items-start sm:items-center justify-between mb-5 sm:mb-6 gap-2">
+          <h2 className="font-display text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)] capitalize leading-tight">
             {enrollmentType} Enrollment: {course.title}
           </h2>
           <button
@@ -131,7 +131,7 @@ export function EnrollmentModal({
               name="motivation"
               rows={3}
               maxLength={500}
-              className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none transition-colors focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
+              className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base sm:text-sm text-[color:var(--foreground)] outline-none transition-colors focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
             />
           </div>
         </div>
@@ -175,7 +175,7 @@ function Field({
         name={name}
         type={type}
         placeholder={placeholder}
-        className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none transition-colors focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
+        className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base sm:text-sm text-[color:var(--foreground)] outline-none transition-colors focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
       />
       {error ? (
         <p className="mt-1 text-[11px] text-destructive">{error}</p>
