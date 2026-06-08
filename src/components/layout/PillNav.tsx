@@ -246,10 +246,6 @@ export function PillNav({
           </ul>
         </div>
 
-        <Link to="/courses" className="pill-enroll desktop-only">
-          Enroll Free
-        </Link>
-
         {trailingLogo && (
           <div className="pill-logo desktop-only" aria-label={trailingLogoAlt} style={{ marginLeft: 4 }}>
             <img src={trailingLogo} alt={trailingLogoAlt} />
@@ -280,16 +276,6 @@ export function PillNav({
               </Link>
             </li>
           ))}
-          <li>
-            <Link
-              to="/courses"
-              className="mobile-menu-link"
-              style={{ background: "linear-gradient(135deg, oklch(0.28 0.13 258), oklch(0.52 0.11 215))" }}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Enroll Free
-            </Link>
-          </li>
         </ul>
       </div>
     </div>

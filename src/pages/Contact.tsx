@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { COURSES } from "@/config/courses";
 import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
+import coordinatorPhoto from "@/assets/coordinator.jpeg";
 
 const contactPoints = [
   {
@@ -94,16 +95,6 @@ export default function Contact() {
                   </div>
                 </div>
               ))}
-
-              <div className="rounded-2xl border border-[color:var(--brand-saffron)]/30 bg-[color:var(--brand-saffron)]/10 p-5">
-                <div className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-5 w-5 text-[color:var(--brand-saffron)]" />
-                  <p className="text-sm leading-relaxed text-[color:var(--brand-navy)]">
-                    For live contact details, add the official email or phone number and I can wire
-                    this form to open a message directly.
-                  </p>
-                </div>
-              </div>
             </div>
 
             <div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm">

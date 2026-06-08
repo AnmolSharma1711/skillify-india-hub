@@ -55,26 +55,16 @@ export function Hero() {
         </h1>
 
         <p
-          className="mx-auto mt-8 max-w-5xl text-xl leading-relaxed text-gray-800 sm:text-3xl"
+          className="mx-auto mt-8 max-w-7xl text-xl leading-relaxed text-gray-900 sm:text-2xl"
           style={{ animationDelay: "0.2s" }}
         >
-          <>
-  Free, mentor-led programs in{" "}
-  <span className="font-semibold text-[color:var(--brand-navy)]">
-    Python
-  </span>
-  ,{" "}
-  <span className="font-semibold text-[color:var(--brand-navy)]">
-    Machine Learning
-  </span>
-  {" "}and{" "}
-  <span className="font-semibold text-[color:var(--brand-navy)]">
-    Generative AI
-  </span>
-  {" "}— designed by IIIT Delhi faculty, powered by the Ministry of Electronics and Information Technology.
-</>
+          <b>
+          Free Learning | Hands-On Training | Industry-Ready Skills | Portfolio Projects | Certifications
+          <br />
+          Future Technologies | Career Readiness | Expert Mentorship | IIIT Delhi |
+          MeitY | Digital India
+          </b>
         </p>
-
         <div
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           style={{ animationDelay: "0.3s" }}

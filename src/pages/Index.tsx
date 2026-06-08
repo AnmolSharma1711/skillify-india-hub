@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { Hero } from "@/components/home/Hero";
-import { CoursesShowcase } from "@/components/home/CoursesShowcase";
 import { AboutSection } from "@/components/home/AboutSection";
 import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
@@ -17,7 +16,6 @@ export default function Index() {
       </Helmet>
 
       <Hero />
-      <CoursesShowcase />
       <AboutSection />
 
       {/* Logos section at the end */}
