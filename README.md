@@ -383,3 +383,6 @@ Built for IIIT Delhi × MEIT. All rights reserved.
 ---
 
 **Status**: ✅ Full-stack, production-ready — Frontend on Vercel, Backend on Render with PostgreSQL
+
+*Last updated: June 8, 2026 - Triggered Vercel redeploy after configuring environment variables*
+
