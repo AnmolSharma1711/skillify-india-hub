@@ -11,7 +11,7 @@ interface EnrollmentPayload {
   motivation: string;
 }
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? "http://localhost:8000" : "https://skillify-backend.onrender.com");
 
 export async function submitToBackend(
   course: Course,
