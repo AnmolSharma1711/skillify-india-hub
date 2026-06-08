@@ -4,8 +4,8 @@ import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Courses Offered", href: "/courses" },
+  { label: "Enroll Now", href: "/enroll" },
   { label: "Contact", href: "/contact" },
 ];
 

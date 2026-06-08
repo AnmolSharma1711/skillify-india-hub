@@ -4,6 +4,74 @@ import { CoursesGrid } from "@/components/courses/CoursesGrid";
 import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
 
+const PREVIOUS_COURSES = [
+  {
+    title: "Full Stack Web Development",
+    description:
+      "Learned modern frontend and backend development with industry-standard technologies.",
+  },
+  {
+    title: "Data Science Foundations",
+    description:
+      "Built strong foundations in data analysis, visualization and statistics.",
+  },
+  {
+    title: "Cyber Security Essentials",
+    description:
+      "Explored digital security, ethical hacking concepts and cyber awareness.",
+  },
+];
+
+const UPCOMING_COURSES = [
+  {
+    title: "AI & Robotics",
+    description:
+      "Build intelligent robotic systems using AI, computer vision and automation.",
+  },
+  {
+    title: "Cloud Computing",
+    description:
+      "Learn cloud infrastructure, deployment pipelines and scalable applications.",
+  },
+  {
+    title: "Blockchain Technology",
+    description:
+      "Explore decentralized systems, smart contracts and Web3 development.",
+  },
+];
+
+function PlaceholderCourseCard({
+  title,
+  description,
+  status,
+}: {
+  title: string;
+  description: string;
+  status: "Completed" | "Coming Soon";
+}) {
+  return (
+    <div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)]">
+      <span
+        className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+          status === "Coming Soon"
+            ? "bg-amber-100 text-amber-700"
+            : "bg-slate-100 text-slate-700"
+        }`}
+      >
+        {status}
+      </span>
+
+      <h3 className="mt-4 font-display text-xl font-bold text-[color:var(--brand-navy)]">
+        {title}
+      </h3>
+
+      <p className="mt-3 text-sm text-[color:var(--muted-foreground)]">
+        {description}
+      </p>
+    </div>
+  );
+}
+
 export default function Courses() {
   return (
     <>
@@ -20,23 +88,87 @@ export default function Courses() {
           <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
             Courses Offered
           </p>
+
           <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
-            Industry-Ready <span className="text-gradient-brand">courses</span>
+            Industry-Ready <span className="text-gradient-brand">Courses</span>
           </h1>
+
           <p className="mt-4 text-[color:var(--muted-foreground)]">
-            Free, hands-on training in emerging technologies — taught by IIITD faculty and industry experts.
+            Free, hands-on training in emerging technologies — taught by IIIT Delhi faculty and industry experts.
           </p>
         </div>
 
-        <CoursesGrid courses={COURSES} />
+        <p className="mt-4 text-sm font-medium text-[color:var(--brand-teal)]">
+        <span className="hidden md:inline">
+          Hover over a course card to enroll
+        </span>
+
+        <span className="inline md:hidden">
+          Tap on a course card to enroll
+        </span>
+        </p>
+
+        {/* Ongoing Courses */}
+        <section>
+          <h2 className="mb-6 font-display text-3xl font-bold text-[color:var(--brand-navy)]">
+            Ongoing Courses
+          </h2>
+
+          <CoursesGrid courses={COURSES} />
+        </section>
+
+        {/* Previous Courses */}
+        <section className="mt-20">
+          <h2 className="mb-3 font-display text-3xl font-bold text-[color:var(--brand-navy)]">
+            Previously Offered Courses
+          </h2>
+
+          <p className="mb-8 text-[color:var(--muted-foreground)]">
+            Successful programs conducted in previous cohorts.
+          </p>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {PREVIOUS_COURSES.map((course) => (
+              <PlaceholderCourseCard
+                key={course.title}
+                title={course.title}
+                description={course.description}
+                status="Completed"
+              />
+            ))}
+          </div>
+        </section>
+
+        {/* Upcoming Courses */}
+        <section className="mt-20">
+          <h2 className="mb-3 font-display text-3xl font-bold text-[color:var(--brand-navy)]">
+            Coming Soon
+          </h2>
+
+          <p className="mb-8 text-[color:var(--muted-foreground)]">
+            New programs currently being prepared by IIIT Delhi and MeitY.
+          </p>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {UPCOMING_COURSES.map((course) => (
+              <PlaceholderCourseCard
+                key={course.title}
+                title={course.title}
+                description={course.description}
+                status="Coming Soon"
+              />
+            ))}
+          </div>
+        </section>
       </div>
 
-      {/* Logos section at the end */}
+      {/* Logos section */}
       <section className="relative overflow-hidden">
         <div
           aria-hidden
           className="absolute inset-0 bg-grid opacity-40"
         />
+
         <div
           aria-hidden
           className="absolute inset-0"
@@ -45,16 +177,26 @@ export default function Courses() {
               "linear-gradient(180deg, oklch(0.99 0.003 240 / 0.92), oklch(0.99 0.003 240 / 0.88))",
           }}
         />
+
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <div className="mt-16 border-t border-[color:var(--border)] pt-16">
             <p className="mb-8 text-center text-sm uppercase tracking-widest text-[color:var(--brand-teal)]">
               A partnership between
             </p>
+
             <div className="flex flex-col items-center justify-center gap-8 sm:flex-row sm:gap-12">
               <div className="flex h-20 items-center sm:h-24">
-                <img src={iiitdLogo} alt="IIIT Delhi" className="h-full w-auto object-contain" />
+                <img
+                  src={iiitdLogo}
+                  alt="IIIT Delhi"
+                  className="h-full w-auto object-contain"
+                />
               </div>
-              <span className="font-display text-3xl font-bold text-[color:var(--brand-navy)]">×</span>
+
+              <span className="font-display text-3xl font-bold text-[color:var(--brand-navy)]">
+                ×
+              </span>
+
               <div className="flex h-16 items-center sm:h-20">
                 <img
                   src={meitLogo}

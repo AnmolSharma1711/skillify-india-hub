@@ -164,30 +164,6 @@
   border-radius: 50px;
   z-index: 4;
 }
-
-/* Enroll CTA pill */
-.pill-enroll {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--nav-h);
-  padding: 0 24px;
-  background: linear-gradient(135deg, oklch(0.28 0.13 258), oklch(0.52 0.11 215));
-  color: #fff;
-  text-decoration: none;
-  border-radius: 9999px;
-  font-weight: 800;
-  font-size: xx-large;
-  line-height: inherit;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-  cursor: pointer;
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  box-shadow: 0 2px 12px -3px rgba(27, 58, 107, 0.30);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  flex-shrink: 0;
-}
-
 .pill-enroll:hover {
   transform: scale(1.03);
   box-shadow: 0 4px 20px -4px rgba(27, 58, 107, 0.40);

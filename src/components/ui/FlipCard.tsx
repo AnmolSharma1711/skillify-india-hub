@@ -1,7 +1,6 @@
 import { useState, ElementType } from "react";
-import { Link } from "react-router-dom";
 import * as Icons from "lucide-react";
-import { Clock, GraduationCap, ArrowRight } from "lucide-react";
+import { Clock, GraduationCap } from "lucide-react";
 import type { Course } from "@/config/courses";
 import "./FlipCard.css";
 
@@ -22,8 +21,30 @@ const ACCENT: Record<string, { bg: string; text: string }> = {
 
 export function FlipCard({ course }: { course: Course }) {
   const [isFlipped, setIsFlipped] = useState(false);
+
   const accent = ACCENT[course.accent];
   const IconComponent = Icons[course.icon as keyof typeof Icons] as ElementType;
+
+  const handleUniversityEnroll = () => {
+    window.open(
+      `https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`,
+      "_blank"
+    );
+  };
+
+  const handleIndividualEnroll = () => {
+    window.open(
+      `https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`,
+      "_blank"
+    );
+  };
+
+  const handleMentorEnroll = () => {
+    window.open(
+      `https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`,
+      "_blank"
+    );
+  };
 
   return (
     <div
@@ -32,7 +53,7 @@ export function FlipCard({ course }: { course: Course }) {
       onMouseLeave={() => setIsFlipped(false)}
     >
       <div className={`flip-card ${isFlipped ? "flipped" : ""}`}>
-        {/* Front side */}
+        {/* Front Side */}
         <div className="flip-card-front">
           <div className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-white/90 p-6 shadow-sm backdrop-blur">
             <div
@@ -41,23 +62,48 @@ export function FlipCard({ course }: { course: Course }) {
             >
               {IconComponent && <IconComponent className="h-6 w-6" />}
             </div>
+
             <div className="mt-5">
-              <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: accent.text }}>
+              <p
+                className="text-xs font-semibold uppercase tracking-widest"
+                style={{ color: accent.text }}
+              >
                 {course.category}
               </p>
+
               <h3 className="mt-2 font-display text-lg font-bold text-[color:var(--brand-navy)]">
                 {course.title}
               </h3>
+
               <p className="mt-3 text-sm leading-relaxed text-[color:var(--muted-foreground)]">
                 {course.tagline}
               </p>
             </div>
+
+            {/* Tech Stack */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              {course.techs.slice(0, 3).map((tech) => {
+                const TechIcon = Icons[tech.icon as keyof typeof Icons] as ElementType;
+
+                return (
+                  <span
+                    key={tech.label}
+                    className="inline-flex items-center gap-1 rounded-full border border-cyan-300/40 bg-cyan-50 px-3 py-1 text-xs font-medium text-cyan-600 shadow-[0_0_12px_rgba(34,211,238,0.25)]"
+                  >
+                    {TechIcon && <TechIcon className="h-3 w-3" />}
+                    {tech.label}
+                  </span>
+                );
+              })}
+            </div>
+
             <div className="mt-auto pt-4">
               <div className="flex flex-wrap gap-2 text-xs text-[color:var(--muted-foreground)]">
                 <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--muted)] px-2 py-1">
                   <Clock className="h-3 w-3" />
                   {course.duration}
                 </span>
+
                 <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--muted)] px-2 py-1">
                   <GraduationCap className="h-3 w-3" />
                   {course.level}
@@ -67,7 +113,7 @@ export function FlipCard({ course }: { course: Course }) {
           </div>
         </div>
 
-        {/* Back side */}
+        {/* Back Side */}
         <div className="flip-card-back">
           <div className="flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-gradient-to-br from-white/95 to-white/85 p-6 shadow-sm backdrop-blur">
             <div
@@ -76,26 +122,49 @@ export function FlipCard({ course }: { course: Course }) {
             >
               {IconComponent && <IconComponent className="h-5 w-5" />}
             </div>
+
             <h3 className="mt-4 font-display text-sm font-bold text-[color:var(--brand-navy)]">
               {course.title}
             </h3>
-            <p className="mt-2 text-xs leading-relaxed text-[color:var(--muted-foreground)]">
+
+            <p className="mt-2 text-2xs leading-relaxed text-[color:var(--muted-foreground)]">
               {course.description || course.tagline}
             </p>
-            <div className="mt-auto pt-4 space-y-2">
-              {course.highlights && course.highlights.slice(0, 2).map((highlight, idx) => (
-                <p key={idx} className="text-xs text-[color:var(--brand-navy)]">
+
+            <div className="mt-3 space-y-2">
+              {course.highlights?.slice(0, 2).map((highlight, idx) => (
+                <p
+                  key={idx}
+                  className="text-xm text-[color:var(--brand-navy)]"
+                >
                   ✓ {highlight}
                 </p>
               ))}
             </div>
-            <Link
-              to="/courses"
-              className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-[image:var(--gradient-brand)] px-4 py-2 text-xs font-semibold text-white shadow-sm transition-transform hover:scale-105"
-            >
-              View Course
-              <ArrowRight className="h-3 w-3" />
-            </Link>
+
+            {/* Enrollment Buttons */}
+            <div className="mt-auto flex flex-col gap-2 pt-4">
+              <button
+                onClick={handleIndividualEnroll}
+                className="rounded-lg bg-[image:var(--gradient-brand)] px-3 py-2 text-xs font-semibold text-white transition-transform hover:scale-105"
+              >
+                Individual Enrollment
+              </button>
+
+              <button
+                onClick={handleUniversityEnroll}
+                className="rounded-lg border border-[color:var(--brand-teal)] px-3 py-2 text-xs font-semibold text-[color:var(--brand-teal)] transition-all hover:bg-[color:var(--brand-teal)] hover:text-white"
+              >
+                University Partnership
+              </button>
+
+              <button
+                onClick={handleMentorEnroll}
+                className="rounded-lg border border-[color:var(--brand-navy)] px-3 py-2 text-xs font-semibold text-[color:var(--brand-navy)] transition-all hover:bg-[color:var(--brand-navy)] hover:text-white"
+              >
+                Become a Mentor
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -4,11 +4,11 @@ import { Footer } from "@/components/layout/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { HeroCanvas } from "@/components/home/HeroCanvas";
 import Index from "@/pages/Index";
-import About from "@/pages/About";
 import Courses from "@/pages/Courses";
 import CourseDetail from "@/pages/CourseDetail";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
+import Enroll from "@/pages/Enroll";
 
 export default function App() {
   return (
@@ -21,10 +21,10 @@ export default function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/courses/:id" element={<CourseDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/enroll" element={<Enroll />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

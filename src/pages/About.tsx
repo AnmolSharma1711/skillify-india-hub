@@ -76,17 +76,6 @@ export default function About() {
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Left: Objectives */}
             <div>
-              <div className="mb-8 rounded-2xl border border-[color:var(--border)] bg-white/80 p-6 shadow-sm backdrop-blur">
-                <h2 className="font-display text-xl font-bold text-[color:var(--brand-navy)]">
-                  Why this exists
-                </h2>
-                <p className="mt-3 text-sm leading-relaxed text-[color:var(--muted-foreground)]">
-                  India's digital economy is growing faster than its talent pipeline. We believe the
-                  answer isn't more theory — it's hands-on, project-based learning, taught by people
-                  who actually build things.
-                </p>
-              </div>
-
               <h2 className="mb-6 font-display text-2xl font-bold text-[color:var(--brand-navy)]">
                 Objectives of the Project
               </h2>
