@@ -58,42 +58,20 @@ export function AboutSection() {
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2">
-          {/* Left column: Objectives */}
-          <div>
-            <h3 className="mb-6 font-display text-2xl font-bold text-[color:var(--brand-navy)]">
-              Objectives of the Project
-            </h3>
-            <ul className="space-y-3">
-              {HOME_HIGHLIGHTS.map((highlight, idx) => (
-                <li key={idx} className="flex gap-3">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--brand-teal)]" />
-                  <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{highlight}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right column: What you get + Beneficiaries */}
+          {/* Left column: Objectives & Beneficiaries */}
           <div className="space-y-10">
             <div>
               <h3 className="mb-6 font-display text-2xl font-bold text-[color:var(--brand-navy)]">
-                What you get
+                Objectives of the Project
               </h3>
-              <div className="grid gap-3">
-                {WHY_JOIN.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex gap-4 rounded-xl border border-[color:var(--border)] bg-white/80 p-4 shadow-sm backdrop-blur"
-                  >
-                    <span
-                      aria-hidden
-                      className="mt-1.5 h-2 w-2 shrink-0 rounded-full"
-                      style={{ background: "var(--brand-saffron)" }}
-                    />
-                    <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{item}</span>
-                  </div>
+              <ul className="space-y-3">
+                {HOME_HIGHLIGHTS.map((highlight, idx) => (
+                  <li key={idx} className="flex gap-3">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--brand-teal)]" />
+                    <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{highlight}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             <div>
@@ -114,6 +92,30 @@ export function AboutSection() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+
+          {/* Right column: What you get */}
+          <div className="space-y-10">
+            <div>
+              <h3 className="mb-6 font-display text-2xl font-bold text-[color:var(--brand-navy)]">
+                What you get
+              </h3>
+              <div className="grid gap-3">
+                {WHY_JOIN.map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex gap-4 rounded-xl border border-[color:var(--border)] bg-white/80 p-4 shadow-sm backdrop-blur"
+                  >
+                    <span
+                      aria-hidden
+                      className="mt-1.5 h-2 w-2 shrink-0 rounded-full"
+                      style={{ background: "var(--brand-saffron)" }}
+                    />
+                    <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <Link
