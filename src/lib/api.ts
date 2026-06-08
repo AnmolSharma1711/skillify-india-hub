@@ -11,12 +11,14 @@ interface EnrollmentPayload {
   motivation: string;
 }
 
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
 export async function submitToBackend(
   course: Course,
   type: EnrollmentType,
   data: EnrollmentPayload
 ) {
-  const url = `http://localhost:8000/api/enrollments/${type}/`;
+  const url = `${API_BASE}/api/enrollments/${type}/`;
   
   const payload = {
     ...data,
