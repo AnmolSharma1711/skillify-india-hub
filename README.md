@@ -254,37 +254,40 @@ Render will automatically:
 
 ---
 
-### Step 2: Connect Frontend (Vercel) to Backend (Render)
+### Step 2: Deploy Frontend on Render
 
-Your React frontend on Vercel needs to know where to send enrollment data. This is done via a single environment variable.
+Render is excellent for hosting React/Vite applications via their "Static Site" service. Since we already configured the frontend code to automatically connect to the Render backend in production, no environment variables are needed!
 
-1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
-2. Select your **skillify-india-hub** project
-3. Go to **Settings** → **Environment Variables**
-4. Add:
+1. Go to [Render Dashboard](https://dashboard.render.com) → **New +** → **Static Site**
+2. Connect your GitHub repository: `AnmolSharma1711/skillify-india-hub`
+3. Configure the service:
+   - **Name**: `skillify-frontend`
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+4. Click **Create Static Site**
 
-   | Key | Value |
-   |---|---|
-   | `VITE_API_URL` | `https://skillify-backend.onrender.com` |
+#### Important: Configure SPA Routing
+Because React is a Single Page Application (SPA), you must tell Render to route all traffic to `index.html`.
+1. Once your static site is created, go to the **Redirects/Rewrites** tab on the left menu.
+2. Add a new rule:
+   - **Source**: `/*`
+   - **Destination**: `/index.html`
+   - **Action**: `Rewrite`
+3. Click **Save Changes**.
 
-   *(Replace `skillify-backend` with your actual Render service name if different)*
-
-5. Go to **Deployments** → Click the **three dots (⋯)** on the latest deployment → **Redeploy**
-
-   > ⚠️ **Important**: You MUST redeploy after adding the environment variable. Vite bakes `VITE_*` variables into the build at compile time, so a redeploy is required for the change to take effect.
+Your frontend will now be live at `https://skillify-frontend.onrender.com`!
 
 ---
 
 ### Step 3: Verify the Full Integration
 
-1. ✅ Open your Vercel site URL
+1. ✅ Open your Render frontend URL (`https://skillify-frontend.onrender.com`)
 2. ✅ Go to Courses → Click on any course → Click **Individual Enrollment** (or University/Mentor)
 3. ✅ Fill the form and submit
 4. ✅ You should see a **"Thank You"** success message
 5. ✅ Go to `https://skillify-backend.onrender.com/admin`
-6. ✅ Log in and check **Individual Enrollments** (or whichever type you submitted)
-7. ✅ Your submission should appear in the table with the course name, your details, and a timestamp
-
+6. ✅ Log in and check the Enrollments section
+7. ✅ Your submission should appear in the database table!
 ---
 
 ## Enrollment System
