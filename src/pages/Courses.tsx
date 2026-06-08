@@ -98,16 +98,6 @@ export default function Courses() {
           </p>
         </div>
 
-        <p className="mt-4 text-sm font-medium text-[color:var(--brand-teal)]">
-        <span className="hidden md:inline">
-          Hover over a course card to enroll
-        </span>
-
-        <span className="inline md:hidden">
-          Tap on a course card to enroll
-        </span>
-        </p>
-
         {/* Ongoing Courses */}
         <section>
           <h2 className="mb-6 font-display text-3xl font-bold text-[color:var(--brand-navy)]">

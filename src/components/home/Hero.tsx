@@ -47,7 +47,7 @@ export function Hero() {
         </div>
 
         <h1
-          className="mt-6 font-display text-12xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-12xl md:text-7xl"
+          className="mt-6 font-display text-5xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-6xl md:text-7xl"
           style={{ animationDelay: "0.1s" }}
         >
           <span className="text-gradient-brand">Skillify:</span> Skill the future of <br />

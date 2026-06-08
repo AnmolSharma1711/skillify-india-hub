@@ -4,6 +4,10 @@
   display: flex;
   justify-content: center;
   padding: 0.75rem 1rem;
+  --nav-h: 60px;
+  --logo: 80px;
+  --pill-pad-x: 60px;
+  --pill-gap: 3px;
 }
 
 @media (max-width: 768px) {
@@ -15,10 +19,6 @@
 }
 
 .pill-nav {
-  --nav-h: 60px;
-  --logo: 80px;
-  --pill-pad-x: 60px;
-  --pill-gap: 3px;
   width: max-content;
   display: flex;
   align-items: center;

@@ -178,18 +178,24 @@ export function CourseDetailOverlay({
             </div>
 
             {/* CTA */}
-            <div className="flex gap-3 pt-4">
+            <div className="flex flex-col gap-3 pt-4 sm:flex-row">
               <button
-                onClick={onEnrollClick}
+                onClick={() => window.open(`https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`, "_blank")}
                 className="flex-1 inline-flex h-12 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"
               >
-                Enroll Now
+                Individual Enrollment
               </button>
               <button
-                onClick={onClose}
-                className="flex-1 inline-flex h-12 items-center justify-center rounded-lg border-2 border-[color:var(--brand-navy)]/20 bg-white text-sm font-semibold text-[color:var(--brand-navy)] transition-colors hover:border-[color:var(--brand-navy)]/40"
+                onClick={onEnrollClick}
+                className="flex-1 inline-flex h-12 items-center justify-center rounded-lg border-2 border-[color:var(--brand-teal)] bg-white text-sm font-semibold text-[color:var(--brand-teal)] transition-colors hover:bg-[color:var(--brand-teal)] hover:text-white"
               >
-                Close
+                University Partnership
+              </button>
+              <button
+                onClick={() => window.open(`https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`, "_blank")}
+                className="flex-1 inline-flex h-12 items-center justify-center rounded-lg border-2 border-[color:var(--brand-navy)] bg-white text-sm font-semibold text-[color:var(--brand-navy)] transition-colors hover:bg-[color:var(--brand-navy)] hover:text-white"
+              >
+                Become a Mentor
               </button>
             </div>
           </div>

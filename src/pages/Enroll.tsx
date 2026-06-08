@@ -22,6 +22,15 @@ export default function Enroll() {
           <p className="mt-4 text-[color:var(--muted-foreground)]">
             Choose your course and select how you would like to participate.
           </p>
+
+          <p className="mt-4 text-sm font-medium text-[color:var(--brand-teal)]">
+            <span className="hidden md:inline">
+              Hover over a course card to enroll
+            </span>
+            <span className="inline md:hidden">
+              Tap on a course card to enroll
+            </span>
+          </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
