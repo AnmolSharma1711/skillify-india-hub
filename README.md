@@ -8,7 +8,7 @@ The site introduces three free, mentor-led programmes — **Python**, **Machine 
 
 ## Tech Stack
 
-### Frontend
+### Frontend (Deployed on Vercel)
 
 | Layer | Tech |
 |---|---|
@@ -23,7 +23,7 @@ The site introduces three free, mentor-led programmes — **Python**, **Machine 
 | Icons | **lucide-react** |
 | Meta Tags | **react-helmet-async** |
 
-### Backend
+### Backend (Deployed on Render)
 
 | Layer | Tech |
 |---|---|
@@ -32,6 +32,25 @@ The site introduces three free, mentor-led programmes — **Python**, **Machine 
 | CORS | **django-cors-headers** |
 | DB Config | **dj-database-url** (auto-switch via `DATABASE_URL`) |
 | WSGI Server | **Gunicorn** (production) |
+
+---
+
+## How It Works (Architecture)
+
+```
+┌─────────────────────────┐         ┌──────────────────────────────┐
+│   Vercel (Frontend)     │         │   Render (Backend)           │
+│                         │  HTTPS  │                              │
+│  React App              │────────▶│  Django REST API             │
+│  User fills form ──▶    │  POST   │  ──▶ Validates data          │
+│  Calls /api/enrollments │         │  ──▶ Saves to PostgreSQL     │
+│                         │         │                              │
+│  VITE_API_URL env var   │         │  DATABASE_URL env var        │
+│  points to Render URL   │         │  points to Render PostgreSQL │
+└─────────────────────────┘         └──────────────────────────────┘
+```
+
+**Flow**: User visits your Vercel site → clicks an enrollment button → fills the modal form → frontend sends a `POST` request to your Render backend URL → Django validates and saves it to PostgreSQL → user sees a success message.
 
 ---
 
@@ -81,7 +100,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Django API runs at [http://localhost:8000](http://localhost:8000).  
+Django API runs at [http://localhost:8000](http://localhost:8000).
 Admin panel at [http://localhost:8000/admin](http://localhost:8000/admin).
 
 ---
@@ -90,53 +109,55 @@ Admin panel at [http://localhost:8000/admin](http://localhost:8000/admin).
 
 ```
 skillify-india-hub/
-├── src/                         # React Frontend
-│   ├── main.tsx                 # React entry point
-│   ├── App.tsx                  # Routes definition
-│   ├── styles.css               # Tailwind + design tokens
+├── src/                              # React Frontend
+│   ├── main.tsx                      # React entry point
+│   ├── App.tsx                       # Routes definition
+│   ├── styles.css                    # Tailwind + design tokens
 │   ├── pages/
-│   │   ├── Index.tsx            # Home page
-│   │   ├── Courses.tsx          # Courses listing
-│   │   ├── Enroll.tsx           # Enrollment page with flip cards
-│   │   ├── About.tsx            # About programme
-│   │   └── NotFound.tsx         # 404 page
+│   │   ├── Index.tsx                 # Home page
+│   │   ├── Courses.tsx               # Courses listing
+│   │   ├── Enroll.tsx                # Enrollment page with flip cards
+│   │   ├── About.tsx                 # About programme
+│   │   └── NotFound.tsx              # 404 page
 │   ├── components/
 │   │   ├── layout/
-│   │   │   ├── PillNav.tsx      # Pill-style navbar
+│   │   │   ├── PillNav.tsx           # Pill-style navbar
 │   │   │   └── Footer.tsx
 │   │   ├── home/
-│   │   │   ├── Hero.tsx         # Hero section with 3D canvas
-│   │   │   ├── HeroCanvas.tsx   # Three.js particle animation
-│   │   │   ├── AboutSection.tsx # About section
+│   │   │   ├── Hero.tsx              # Hero section with 3D canvas
+│   │   │   ├── HeroCanvas.tsx        # Three.js particle animation
+│   │   │   ├── AboutSection.tsx      # About section
 │   │   │   └── MissionSection.tsx
 │   │   ├── courses/
 │   │   │   ├── CourseCardLight.tsx
 │   │   │   ├── CourseDetailOverlay.tsx
 │   │   │   └── EnrollmentModal.tsx
 │   │   └── ui/
-│   │       └── FlipCard.tsx     # Flip card for enrollment page
+│   │       └── FlipCard.tsx          # Flip card for enrollment page
 │   ├── config/
-│   │   └── courses.ts           # Course data
+│   │   └── courses.ts                # Course data
 │   └── lib/
-│       ├── api.ts               # Backend API utility
-│       └── utils.ts             # Utilities
+│       ├── api.ts                    # Backend API utility
+│       └── utils.ts                  # Utilities
 │
-├── backend/                     # Django Backend
+├── backend/                          # Django Backend
 │   ├── core/
-│   │   ├── settings.py          # Django settings (env-aware)
-│   │   ├── urls.py              # Root URL config
+│   │   ├── settings.py               # Django settings (env-aware)
+│   │   ├── urls.py                   # Root URL config
 │   │   └── wsgi.py
 │   ├── enrollments/
-│   │   ├── models.py            # Individual, Institute, Mentor models
-│   │   ├── serializers.py       # DRF serializers
-│   │   ├── views.py             # API views
-│   │   ├── urls.py              # Enrollment endpoints
-│   │   └── admin.py             # Admin panel registration
+│   │   ├── models.py                 # Individual, Institute, Mentor models
+│   │   ├── serializers.py            # DRF serializers
+│   │   ├── views.py                  # API views
+│   │   ├── urls.py                   # Enrollment endpoints
+│   │   ├── admin.py                  # Admin panel registration
+│   │   └── management/commands/
+│   │       └── create_superuser_from_env.py  # Auto superuser creation
 │   ├── requirements.txt
-│   ├── Procfile                 # For Render deployment
+│   ├── Procfile                      # For Render deployment
 │   └── manage.py
 │
-├── vercel.json                  # Vercel SPA config
+├── vercel.json                       # Vercel SPA config
 └── package.json
 ```
 
@@ -166,82 +187,103 @@ skillify-india-hub/
 
 ---
 
-## Deployment
+## 🚀 Production Deployment
 
-### Backend — Deploy to Render (Free Tier)
+### Step 1: Deploy Backend on Render
 
-[Render](https://render.com) provides free hosting for Django apps with a managed PostgreSQL database.
+#### 1a. Create a PostgreSQL Database
 
-#### Step 1: Create a PostgreSQL Database on Render
-
-1. Go to [Render Dashboard](https://dashboard.render.com) → **New** → **PostgreSQL**
+1. Go to [Render Dashboard](https://dashboard.render.com) → **New +** → **PostgreSQL**
 2. Fill in:
    - **Name**: `skillify-db`
-   - **Region**: Choose nearest to your users
+   - **Region**: Choose nearest to your users (e.g. Singapore)
    - **Plan**: Free
 3. Click **Create Database**
-4. Copy the **Internal Database URL** (starts with `postgres://...`)
+4. Once created, go to the database page and copy the **Internal Database URL** (starts with `postgres://...`). You'll need this in the next step.
 
-#### Step 2: Create a Web Service on Render
+#### 1b. Create a Web Service
 
-1. Go to **New** → **Web Service**
-2. Connect your GitHub repository (`AnmolSharma1711/skillify-india-hub`)
-3. Configure:
-   - **Name**: `skillify-backend`
-   - **Region**: Same as your database
-   - **Root Directory**: `backend`
-   - **Runtime**: Python 3
-   - **Build Command**: `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate`
-   - **Start Command**: `gunicorn core.wsgi:application`
-   - **Plan**: Free
+1. Go to **New +** → **Web Service**
+2. Connect your GitHub repository: `AnmolSharma1711/skillify-india-hub`
+3. Configure the service:
 
-4. Add **Environment Variables**:
+   | Setting | Value |
+   |---|---|
+   | **Name** | `skillify-backend` |
+   | **Region** | Same as your database |
+   | **Root Directory** | `backend` |
+   | **Runtime** | Python 3 |
+   | **Build Command** | `pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate && python manage.py create_superuser_from_env` |
+   | **Start Command** | `gunicorn core.wsgi:application` |
+   | **Plan** | Free |
+
+4. Add **Environment Variables** (Settings → Environment):
 
    | Key | Value |
    |---|---|
-   | `DATABASE_URL` | *(paste the Internal Database URL from Step 1)* |
-   | `SECRET_KEY` | *(generate a strong random string)* |
+   | `DATABASE_URL` | *(paste the Internal Database URL from Step 1a)* |
+   | `SECRET_KEY` | *(a strong random string — see below)* |
    | `DEBUG` | `False` |
    | `ALLOWED_HOSTS` | `skillify-backend.onrender.com` |
+   | `DJANGO_SU_NAME` | `anmol` |
+   | `DJANGO_SU_EMAIL` | `anmolsha4521@gmail.com` |
+   | `DJANGO_SU_PASSWORD` | *(your admin password)* |
+
+   > **How to generate a SECRET_KEY**: Run this locally in your terminal:
+   > ```bash
+   > python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+   > ```
+   > Copy the output and paste it as the value.
+
+   > ⚠️ **Security**: The superuser password is stored as an environment variable on Render, which is encrypted and not visible in logs. This is a safe approach — you can delete the `DJANGO_SU_*` variables after the first deploy if you prefer.
 
 5. Click **Create Web Service**
 
-> **Tip**: Generate a secret key by running:
-> ```bash
-> python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-> ```
+Render will automatically:
+- Install dependencies
+- Run database migrations (create tables)
+- Create the superuser from env variables
+- Start the Django server with Gunicorn
 
-#### Step 3: Create Superuser on Render
+**Your backend URL will be**: `https://skillify-backend.onrender.com`
 
-After deployment, go to your Web Service → **Shell** tab and run:
+#### 1c. Verify Backend
 
-```bash
-python manage.py createsuperuser
-```
+- Visit `https://skillify-backend.onrender.com/admin` → Login with your superuser credentials
+- You should see the Django Admin dashboard with **Individual Enrollments**, **Institute Enrollments**, and **Mentor Enrollments**
 
-### Frontend — Deploy to Vercel
+---
 
-1. Go to [https://vercel.com/new](https://vercel.com/new)
-2. Select your GitHub repository
-3. Click **Import**
-4. Add the **Environment Variable**:
+### Step 2: Connect Frontend (Vercel) to Backend (Render)
+
+Your React frontend on Vercel needs to know where to send enrollment data. This is done via a single environment variable.
+
+1. Go to your [Vercel Dashboard](https://vercel.com/dashboard)
+2. Select your **skillify-india-hub** project
+3. Go to **Settings** → **Environment Variables**
+4. Add:
 
    | Key | Value |
    |---|---|
    | `VITE_API_URL` | `https://skillify-backend.onrender.com` |
 
-   *(Replace with your actual Render backend URL)*
+   *(Replace `skillify-backend` with your actual Render service name if different)*
 
-5. Click **Deploy**
+5. Go to **Deployments** → Click the **three dots (⋯)** on the latest deployment → **Redeploy**
 
-> **Important**: Once your backend is deployed on Render, copy the URL (e.g., `https://skillify-backend.onrender.com`) and set it as the `VITE_API_URL` environment variable in Vercel. This connects your frontend to the production backend.
+   > ⚠️ **Important**: You MUST redeploy after adding the environment variable. Vite bakes `VITE_*` variables into the build at compile time, so a redeploy is required for the change to take effect.
 
-### Verify Deployment
+---
 
-- ✅ Frontend loads at your Vercel URL
-- ✅ All routes work (no 404 errors)
-- ✅ Submit an enrollment → check Django Admin for the record
-- ✅ Django Admin accessible at `https://your-backend.onrender.com/admin`
+### Step 3: Verify the Full Integration
+
+1. ✅ Open your Vercel site URL
+2. ✅ Go to Courses → Click on any course → Click **Individual Enrollment** (or University/Mentor)
+3. ✅ Fill the form and submit
+4. ✅ You should see a **"Thank You"** success message
+5. ✅ Go to `https://skillify-backend.onrender.com/admin`
+6. ✅ Log in and check **Individual Enrollments** (or whichever type you submitted)
+7. ✅ Your submission should appear in the table with the course name, your details, and a timestamp
 
 ---
 
@@ -249,13 +291,35 @@ python manage.py createsuperuser
 
 The platform supports three types of enrollments, each stored in its own database table:
 
-| Type | Model | Description |
-|---|---|---|
-| **Individual** | `IndividualEnrollment` | Self-enrolled students and professionals |
-| **Institute** | `InstituteEnrollment` | University/college partnership enrollments |
-| **Mentor** | `MentorEnrollment` | Mentor applications |
+| Type | Model | Endpoint | Description |
+|---|---|---|---|
+| **Individual** | `IndividualEnrollment` | `/api/enrollments/individual/` | Self-enrolled students and professionals |
+| **Institute** | `InstituteEnrollment` | `/api/enrollments/institute/` | University/college partnership enrollments |
+| **Mentor** | `MentorEnrollment` | `/api/enrollments/mentor/` | Mentor applications |
 
 All enrollment data can be viewed and managed through the Django Admin panel.
+
+---
+
+## All Environment Variables Reference
+
+### Frontend — Vercel
+
+| Variable | Description | Default (local dev) |
+|---|---|---|
+| `VITE_API_URL` | Backend API base URL | `http://localhost:8000` |
+
+### Backend — Render
+
+| Variable | Description | Default (local dev) |
+|---|---|---|
+| `DATABASE_URL` | PostgreSQL connection string | SQLite (local file) |
+| `SECRET_KEY` | Django secret key for security | Insecure dev key |
+| `DEBUG` | Enable debug mode (`True`/`False`) | `True` |
+| `ALLOWED_HOSTS` | Comma-separated allowed hostnames | `localhost,127.0.0.1` |
+| `DJANGO_SU_NAME` | Superuser username (for build command) | *(none — skips creation)* |
+| `DJANGO_SU_EMAIL` | Superuser email | *(none)* |
+| `DJANGO_SU_PASSWORD` | Superuser password | *(none — skips creation)* |
 
 ---
 
@@ -277,48 +341,38 @@ All enrollment data can be viewed and managed through the Django Admin panel.
 
 ---
 
-## Environment Variables
-
-### Frontend (Vercel)
-
-| Variable | Description | Default |
-|---|---|---|
-| `VITE_API_URL` | Backend API base URL | `http://localhost:8000` |
-
-### Backend (Render)
-
-| Variable | Description | Default |
-|---|---|---|
-| `DATABASE_URL` | PostgreSQL connection string | SQLite (local) |
-| `SECRET_KEY` | Django secret key | Insecure dev key |
-| `DEBUG` | Enable debug mode | `True` |
-| `ALLOWED_HOSTS` | Comma-separated allowed hosts | `localhost,127.0.0.1` |
-
----
-
 ## Troubleshooting
 
-### Dev Server Won't Start
+### Frontend won't connect to backend
+- Check that `VITE_API_URL` is set correctly in Vercel (no trailing slash)
+- Make sure you **redeployed** after adding the env variable
+- Open browser DevTools → Network tab → check that requests go to your Render URL
+
+### CORS errors in browser console
+- The backend has `CORS_ALLOW_ALL_ORIGINS = True` by default
+- If you want to restrict it, set `CORS_ALLOWED_ORIGINS` in `settings.py`
+
+### Render deploy fails
+- Check that **Root Directory** is set to `backend`
+- Ensure `requirements.txt` is inside the `backend/` folder
+- Check Render deploy logs for specific error messages
+
+### Superuser not created
+- Verify that `DJANGO_SU_NAME` and `DJANGO_SU_PASSWORD` are set in Render environment variables
+- The command skips silently if the user already exists (safe to re-run)
+
+### Dev server won't start
 ```bash
-# Clear node_modules and reinstall
+# Frontend
 rm -rf node_modules package-lock.json
 npm install
 npm run dev
-```
 
-### Backend Issues
-```bash
-# Re-run migrations
+# Backend
 cd backend
 python manage.py migrate
-
-# Check for errors
-python manage.py check
+python manage.py runserver
 ```
-
-### CORS Errors in Browser
-- Ensure the Django backend is running on port 8000
-- Check that `django-cors-headers` is installed and configured in `settings.py`
 
 ---
 
