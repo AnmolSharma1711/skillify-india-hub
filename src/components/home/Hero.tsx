@@ -83,9 +83,9 @@ export function Hero() {
           style={{ animationDelay: "0.4s" }}
         >
           {[
-            { k: "3", v: "Industry-ready courses" },
-            { k: "100%", v: "Free for students" },
-            { k: "IIITD", v: "Certified by faculty" },
+            { k: "3 Courses", v: <b>More are coming...</b> },
+            { k: "100% Free", v: <b>Free for students</b> },
+            { k: "IIITD", v: <b>Faculty Driven</b> },
           ].map((s) => (
             <div
               key={s.v}
