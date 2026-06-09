@@ -65,6 +65,7 @@ export function AboutSection() {
                 Objectives of the Project
               </h3>
               <div className="grid gap-3">
+              <b>
                 {HOME_HIGHLIGHTS.map((highlight, idx) => (
                   <div
                     key={idx}
@@ -74,6 +75,7 @@ export function AboutSection() {
                     <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{highlight}</span>
                   </div>
                 ))}
+                </b>
               </div>
             </div>
 
@@ -82,9 +84,10 @@ export function AboutSection() {
                 Targeted Beneficiaries
               </h3>
               <p className="mb-4 text-sm text-[color:var(--muted-foreground)]">
-                Engineering and non-engineering students, as well as unemployed youth:
+                <b>Engineering and non-engineering students, as well as unemployed youth:</b>
               </p>
               <div className="grid gap-3">
+                <b>
                 {WHO_CAN_JOIN.map((b, idx) => (
                   <div
                     key={idx}
@@ -97,6 +100,7 @@ export function AboutSection() {
                     <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{b}</span>
                   </div>
                 ))}
+              </b>
               </div>
             </div>
           </div>
@@ -108,6 +112,7 @@ export function AboutSection() {
                 What you get
               </h3>
               <div className="grid gap-3">
+                <b>
                 {WHY_JOIN.map((item, idx) => (
                   <div
                     key={idx}
@@ -121,6 +126,7 @@ export function AboutSection() {
                     <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{item}</span>
                   </div>
                 ))}
+              </b>
               </div>
             </div>
 

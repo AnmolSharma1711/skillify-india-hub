@@ -43,7 +43,7 @@ export function Hero() {
           style={{ animationDelay: "0s" }}
         >
           <Sparkles className="h-3.5 w-3.5 text-[color:var(--brand-saffron)]" />
-          A MEIT-powered initiative at IIIT Delhi
+          A MEIT-powered initiative by IIIT Delhi
         </div>
 
         <h1
