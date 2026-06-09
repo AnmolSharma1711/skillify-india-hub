@@ -113,9 +113,9 @@ export default function Contact() {
 
   {/* Coordinator Section */}
   {/* Coordinator Section */}
-<div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-6 sm:gap-5 text-center sm:text-left">
-  <div className="flex-1">
-    <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)]">
+<div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
+  <div className="flex-1 min-w-0">
+    <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] break-words">
       Prof. Arun Kumar Bashambu
     </h3>
 
@@ -127,7 +127,7 @@ export default function Contact() {
   <img
     src={coordinatorPhoto}
     alt="Faculty Coordinator"
-    className="h-40 w-40 sm:h-56 sm:w-56 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg"
+    className="h-28 w-28 sm:h-48 sm:w-48 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg mx-auto sm:mx-0"
   />
 </div>
 

@@ -33,7 +33,7 @@ export function Hero() {
       <div aria-hidden className="absolute inset-0 z-[3] bg-dots opacity-20" />
 
       <div
-        className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-20 text-center sm:px-6 sm:pt-28"
+        className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-12 text-center sm:px-6 sm:pt-16"
         style={{
           animation: "fadeInUp 0.6s ease-out, staggerChildren 0.8s ease-out",
         }}

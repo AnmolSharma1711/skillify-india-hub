@@ -64,14 +64,17 @@ export function AboutSection() {
               <h3 className="mb-6 font-display text-2xl font-bold text-[color:var(--brand-navy)]">
                 Objectives of the Project
               </h3>
-              <ul className="space-y-3">
+              <div className="grid gap-3">
                 {HOME_HIGHLIGHTS.map((highlight, idx) => (
-                  <li key={idx} className="flex gap-3">
+                  <div
+                    key={idx}
+                    className="flex gap-4 rounded-xl border border-[color:var(--border)] bg-white/80 p-4 shadow-sm backdrop-blur"
+                  >
                     <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[color:var(--brand-teal)]" />
                     <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{highlight}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             <div>
@@ -81,17 +84,20 @@ export function AboutSection() {
               <p className="mb-4 text-sm text-[color:var(--muted-foreground)]">
                 Engineering and non-engineering students, as well as unemployed youth:
               </p>
-              <ul className="space-y-2">
+              <div className="grid gap-3">
                 {WHO_CAN_JOIN.map((b, idx) => (
-                  <li key={idx} className="flex gap-3">
+                  <div
+                    key={idx}
+                    className="flex gap-4 rounded-xl border border-[color:var(--border)] bg-white/80 p-4 shadow-sm backdrop-blur"
+                  >
                     <div
-                      className="mt-2 h-2 w-2 flex-shrink-0 rounded-full"
+                      className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full"
                       style={{ background: "var(--brand-teal)" }}
                     />
                     <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{b}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
 
