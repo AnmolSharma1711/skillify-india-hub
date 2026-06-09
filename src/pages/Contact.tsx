@@ -113,13 +113,13 @@ export default function Contact() {
 
   {/* Coordinator Section */}
   {/* Coordinator Section */}
-<div className="mt-6 flex items-center justify-between gap-5">
+<div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-6 sm:gap-5 text-center sm:text-left">
   <div className="flex-1">
-    <h3 className="font-display text-3xl font-bold text-[color:var(--brand-navy)]">
+    <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)]">
       Prof. Arun Kumar Bashambu
     </h3>
 
-    <p className="mt-1 text-2xl text-[color:var(--muted-foreground)]">
+    <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
       Faculty Coordinator
     </p>
   </div>
@@ -127,22 +127,22 @@ export default function Contact() {
   <img
     src={coordinatorPhoto}
     alt="Faculty Coordinator"
-    className="h-56 w-56 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg"
+    className="h-40 w-40 sm:h-56 sm:w-56 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg"
   />
 </div>
 
   <div className="mt-8 space-y-5">
     <div className="flex items-start gap-3">
-      <Mail className="mt-0.5 h-5 w-5 text-[color:var(--brand-teal)]" />
+      <Mail className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
 
-      <div>
-        <p className="text-xl font-semibold text-[color:var(--brand-navy)]">
+      <div className="min-w-0">
+        <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
           Email
         </p>
 
         <a
-          href="arunbashambu@rediffmail.com"
-          className="text-xl text-[color:var(--brand-teal)] hover:underline"
+          href="mailto:arunbashambu@rediffmail.com"
+          className="text-base sm:text-xl text-[color:var(--brand-teal)] hover:underline break-all"
         >
           arunbashambu@rediffmail.com
         </a>
@@ -150,14 +150,14 @@ export default function Contact() {
     </div>
 
     <div className="flex items-start gap-3">
-      <MapPin className="mt-0.5 h-5 w-5 text-[color:var(--brand-teal)]" />
+      <MapPin className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
 
       <div>
-        <p className="text-xl font-semibold text-[color:var(--brand-navy)]">
+        <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
           Address
         </p>
 
-        <p className="text-xl text-[color:var(--muted-foreground)]">
+        <p className="text-base sm:text-xl text-[color:var(--muted-foreground)]">
           IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020
         </p>
       </div>
