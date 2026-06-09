@@ -68,32 +68,32 @@ export function FlipCard({ course }: { course: Course }) {
             </div>
 
             {/* Tech Stack */}
-            <div className="mt-4 flex flex-col gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {course.techs.slice(0, 3).map((tech) => {
                 const TechIcon = Icons[tech.icon as keyof typeof Icons] as ElementType;
 
                 return (
                   <span
                     key={tech.label}
-                    className="inline-flex w-fit max-w-full items-center gap-1.5 rounded-full border border-cyan-300/40 bg-cyan-50 px-3 py-1 text-xs font-medium text-cyan-600 shadow-[0_0_12px_rgba(34,211,238,0.25)]"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-cyan-300/40 bg-cyan-50 px-3 py-1 text-xs font-medium text-cyan-600 shadow-[0_0_12px_rgba(34,211,238,0.25)]"
                   >
                     {TechIcon && <TechIcon className="h-3 w-3 flex-shrink-0" />}
-                    <span className="truncate">{tech.label}</span>
+                    <span>{tech.label}</span>
                   </span>
                 );
               })}
             </div>
 
             <div className="mt-auto pt-4">
-              <div className="flex flex-wrap gap-2 text-xs text-[color:var(--muted-foreground)]">
-                <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--muted)] px-2 py-1">
-                  <Clock className="h-3 w-3" />
-                  {course.duration}
+              <div className="flex flex-col gap-2 text-xs text-[color:var(--muted-foreground)]">
+                <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full bg-[color:var(--muted)] px-2 py-1">
+                  <Clock className="h-3 w-3 flex-shrink-0" />
+                  <span className="truncate">{course.duration}</span>
                 </span>
 
-                <span className="inline-flex items-center gap-1 rounded-full bg-[color:var(--muted)] px-2 py-1">
-                  <GraduationCap className="h-3 w-3" />
-                  {course.level}
+                <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full bg-[color:var(--muted)] px-2 py-1">
+                  <GraduationCap className="h-3 w-3 flex-shrink-0" />
+                  <span className="truncate">{course.level}</span>
                 </span>
               </div>
             </div>
