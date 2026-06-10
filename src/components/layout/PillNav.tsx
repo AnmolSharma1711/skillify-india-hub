@@ -115,12 +115,7 @@ export function PillNav({
     if (menu) gsap.set(menu, { visibility: "hidden", opacity: 0 });
 
     if (initialLoadAnimation) {
-      const logoEl = logoRef.current;
       const navItems = navItemsRef.current;
-      if (logoEl) {
-        gsap.set(logoEl, { scale: 0 });
-        gsap.to(logoEl, { scale: 1, duration: 0.5, ease });
-      }
       if (navItems) {
         gsap.set(navItems, { width: 0, overflow: "hidden" });
         gsap.to(navItems, { 
