@@ -1,12 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
+import { ChevronDown } from "lucide-react";
 import "./PillNav.css";
+
+interface DropdownItem {
+  label: string;
+  href?: string;
+  description?: string;
+  comingSoon?: boolean;
+}
 
 interface PillNavItem {
   label: string;
-  href: string;
+  href?: string;
   ariaLabel?: string;
+  dropdown?: DropdownItem[];
 }
 
 interface PillNavProps {
@@ -42,6 +51,8 @@ export function PillNav({
 }: PillNavProps) {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<number | null>(null);
   const circleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const tlRefs = useRef<gsap.core.Timeline[]>([]);
   const activeTweenRefs = useRef<gsap.core.Tween[]>([]);
@@ -51,6 +62,7 @@ export function PillNav({
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const navItemsRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
+  const dropdownTimers = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
 
   const location = useLocation();
   const activeHref = location.pathname;
@@ -121,6 +133,11 @@ export function PillNav({
     return () => window.removeEventListener("resize", layout);
   }, [items, ease, initialLoadAnimation]);
 
+  // Close dropdown when route changes
+  useEffect(() => {
+    setActiveDropdown(null);
+  }, [location.pathname]);
+
   const handleEnter = (i: number) => {
     const tl = tlRefs.current[i];
     if (!tl) return;
@@ -152,9 +169,21 @@ export function PillNav({
     }
   };
 
+  const handleDropdownEnter = (i: number) => {
+    clearTimeout(dropdownTimers.current[i]);
+    setActiveDropdown(i);
+  };
+
+  const handleDropdownLeave = (i: number) => {
+    dropdownTimers.current[i] = setTimeout(() => {
+      setActiveDropdown((prev) => (prev === i ? null : prev));
+    }, 120);
+  };
+
   const toggleMobileMenu = () => {
     const next = !isMobileMenuOpen;
     setIsMobileMenuOpen(next);
+    if (!next) setMobileExpanded(null);
 
     const hamburger = hamburgerRef.current;
     const menu = mobileMenuRef.current;
@@ -195,6 +224,7 @@ export function PillNav({
   const closeMobileMenu = () => {
     if (!isMobileMenuOpen) return;
     setIsMobileMenuOpen(false);
+    setMobileExpanded(null);
 
     const hamburger = hamburgerRef.current;
     const menu = mobileMenuRef.current;
@@ -223,19 +253,22 @@ export function PillNav({
     ["--pill-text" as string]: resolvedPillTextColor,
   };
 
-  const isActive = (href: string) =>
-    href === "/" ? activeHref === "/" : activeHref.startsWith(href);
+  const isActive = (href?: string) => {
+    if (!href) return false;
+    return href === "/" ? activeHref === "/" : activeHref.startsWith(href);
+  };
+
+  const isDropdownActive = (item: PillNavItem) => {
+    if (!item.dropdown) return false;
+    return item.dropdown.some((d) => d.href && isActive(d.href));
+  };
 
   return (
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
         <div className="hidden sm:flex items-center mr-4">
-        <img
-          src={logo}
-          alt={logoAlt}
-          className="h-20 w-auto object-contain"
-        />
-      </div>
+          <img src={logo} alt={logoAlt} className="h-20 w-auto object-contain" />
+        </div>
 
         <Link
           className="pill-logo"
@@ -250,29 +283,106 @@ export function PillNav({
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>
           <ul className="pill-list" role="menubar">
             {items.map((item, i) => (
-              <li key={item.href} role="none">
-                <Link
-                  role="menuitem"
-                  to={item.href}
-                  className={`pill${isActive(item.href) ? " is-active" : ""}`}
-                  aria-label={item.ariaLabel || item.label}
-                  onMouseEnter={() => handleEnter(i)}
-                  onMouseLeave={() => handleLeave(i)}
-                >
-                  <span
-                    className="hover-circle"
-                    aria-hidden="true"
-                    ref={(el) => {
-                      circleRefs.current[i] = el;
-                    }}
-                  />
-                  <span className="label-stack">
-                    <span className="pill-label">{item.label}</span>
-                    <span className="pill-label-hover" aria-hidden="true">
-                      {item.label}
+              <li
+                key={item.label}
+                role="none"
+                className="pill-list-item"
+                onMouseEnter={() => {
+                  handleEnter(i);
+                  if (item.dropdown) handleDropdownEnter(i);
+                }}
+                onMouseLeave={() => {
+                  handleLeave(i);
+                  if (item.dropdown) handleDropdownLeave(i);
+                }}
+              >
+                {item.dropdown ? (
+                  /* Dropdown trigger pill */
+                  <button
+                    role="menuitem"
+                    aria-haspopup="true"
+                    aria-expanded={activeDropdown === i}
+                    className={`pill pill-dropdown-trigger${isDropdownActive(item) ? " is-active" : ""}`}
+                    onClick={() => setActiveDropdown(activeDropdown === i ? null : i)}
+                  >
+                    <span
+                      className="hover-circle"
+                      aria-hidden="true"
+                      ref={(el) => { circleRefs.current[i] = el; }}
+                    />
+                    <span className="label-stack">
+                      <span className="pill-label pill-label-with-icon">
+                        {item.label}
+                        <ChevronDown
+                          className="pill-chevron"
+                          style={{ transform: activeDropdown === i ? "rotate(180deg)" : "rotate(0deg)" }}
+                        />
+                      </span>
+                      <span className="pill-label-hover pill-label-with-icon" aria-hidden="true">
+                        {item.label}
+                        <ChevronDown className="pill-chevron" />
+                      </span>
                     </span>
-                  </span>
-                </Link>
+                  </button>
+                ) : (
+                  /* Regular link pill */
+                  <Link
+                    role="menuitem"
+                    to={item.href!}
+                    className={`pill${isActive(item.href) ? " is-active" : ""}`}
+                    aria-label={item.ariaLabel || item.label}
+                    onMouseEnter={() => handleEnter(i)}
+                    onMouseLeave={() => handleLeave(i)}
+                  >
+                    <span
+                      className="hover-circle"
+                      aria-hidden="true"
+                      ref={(el) => { circleRefs.current[i] = el; }}
+                    />
+                    <span className="label-stack">
+                      <span className="pill-label">{item.label}</span>
+                      <span className="pill-label-hover" aria-hidden="true">
+                        {item.label}
+                      </span>
+                    </span>
+                  </Link>
+                )}
+
+                {/* Desktop dropdown panel */}
+                {item.dropdown && activeDropdown === i && (
+                  <div
+                    className="pill-dropdown-panel"
+                    onMouseEnter={() => handleDropdownEnter(i)}
+                    onMouseLeave={() => handleDropdownLeave(i)}
+                    role="menu"
+                  >
+                    {item.dropdown.map((d) => (
+                      <div key={d.label} className="pill-dropdown-item-wrapper">
+                        {d.comingSoon ? (
+                          <span className="pill-dropdown-item pill-dropdown-item--disabled">
+                            <span className="pill-dropdown-item-label">{d.label}</span>
+                            {d.description && (
+                              <span className="pill-dropdown-item-desc">{d.description}</span>
+                            )}
+                            <span className="pill-dropdown-badge">Opening Soon</span>
+                          </span>
+                        ) : (
+                          <Link
+                            to={d.href!}
+                            className="pill-dropdown-item"
+                            role="menuitem"
+                            onClick={() => setActiveDropdown(null)}
+                          >
+                            <span className="pill-dropdown-item-label">{d.label}</span>
+                            {d.description && (
+                              <span className="pill-dropdown-item-desc">{d.description}</span>
+                            )}
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -287,11 +397,7 @@ export function PillNav({
         {/* Large MeitY Logo */}
         {trailingLogo && (
           <div className="hidden sm:flex items-center ml-4">
-            <img
-              src={trailingLogo}
-              alt={trailingLogoAlt}
-              className="h-20 w-auto object-contain"
-            />
+            <img src={trailingLogo} alt={trailingLogoAlt} className="h-20 w-auto object-contain" />
           </div>
         )}
 
@@ -306,17 +412,57 @@ export function PillNav({
         </button>
       </nav>
 
+      {/* Mobile menu */}
       <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef} style={cssVars}>
         <ul className="mobile-menu-list">
-          {items.map((item) => (
-            <li key={item.href}>
-              <Link
-                to={item.href}
-                className={`mobile-menu-link${isActive(item.href) ? " is-active" : ""}`}
-                onClick={closeMobileMenu}
-              >
-                {item.label}
-              </Link>
+          {items.map((item, i) => (
+            <li key={item.label}>
+              {item.dropdown ? (
+                <>
+                  <button
+                    className={`mobile-menu-link mobile-menu-link--dropdown${
+                      isDropdownActive(item) ? " is-active" : ""
+                    }`}
+                    onClick={() => setMobileExpanded(mobileExpanded === i ? null : i)}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      className="mobile-chevron"
+                      style={{ transform: mobileExpanded === i ? "rotate(180deg)" : "rotate(0deg)" }}
+                    />
+                  </button>
+                  {mobileExpanded === i && (
+                    <ul className="mobile-submenu">
+                      {item.dropdown.map((d) => (
+                        <li key={d.label}>
+                          {d.comingSoon ? (
+                            <span className="mobile-menu-link mobile-menu-link--sub mobile-menu-link--disabled">
+                              {d.label}
+                              <span className="pill-dropdown-badge">Soon</span>
+                            </span>
+                          ) : (
+                            <Link
+                              to={d.href!}
+                              className="mobile-menu-link mobile-menu-link--sub"
+                              onClick={closeMobileMenu}
+                            >
+                              {d.label}
+                            </Link>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <Link
+                  to={item.href!}
+                  className={`mobile-menu-link${isActive(item.href) ? " is-active" : ""}`}
+                  onClick={closeMobileMenu}
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>

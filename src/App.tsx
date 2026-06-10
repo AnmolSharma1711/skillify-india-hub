@@ -9,6 +9,9 @@ import CourseDetail from "@/pages/CourseDetail";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 import Enroll from "@/pages/Enroll";
+import InstituteEnroll from "@/pages/enroll/InstituteEnroll";
+import TrainerEnroll from "@/pages/join/TrainerEnroll";
+import PartnerOrg from "@/pages/join/PartnerOrg";
 
 export default function App() {
   return (
@@ -25,6 +28,9 @@ export default function App() {
             <Route path="/courses/:id" element={<CourseDetail />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/enroll" element={<Enroll />} />
+            <Route path="/enroll/institute" element={<InstituteEnroll />} />
+            <Route path="/join/trainer" element={<TrainerEnroll />} />
+            <Route path="/join/partner" element={<PartnerOrg />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

@@ -5,7 +5,41 @@ import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "Courses Offered", href: "/courses" },
-  { label: "Enroll Now", href: "/enroll" },
+  {
+    label: "Enroll Now",
+    dropdown: [
+      {
+        label: "Individual Enrollment",
+        href: "/enroll",
+        description: "Students & working professionals",
+      },
+      {
+        label: "Institute Enrollment",
+        href: "/enroll/institute",
+        description: "Universities & academic institutions",
+      },
+      {
+        label: "Others",
+        comingSoon: true,
+        description: "More options launching soon",
+      },
+    ],
+  },
+  {
+    label: "Join Us",
+    dropdown: [
+      {
+        label: "Trainer Enrollment",
+        href: "/join/trainer",
+        description: "Industry mentors, trainers & SMEs",
+      },
+      {
+        label: "Partnering Organizations",
+        href: "/join/partner",
+        description: "Academic institutions & industry orgs",
+      },
+    ],
+  },
   { label: "Contact", href: "/contact" },
 ];
 

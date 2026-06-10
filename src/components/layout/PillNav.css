@@ -261,3 +261,157 @@
   background-color: var(--base);
   color: var(--pill-bg, #1B3A6B);
 }
+
+/* ── Dropdown pill trigger ── */
+.pill-list-item {
+  position: relative;
+  display: flex;
+  height: 100%;
+}
+
+.pill-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pill-label-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pill-chevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+/* ── Desktop dropdown panel ── */
+.pill-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 230px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px -4px rgba(27, 58, 107, 0.20), 0 2px 8px -2px rgba(27, 58, 107, 0.10);
+  border: 1px solid rgba(27, 58, 107, 0.08);
+  padding: 6px;
+  z-index: 9999;
+  animation: dropdownIn 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes dropdownIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0)    scale(1); }
+}
+
+.pill-dropdown-item-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pill-dropdown-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+  cursor: pointer;
+}
+
+.pill-dropdown-item:hover {
+  background: rgba(27, 58, 107, 0.06);
+}
+
+.pill-dropdown-item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.pill-dropdown-item-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1B3A6B;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.pill-dropdown-item-desc {
+  font-size: 11px;
+  color: #64748b;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.4;
+}
+
+.pill-dropdown-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 4px;
+  padding: 2px 8px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 99px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+/* ── Mobile submenu ── */
+.mobile-menu-link--dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.mobile-submenu {
+  list-style: none;
+  margin: 3px 0 0 0;
+  padding: 0 0 0 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobile-menu-link--sub {
+  font-size: 13px !important;
+  padding: 9px 14px !important;
+  border-radius: 40px !important;
+  opacity: 0.9;
+}
+
+.mobile-menu-link--disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
