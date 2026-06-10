@@ -4,17 +4,17 @@ import { BookOpen, Award, Briefcase, Star, CircleCheck as CheckCircle2, Loader a
 import { submitToGoogleForm } from "@/lib/googleForms";
 
 // TODO: Replace with your actual Google Form ID and entry IDs
-const TRAINER_FORM_ID = "1FAIpQLSdcdgSLaAjn_snEuiNqxFZvwSwOnERKnYofthzZFH6zu_A7SQ";
+const TRAINER_FORM_ID = "1FAIpQLSd8LXsTN0cBvhXEMFjvO7GRoe_Ma19-eO9l62rxTxF-FKdi2A";
 const TRAINER_FIELDS = {
-  NAME: "entry.1873567881",
-  EMAIL: "entry.1528402927",
-  DESIGNATION: "entry.550719367",
-  EXPERTISE: "entry.1926937514", // Checkbox group
-  EXPERIENCE: "entry.858294151",
-  RESUME_LINK: "entry.1987701982",
-  QUALIFICATION: "entry.1752357662",
-  TIME_COMMITMENT: "entry.485449230",
-  EXPERIENCE_DESC: "entry.1669861292",
+  NAME: "entry.707866290",
+  EMAIL: "entry.1478895290",
+  DESIGNATION: "entry.403901445",
+  EXPERTISE: "entry.1172900388", // Checkbox group
+  EXPERIENCE: "entry.662668080",
+  RESUME_LINK: "entry.678900614",
+  QUALIFICATION: "entry.1628470396",
+  TIME_COMMITMENT: "entry.1047384663",
+  EXPERIENCE_DESC: "entry.1159653658",
 };
 
 const WHO_CAN_APPLY = [
@@ -294,9 +294,12 @@ export default function TrainerEnroll() {
                   <label className="mb-2 block text-sm font-semibold text-[color:var(--brand-navy)]">Primary Areas of Expertise *</label>
                   <div className="space-y-2.5">
                     {[
-                      "Internet of Things (IoT)",
-                      "Machine Learning & AI",
-                      "Embedded Systems",
+                      "Machine Learning",
+                      "Generative AI / LLMs",
+                      "Python Programming",
+                      "IoT & Embedded Systems",
+                      "Web Development",
+                      "App Development",
                       "Cloud Computing",
                       "Cybersecurity",
                       "VLSI & Semiconductor",
