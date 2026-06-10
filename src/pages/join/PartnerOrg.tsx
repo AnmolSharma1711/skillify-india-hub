@@ -4,15 +4,15 @@ import { Building2, GraduationCap, Globe, Users, CircleCheck as CheckCircle2, Lo
 import { submitToGoogleForm } from "@/lib/googleForms";
 
 // TODO: Replace with your actual Google Form ID and entry IDs
-const PARTNER_FORM_ID = "1FAIpQLSf_PLACEHOLDER_PARTNER";
+const PARTNER_FORM_ID = "1FAIpQLSctr3EvRPGAYLfgGv8_x-d8PblIa5K2RxK4mllcvyQ2G4t2vw";
 const PARTNER_FIELDS = {
-  ORG_NAME: "entry.400001",
-  WEBSITE: "entry.400002",
-  POC_NAME: "entry.400003",
-  EMAIL: "entry.400004",
-  PHONE: "entry.400005",
-  INTERESTS: "entry.400006", // Checkbox group
-  COLLAB_PLAN: "entry.400007",
+  ORG_NAME: "entry.81299361",
+  WEBSITE: "entry.1710961890",
+  POC_NAME: "entry.875669356",
+  EMAIL: "entry.1489273858",
+  PHONE: "entry.1580258819",
+  INTERESTS: "entry.782474011", // Checkbox group
+  COLLAB_PLAN: "entry.1786041703",
 };
 
 const ELIGIBILITY = [
