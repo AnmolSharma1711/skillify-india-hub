@@ -1,5 +1,8 @@
 import { FormEvent } from "react";
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
+import { X, Linkedin } from "lucide-react";
+
 import {
   Mail,
   MapPin,
@@ -37,6 +40,7 @@ import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
 import coordinatorPhoto from "@/assets/coordinator.png";
 
 export default function Contact() {
+  const [showProfile, setShowProfile] = useState(false);
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     event.currentTarget.reset();
@@ -102,12 +106,21 @@ export default function Contact() {
         </p>
       </div>
 
-      <img
-        src={coordinatorPhoto}
-        alt="Programme Office"
-        className="h-28 w-28 sm:h-48 sm:w-48 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg mx-auto sm:mx-0"
-      />
-    </div>
+     <div className="flex flex-col items-center gap-3 flex-shrink-0">
+  <img
+    src={coordinatorPhoto}
+    alt="Faculty Coordinator"
+    className="h-28 w-28 sm:h-48 sm:w-48 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg"
+  />
+
+  <button
+    onClick={() => setShowProfile(true)}
+    className="rounded-full bg-[color:var(--brand-teal)] px-5 py-2 text-sm font-semibold text-white hover:opacity-90"
+  >
+    View Profile
+  </button>
+</div>
+</div>
 
     <div className="mt-8 space-y-5">
       <div className="flex items-start gap-3">
@@ -160,12 +173,21 @@ export default function Contact() {
         </p>
       </div>
 
-      <img
-        src={coordinatorPhoto}
-        alt="Faculty Coordinator"
-        className="h-28 w-28 sm:h-48 sm:w-48 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg mx-auto sm:mx-0"
-      />
-    </div>
+   <div className="flex flex-col items-center gap-3 flex-shrink-0">
+  <img
+    src={coordinatorPhoto}
+    alt="Faculty Coordinator"
+    className="h-28 w-28 sm:h-48 sm:w-48 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg"
+  />
+
+  <button
+    onClick={() => setShowProfile(true)}
+    className="rounded-full bg-[color:var(--brand-teal)] px-5 py-2 text-sm font-semibold text-white hover:opacity-90"
+  >
+    View Profile
+  </button>
+</div>
+</div>
 
     <div className="mt-8 space-y-5">
       <div className="flex items-start gap-3">
