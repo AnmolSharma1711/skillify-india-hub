@@ -182,12 +182,23 @@ export function CourseDetailOverlay({
 
             {/* CTA */}
             <div className="flex flex-col gap-3 pt-4 sm:flex-row">
-              <button
-                onClick={() => onEnrollClick(context)}
-                className="w-full inline-flex h-12 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"
-              >
-                Enroll Now
-              </button>
+              {course.externalLink ? (
+                <a
+                  href={course.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex h-12 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"
+                >
+                  Enroll Now
+                </a>
+              ) : (
+                <button
+                  onClick={() => onEnrollClick(context)}
+                  className="w-full inline-flex h-12 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"
+                >
+                  Enroll Now
+                </button>
+              )}
             </div>
           </div>
         </div>
