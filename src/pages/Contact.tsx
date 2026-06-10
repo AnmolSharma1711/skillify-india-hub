@@ -6,7 +6,31 @@ import {
   MessageSquare,
   Phone,
 } from "lucide-react";
+
 import { toast } from "sonner";
+import member1 from "@/assets/coordinator.png";
+import member2 from "@/assets/coordinator.png";
+import member3 from "@/assets/coordinator.png";
+import member4 from "@/assets/coordinator.png";
+
+const teamMembers = [
+  {
+    name: "Anmol Sharma",
+    photo: member1,
+  },
+  {
+    name: "Kirty Yaduvanshi",
+    photo: member2,
+  },
+  {
+    name: "Team Member 3",
+    photo: member3,
+  },
+  {
+    name: "Team Member 4",
+    photo: member4,
+  },
+];
 
 import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
@@ -176,9 +200,40 @@ export default function Contact() {
       </div>
     </div>
   </div>
+  </div>
 
+{/* Team Section */}
+<div className="mt-20">
+  <div className="text-center">
+    <h2 className="font-display text-5xl font-bold text-[color:var(--brand-navy)]">
+      Our Team
+    </h2>
+
+    <p className="mt-3 text-lg text-[color:var(--muted-foreground)]">
+      Meet the people behind the programme.
+    </p>
+  </div>
+
+  <div className="mt-12 flex flex-wrap justify-center gap-x-12 gap-y-10">
+    {teamMembers.map((member) => (
+      <div
+        key={member.name}
+        className="w-[220px] flex flex-col items-center text-center"
+      >
+        <img
+          src={member.photo}
+          alt={member.name}
+          className="h-32 w-32 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-md"
+        />
+
+        <h3 className="mt-4 text-lg font-semibold text-[color:var(--brand-navy)]">
+          {member.name}
+        </h3>
+      </div>
+    ))}
+  </div>
 </div>
-        </div>
+</div>
       </section>
     </>
   );

@@ -4,17 +4,17 @@ import { BookOpen, Award, Briefcase, Star, CircleCheck as CheckCircle2, Loader a
 import { submitToGoogleForm } from "@/lib/googleForms";
 
 // TODO: Replace with your actual Google Form ID and entry IDs
-const TRAINER_FORM_ID = "1FAIpQLSf_PLACEHOLDER_TRAINER";
+const TRAINER_FORM_ID = "1FAIpQLSd8LXsTN0cBvhXEMFjvO7GRoe_Ma19-eO9l62rxTxF-FKdi2A";
 const TRAINER_FIELDS = {
-  NAME: "entry.300001",
-  EMAIL: "entry.300002",
-  DESIGNATION: "entry.300003",
-  EXPERTISE: "entry.300004", // Checkbox group
-  EXPERIENCE: "entry.300005",
-  RESUME_LINK: "entry.300006",
-  QUALIFICATION: "entry.300007",
-  TIME_COMMITMENT: "entry.300008",
-  EXPERIENCE_DESC: "entry.300009",
+  NAME: "entry.707866290",
+  EMAIL: "entry.1478895290",
+  DESIGNATION: "entry.403901445",
+  EXPERTISE: "entry.1172900388", // Checkbox group
+  EXPERIENCE: "entry.662668080",
+  RESUME_LINK: "entry.678900614",
+  QUALIFICATION: "entry.1628470396",
+  TIME_COMMITMENT: "entry.1047384663",
+  EXPERIENCE_DESC: "entry.1159653658",
 };
 
 const WHO_CAN_APPLY = [
@@ -294,9 +294,12 @@ export default function TrainerEnroll() {
                   <label className="mb-2 block text-sm font-semibold text-[color:var(--brand-navy)]">Primary Areas of Expertise *</label>
                   <div className="space-y-2.5">
                     {[
-                      "Internet of Things (IoT)",
-                      "Machine Learning & AI",
-                      "Embedded Systems",
+                      "Machine Learning",
+                      "Generative AI / LLMs",
+                      "Python Programming",
+                      "IoT & Embedded Systems",
+                      "Web Development",
+                      "App Development",
                       "Cloud Computing",
                       "Cybersecurity",
                       "VLSI & Semiconductor",
@@ -334,7 +337,7 @@ export default function TrainerEnroll() {
                   <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">
                     Resume Link * <span className="text-[11px] font-normal text-[color:var(--muted-foreground)] ml-1">(Google Drive, Dropbox, or LinkedIn)</span>
                   </label>
-                  <input name={TRAINER_FIELDS.RESUME_LINK} type="url" placeholder="https://..." required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  <input name={TRAINER_FIELDS.RESUME_LINK} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                 </div>
 
                 <div>

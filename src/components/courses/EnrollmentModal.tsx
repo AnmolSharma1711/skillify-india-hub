@@ -4,35 +4,91 @@ import { CircleCheck as CheckCircle2, X, Loader as Loader2 } from "lucide-react"
 import type { Course } from "@/config/courses";
 import { submitToGoogleForm } from "@/lib/googleForms";
 
-// TODO: Replace with your actual Google Form IDs
-const INDIVIDUAL_FORM_ID = "1FAIpQLSf_PLACEHOLDER_INDIVIDUAL";
-const INSTITUTE_FORM_ID = "1FAIpQLSf_PLACEHOLDER_INSTITUTE";
-
-// TODO: Replace with your actual field entry IDs from the Google Forms
-const INDIVIDUAL_FIELDS = {
-  COURSE: "entry.100001",
-  NAME: "entry.100002",
-  EMAIL: "entry.100003",
-  PHONE: "entry.100004",
-  COLLEGE: "entry.100005",
-  YEAR: "entry.100006",
-  DEPARTMENT: "entry.100007",
-  LINKEDIN: "entry.100008",
-  PRIOR_KNOWLEDGE: "entry.100009",
-  MOTIVATION: "entry.100010",
+const INDIVIDUAL_FORMS: Record<string, { id: string, fields: Record<string, string> }> = {
+  genai: {
+    id: "1FAIpQLScSqpBawFhOCXZ6SAZXHdy5iqIl47Q5ehJxmTlSMqqYPD9GDQ",
+    fields: {
+      NAME: "entry.1962508065",
+      EMAIL: "entry.1402983282",
+      PHONE: "entry.63138793",
+      COLLEGE: "entry.2079054399",
+      YEAR: "entry.1877389573",
+      DEPARTMENT: "entry.2002468753",
+      PRIOR_KNOWLEDGE: "entry.984731516",
+      MOTIVATION: "entry.1284869952",
+    }
+  },
+  ml: {
+    id: "1FAIpQLSdyppPZLHYmOwfj6hSLMH5TkX1C-DjZHlevat0pWyFlR5pglQ",
+    fields: {
+      NAME: "entry.1834615619",
+      EMAIL: "entry.1436165361",
+      PHONE: "entry.1530825782",
+      COLLEGE: "entry.1510799487",
+      YEAR: "entry.545054216",
+      DEPARTMENT: "entry.635162273",
+      PRIOR_KNOWLEDGE: "entry.1123147479",
+      MOTIVATION: "entry.892402249",
+    }
+  },
+  python: {
+    id: "1FAIpQLSccDDa_2MTEBn4xPyIe6lAdPfmWIknyuihywc4S8kxwrqlu1A",
+    fields: {
+      NAME: "entry.370036216",
+      EMAIL: "entry.1858808723",
+      PHONE: "entry.2114684427",
+      COLLEGE: "entry.601549469",
+      YEAR: "entry.3807795",
+      DEPARTMENT: "entry.590974709",
+      PRIOR_KNOWLEDGE: "entry.1272012094",
+      MOTIVATION: "entry.474179636",
+    }
+  }
 };
 
-const INSTITUTE_FIELDS = {
-  COURSE: "entry.200001",
-  INSTITUTE_NAME: "entry.200002",
-  ADDRESS: "entry.200003",
-  POC_NAME: "entry.200004",
-  POC_DESIGNATION: "entry.200005",
-  EMAIL: "entry.200006",
-  PHONE: "entry.200007",
-  STUDENTS_COUNT: "entry.200008",
-  INFRASTRUCTURE: "entry.200009", // Checkbox group
-  FACILITATION_PLAN: "entry.200010",
+const INSTITUTE_FORMS: Record<string, { id: string, fields: Record<string, string> }> = {
+  genai: {
+    id: "1FAIpQLScyNDpnwx2I6fXxc6k3cP6j6pQdCs4sY_1OImv5QbU74vq5KA",
+    fields: {
+      INSTITUTE_NAME: "entry.1898781544",
+      ADDRESS: "entry.260567387",
+      POC_NAME: "entry.126786012",
+      POC_DESIGNATION: "entry.2023073484",
+      EMAIL: "entry.169451936",
+      PHONE: "entry.387471592",
+      STUDENTS_COUNT: "entry.1164770287",
+      INFRASTRUCTURE: "entry.1645823303",
+      FACILITATION_PLAN: "entry.1846519789",
+    }
+  },
+  ml: {
+    id: "1FAIpQLSdO-jc9A1QtuPkJiQKhOy4Dynamw0YzHNvYykLDfXHAzLDlDg",
+    fields: {
+      INSTITUTE_NAME: "entry.47265587",
+      ADDRESS: "entry.1172859422",
+      POC_NAME: "entry.1857924142",
+      POC_DESIGNATION: "entry.152502088",
+      EMAIL: "entry.1896794343",
+      PHONE: "entry.225965519",
+      STUDENTS_COUNT: "entry.1634089778",
+      INFRASTRUCTURE: "entry.1549904790",
+      FACILITATION_PLAN: "entry.858461968",
+    }
+  },
+  python: {
+    id: "1FAIpQLSfbDTRgBi02JZtG6IizDENz8H8Jvszm6FV_ou6bq8fG0lVGbQ",
+    fields: {
+      INSTITUTE_NAME: "entry.864881580",
+      ADDRESS: "entry.472338138",
+      POC_NAME: "entry.1084709529",
+      POC_DESIGNATION: "entry.2112563481",
+      EMAIL: "entry.780909442",
+      PHONE: "entry.209837753",
+      STUDENTS_COUNT: "entry.2043195856",
+      INFRASTRUCTURE: "entry.181395690",
+      FACILITATION_PLAN: "entry.1858496843",
+    }
+  }
 };
 
 export function EnrollmentModal({
@@ -62,25 +118,35 @@ export function EnrollmentModal({
     // sometimes works depending on the form config, or passing multiple values.
     // We'll join them by comma for the data record, or pass them appropriately.
     // Wait, Google Forms checkboxes need to be passed as separate fields with the same key.
-    // I will adjust submitToGoogleForm or just send them here directly using fetch.
-    
-    // For now, let's collect all data.
-    const url = `https://docs.google.com/forms/d/e/${enrollmentType === "individual" ? INDIVIDUAL_FORM_ID : INSTITUTE_FORM_ID}/formResponse`;
-    const formUrlEncoded = new URLSearchParams();
-
-    for (const [key, value] of formData.entries()) {
-      formUrlEncoded.append(key, value.toString());
-    }
-
     try {
-      await fetch(url, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: formUrlEncoded.toString(),
-      });
+      if (enrollmentType === "individual") {
+        const indConfig = INDIVIDUAL_FORMS[course.id];
+        if (!indConfig) {
+          throw new Error(`No individual form configuration found for course: ${course.id}`);
+        }
+        for (const [key, value] of formData.entries()) {
+          if (data[key]) {
+            data[key] = `${data[key]}, ${value}`;
+          } else {
+            data[key] = value.toString();
+          }
+        }
+        await submitToGoogleForm(indConfig.id, data);
+      } else {
+        // Institute
+        const instConfig = INSTITUTE_FORMS[course.id];
+        if (!instConfig) {
+          throw new Error(`No form configuration found for course: ${course.id}`);
+        }
+        for (const [key, value] of formData.entries()) {
+          if (data[key]) {
+            data[key] = `${data[key]}, ${value}`;
+          } else {
+            data[key] = value.toString();
+          }
+        }
+        await submitToGoogleForm(instConfig.id, data);
+      }
       setDone(true);
     } catch {
       setDone(true);
@@ -137,26 +203,25 @@ export function EnrollmentModal({
         <div className="space-y-4">
           {enrollmentType === "individual" ? (
             <>
-              <input type="hidden" name={INDIVIDUAL_FIELDS.COURSE} value={course.title} />
               <div className="mb-4 rounded-lg bg-[color:var(--brand-teal)]/5 p-3 border border-[color:var(--brand-teal)]/20">
                 <p className="text-xs text-[color:var(--brand-teal)] font-semibold">Course Selected</p>
                 <p className="text-sm font-bold text-[color:var(--brand-navy)] mt-0.5">{course.title}</p>
               </div>
-              
-              <Field label="Full Name" name={INDIVIDUAL_FIELDS.NAME} required />
+
+              <Field label="Full Name" name={INDIVIDUAL_FORMS[course.id]?.fields.NAME || ""} required />
               
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Email Address" name={INDIVIDUAL_FIELDS.EMAIL} type="email" required />
-                <Field label="WhatsApp / Contact" name={INDIVIDUAL_FIELDS.PHONE} required />
+                <Field label="Email Address" name={INDIVIDUAL_FORMS[course.id]?.fields.EMAIL || ""} type="email" required />
+                <Field label="WhatsApp / Contact Number" name={INDIVIDUAL_FORMS[course.id]?.fields.PHONE || ""} type="tel" required />
               </div>
-              
-              <Field label="College / University Name" name={INDIVIDUAL_FIELDS.COLLEGE} required />
-              
+
+              <Field label="College / University Name" name={INDIVIDUAL_FORMS[course.id]?.fields.COLLEGE || ""} required />
+
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label className="mb-1.5 block text-xs font-semibold text-[color:var(--brand-navy)]">Current Year of Study <span className="text-red-500">*</span></label>
-                  <select name={INDIVIDUAL_FIELDS.YEAR} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]">
-                    <option value="">Select Year</option>
+                  <select name={INDIVIDUAL_FORMS[course.id]?.fields.YEAR || ""} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]">
+                    <option value="">Select year</option>
                     <option value="1st Year">1st Year</option>
                     <option value="2nd Year">2nd Year</option>
                     <option value="3rd Year">3rd Year</option>
@@ -164,72 +229,59 @@ export function EnrollmentModal({
                     <option value="PG">PG</option>
                   </select>
                 </div>
-                <Field label="Department / Branch" name={INDIVIDUAL_FIELDS.DEPARTMENT} placeholder="e.g. CSE, AIML" required />
+                <Field label="Department / Branch" name={INDIVIDUAL_FORMS[course.id]?.fields.DEPARTMENT || ""} placeholder="e.g. CSE, AIML" required />
               </div>
 
-              <Field label="LinkedIn Profile URL" name={INDIVIDUAL_FIELDS.LINKEDIN} type="url" placeholder="Optional" />
+              <Field label="LinkedIn Profile URL" name={INDIVIDUAL_FORMS[course.id]?.fields.LINKEDIN || ""} type="text" placeholder="Optional" />
 
               <div>
                 <label className="mb-1.5 block text-xs font-semibold text-[color:var(--brand-navy)]">Prior Knowledge in {course.title} <span className="text-red-500">*</span></label>
-                <div className="flex items-center justify-between gap-2 bg-[color:var(--muted)]/50 p-3 rounded-lg border border-[color:var(--border)]">
-                  <span className="text-xs text-[color:var(--muted-foreground)]">Novice</span>
-                  {[1, 2, 3, 4, 5].map((num) => (
-                    <label key={num} className="flex flex-col items-center cursor-pointer group">
-                      <input type="radio" name={INDIVIDUAL_FIELDS.PRIOR_KNOWLEDGE} value={num} required className="peer sr-only" />
-                      <span className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium border border-[color:var(--border)] bg-white text-[color:var(--foreground)] transition-colors peer-checked:bg-[color:var(--brand-teal)] peer-checked:text-white peer-checked:border-[color:var(--brand-teal)] group-hover:border-[color:var(--brand-teal)]">
-                        {num}
-                      </span>
-                    </label>
-                  ))}
-                  <span className="text-xs text-[color:var(--muted-foreground)]">Expert</span>
+                <div className="flex items-center gap-4">
+                  <span className="text-xs text-[color:var(--muted-foreground)]">Beginner</span>
+                  <input name={INDIVIDUAL_FORMS[course.id]?.fields.PRIOR_KNOWLEDGE || ""} type="range" min="1" max="5" defaultValue="3" className="flex-1 accent-[color:var(--brand-teal)]" />
+                  <span className="text-xs text-[color:var(--muted-foreground)]">Advanced</span>
                 </div>
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[color:var(--brand-navy)]">
-                  Why are you interested in this course? <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  name={INDIVIDUAL_FIELDS.MOTIVATION}
-                  rows={3}
-                  required
-                  className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
-                />
+                <label className="mb-1.5 block text-xs font-semibold text-[color:var(--brand-navy)]">Why are you interested in this course? <span className="text-red-500">*</span></label>
+                <textarea name={INDIVIDUAL_FORMS[course.id]?.fields.MOTIVATION || ""} rows={3} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"></textarea>
               </div>
             </>
           ) : (
             <>
-              <input type="hidden" name={INSTITUTE_FIELDS.COURSE} value={course.title} />
               <div className="mb-4 rounded-lg bg-[color:var(--brand-teal)]/5 p-3 border border-[color:var(--brand-teal)]/20">
                 <p className="text-xs text-[color:var(--brand-teal)] font-semibold">Course Selected for Institute</p>
                 <p className="text-sm font-bold text-[color:var(--brand-navy)] mt-0.5">{course.title}</p>
               </div>
 
-              <Field label="Name of the Institute" name={INSTITUTE_FIELDS.INSTITUTE_NAME} required />
-              <Field label="Address / Location" name={INSTITUTE_FIELDS.ADDRESS} required />
-              
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Point of Contact (POC) Name" name={INSTITUTE_FIELDS.POC_NAME} required />
-                <Field label="POC Designation" name={INSTITUTE_FIELDS.POC_DESIGNATION} placeholder="e.g. HOD, Dean" required />
+                <Field label="Name of the Institute" name={INSTITUTE_FORMS[course.id]?.fields.INSTITUTE_NAME || ""} required />
+                <Field label="Address / Location" name={INSTITUTE_FORMS[course.id]?.fields.ADDRESS || ""} required />
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Official Email Address" name={INSTITUTE_FIELDS.EMAIL} type="email" required />
-                <Field label="Contact Number" name={INSTITUTE_FIELDS.PHONE} required />
+                <Field label="Point of Contact (POC) Name" name={INSTITUTE_FORMS[course.id]?.fields.POC_NAME || ""} required />
+                <Field label="POC Designation" name={INSTITUTE_FORMS[course.id]?.fields.POC_DESIGNATION || ""} placeholder="e.g. HOD, Dean" required />
               </div>
 
-              <Field label="Expected Number of Students" name={INSTITUTE_FIELDS.STUDENTS_COUNT} type="number" required />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <Field label="Official Email Address" name={INSTITUTE_FORMS[course.id]?.fields.EMAIL || ""} type="email" required />
+                <Field label="Contact Number" name={INSTITUTE_FORMS[course.id]?.fields.PHONE || ""} type="tel" required />
+              </div>
+
+              <Field label="Expected Number of Students" name={INSTITUTE_FORMS[course.id]?.fields.STUDENTS_COUNT || ""} type="number" required />
 
               <div>
                 <label className="mb-2 block text-xs font-semibold text-[color:var(--brand-navy)]">Available Infrastructure for the Course <span className="text-red-500">*</span></label>
-                <div className="space-y-2.5">
+                <div className="space-y-2">
                   {[
                     "Lab Access",
                     "High-speed Internet",
-                    "Seminar Hall / Smart Classroom",
+                    "Seminar Hall",
                   ].map((item) => (
-                    <label key={item} className="flex items-center gap-2.5 cursor-pointer">
-                      <input type="checkbox" name={INSTITUTE_FIELDS.INFRASTRUCTURE} value={item} className="w-4 h-4 rounded text-[color:var(--brand-teal)] border-[color:var(--border)] focus:ring-[color:var(--brand-teal)]" />
+                    <label key={item} className="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" name={INSTITUTE_FORMS[course.id]?.fields.INFRASTRUCTURE || ""} value={item} className="w-4 h-4 rounded text-[color:var(--brand-teal)] border-[color:var(--border)] focus:ring-[color:var(--brand-teal)]" />
                       <span className="text-sm text-[color:var(--foreground)]">{item}</span>
                     </label>
                   ))}
@@ -237,15 +289,8 @@ export function EnrollmentModal({
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-semibold text-[color:var(--brand-navy)]">
-                  How do you plan to facilitate this course within your campus? <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  name={INSTITUTE_FIELDS.FACILITATION_PLAN}
-                  rows={3}
-                  required
-                  className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
-                />
+                <label className="mb-1.5 block text-xs font-semibold text-[color:var(--brand-navy)]">How do you plan to facilitate this course within your campus? <span className="text-red-500">*</span></label>
+                <textarea name={INSTITUTE_FORMS[course.id]?.fields.FACILITATION_PLAN || ""} rows={3} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"></textarea>
               </div>
             </>
           )}
