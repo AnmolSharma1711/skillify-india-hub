@@ -4,6 +4,9 @@ import { CircleCheck as CheckCircle2, X, Loader as Loader2 } from "lucide-react"
 import type { Course } from "@/config/courses";
 import { submitToGoogleForm } from "@/lib/googleForms";
 
+// TODO: Replace with your actual Google Form IDs
+const INDIVIDUAL_FORM_ID = "1FAIpQLSf_PLACEHOLDER_INDIVIDUAL";
+
 // TODO: Replace with your actual field entry IDs from the Google Forms
 const INDIVIDUAL_FIELDS = {
   COURSE: "entry.100001",
