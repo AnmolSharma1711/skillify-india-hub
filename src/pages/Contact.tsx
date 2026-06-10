@@ -257,6 +257,92 @@ export default function Contact() {
 </div>
 </div>
       </section>
+
+      {/* Profile Modal */}
+      {showProfile && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+          <div 
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+            onClick={() => setShowProfile(false)} 
+          />
+          <div className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div className="absolute right-4 top-4 z-10">
+              <button 
+                onClick={() => setShowProfile(false)}
+                className="rounded-full bg-white/20 p-2 text-white hover:bg-white/30 transition-colors backdrop-blur-md"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            
+            {/* Header */}
+            <div className="bg-[image:var(--gradient-brand)] px-6 py-8 sm:px-10 sm:py-10 text-white">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                <img
+                  src={coordinatorPhoto}
+                  alt="Prof. Arun Kumar Bashambu"
+                  className="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover border-4 border-white/20 shadow-xl flex-shrink-0"
+                />
+                <div className="text-center sm:text-left pt-2">
+                  <h2 className="font-display text-2xl sm:text-3xl font-bold">Prof. Arun Kumar Bashambu</h2>
+                  <p className="mt-1 text-white/80 font-medium text-lg">Faculty Coordinator</p>
+                  <div className="mt-4 flex items-center justify-center sm:justify-start gap-3">
+                    <a href="mailto:arunbashambu@rediffmail.com" className="inline-flex items-center justify-center rounded-full bg-white/10 p-2.5 text-white hover:bg-white/20 transition-colors" title="Send Email">
+                      <Mail className="h-4 w-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="px-6 py-8 sm:px-10 max-h-[60vh] overflow-y-auto">
+              <div className="space-y-8">
+                <div>
+                  <h3 className="font-display text-xl font-bold text-[color:var(--brand-navy)] flex items-center gap-2">
+                    <span className="h-6 w-1.5 rounded-full bg-[color:var(--brand-teal)]"></span>
+                    Experience & Impact
+                  </h3>
+                  <p className="mt-3 text-[color:var(--muted-foreground)] leading-relaxed">
+                    With over two decades of distinguished experience in academia and industry research, Prof. Bashambu has been instrumental in bridging the gap between theoretical knowledge and practical industry applications. He has successfully led multiple capacity-building programs and spearheads initiatives in emerging technologies.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="font-display text-xl font-bold text-[color:var(--brand-navy)] flex items-center gap-2">
+                    <span className="h-6 w-1.5 rounded-full bg-[color:var(--brand-teal)]"></span>
+                    Education
+                  </h3>
+                  <ul className="mt-3 space-y-3 text-[color:var(--muted-foreground)]">
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+                      <span>Ph.D. in Computer Science & Engineering</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+                      <span>M.Tech in Information Technology</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="font-display text-xl font-bold text-[color:var(--brand-navy)] flex items-center gap-2">
+                    <span className="h-6 w-1.5 rounded-full bg-[color:var(--brand-teal)]"></span>
+                    Key Areas of Expertise
+                  </h3>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {["Emerging Technologies", "Capacity Building", "Curriculum Design", "Industry Partnerships"].map((skill) => (
+                      <span key={skill} className="rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-3 py-1 text-sm font-medium text-[color:var(--brand-navy)]">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
