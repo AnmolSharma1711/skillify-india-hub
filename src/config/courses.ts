@@ -17,7 +17,7 @@
  */
 
 export type Course = {
-  id: "python" | "ml" | "genai";
+  id: "python" | "ml" | "genai" | "ewct" | "vlsi";
   title: string;
   category: string;
   tagline: string;
@@ -45,6 +45,7 @@ export type Course = {
       motivation: string;
     };
   };
+  externalLink?: string;
 };
 
 export const COURSES: Course[] = [
@@ -189,6 +190,71 @@ export const COURSES: Course[] = [
       },
     },
   },
+  {
+    id: "ewct",
+    title: "Emerging Wireless Communication Technologies",
+    category: "Communication",
+    icon: "Wifi",
+    tagline: "Learn the future of wireless communication and network technologies.",
+    description: "Explore the cutting-edge developments in wireless communication, 5G/6G networks, and IoT connectivity.",
+    duration: "Flexible",
+    level: "Intermediate to Advanced",
+    accent: "violet",
+    highlights: [
+      "5G/6G Architecture",
+      "IoT Connectivity",
+      "Network Protocols"
+    ],
+    syllabus: [
+      "Introduction to Wireless Comms",
+      "5G Architecture",
+      "IoT Protocols",
+      "Future 6G Concepts"
+    ],
+    techs: [
+      { icon: "Wifi", label: "Wireless" }
+    ],
+    externalLink: "https://iiitd.ac.in/ewct/",
+    googleForm: {
+      formId: "",
+      fields: {
+        name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: ""
+      }
+    }
+  },
+  {
+    id: "vlsi",
+    title: "VLSI and Embedded Systems",
+    category: "Hardware",
+    icon: "Cpu",
+    tagline: "Deep dive into VLSI design and embedded systems architecture.",
+    description: "Master the fundamentals and advanced concepts of VLSI design, semiconductor technologies, and embedded systems programming.",
+    duration: "Flexible",
+    level: "Intermediate",
+    accent: "cyan",
+    highlights: [
+      "VLSI Design Flow",
+      "Embedded C",
+      "Hardware Architecture"
+    ],
+    syllabus: [
+      "Digital Logic Design",
+      "VLSI Fundamentals",
+      "Embedded Systems Basics",
+      "Microcontrollers"
+    ],
+    techs: [
+      { icon: "Cpu", label: "VLSI" },
+      { icon: "CircuitBoard", label: "Embedded" }
+    ],
+    externalLink: "https://iiitd.ac.in/vlsirevisited2026/",
+    googleForm: {
+      formId: "",
+      fields: {
+        name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: ""
+      }
+    }
+  }
 ];
 
 export const getCourse = (id: Course["id"]) =>
