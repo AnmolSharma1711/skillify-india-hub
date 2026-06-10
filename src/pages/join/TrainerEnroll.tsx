@@ -4,17 +4,17 @@ import { BookOpen, Award, Briefcase, Star, CircleCheck as CheckCircle2, Loader a
 import { submitToGoogleForm } from "@/lib/googleForms";
 
 // TODO: Replace with your actual Google Form ID and entry IDs
-const TRAINER_FORM_ID = "1FAIpQLSf-cRz7zp6iZSQvGSBD7ae27vTDPl8DBYnZaRj7ax6EwxM7VQ";
+const TRAINER_FORM_ID = "1FAIpQLSdcdgSLaAjn_snEuiNqxFZvwSwOnERKnYofthzZFH6zu_A7SQ";
 const TRAINER_FIELDS = {
-  NAME: "entry.816947776",
-  EMAIL: "entry.1477372413",
-  DESIGNATION: "entry.1927328363",
-  EXPERTISE: "entry.2112500653", // Checkbox group
-  EXPERIENCE: "entry.1894894792",
-  RESUME_LINK: "entry.346728014",
-  QUALIFICATION: "entry.2131975298",
-  TIME_COMMITMENT: "entry.138160365",
-  EXPERIENCE_DESC: "entry.3388682",
+  NAME: "entry.1873567881",
+  EMAIL: "entry.1528402927",
+  DESIGNATION: "entry.550719367",
+  EXPERTISE: "entry.1926937514", // Checkbox group
+  EXPERIENCE: "entry.858294151",
+  RESUME_LINK: "entry.1987701982",
+  QUALIFICATION: "entry.1752357662",
+  TIME_COMMITMENT: "entry.485449230",
+  EXPERIENCE_DESC: "entry.1669861292",
 };
 
 const WHO_CAN_APPLY = [
