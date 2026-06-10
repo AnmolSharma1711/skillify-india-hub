@@ -24,7 +24,7 @@ const WHO_CAN_APPLY = [
     desc: "Professionals with 5+ years of experience in Electronics, IT, or allied domains who wish to guide students through real-world projects.",
     criteria: [
       "Minimum 5 years of relevant industry experience",
-      "Strong command over at least one course domain offered by Skillify",
+      "Strong command over at least one course domain offered by MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.",
       "Ability to commit 4–6 hours per week per cohort",
       "Willingness to review and grade learner assignments / projects",
     ],
@@ -55,16 +55,16 @@ const WHO_CAN_APPLY = [
 
 const GENERAL_REQUIREMENTS = [
   "Valid government-issued photo ID and professional proof of credentials",
-  "Signed engagement agreement with IIIT Delhi and MEIT",
+  "Signed engagement agreement with IIIT Delhi and MeitY",
   "Complete an onboarding orientation session before cohort begins",
-  "Adhere to Skillify's code of conduct and academic integrity policy",
+  "Adhere to MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.'s code of conduct and academic integrity policy",
   "Provide timely feedback and assessment within agreed SLA",
 ];
 
 const BENEFITS = [
-  "Official Skillify Trainer / Mentor certificate from IIIT Delhi",
+  "Official MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. Trainer / Mentor certificate from IIIT Delhi",
   "Honorarium as per engagement terms",
-  "Access to Skillify's learner community and alumni network",
+  "Access to MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.'s learner community and alumni network",
   "Co-branding on course material where applicable",
   "Priority consideration for future program expansions",
 ];
@@ -96,10 +96,10 @@ export default function TrainerEnroll() {
   return (
     <>
       <Helmet>
-        <title>Trainer Enrollment — Skillify IIITD × MEIT</title>
+        <title>Trainer Enrollment — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD × MeitY</title>
         <meta
           name="description"
-          content="Join Skillify as a trainer, mentor or subject matter expert and help upskill India's youth."
+          content="Join MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. as a trainer, mentor or subject matter expert and help upskill India's youth."
         />
       </Helmet>
 
@@ -123,7 +123,7 @@ export default function TrainerEnroll() {
             <span className="text-gradient-brand">Enrollment</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-            Shape the next generation of technology professionals. Join Skillify as a trainer,
+            Shape the next generation of technology professionals. Join MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. as a trainer,
             industry mentor, or subject matter expert and contribute to India's largest
             government-backed skilling initiative.
           </p>

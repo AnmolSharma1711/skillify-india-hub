@@ -21,7 +21,7 @@ export function CoursesShowcase() {
             Learn the skills behind modern software, data, and AI products.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-            Skillify brings Python Programming, Machine Learning, and Generative AI into one clear
+            MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. brings Python Programming, Machine Learning, and Generative AI into one clear
             learning path with mentor-led sessions, projects, and IIIT Delhi guidance.
           </p>
         </div>

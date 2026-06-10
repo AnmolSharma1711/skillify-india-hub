@@ -20,7 +20,7 @@ const ELIGIBILITY = [
     items: [
       "Recognised universities, colleges or deemed institutions",
       "Must have a minimum enrolment of 100+ active students",
-      "Dedicated faculty co-ordinator to liaise with Skillify",
+      "Dedicated faculty co-ordinator to liaise with MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.",
       "Willingness to integrate courses into semester timetable",
     ],
   },
@@ -47,9 +47,9 @@ const ELIGIBILITY = [
 ];
 
 const REQUIREMENTS = [
-  "MoU / Letter of Intent signed with IIIT Delhi & MEIT",
+  "MoU / Letter of Intent signed with IIIT Delhi & MeitY",
   "Designation of a single point of contact from your organisation",
-  "Adherence to Skillify's content quality and assessment standards",
+  "Adherence to MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.'s content quality and assessment standards",
   "Provide a basic lab / internet-ready classroom for offline cohorts",
   "Agree to nominee terms for co-branded certification issuance",
 ];
@@ -81,10 +81,10 @@ export default function PartnerOrg() {
   return (
     <>
       <Helmet>
-        <title>Partnering Organizations — Skillify IIITD × MEIT</title>
+        <title>Partnering Organizations — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD × MeitY</title>
         <meta
           name="description"
-          content="Partner with Skillify to bring industry-aligned tech education to your institution or organisation."
+          content="Partner with MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. to bring industry-aligned tech education to your institution or organisation."
         />
       </Helmet>
 
@@ -108,7 +108,7 @@ export default function PartnerOrg() {
             <span className="text-gradient-brand">Organizations</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-            Join the Skillify ecosystem as an academic institution, training partner, or
+            Join the MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. ecosystem as an academic institution, training partner, or
             industry organisation — and co-deliver world-class, government-backed technology
             education at scale.
           </p>

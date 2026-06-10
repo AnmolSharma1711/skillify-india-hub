@@ -33,17 +33,17 @@ export function Hero() {
       <div aria-hidden className="absolute inset-0 z-[3] bg-dots opacity-20" />
 
       <div
-        className="relative z-10 mx-auto max-w-7xl px-4 pb-24 pt-12 text-center sm:px-6 sm:pt-16"
+        className="relative z-10 mx-auto max-w-8xl px-4 pb-24 pt-12 text-center sm:px-6 sm:pt-16"
         style={{
           animation: "fadeInUp 0.6s ease-out, staggerChildren 0.8s ease-out",
         }}
       >
         <div
-          className="mx-auto inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-teal)]/40 bg-white/80 px-4 py-1.5 text-xs font-semibold text-[color:var(--brand-navy)] shadow-sm backdrop-blur"
+          className="mx-auto inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-teal)]/40 bg-white/80 px-4 py-1.5 text-xl font-semibold text-[color:var(--brand-navy)] shadow-sm backdrop-blur"
           style={{ animationDelay: "0s" }}
         >
-          <Sparkles className="h-3.5 w-3.5 text-[color:var(--brand-saffron)]" />
-          A MEIT-powered initiative by IIIT Delhi
+          <Sparkles className="h-6.5 w-8.5 text-[color:var(--brand-saffron)]" />
+          A MeitY-Powered Initiative
         </div>
 
         <h1
