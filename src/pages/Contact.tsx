@@ -245,7 +245,7 @@ export default function Contact() {
         <img
           src={member.photo}
           alt={member.name}
-          className="h-32 w-32 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-md"
+          className="h-36 w-36 sm:h-44 sm:w-44 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-md"
         />
 
         <h3 className="mt-4 text-lg font-semibold text-[color:var(--brand-navy)]">
