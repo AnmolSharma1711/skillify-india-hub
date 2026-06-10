@@ -229,15 +229,22 @@ export function PillNav({
   return (
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
-        <Link
-          className="pill-logo"
-          to="/"
-          aria-label="Home"
-          onMouseEnter={handleLogoEnter}
-          ref={logoRef}
-        >
-          <img src={logo} alt={logoAlt} ref={logoImgRef} />
-        </Link>
+        <div style={{ display: "flex", gap: "8px" }}>
+          <Link
+            className="pill-logo"
+            to="/"
+            aria-label="Home"
+            onMouseEnter={handleLogoEnter}
+            ref={logoRef}
+          >
+            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+          </Link>
+          {trailingLogo && (
+            <div className="pill-logo" aria-label={trailingLogoAlt}>
+              <img src={trailingLogo} alt={trailingLogoAlt} />
+            </div>
+          )}
+        </div>
 
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>
           <ul className="pill-list" role="menubar">
@@ -269,12 +276,6 @@ export function PillNav({
             ))}
           </ul>
         </div>
-
-        {trailingLogo && (
-          <div className="pill-logo desktop-only" aria-label={trailingLogoAlt} style={{ marginLeft: 4 }}>
-            <img src={trailingLogo} alt={trailingLogoAlt} />
-          </div>
-        )}
 
         <button
           className="mobile-menu-button mobile-only"

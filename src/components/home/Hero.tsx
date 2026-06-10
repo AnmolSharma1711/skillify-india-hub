@@ -88,7 +88,7 @@ export function Hero() {
             { k: "IIITD", v: <b>Faculty Driven</b> },
           ].map((s) => (
             <div
-              key={s.v}
+              key={s.k}
               className="rounded-xl border border-[color:var(--brand-navy)]/12 bg-white/85 p-4 shadow-sm backdrop-blur"
             >
               <dt className="font-display text-2xl font-bold text-gradient-brand">{s.k}</dt>
