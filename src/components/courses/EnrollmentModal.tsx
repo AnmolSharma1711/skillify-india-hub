@@ -6,7 +6,7 @@ import { submitToGoogleForm } from "@/lib/googleForms";
 
 // TODO: Replace with your actual Google Form IDs
 const INDIVIDUAL_FORM_ID = "1FAIpQLSf_PLACEHOLDER_INDIVIDUAL";
-const INSTITUTE_FORM_ID = "1FAIpQLSf_PLACEHOLDER_INSTITUTE";
+const INSTITUTE_FORM_ID = "1FAIpQLScyNDpnwx2I6fXxc6k3cP6j6pQdCs4sY_1OImv5QbU74vq5KA";
 
 // TODO: Replace with your actual field entry IDs from the Google Forms
 const INDIVIDUAL_FIELDS = {
@@ -23,16 +23,15 @@ const INDIVIDUAL_FIELDS = {
 };
 
 const INSTITUTE_FIELDS = {
-  COURSE: "entry.200001",
-  INSTITUTE_NAME: "entry.200002",
-  ADDRESS: "entry.200003",
-  POC_NAME: "entry.200004",
-  POC_DESIGNATION: "entry.200005",
-  EMAIL: "entry.200006",
-  PHONE: "entry.200007",
-  STUDENTS_COUNT: "entry.200008",
-  INFRASTRUCTURE: "entry.200009", // Checkbox group
-  FACILITATION_PLAN: "entry.200010",
+  INSTITUTE_NAME: "entry.1898781544",
+  ADDRESS: "entry.260567387",
+  POC_NAME: "entry.126786012",
+  POC_DESIGNATION: "entry.2023073484",
+  EMAIL: "entry.169451936",
+  PHONE: "entry.387471592",
+  STUDENTS_COUNT: "entry.1164770287",
+  INFRASTRUCTURE: "entry.1645823303", // Checkbox group
+  FACILITATION_PLAN: "entry.1846519789",
 };
 
 export function EnrollmentModal({
@@ -199,7 +198,6 @@ export function EnrollmentModal({
             </>
           ) : (
             <>
-              <input type="hidden" name={INSTITUTE_FIELDS.COURSE} value={course.title} />
               <div className="mb-4 rounded-lg bg-[color:var(--brand-teal)]/5 p-3 border border-[color:var(--brand-teal)]/20">
                 <p className="text-xs text-[color:var(--brand-teal)] font-semibold">Course Selected for Institute</p>
                 <p className="text-sm font-bold text-[color:var(--brand-navy)] mt-0.5">{course.title}</p>
