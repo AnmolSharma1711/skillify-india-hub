@@ -167,7 +167,7 @@ export function EnrollmentModal({
                 <Field label="Department / Branch" name={INDIVIDUAL_FIELDS.DEPARTMENT} placeholder="e.g. CSE, AIML" required />
               </div>
 
-              <Field label="LinkedIn Profile URL" name={INDIVIDUAL_FIELDS.LINKEDIN} type="url" placeholder="Optional" />
+              <Field label="LinkedIn Profile URL" name={INDIVIDUAL_FIELDS.LINKEDIN} type="text" placeholder="Optional" />
 
               <div>
                 <label className="mb-1.5 block text-xs font-semibold text-[color:var(--brand-navy)]">Prior Knowledge in {course.title} <span className="text-red-500">*</span></label>

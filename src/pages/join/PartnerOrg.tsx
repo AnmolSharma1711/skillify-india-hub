@@ -232,7 +232,7 @@ export default function PartnerOrg() {
 
                 <div>
                   <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Official Website / LinkedIn Page URL *</label>
-                  <input name={PARTNER_FIELDS.WEBSITE} type="url" placeholder="https://..." required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  <input name={PARTNER_FIELDS.WEBSITE} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                 </div>
 
                 <div>

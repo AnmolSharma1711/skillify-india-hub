@@ -334,7 +334,7 @@ export default function TrainerEnroll() {
                   <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">
                     Resume Link * <span className="text-[11px] font-normal text-[color:var(--muted-foreground)] ml-1">(Google Drive, Dropbox, or LinkedIn)</span>
                   </label>
-                  <input name={TRAINER_FIELDS.RESUME_LINK} type="url" placeholder="https://..." required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  <input name={TRAINER_FIELDS.RESUME_LINK} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                 </div>
 
                 <div>
