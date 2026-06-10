@@ -297,13 +297,15 @@ export function PillNav({
                 }}
               >
                 {item.dropdown ? (
-                  /* Dropdown trigger pill */
-                  <button
+                  /* Dropdown trigger pill — use div to avoid browser button style overrides */
+                  <div
                     role="menuitem"
                     aria-haspopup="true"
                     aria-expanded={activeDropdown === i}
                     className={`pill pill-dropdown-trigger${isDropdownActive(item) ? " is-active" : ""}`}
                     onClick={() => setActiveDropdown(activeDropdown === i ? null : i)}
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === "Enter" && setActiveDropdown(activeDropdown === i ? null : i)}
                   >
                     <span
                       className="hover-circle"
@@ -323,7 +325,7 @@ export function PillNav({
                         <ChevronDown className="pill-chevron" />
                       </span>
                     </span>
-                  </button>
+                  </div>
                 ) : (
                   /* Regular link pill */
                   <Link

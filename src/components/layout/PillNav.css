@@ -85,6 +85,7 @@
 .pill-list > li {
   display: flex;
   height: 100%;
+  position: relative;
 }
 
 .pill {
@@ -263,16 +264,24 @@
 }
 
 /* ── Dropdown pill trigger ── */
+/* pill-list-item is now handled by pill-list > li above */
 .pill-list-item {
   position: relative;
   display: flex;
   height: 100%;
 }
 
+/* Reset <button> defaults while keeping .pill visual styles intact */
 .pill-dropdown-trigger {
-  background: none;
   border: none;
   cursor: pointer;
+  /* Do NOT set background: none here — .pill provides the background */
+  appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .pill-label-with-icon {
