@@ -12,23 +12,7 @@ import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
 import coordinatorPhoto from "@/assets/coordinator.png";
 
-const contactPoints = [
-  {
-    icon: MessageSquare,
-    title: "Enrollment queries",
-    body: "Ask about eligibility, course structure, batches, and certificates.",
-  },
-  {
-    icon: Mail,
-    title: "Programme support",
-    body: "Share your details and the Skillify team can connect the right coordinator.",
-  },
-  {
-    icon: MapPin,
-    title: "Institution",
-    body: "IIIT Delhi, Okhla Industrial Estate, New Delhi.",
-  },
-];
+
 
 export default function Contact() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -78,93 +62,125 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-            {/* Left Side Cards */}
-            <div className="space-y-4">
-              {contactPoints.map(({ icon: Icon, title, body }) => (
-                <div
-                  key={title}
-                  className="rounded-2xl border border-[color:var(--border)] bg-white/90 p-5 shadow-sm backdrop-blur"
-                >
-                  <div className="flex gap-4">
-                    <div className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-lg bg-[image:var(--gradient-brand)] text-white">
-                      <Icon className="h-5 w-5" />
-                    </div>
+          <div className="mt-12 grid gap-8 lg:grid-cols-2">
 
-                    <div>
-                      <h2 className="font-display text-lg font-semibold text-[color:var(--brand-navy)]">
-                        {title}
-                      </h2>
+  {/* Left Contact Card */}
+  <div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm">
+    <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)]">
+      Contact Information
+    </h2>
 
-                      <p className="mt-1 text-sm leading-relaxed text-[color:var(--muted-foreground)]">
-                        {body}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+    <div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
+      <div className="flex-1 min-w-0">
+        <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] break-words">
+          Programme Office
+        </h3>
 
-            {/* Contact Information Card */}
-<div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm">
-  <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)]">
-    Contact Information
-  </h2>
-
-  {/* Coordinator Section */}
-  {/* Coordinator Section */}
-<div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
-  <div className="flex-1 min-w-0">
-    <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] break-words">
-      Prof. Arun Kumar Bashambu
-    </h3>
-
-    <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
-      Faculty Coordinator
-    </p>
-  </div>
-
-  <img
-    src={coordinatorPhoto}
-    alt="Faculty Coordinator"
-    className="h-28 w-28 sm:h-48 sm:w-48 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg mx-auto sm:mx-0"
-  />
-</div>
-
-  <div className="mt-8 space-y-5">
-    <div className="flex items-start gap-3">
-      <Mail className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
-
-      <div className="min-w-0">
-        <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
-          Email
+        <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
+          General Queries
         </p>
-
-        <a
-          href="mailto:arunbashambu@rediffmail.com"
-          className="text-base sm:text-xl text-[color:var(--brand-teal)] hover:underline break-all"
-        >
-          arunbashambu@rediffmail.com
-        </a>
       </div>
+
+      <img
+        src={coordinatorPhoto}
+        alt="Programme Office"
+        className="h-28 w-28 sm:h-48 sm:w-48 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg mx-auto sm:mx-0"
+      />
     </div>
 
-    <div className="flex items-start gap-3">
-      <MapPin className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
+    <div className="mt-8 space-y-5">
+      <div className="flex items-start gap-3">
+        <Mail className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
 
-      <div>
-        <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
-          Address
-        </p>
+        <div className="min-w-0">
+          <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
+            Email
+          </p>
 
-        <p className="text-base sm:text-xl text-[color:var(--muted-foreground)]">
-          IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020
-        </p>
+          <a
+            href="mailto:info@example.com"
+            className="text-base sm:text-xl text-[color:var(--brand-teal)] hover:underline break-all"
+          >
+            info@example.com
+          </a>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <MapPin className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
+
+        <div>
+          <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
+            Address
+          </p>
+
+          <p className="text-base sm:text-xl text-[color:var(--muted-foreground)]">
+            IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020
+          </p>
+        </div>
       </div>
     </div>
   </div>
+
+  {/* Right Contact Card */}
+  <div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm">
+    <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)]">
+      Contact Information
+    </h2>
+
+    <div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
+      <div className="flex-1 min-w-0">
+        <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] break-words">
+          Prof. Arun Kumar Bashambu
+        </h3>
+
+        <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
+          Faculty Coordinator
+        </p>
+      </div>
+
+      <img
+        src={coordinatorPhoto}
+        alt="Faculty Coordinator"
+        className="h-28 w-28 sm:h-48 sm:w-48 flex-shrink-0 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg mx-auto sm:mx-0"
+      />
+    </div>
+
+    <div className="mt-8 space-y-5">
+      <div className="flex items-start gap-3">
+        <Mail className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
+
+        <div className="min-w-0">
+          <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
+            Email
+          </p>
+
+          <a
+            href="mailto:arunbashambu@rediffmail.com"
+            className="text-base sm:text-xl text-[color:var(--brand-teal)] hover:underline break-all"
+          >
+            arunbashambu@rediffmail.com
+          </a>
+        </div>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <MapPin className="mt-1 sm:mt-0.5 h-5 w-5 flex-shrink-0 text-[color:var(--brand-teal)]" />
+
+        <div>
+          <p className="text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)]">
+            Address
+          </p>
+
+          <p className="text-base sm:text-xl text-[color:var(--muted-foreground)]">
+            IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-          </div>
         </div>
       </section>
     </>
