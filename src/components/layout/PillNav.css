@@ -281,15 +281,15 @@
 }
 
 .pill-label-with-icon {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  /* Keep inline-block from .pill-label so text baseline aligns with other pills */
 }
 
 .pill-chevron {
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: -2px;
+  margin-left: 4px;
   transition: transform 0.25s ease;
 }
 
