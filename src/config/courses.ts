@@ -62,7 +62,7 @@ export const COURSES: Course[] = [
       { label: "Course Duration", value: "6 Weeks" },
       { label: "Weekly Commitment", value: "3 Hours" },
       { label: "Batches Run", value: "Multiple" },
-      { label: "Certification", value: "IIITD + MEIT" },
+      { label: "Certification", value: "IIITD + MeitY" },
     ],
     techs: [
       { icon: "Code", label: "Python" },
@@ -72,7 +72,7 @@ export const COURSES: Course[] = [
     highlights: [
       "Live mentor sessions",
       "Hands-on capstone project",
-      "Certificate from IIIT Delhi & MEIT",
+      "Certificate from IIIT Delhi & MeitY",
     ],
     syllabus: [
       "Python syntax, data types & control flow",
@@ -109,7 +109,7 @@ export const COURSES: Course[] = [
       { label: "Course Duration", value: "8 Weeks" },
       { label: "Weekly Commitment", value: "4 Hours" },
       { label: "Batches Run", value: "Multiple" },
-      { label: "Certification", value: "IIITD + MEIT" },
+      { label: "Certification", value: "IIITD + MeitY" },
     ],
     techs: [
       { icon: "BarChart3", label: "NumPy" },
@@ -156,7 +156,7 @@ export const COURSES: Course[] = [
       { label: "Course Duration", value: "6 Weeks" },
       { label: "Weekly Commitment", value: "4 Hours" },
       { label: "Batches Run", value: "Multiple" },
-      { label: "Certification", value: "IIITD + MEIT" },
+      { label: "Certification", value: "IIITD + MeitY" },
     ],
     techs: [
       { icon: "Brain", label: "LLMs" },

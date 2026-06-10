@@ -47,7 +47,7 @@ export function AboutSection() {
             <span className="text-gradient-brand">India.</span>
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-            <strong className="text-[color:var(--brand-navy)]">Skillify</strong> is a joint initiative between{" "}
+            <strong className="text-[color:var(--brand-navy)]">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.</strong> is a joint initiative between{" "}
             <strong className="text-[color:var(--brand-navy)]">IIIT Delhi</strong> and the{" "}
             <strong className="text-[color:var(--brand-navy)]">
               Ministry of Electronics and Information Technology (MeitY)

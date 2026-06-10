@@ -8,10 +8,10 @@ export default function Index() {
   return (
     <>
       <Helmet>
-        <title>Saksham IIITD &times; MEIT — Free Tech Courses</title>
+        <title>Saksham IIITD &times; MeitY — Free Tech Courses</title>
         <meta
           name="description"
-          content="MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies by IIIT Delhi, powered by MEIT."
+          content="MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies by IIIT Delhi, powered by MeitY."
         />
       </Helmet>
 

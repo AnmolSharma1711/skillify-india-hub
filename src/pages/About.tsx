@@ -25,7 +25,7 @@ const BENEFICIARIES = [
 const WHAT_YOU_GET = [
   "Mentor-led cohorts taught by IIITD faculty and industry experts.",
   "Real capstone projects that prove your skills to employers.",
-  "A recognised certificate co-issued by IIITD and MEIT.",
+  "A recognised certificate co-issued by IIITD and MeitY.",
   "A community of learners, mentors and alumni you can grow with.",
 ];
 
@@ -33,10 +33,10 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — Skillify IIITD &times; MEIT</title>
+        <title>About — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD &times; MeitY</title>
         <meta
           name="description"
-          content="About the IIIT Delhi &times; MEIT skilling initiative — a mission to upskill India's youth in modern tech."
+          content="About the IIIT Delhi &times; MeitY skilling initiative — a mission to upskill India's youth in modern tech."
         />
       </Helmet>
 
@@ -58,15 +58,15 @@ export default function About() {
               About the Project
             </p>
             <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
-              Skillify: MultiLevel Capacity Building and Skilling in{" "}
+              MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.: MultiLevel Capacity Building and Skilling in{" "}
               <span className="text-gradient-brand">Industry-aligned Emerging Technologies</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-              <strong className="text-[color:var(--brand-navy)]">Skillify</strong> is a joint
+              <strong className="text-[color:var(--brand-navy)]">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.</strong> is a joint
               initiative between{" "}
               <strong className="text-[color:var(--brand-navy)]">IIIT Delhi</strong> and the{" "}
               <strong className="text-[color:var(--brand-navy)]">
-                Ministry of Electronics and Information Technology (MEIT)
+                Ministry of Electronics and Information Technology (MeitY)
               </strong>
               . Our goal: give every Indian student — regardless of background — free, world-class
               training in the technologies shaping the next decade.

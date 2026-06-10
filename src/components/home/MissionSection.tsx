@@ -61,7 +61,7 @@ export function MissionSection() {
       {/* Section label */}
       <div className="mb-10 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
-          Why Skillify
+          Why MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.
         </p>
         <h2 className="mt-2 font-display text-3xl font-bold text-[color:var(--brand-navy)] sm:text-4xl">
           Everything you need to <span className="text-gradient-brand">succeed</span>

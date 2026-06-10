@@ -12,8 +12,6 @@ import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
 import coordinatorPhoto from "@/assets/coordinator.png";
 
-
-
 export default function Contact() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,10 +24,10 @@ export default function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact - Skillify IIITD &amp; MEIT</title>
+        <title>Contact - MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD &amp; MeitY</title>
         <meta
           name="description"
-          content="Contact the Skillify programme team for course, enrollment, and partnership queries."
+          content="Contact the MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. programme team for course, enrollment, and partnership queries."
         />
       </Helmet>
 
@@ -53,7 +51,7 @@ export default function Contact() {
 
             <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
               Have a question about{" "}
-              <span className="text-gradient-brand">Skillify?</span>
+              <span className="text-gradient-brand">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.?</span>
             </h1>
 
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
@@ -61,7 +59,6 @@ export default function Contact() {
               keep the next step clear.
             </p>
           </div>
-
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
 
   {/* Left Contact Card */}
