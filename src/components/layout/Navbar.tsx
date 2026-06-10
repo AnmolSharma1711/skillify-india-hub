@@ -18,11 +18,6 @@ const NAV_ITEMS = [
         href: "/enroll/institute",
         description: "Universities & academic institutions",
       },
-      {
-        label: "Others",
-        comingSoon: true,
-        description: "More options launching soon",
-      },
     ],
   },
   {
@@ -37,6 +32,11 @@ const NAV_ITEMS = [
         label: "Partnering Organizations",
         href: "/join/partner",
         description: "Academic institutions & industry orgs",
+      },
+      {
+        label: "Others",
+        comingSoon: true,
+        description: "More options launching soon",
       },
     ],
   },
