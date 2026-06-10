@@ -182,7 +182,15 @@ export function CourseDetailOverlay({
 
             {/* CTA */}
             <div className="flex flex-col gap-3 pt-4 sm:flex-row">
-              {course.externalLink ? (
+              {course.status === "completed" ? (
+                <div className="w-full inline-flex h-12 items-center justify-center rounded-lg bg-slate-100 text-sm font-semibold text-slate-500 cursor-not-allowed">
+                  Enrollment Closed
+                </div>
+              ) : course.status === "upcoming" ? (
+                <div className="w-full inline-flex h-12 items-center justify-center rounded-lg bg-amber-100 text-sm font-semibold text-amber-700 cursor-not-allowed">
+                  Coming Soon
+                </div>
+              ) : course.externalLink ? (
                 <a
                   href={course.externalLink}
                   target="_blank"

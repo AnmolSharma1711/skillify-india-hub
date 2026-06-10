@@ -78,15 +78,28 @@ export function CourseCardLight({
           aria-hidden
         />
 
-        {/* Course icon */}
-        <div
-          className="grid h-11 w-11 place-items-center rounded-lg text-white mb-3"
-          style={{ background: accent.bg }}
-        >
-          {(() => {
-            const IconComponent = Icons[course.icon as keyof typeof Icons] as any;
-            return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
-          })()}
+        {/* Header with icon and optional status badge */}
+        <div className="mb-3 flex items-start justify-between">
+          <div
+            className="grid h-11 w-11 place-items-center rounded-lg text-white"
+            style={{ background: accent.bg }}
+          >
+            {(() => {
+              const IconComponent = Icons[course.icon as keyof typeof Icons] as any;
+              return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
+            })()}
+          </div>
+          {course.status && course.status !== "active" && (
+            <span
+              className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+                course.status === "upcoming"
+                  ? "bg-amber-100 text-amber-700"
+                  : "bg-slate-100 text-slate-700"
+              }`}
+            >
+              {course.status === "upcoming" ? "Coming Soon" : "Completed"}
+            </span>
+          )}
         </div>
 
         <h3 className="font-display text-xl font-bold text-[color:var(--brand-navy)]">

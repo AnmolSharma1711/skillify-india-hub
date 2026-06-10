@@ -46,6 +46,7 @@ export type Course = {
     };
   };
   externalLink?: string;
+  status?: "active" | "completed" | "upcoming";
 };
 
 export const COURSES: Course[] = [
