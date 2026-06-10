@@ -278,7 +278,6 @@
   /* Do NOT set background: none here — .pill provides the background */
   appearance: none;
   -webkit-appearance: none;
-  font: inherit;
 }
 
 .pill-label-with-icon {
