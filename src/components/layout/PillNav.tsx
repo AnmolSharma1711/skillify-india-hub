@@ -56,12 +56,9 @@ export function PillNav({
   const circleRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const tlRefs = useRef<gsap.core.Timeline[]>([]);
   const activeTweenRefs = useRef<gsap.core.Tween[]>([]);
-  const logoImgRef = useRef<HTMLImageElement>(null);
-  const logoTweenRef = useRef<gsap.core.Tween | null>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const navItemsRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLAnchorElement>(null);
   const dropdownTimers = useRef<Record<number, ReturnType<typeof setTimeout>>>({});
 
   const location = useLocation();
@@ -161,19 +158,6 @@ export function PillNav({
     activeTweenRefs.current[i] = tl.tweenTo(0, { duration: 0.2, ease, overwrite: "auto" });
   };
 
-  const handleLogoEnter = () => {
-    logoTweenRef.current?.kill();
-    if (logoImgRef.current) {
-      gsap.set(logoImgRef.current, { rotate: 0 });
-      logoTweenRef.current = gsap.to(logoImgRef.current, {
-        rotate: 360,
-        duration: 0.4,
-        ease,
-        overwrite: "auto",
-      });
-    }
-  };
-
   const handleDropdownEnter = (i: number) => {
     clearTimeout(dropdownTimers.current[i]);
     setActiveDropdown(i);
@@ -271,19 +255,11 @@ export function PillNav({
   return (
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
-        <div className="hidden sm:flex items-center mr-4">
-          <img src={logo} alt={logoAlt} className="h-20 w-auto object-contain" />
+        <div className="hidden sm:flex items-center mr-6">
+          <Link to="/" aria-label="Home">
+            <img src={logo} alt={logoAlt} className="h-16 w-auto object-contain transition-transform hover:scale-105" />
+          </Link>
         </div>
-
-        <Link
-          className="pill-logo"
-          to="/"
-          aria-label="Home"
-          onMouseEnter={handleLogoEnter}
-          ref={logoRef}
-        >
-          <img src={logo} alt={logoAlt} ref={logoImgRef} />
-        </Link>
 
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>
           <ul className="pill-list" role="menubar">
@@ -395,16 +371,10 @@ export function PillNav({
           </ul>
         </div>
 
-        {trailingLogo && (
-          <div className="pill-logo desktop-only" aria-label={trailingLogoAlt} style={{ marginLeft: 4 }}>
-            <img src={trailingLogo} alt={trailingLogoAlt} />
-          </div>
-        )}
-
         {/* Large MeitY Logo */}
         {trailingLogo && (
-          <div className="hidden sm:flex items-center ml-4">
-            <img src={trailingLogo} alt={trailingLogoAlt} className="h-20 w-auto object-contain" />
+          <div className="hidden sm:flex items-center ml-6">
+            <img src={trailingLogo} alt={trailingLogoAlt} className="h-16 w-auto object-contain transition-transform hover:scale-105" />
           </div>
         )}
 
