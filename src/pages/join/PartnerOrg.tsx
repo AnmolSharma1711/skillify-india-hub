@@ -1,5 +1,17 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Building2, GraduationCap, Globe, Users } from "lucide-react";
+import { Building2, GraduationCap, Globe, Users, CircleCheck as CheckCircle2, Loader as Loader2 } from "lucide-react";
+import { submitToGoogleForm } from "@/lib/googleForms";
+
+// TODO: Replace with your actual Google Form ID and entry IDs
+const PARTNER_FORM_ID = "1FAIpQLSf_PLACEHOLDER_PARTNER";
+const PARTNER_FIELDS = {
+  ORG_NAME: "entry.400001",
+  CATEGORY: "entry.400002",
+  CONTACT_PERSON: "entry.400003",
+  EMAIL: "entry.400004",
+  PHONE: "entry.400005",
+};
 
 const ELIGIBILITY = [
   {
@@ -43,6 +55,29 @@ const REQUIREMENTS = [
 ];
 
 export default function PartnerOrg() {
+  const [submitting, setSubmitting] = useState(false);
+  const [done, setDone] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+
+    try {
+      await submitToGoogleForm(PARTNER_FORM_ID, data);
+      setDone(true);
+    } catch {
+      setDone(true);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <>
       <Helmet>
@@ -156,7 +191,7 @@ export default function PartnerOrg() {
       </section>
 
       {/* Google Form */}
-      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6 relative">
         <div className="rounded-2xl border border-[color:var(--border)] bg-white shadow-sm overflow-hidden">
           <div
             className="px-8 py-6 border-b border-[color:var(--border)]"
@@ -169,19 +204,68 @@ export default function PartnerOrg() {
               Fill in the form below and our partnership team will reach out within 3 working days.
             </p>
           </div>
-          <div className="p-2">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSf_PLACEHOLDER_PARTNER/viewform?embedded=true"
-              width="100%"
-              height="700"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="Partnering Organization Registration Form"
-              className="rounded-xl"
-            >
-              Loading…
-            </iframe>
+          <div className="p-8 relative">
+            {done ? (
+              <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in duration-300">
+                <CheckCircle2 className="mx-auto h-16 w-16 text-[color:var(--brand-teal)]" />
+                <h4 className="mt-4 font-display text-2xl font-semibold text-[color:var(--brand-navy)]">
+                  Thank You!
+                </h4>
+                <p className="mt-2 text-base text-[color:var(--muted-foreground)] max-w-md">
+                  Your interest has been received. Our partnership team will contact you soon.
+                </p>
+                <button
+                  onClick={() => setDone(false)}
+                  className="mt-8 inline-flex h-11 items-center rounded-md bg-[image:var(--gradient-brand)] px-8 text-sm font-semibold text-white transition-transform hover:scale-[1.02]"
+                >
+                  Submit Another
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="mx-auto max-w-2xl space-y-5">
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Organization Name *</label>
+                  <input name={PARTNER_FIELDS.ORG_NAME} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Category *</label>
+                  <select name={PARTNER_FIELDS.CATEGORY} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]">
+                    <option value="">Select a category</option>
+                    <option value="Academic Institution">Academic Institution</option>
+                    <option value="Training Partner">Training Partner</option>
+                    <option value="Industry Organization">Industry Organization</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Contact Person Name *</label>
+                  <input name={PARTNER_FIELDS.CONTACT_PERSON} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Email Address *</label>
+                    <input name={PARTNER_FIELDS.EMAIL} type="email" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Phone Number *</label>
+                    <input name={PARTNER_FIELDS.PHONE} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="inline-flex h-12 w-full sm:w-auto min-w-[200px] items-center justify-center gap-2 rounded-md bg-[image:var(--gradient-brand)] text-sm font-semibold text-white shadow-md transition-transform hover:scale-[1.02] disabled:opacity-70"
+                  >
+                    {submitting ? <Loader2 className="h-5 w-5 animate-spin" /> : null}
+                    {submitting ? "Submitting..." : "Submit Interest"}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>

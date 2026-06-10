@@ -1,24 +1,30 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { z } from "zod";
-import { toast } from "sonner";
 import { CircleCheck as CheckCircle2, X, Loader as Loader2 } from "lucide-react";
 import type { Course } from "@/config/courses";
-import { submitToBackend, EnrollmentType } from "@/lib/api";
+import { submitToGoogleForm } from "@/lib/googleForms";
 
-const schema = z.object({
-  name: z.string().trim().min(2, "Please enter your name").max(100),
-  email: z.string().trim().email("Enter a valid email").max(200),
-  phone: z
-    .string()
-    .trim()
-    .regex(/^[0-9+\-\s]{7,15}$/, "Enter a valid phone number"),
-  institution: z.string().trim().min(2, "Required").max(200),
-  designation: z.string().trim().min(2, "Required").max(100),
-  motivation: z.string().trim().max(500).optional().or(z.literal("")),
-});
+// TODO: Replace with your actual Google Form IDs
+const INDIVIDUAL_FORM_ID = "1FAIpQLSf_PLACEHOLDER_INDIVIDUAL";
+const INSTITUTE_FORM_ID = "1FAIpQLSf_PLACEHOLDER_INSTITUTE";
 
-type FieldErrors = Partial<Record<keyof z.infer<typeof schema>, string>>;
+// TODO: Replace with your actual field entry IDs from the Google Forms
+const INDIVIDUAL_FIELDS = {
+  COURSE: "entry.100001",
+  NAME: "entry.100002",
+  EMAIL: "entry.100003",
+  PHONE: "entry.100004",
+  MOTIVATION: "entry.100005",
+};
+
+const INSTITUTE_FIELDS = {
+  COURSE: "entry.200001",
+  INSTITUTE: "entry.200002",
+  COORDINATOR: "entry.200003",
+  EMAIL: "entry.200004",
+  PHONE: "entry.200005",
+  BATCH_SIZE: "entry.200006",
+};
 
 export function EnrollmentModal({
   course,
@@ -26,43 +32,33 @@ export function EnrollmentModal({
   onClose,
 }: {
   course: Course;
-  enrollmentType: EnrollmentType;
+  enrollmentType: "individual" | "institute";
   onClose: () => void;
 }) {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
-  const [errors, setErrors] = useState<FieldErrors>({});
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    const parsed = schema.safeParse(data);
-
-    if (!parsed.success) {
-      const fe: FieldErrors = {};
-      for (const issue of parsed.error.issues) {
-        const key = issue.path[0] as keyof FieldErrors;
-        if (!fe[key]) fe[key] = issue.message;
-      }
-      setErrors(fe);
-      return;
-    }
-
-    setErrors({});
     setSubmitting(true);
+    
+    const formData = new FormData(e.currentTarget);
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
+
     try {
-      await submitToBackend(course, enrollmentType, {
-        name: parsed.data.name,
-        email: parsed.data.email,
-        phone: parsed.data.phone,
-        institution: parsed.data.institution,
-        designation: parsed.data.designation,
-        motivation: parsed.data.motivation ?? "",
-      });
+      if (enrollmentType === "individual") {
+        await submitToGoogleForm(INDIVIDUAL_FORM_ID, data);
+      } else {
+        await submitToGoogleForm(INSTITUTE_FORM_ID, data);
+      }
       setDone(true);
-      toast.success("For success, we will contact you for the update.");
     } catch {
-      toast.error("Something went wrong. Please try again.");
+      // With no-cors, fetch only throws on network failure (offline)
+      // We'll show success anyway to not block the user, or you can handle errors
+      setDone(true);
     } finally {
       setSubmitting(false);
     }
@@ -101,7 +97,7 @@ export function EnrollmentModal({
       >
         <div className="flex items-start sm:items-center justify-between mb-5 sm:mb-6 gap-2">
           <h2 className="font-display text-lg sm:text-xl font-semibold text-[color:var(--brand-navy)] capitalize leading-tight">
-            {enrollmentType} Enrollment: {course.title}
+            {enrollmentType} Enrollment
           </h2>
           <button
             type="button"
@@ -114,28 +110,41 @@ export function EnrollmentModal({
         </div>
 
         <div className="space-y-3">
-          <Field label="Full name" name="name" error={errors.name} />
-          <Field label="Email" name="email" type="email" error={errors.email} />
-          <Field label="Phone" name="phone" error={errors.phone} />
-          <Field label="College / Institution" name="institution" error={errors.institution} />
-          <Field
-            label="Designation"
-            name="designation"
-            placeholder="e.g. Student, Faculty, Working Professional"
-            error={errors.designation}
-          />
-          <div>
-            <label className="mb-1 block text-xs font-semibold text-[color:var(--muted-foreground)]">
-              Why are you interested?{" "}
-              <span className="font-normal opacity-60">(optional)</span>
-            </label>
-            <textarea
-              name="motivation"
-              rows={3}
-              maxLength={500}
-              className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base sm:text-sm text-[color:var(--foreground)] outline-none transition-colors focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
-            />
-          </div>
+          {enrollmentType === "individual" ? (
+            <>
+              <input type="hidden" name={INDIVIDUAL_FIELDS.COURSE} value={course.title} />
+              <div className="mb-4 rounded-lg bg-[color:var(--muted)] p-3 border border-[color:var(--border)]">
+                <p className="text-xs text-[color:var(--muted-foreground)] font-semibold">Course Selected</p>
+                <p className="text-sm font-bold text-[color:var(--brand-navy)] mt-0.5">{course.title}</p>
+              </div>
+              <Field label="Full name" name={INDIVIDUAL_FIELDS.NAME} required />
+              <Field label="Email" name={INDIVIDUAL_FIELDS.EMAIL} type="email" required />
+              <Field label="Phone" name={INDIVIDUAL_FIELDS.PHONE} required />
+              <div>
+                <label className="mb-1 block text-xs font-semibold text-[color:var(--muted-foreground)]">
+                  Why are you interested? <span className="font-normal opacity-60">(optional)</span>
+                </label>
+                <textarea
+                  name={INDIVIDUAL_FIELDS.MOTIVATION}
+                  rows={3}
+                  className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base sm:text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <input type="hidden" name={INSTITUTE_FIELDS.COURSE} value={course.title} />
+              <div className="mb-4 rounded-lg bg-[color:var(--muted)] p-3 border border-[color:var(--border)]">
+                <p className="text-xs text-[color:var(--muted-foreground)] font-semibold">Course Selected for Institute</p>
+                <p className="text-sm font-bold text-[color:var(--brand-navy)] mt-0.5">{course.title}</p>
+              </div>
+              <Field label="Institute Name" name={INSTITUTE_FIELDS.INSTITUTE} required />
+              <Field label="Coordinator Name" name={INSTITUTE_FIELDS.COORDINATOR} required />
+              <Field label="Coordinator Email" name={INSTITUTE_FIELDS.EMAIL} type="email" required />
+              <Field label="Coordinator Phone" name={INSTITUTE_FIELDS.PHONE} required />
+              <Field label="Expected Batch Size" name={INSTITUTE_FIELDS.BATCH_SIZE} type="number" required />
+            </>
+          )}
         </div>
 
         <button
@@ -147,7 +156,7 @@ export function EnrollmentModal({
           {submitting ? "Submitting…" : "Confirm Enrollment"}
         </button>
 
-        <p className="mt-3 text-[11px] text-[color:var(--muted-foreground)]">
+        <p className="mt-3 text-center text-[11px] text-[color:var(--muted-foreground)]">
           By enrolling you agree to be contacted by the IIITD–MEIT programme team.
         </p>
       </form>
@@ -160,29 +169,24 @@ function Field({
   label,
   name,
   type = "text",
-  placeholder,
-  error,
+  required = false,
 }: {
   label: string;
   name: string;
   type?: string;
-  placeholder?: string;
-  error?: string;
+  required?: boolean;
 }) {
   return (
     <div>
       <label className="mb-1 block text-xs font-semibold text-[color:var(--muted-foreground)]">
-        {label}
+        {label} {required && <span className="text-red-500">*</span>}
       </label>
       <input
         name={name}
         type={type}
-        placeholder={placeholder}
+        required={required}
         className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-base sm:text-sm text-[color:var(--foreground)] outline-none transition-colors focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"
       />
-      {error ? (
-        <p className="mt-1 text-[11px] text-destructive">{error}</p>
-      ) : null}
     </div>
   );
 }

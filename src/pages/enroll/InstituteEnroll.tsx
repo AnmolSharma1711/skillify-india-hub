@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Building2, GraduationCap, CheckCircle } from "lucide-react";
+import { COURSES } from "@/config/courses";
+import { FlipCard } from "@/components/ui/FlipCard";
 
 const ELIGIBILITY = [
   "Recognised university, deemed institution, or affiliated college",
@@ -149,34 +151,21 @@ export default function InstituteEnroll() {
         </div>
       </section>
 
-      {/* Google Form */}
+      {/* Course Selection */}
       <section className="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
-        <div className="rounded-2xl border border-[color:var(--border)] bg-white shadow-sm overflow-hidden">
-          <div
-            className="px-8 py-6 border-b border-[color:var(--border)]"
-            style={{ background: "var(--gradient-brand)" }}
-          >
-            <h2 className="font-display text-xl font-bold text-white">
-              Register Your Institution
-            </h2>
-            <p className="mt-1 text-sm text-white/80">
-              Submit the expression of interest and our team will connect with you within 5 working days.
-            </p>
-          </div>
-          <div className="p-2">
-            <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLSf_PLACEHOLDER_INSTITUTE/viewform?embedded=true"
-              width="100%"
-              height="700"
-              frameBorder="0"
-              marginHeight={0}
-              marginWidth={0}
-              title="Institute Enrollment Registration Form"
-              className="rounded-xl"
-            >
-              Loading…
-            </iframe>
-          </div>
+        <div className="mb-8 text-center">
+          <h2 className="font-display text-3xl font-bold text-[color:var(--brand-navy)]">
+            Select a Course to Enroll Your Institute
+          </h2>
+          <p className="mt-3 text-sm text-[color:var(--muted-foreground)] max-w-2xl mx-auto">
+            Browse our catalog below. Click "Enroll Now" on any course to open the Institute Enrollment form.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {COURSES.map((course) => (
+            <FlipCard key={course.id} course={course} context="institute" />
+          ))}
         </div>
       </section>
     </>

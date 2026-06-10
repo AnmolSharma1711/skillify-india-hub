@@ -3,9 +3,8 @@ import type { KeyboardEvent } from "react";
 import { Clock, GraduationCap } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
-import { CourseDetailOverlay } from "./CourseDetailOverlay";
-import { EnrollmentModal } from "./EnrollmentModal";
-import { EnrollmentType } from "@/lib/api";
+import { CourseDetailOverlay } from "@/components/courses/CourseDetailOverlay";
+import { EnrollmentModal } from "@/components/courses/EnrollmentModal";
 
 const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: string }> = {
   cyan: {
@@ -25,9 +24,15 @@ const ACCENT: Record<Course["accent"], { border: string; bg: string; icon: strin
   },
 };
 
-export function CourseCardLight({ course }: { course: Course }) {
+export function CourseCardLight({ 
+  course,
+  context = "individual",
+}: { 
+  course: Course;
+  context?: "individual" | "institute";
+}) {
   const [showOverlay, setShowOverlay] = useState(false);
-  const [enrollmentType, setEnrollmentType] = useState<EnrollmentType | null>(null);
+  const [enrollmentType, setEnrollmentType] = useState<"individual" | "institute" | null>(null);
   const accent = ACCENT[course.accent];
 
   const openCourseDetails = () => {
@@ -128,6 +133,7 @@ export function CourseCardLight({ course }: { course: Course }) {
       <CourseDetailOverlay
         course={course}
         open={showOverlay}
+        context={context}
         onClose={() => setShowOverlay(false)}
         onEnrollClick={(type) => {
           setEnrollmentType(type);
