@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, Clock, GraduationCap } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
@@ -48,11 +49,11 @@ export function CourseDetailOverlay({
 
   if (!open) return null;
 
-  return (
+  return createPortal(
     <>
       {/* Backdrop */}
       <div
-        className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+        className="fixed inset-0 z-[998] bg-black/40 backdrop-blur-sm"
         onClick={onClose}
         style={{
           animation: "backdropFadeIn 0.4s ease-out",
@@ -62,7 +63,7 @@ export function CourseDetailOverlay({
 
       {/* Center Overlay Content */}
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+        className="fixed inset-0 z-[999] flex items-center justify-center p-4 pointer-events-none"
         style={{
           animation: "contentFadeIn 0.4s ease-out",
         }}
@@ -231,6 +232,7 @@ export function CourseDetailOverlay({
           }
         }
       `}</style>
-    </>
+    </>,
+    document.body
   );
 }

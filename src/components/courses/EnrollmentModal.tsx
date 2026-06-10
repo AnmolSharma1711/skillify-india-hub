@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { z } from "zod";
 import { toast } from "sonner";
 import { CircleCheck as CheckCircle2, X, Loader as Loader2 } from "lucide-react";
@@ -68,8 +69,8 @@ export function EnrollmentModal({
   }
 
   if (done) {
-    return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+    return createPortal(
+      <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div className="w-full max-w-sm rounded-2xl border border-[color:var(--brand-teal)]/30 bg-white p-6 sm:p-8 text-center shadow-lg">
           <CheckCircle2 className="mx-auto h-12 w-12 text-[color:var(--brand-teal)]" />
           <h4 className="mt-4 font-display text-xl font-semibold text-[color:var(--brand-navy)]">
@@ -86,12 +87,13 @@ export function EnrollmentModal({
             Close
           </button>
         </div>
-      </div>
+      </div>,
+      document.body
     );
   }
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={onClose}>
+  return createPortal(
+    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={onClose}>
       <form
         onSubmit={handleSubmit}
         onClick={(e) => e.stopPropagation()}
@@ -149,7 +151,8 @@ export function EnrollmentModal({
           By enrolling you agree to be contacted by the IIITD–MEIT programme team.
         </p>
       </form>
-    </div>
+    </div>,
+    document.body
   );
 }
 
