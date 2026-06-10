@@ -229,6 +229,14 @@ export function PillNav({
   return (
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
+        <div className="hidden sm:flex items-center mr-4">
+        <img
+          src={logo}
+          alt={logoAlt}
+          className="h-20 w-auto object-contain"
+        />
+      </div>
+
         <Link
           className="pill-logo"
           to="/"
@@ -273,6 +281,17 @@ export function PillNav({
         {trailingLogo && (
           <div className="pill-logo desktop-only" aria-label={trailingLogoAlt} style={{ marginLeft: 4 }}>
             <img src={trailingLogo} alt={trailingLogoAlt} />
+          </div>
+        )}
+
+        {/* Large MeitY Logo */}
+        {trailingLogo && (
+          <div className="hidden sm:flex items-center ml-4">
+            <img
+              src={trailingLogo}
+              alt={trailingLogoAlt}
+              className="h-20 w-auto object-contain"
+            />
           </div>
         )}
 

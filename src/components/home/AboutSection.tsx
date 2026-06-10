@@ -50,7 +50,7 @@ export function AboutSection() {
             <strong className="text-[color:var(--brand-navy)]">Skillify</strong> is a joint initiative between{" "}
             <strong className="text-[color:var(--brand-navy)]">IIIT Delhi</strong> and the{" "}
             <strong className="text-[color:var(--brand-navy)]">
-              Ministry of Electronics and Information Technology (MEIT)
+              Ministry of Electronics and Information Technology (MeitY)
             </strong>
             . Our goal: give every Indian student — regardless of background — free, world-class
             training in the technologies shaping the next decade.
