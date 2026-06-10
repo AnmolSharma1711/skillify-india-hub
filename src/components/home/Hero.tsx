@@ -47,21 +47,21 @@ export function Hero() {
         </div>
 
         <h1
-          className="mt-6 font-display text-5xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-6xl md:text-7xl"
+          className="mt-6 font-display text-5xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-8xl md:text-6xl"
           style={{ animationDelay: "0.1s" }}
         >
-          <span className="text-gradient-brand">Skillify:</span> Skill the future of <br />
-          <span className="text-gradient-brand">Digital India.</span>
+          <span className="text-gradient-brand">Saksham : </span>MultiLevel Capacity Building and Skilling<br />
+          <span className="text-gradient-brand">in Industry-aligned Emerging Technologies.</span>
         </h1>
 
         <p
-          className="mx-auto mt-8 max-w-7xl text-xl leading-relaxed text-gray-900 sm:text-2xl"
+          className="mx-auto mt-8 max-w-7xl text-xl leading-relaxed text-gray-900 sm:text-3xl"
           style={{ animationDelay: "0.2s" }}
         >
           <b>
-          Free Learning | Hands-On Training | Industry-Ready Skills | Portfolio Projects | Certifications
+          Free Learning | Hands-On Training | Industry-Ready Skills | Certifications
           <br />
-          Future Technologies | Career Readiness | Expert Mentorship | IIIT Delhi |
+          Future Technologies| Expert Mentorship | IIIT Delhi |
           MeitY | Digital India
           </b>
         </p>
