@@ -9,9 +9,11 @@ export function CoursesGrid({
   className?: string;
 }) {
   return (
-    <div className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-3 ${className || ""}`}>
+    <div className={`flex gap-6 overflow-x-auto pb-6 pt-2 px-2 -mx-2 snap-x snap-mandatory scrollbar-hide ${className || ""}`}>
       {courses.map((c) => (
-        <CourseCardLight key={c.id} course={c} />
+        <div key={c.id} className="w-80 sm:w-96 shrink-0 snap-start">
+          <CourseCardLight course={c} />
+        </div>
       ))}
     </div>
   );

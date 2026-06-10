@@ -117,14 +117,11 @@ export default function Courses() {
             Successful programs conducted in previous cohorts.
           </p>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 -mx-2 snap-x snap-mandatory scrollbar-hide">
             {PREVIOUS_COURSES.map((course) => (
-              <PlaceholderCourseCard
-                key={course.title}
-                title={course.title}
-                description={course.description}
-                status="Completed"
-              />
+              <div key={course.title} className="w-80 sm:w-96 shrink-0 snap-start">
+                <PlaceholderCourseCard {...course} status="Completed" />
+              </div>
             ))}
           </div>
         </section>
@@ -139,14 +136,11 @@ export default function Courses() {
             New programs currently being prepared by IIIT Delhi and MeitY.
           </p>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 -mx-2 snap-x snap-mandatory scrollbar-hide">
             {UPCOMING_COURSES.map((course) => (
-              <PlaceholderCourseCard
-                key={course.title}
-                title={course.title}
-                description={course.description}
-                status="Coming Soon"
-              />
+              <div key={course.title} className="w-80 sm:w-96 shrink-0 snap-start">
+                <PlaceholderCourseCard {...course} status="Coming Soon" />
+              </div>
             ))}
           </div>
         </section>
