@@ -131,10 +131,10 @@ export function AboutSection() {
             </div>
 
             <Link
-              to="/courses"
+              to="/enroll"
               className="group inline-flex h-11 items-center gap-2 rounded-full bg-[image:var(--gradient-brand)] px-6 text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"
             >
-              See the Courses
+              See Ongoing Courses
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
