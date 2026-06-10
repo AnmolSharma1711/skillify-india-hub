@@ -6,15 +6,13 @@ import { submitToGoogleForm } from "@/lib/googleForms";
 // TODO: Replace with your actual Google Form ID and entry IDs
 const PARTNER_FORM_ID = "1FAIpQLSf_PLACEHOLDER_PARTNER";
 const PARTNER_FIELDS = {
-  INSTITUTE_NAME: "entry.400001",
-  ADDRESS: "entry.400002",
+  ORG_NAME: "entry.400001",
+  WEBSITE: "entry.400002",
   POC_NAME: "entry.400003",
-  POC_DESIGNATION: "entry.400004",
-  EMAIL: "entry.400005",
-  PHONE: "entry.400006",
-  STUDENTS_COUNT: "entry.400007",
-  INFRASTRUCTURE: "entry.400008", // Checkbox group
-  FACILITATION_PLAN: "entry.400009",
+  EMAIL: "entry.400004",
+  PHONE: "entry.400005",
+  INTERESTS: "entry.400006", // Checkbox group
+  COLLAB_PLAN: "entry.400007",
 };
 
 const ELIGIBILITY = [
@@ -228,24 +226,18 @@ export default function PartnerOrg() {
             ) : (
               <form onSubmit={handleSubmit} className="mx-auto max-w-2xl space-y-5">
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Name of the Institute *</label>
-                  <input name={PARTNER_FIELDS.INSTITUTE_NAME} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Organization Name *</label>
+                  <input name={PARTNER_FIELDS.ORG_NAME} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Address / Location *</label>
-                  <input name={PARTNER_FIELDS.ADDRESS} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Official Website / LinkedIn Page URL *</label>
+                  <input name={PARTNER_FIELDS.WEBSITE} type="url" placeholder="https://..." required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                 </div>
 
-                <div className="grid gap-5 sm:grid-cols-2">
-                  <div>
-                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Point of Contact (POC) Name *</label>
-                    <input name={PARTNER_FIELDS.POC_NAME} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">POC Designation *</label>
-                    <input name={PARTNER_FIELDS.POC_DESIGNATION} type="text" placeholder="e.g. HOD, Dean, Club Lead" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
-                  </div>
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Point of Contact (POC) Name *</label>
+                  <input name={PARTNER_FIELDS.POC_NAME} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
@@ -254,35 +246,31 @@ export default function PartnerOrg() {
                     <input name={PARTNER_FIELDS.EMAIL} type="email" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Contact Number *</label>
+                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Contact / WhatsApp Number *</label>
                     <input name={PARTNER_FIELDS.PHONE} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Expected Number of Students *</label>
-                  <input name={PARTNER_FIELDS.STUDENTS_COUNT} type="number" required min="1" className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-[color:var(--brand-navy)]">Available Infrastructure for the Course *</label>
+                  <label className="mb-2 block text-sm font-semibold text-[color:var(--brand-navy)]">Area of Collaborative Interest *</label>
                   <div className="space-y-2.5">
                     {[
-                      "Lab Access",
-                      "High-speed Internet",
-                      "Seminar Hall",
+                      "Sponsorship (Financial / Cloud Credits / Hardware)",
+                      "Talent Pipeline (Internships / Placements)",
+                      "Knowledge Sharing (Guest Lectures / Workshops / Judging)",
+                      "Resource Access (API keys, licenses, or tools)",
                     ].map((item) => (
-                      <label key={item} className="flex items-center gap-2.5 cursor-pointer">
-                        <input type="checkbox" name={PARTNER_FIELDS.INFRASTRUCTURE} value={item} className="w-4 h-4 rounded text-[color:var(--brand-teal)] border-[color:var(--border)] focus:ring-[color:var(--brand-teal)]" />
-                        <span className="text-sm text-[color:var(--foreground)]">{item}</span>
+                      <label key={item} className="flex items-start gap-2.5 cursor-pointer">
+                        <input type="checkbox" name={PARTNER_FIELDS.INTERESTS} value={item} className="mt-1 w-4 h-4 rounded text-[color:var(--brand-teal)] border-[color:var(--border)] focus:ring-[color:var(--brand-teal)]" />
+                        <span className="text-sm leading-relaxed text-[color:var(--foreground)]">{item}</span>
                       </label>
                     ))}
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">How do you plan to facilitate this course within your campus? *</label>
-                  <textarea name={PARTNER_FIELDS.FACILITATION_PLAN} rows={4} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"></textarea>
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">How do you wish to collaborate with us? *</label>
+                  <textarea name={PARTNER_FIELDS.COLLAB_PLAN} rows={4} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"></textarea>
                 </div>
 
                 <div className="pt-4">
