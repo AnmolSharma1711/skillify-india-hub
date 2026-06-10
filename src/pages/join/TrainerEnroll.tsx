@@ -8,10 +8,13 @@ const TRAINER_FORM_ID = "1FAIpQLSf_PLACEHOLDER_TRAINER";
 const TRAINER_FIELDS = {
   NAME: "entry.300001",
   EMAIL: "entry.300002",
-  PHONE: "entry.300003",
-  ROLE: "entry.300004", // Mentor / Trainer / SME
-  EXPERTISE: "entry.300005",
-  LINKEDIN: "entry.300006",
+  DESIGNATION: "entry.300003",
+  EXPERTISE: "entry.300004", // Checkbox group
+  EXPERIENCE: "entry.300005",
+  RESUME_LINK: "entry.300006",
+  QUALIFICATION: "entry.300007",
+  TIME_COMMITMENT: "entry.300008",
+  EXPERIENCE_DESC: "entry.300009",
 };
 
 const WHO_CAN_APPLY = [
@@ -277,35 +280,66 @@ export default function TrainerEnroll() {
                     <input name={TRAINER_FIELDS.NAME} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Email Address *</label>
+                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Professional Email Address *</label>
                     <input name={TRAINER_FIELDS.EMAIL} type="email" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Current Designation & Organization *</label>
+                  <input name={TRAINER_FIELDS.DESIGNATION} type="text" placeholder="e.g. Senior Data Scientist at Microsoft" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-[color:var(--brand-navy)]">Primary Areas of Expertise *</label>
+                  <div className="space-y-2.5">
+                    {[
+                      "Internet of Things (IoT)",
+                      "Machine Learning & AI",
+                      "Embedded Systems",
+                      "Cloud Computing",
+                      "Cybersecurity",
+                      "VLSI & Semiconductor",
+                    ].map((item) => (
+                      <label key={item} className="flex items-center gap-2.5 cursor-pointer">
+                        <input type="checkbox" name={TRAINER_FIELDS.EXPERTISE} value={item} className="w-4 h-4 rounded text-[color:var(--brand-teal)] border-[color:var(--border)] focus:ring-[color:var(--brand-teal)]" />
+                        <span className="text-sm text-[color:var(--foreground)]">{item}</span>
+                      </label>
+                    ))}
                   </div>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Phone Number *</label>
-                    <input name={TRAINER_FIELDS.PHONE} type="text" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Years of Experience *</label>
+                    <input name={TRAINER_FIELDS.EXPERIENCE} type="number" required min="0" className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                   </div>
                   <div>
-                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Role Interested In *</label>
-                    <select name={TRAINER_FIELDS.ROLE} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]">
-                      <option value="">Select a role</option>
-                      <option value="Industry Mentor">Industry Mentor</option>
-                      <option value="Trainer / Instructor">Trainer / Instructor</option>
-                      <option value="Subject Matter Expert (SME)">Subject Matter Expert (SME)</option>
-                    </select>
+                    <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Highest Qualification *</label>
+                    <input name={TRAINER_FIELDS.QUALIFICATION} type="text" placeholder="e.g. M.Tech, PhD" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Domain Expertise *</label>
-                  <input name={TRAINER_FIELDS.EXPERTISE} type="text" placeholder="e.g. AI/ML, VLSI, Cloud Computing" required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Weekly Time Commitment *</label>
+                  <select name={TRAINER_FIELDS.TIME_COMMITMENT} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]">
+                    <option value="">Select commitment</option>
+                    <option value="2-4 hours">2-4 hours / week</option>
+                    <option value="5-8 hours">5-8 hours / week</option>
+                    <option value="8+ hours">8+ hours / week</option>
+                  </select>
                 </div>
 
                 <div>
-                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">LinkedIn Profile URL</label>
-                  <input name={TRAINER_FIELDS.LINKEDIN} type="url" placeholder="https://linkedin.com/in/..." className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">
+                    Resume Link * <span className="text-[11px] font-normal text-[color:var(--muted-foreground)] ml-1">(Google Drive, Dropbox, or LinkedIn)</span>
+                  </label>
+                  <input name={TRAINER_FIELDS.RESUME_LINK} type="url" placeholder="https://..." required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" />
+                </div>
+
+                <div>
+                  <label className="mb-1.5 block text-sm font-semibold text-[color:var(--brand-navy)]">Briefly describe your previous mentoring experience *</label>
+                  <textarea name={TRAINER_FIELDS.EXPERIENCE_DESC} rows={4} required className="w-full rounded-md border border-[color:var(--border)] bg-white px-3 py-2.5 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]"></textarea>
                 </div>
 
                 <div className="pt-4">
