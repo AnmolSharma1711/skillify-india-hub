@@ -126,7 +126,12 @@ export function PillNav({
       }
       if (navItems) {
         gsap.set(navItems, { width: 0, overflow: "hidden" });
-        gsap.to(navItems, { width: "auto", duration: 0.5, ease });
+        gsap.to(navItems, { 
+          width: "auto", 
+          duration: 0.5, 
+          ease,
+          onComplete: () => gsap.set(navItems, { clearProps: "overflow" })
+        });
       }
     }
 
