@@ -50,7 +50,7 @@ export function Hero() {
           className="mt-5 font-display text-4xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-7xl md:text-5xl"
           style={{ animationDelay: "0.1s" }}
         >
-          <span className="text-gradient-brand">Saksham : </span>MultiLevel Capacity Building and Skilling<br />
+          <span className="text-gradient-brand"></span>MultiLevel Capacity Building and Skilling<br />
           <span className="text-gradient-brand">in Industry-aligned Emerging Technologies.</span>
         </h1>
 
