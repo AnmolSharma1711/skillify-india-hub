@@ -8,7 +8,7 @@ export function Footer() {
           <div>
             <p>
               &copy; {new Date().getFullYear()} IIIT Delhi - An initiative powered by{" "}
-              <span className="text-white">MEIT</span>.
+              <span className="text-white">MeitY</span>.
             </p>
             <p className="mt-1 text-xs text-white/50">
               Skilling the youth of India - Built for learners, by educators.

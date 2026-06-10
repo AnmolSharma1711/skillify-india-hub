@@ -9,7 +9,7 @@ export function ProjectOverview() {
           About the Project
         </p>
         <h2 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
-          Skillify: MultiLevel Capacity Building and Skilling in{" "}
+          MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.: MultiLevel Capacity Building and Skilling in{" "}
           <span className="text-gradient-brand">Industry-aligned Emerging Technologies</span>
         </h2>
       </div>

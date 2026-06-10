@@ -34,7 +34,7 @@ export default function CourseDetail() {
   return (
     <>
       <Helmet>
-        <title>{course.title} — Skillify IIITD &times; MEIT</title>
+        <title>{course.title} — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD &times; MeitY</title>
         <meta name="description" content={course.description} />
       </Helmet>
 
