@@ -63,19 +63,12 @@ const GENERAL_REQUIREMENTS = [
 
 const BENEFITS = [
   "Official MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. Trainer / Mentor certificate from IIIT Delhi",
-
-  <>
-    Honorarium as per engagement terms:{" "}
-    <span className="font-bold">₹5000</span> for a 1.5-hour theory session and{" "}
-    <span className="font-bold">₹5000</span> for a 2-hour practical session.
-  </>,
-
-  "Access to MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies's learner community and alumni network",
-
+  "Honorarium as per engagement terms: ₹5000 for a 1.5-hour theory session and ₹5000 for a 2-hour practical session.",
+  "Access to MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.'s learner community and alumni network",
   "Co-branding on course material where applicable",
-
   "Priority consideration for future program expansions",
 ];
+
 export default function TrainerEnroll() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
