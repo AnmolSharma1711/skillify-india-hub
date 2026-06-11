@@ -18,11 +18,11 @@ import member4 from "@/assets/coordinator.png";
 
 const teamMembers = [
   {
-    name: "Anmol Sharma",
+    name: "Team member 1",
     photo: member1,
   },
   {
-    name: "Keerti Yaduvanshi",
+    name: "Team member 2",
     photo: member2,
   },
   {

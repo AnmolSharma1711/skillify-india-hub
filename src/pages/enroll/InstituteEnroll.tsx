@@ -16,7 +16,6 @@ const WHAT_INSTITUTION_GETS = [
   "Co-branded certificates for enrolled students, issued by IIIT Delhi & MeitY",
   "Access to curated, industry-ready course content and assessments",
   "Guest lectures and bootcamps by IIIT Delhi faculty and industry experts",
-  "Priority placement and job-fair invitations for enrolled students",
   "Institutional recognition and MoU with IIIT Delhi",
   "Dedicated programme support and a single point of contact",
 ];
