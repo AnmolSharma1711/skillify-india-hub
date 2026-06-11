@@ -22,7 +22,7 @@ const teamMembers = [
     photo: member1,
   },
   {
-    name: "Kirty Yaduvanshi",
+    name: "Keerti Yaduvanshi",
     photo: member2,
   },
   {
@@ -85,6 +85,14 @@ export default function Contact() {
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
               Send course, enrollment, or partnership questions and we will
               keep the next step clear.
+              </p>
+              <p>
+              Email us at{" "}<a
+                href="mailto:info@example.com"
+                className="text-base sm:text-xl text-[color:var(--brand-teal)] hover:underline"
+              >
+                info@example.com
+              </a>
             </p>
           </div>
           <div className="mt-12 grid gap-8 lg:grid-cols-2">
@@ -98,11 +106,11 @@ export default function Contact() {
     <div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
       <div className="flex-1 min-w-0">
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] break-words">
-          Programme Office
+          Miss Rutali 
         </h3>
 
         <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
-          General Queries
+          Programme Coordinator
         </p>
       </div>
 
@@ -165,7 +173,7 @@ export default function Contact() {
     <div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
       <div className="flex-1 min-w-0">
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] break-words">
-          Prof. Arun Kumar Bashambu
+          Mr. Arun Kumar Bashambu
         </h3>
 
         <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">

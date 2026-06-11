@@ -36,9 +36,9 @@ export function AboutSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-16 max-w-3xl">
+        <div className="mb-16 max-w-4xl">
           <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
             About the Project
           </p>
@@ -46,14 +46,13 @@ export function AboutSection() {
             Skilling the youth of{" "}
             <span className="text-gradient-brand">India.</span>
           </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
+          <p className="mt-5 max-w-3xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
             <strong className="text-[color:var(--brand-navy)]">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.</strong> is a joint initiative between{" "}
             <strong className="text-[color:var(--brand-navy)]">IIIT Delhi</strong> and the{" "}
             <strong className="text-[color:var(--brand-navy)]">
               Ministry of Electronics and Information Technology (MeitY)
             </strong>
-            . Our goal: give every Indian student — regardless of background — free, world-class
-            training in the technologies shaping the next decade.
+            , aimed at bridging the gap between education and industry. Through free, industry-aligned training, hands-on projects, expert mentorship, and emerging technology programs, the initiative empowers students, graduates, and aspiring professionals across India to develop future-ready skills and enhance their career opportunities.
           </p>
         </div>
 
