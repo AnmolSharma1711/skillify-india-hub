@@ -84,7 +84,7 @@ export function Hero() {
         >
           {[
             { k: "3 Courses", v: <b>More are coming...</b> },
-            { k: "100% Free", v: <b>Free for students</b> },
+            { k: "100% Free", v: <b>Free for All</b> },
             { k: "IIITD", v: <b>Faculty Driven</b> },
           ].map((s) => (
             <div

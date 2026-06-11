@@ -82,9 +82,6 @@ export function AboutSection() {
               <h3 className="mb-4 font-display text-2xl font-bold text-[color:var(--brand-navy)]">
                 Targeted Beneficiaries
               </h3>
-              <p className="mb-4 text-sm text-[color:var(--muted-foreground)]">
-                <b>Engineering and non-engineering students, as well as unemployed youth:</b>
-              </p>
               <div className="grid gap-3">
                 <b>
                 {WHO_CAN_JOIN.map((b, idx) => (

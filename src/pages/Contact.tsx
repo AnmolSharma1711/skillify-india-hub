@@ -11,33 +11,26 @@ import {
 } from "lucide-react";
 
 import { toast } from "sonner";
-import member1 from "@/assets/coordinator.png";
-import member2 from "@/assets/coordinator.png";
+import member1 from "@/assets/vikram_sir.jpeg";
+import member2 from "@/assets/sujay_sir.jpeg";
 import member3 from "@/assets/coordinator.png";
 import member4 from "@/assets/coordinator.png";
 
 const teamMembers = [
   {
-    name: "Team member 1",
+    name: "Dr. Vikram Goyal",
     photo: member1,
   },
   {
-    name: "Team member 2",
+    name: "Dr. Sujay Dev",
     photo: member2,
-  },
-  {
-    name: "Team Member 3",
-    photo: member3,
-  },
-  {
-    name: "Team Member 4",
-    photo: member4,
   },
 ];
 
 import iiitdLogo from "@/assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
-import coordinatorPhoto from "@/assets/coordinator.png";
+import coordinatorPhoto1 from "@/assets/coordinator.png";
+import coordinatorPhoto2 from "@/assets/rudali_mam.jpg";
 
 export default function Contact() {
   const [showProfile, setShowProfile] = useState(false);
@@ -99,7 +92,7 @@ export default function Contact() {
 <div className="mt-20">
   <div className="text-center">
     <h2 className="font-display text-5xl font-bold text-[color:var(--brand-navy)]">
-      Our Team
+      PIs and CoPIs
     </h2>
 
     <p className="mt-3 text-lg text-[color:var(--muted-foreground)]">
@@ -126,8 +119,10 @@ export default function Contact() {
     ))}
   </div>
 </div>
+        <h2 className="mt-20 font-display text-5xl text-center font-bold text-[color:var(--brand-navy)]">
+              Programme Coordinators
+            </h2>
       <div className="mt-12 grid gap-8 lg:grid-cols-2">
-
   {/* Left Contact Card */}
   <div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm">
     <h2 className="font-display text-xl font-semibold text-[color:var(--brand-navy)]">
@@ -137,17 +132,17 @@ export default function Contact() {
     <div className="mt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
       <div className="flex-1 min-w-0">
         <h3 className="font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)] break-words">
-          Miss Rutali 
+          Dr. Rudali Huidrom
         </h3>
 
-        <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
-          Programme Coordinator
-        </p>
+        {/* <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
+          Faculty Coordinator
+        </p> */}
       </div>
 
      <div className="flex flex-col items-center gap-3 flex-shrink-0">
   <img
-    src={coordinatorPhoto}
+    src={coordinatorPhoto2}
     alt="Faculty Coordinator"
     className="h-28 w-28 sm:h-48 sm:w-48 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg"
   />
@@ -171,10 +166,10 @@ export default function Contact() {
           </p>
 
           <a
-            href="mailto:info@example.com"
+            href="mailto:rudali.huidrom@iiitd.ac.in"
             className="text-base sm:text-xl text-[color:var(--brand-teal)] hover:underline break-all"
           >
-            info@example.com
+            rudali.huidrom@iiitd.ac.in
           </a>
         </div>
       </div>
@@ -207,14 +202,14 @@ export default function Contact() {
           Mr. Arun Kumar Bashambu
         </h3>
 
-        <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
+        {/* <p className="mt-1 text-lg sm:text-2xl text-[color:var(--muted-foreground)]">
           Faculty Coordinator
-        </p>
+        </p> */}
       </div>
 
    <div className="flex flex-col items-center gap-3 flex-shrink-0">
   <img
-    src={coordinatorPhoto}
+    src={coordinatorPhoto1}
     alt="Faculty Coordinator"
     className="h-28 w-28 sm:h-48 sm:w-48 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-lg"
   />
@@ -286,7 +281,7 @@ export default function Contact() {
             <div className="bg-[image:var(--gradient-brand)] px-6 py-8 sm:px-10 sm:py-10 text-white">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                 <img
-                  src={coordinatorPhoto}
+                  src={coordinatorPhoto1}
                   alt="Prof. Arun Kumar Bashambu"
                   className="h-28 w-28 sm:h-32 sm:w-32 rounded-full object-cover border-4 border-white/20 shadow-xl flex-shrink-0"
                 />
