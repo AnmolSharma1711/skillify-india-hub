@@ -6,7 +6,7 @@ export default function Enroll() {
   return (
     <>
       <Helmet>
-        <title>Enroll Now - MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.</title>
+        <title>Enroll Now - MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies</title>
       </Helmet>
 
       <div className="mx-auto max-w-6xl px-4 pt-20 pb-16 sm:px-6">
@@ -16,7 +16,7 @@ export default function Enroll() {
           </p>
 
           <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
-            Enroll in <span className="text-gradient-brand">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.</span>
+            Enroll in <span className="text-gradient-brand">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies</span>
           </h1>
 
           <p className="mt-4 text-[color:var(--muted-foreground)]">

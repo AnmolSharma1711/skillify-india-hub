@@ -107,7 +107,7 @@ export default function Courses() {
   return (
     <>
       <Helmet>
-        <title>Courses — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD &times; MeitY</title>
+        <title>Courses — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies IIITD &times; MeitY</title>
         <meta
           name="description"
           content="Browse all industry-aligned courses in Emerging Technologies — by IIIT Delhi, powered by MeitY."

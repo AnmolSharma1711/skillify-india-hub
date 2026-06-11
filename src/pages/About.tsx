@@ -5,13 +5,13 @@ import iiitdLogo from "../assets/iiitd_logo-removebg-preview.svg";
 import meitLogo from "../assets/meit_logo-removebg-preview.svg";
 
 const OBJECTIVES = [
-  "Training of engineering, non-engineering students, as well as unemployed youth, through the seven selected academic institutes and C-DAC, Kolkata.",
-  "Provide industry-focused training in the Electronics and IT domains to engineering, non-engineering students, as well as unemployed youth.",
-  "To equip students with cutting-edge skills through practical and hands-on training.",
-  "Development of industry ready courses by esteemed institutions.",
-  "To conduct Bootcamps in different domains.",
-  "To conduct a job fair by inviting industries to enhance the employability of the candidates.",
-  "To conduct capacity building and skill enhancement workshops with help of industry experts.",
+  "Training of engineering, non-engineering students, as well as unemployed youth, through the seven selected academic institutes and C-DAC, Kolkata",
+  "Provide industry-focused training in the Electronics and IT domains to engineering, non-engineering students, as well as unemployed youth",
+  "To equip students with cutting-edge skills through practical and hands-on training",
+  "Development of industry ready courses by esteemed institutions",
+  "To conduct Bootcamps in different domains",
+  "To conduct a job fair by inviting industries to enhance the employability of the candidates",
+  "To conduct capacity building and skill enhancement workshops with help of industry experts",
 ];
 
 const BENEFICIARIES = [
@@ -19,21 +19,21 @@ const BENEFICIARIES = [
   "Engineering graduates (up to two years of post-graduation)",
   "Students of non-engineering Final/Pre-final year MCA, BCA, MBA, BBA, MCOM, BCOM, M.Sc, B.Sc etc (up to two years of graduation)",
   "PhD Scholars, Research Scholars",
-  "Unemployed youth, and Working professionals for skill upgradation.",
+  "Unemployed youth, and Working professionals for skill upgradation",
 ];
 
 const WHAT_YOU_GET = [
-  "Mentor-led cohorts taught by IIITD faculty and industry experts.",
-  "Real capstone projects that prove your skills to employers.",
-  "A recognised certificate co-issued by IIITD and MeitY.",
-  "A community of learners, mentors and alumni you can grow with.",
+  "Mentor-led cohorts taught by IIITD faculty and industry experts",
+  "Real capstone projects that prove your skills to employers",
+  "A recognised certificate co-issued by IIITD and MeitY",
+  "A community of learners, mentors and alumni you can grow with",
 ];
 
 export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD &times; MeitY</title>
+        <title>About — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies IIITD &times; MeitY</title>
         <meta
           name="description"
           content="About the IIIT Delhi &times; MeitY skilling initiative — a mission to upskill India's youth in modern tech."
@@ -58,11 +58,11 @@ export default function About() {
               About the Project
             </p>
             <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
-              MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.: MultiLevel Capacity Building and Skilling in{" "}
+              MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies: MultiLevel Capacity Building and Skilling in{" "}
               <span className="text-gradient-brand">Industry-aligned Emerging Technologies</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-              <strong className="text-[color:var(--brand-navy)]">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.</strong> is a joint
+              <strong className="text-[color:var(--brand-navy)]">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies</strong> is a joint
               initiative between{" "}
               <strong className="text-[color:var(--brand-navy)]">IIIT Delhi</strong> and the{" "}
               <strong className="text-[color:var(--brand-navy)]">

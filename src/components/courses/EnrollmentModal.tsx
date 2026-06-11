@@ -306,7 +306,7 @@ export function EnrollmentModal({
         </button>
 
         <p className="mt-4 text-center text-xs text-[color:var(--muted-foreground)]">
-          By enrolling, you agree to be contacted by the MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD–MeitY team.
+          By enrolling, you agree to be contacted by the MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies IIITD–MeitY team.
         </p>
       </form>
     </div>,

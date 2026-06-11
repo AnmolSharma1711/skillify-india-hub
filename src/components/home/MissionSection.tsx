@@ -11,19 +11,19 @@ const pillars = [
   {
     icon: GraduationCap,
     title: "World-class curriculum",
-    body: "Designed by IIIT Delhi faculty with input from industry practitioners.",
+    body: "Designed by IIIT Delhi faculty with input from industry practitioners",
     color: "var(--brand-navy)",
   },
   {
     icon: Code2,
     title: "Build, don't just learn",
-    body: "Every course ends with a capstone project you can put on your resume.",
+    body: "Every course ends with a capstone project you can put on your resume",
     color: "var(--brand-teal)",
   },
   {
     icon: Rocket,
     title: "Launch your career",
-    body: "Mentorship, demo days and a recognised certificate to open doors.",
+    body: "Mentorship, demo days and a recognised certificate to open doors",
     color: "var(--brand-saffron)",
   },
 ];
@@ -61,7 +61,7 @@ export function MissionSection() {
       {/* Section label */}
       <div className="mb-10 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
-          Why MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.
+          Why MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies
         </p>
         <h2 className="mt-2 font-display text-3xl font-bold text-[color:var(--brand-navy)] sm:text-4xl">
           Everything you need to <span className="text-gradient-brand">succeed</span>

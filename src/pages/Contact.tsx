@@ -45,17 +45,17 @@ export default function Contact() {
     event.preventDefault();
     event.currentTarget.reset();
     toast.success(
-      "Thanks. Your contact details are ready to be wired to a live endpoint."
+      "Thanks. Your contact details are ready to be wired to a live endpoint"
     );
   };
 
   return (
     <>
       <Helmet>
-        <title>Contact - MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD &amp; MeitY</title>
+        <title>Contact - MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies IIITD &amp; MeitY</title>
         <meta
           name="description"
-          content="Contact the MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. programme team for course, enrollment, and partnership queries."
+          content="Contact the MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies programme team for course, enrollment, and partnership queries."
         />
       </Helmet>
 
@@ -79,12 +79,12 @@ export default function Contact() {
 
             <h1 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
               Have a question about{" "}
-              <span className="text-gradient-brand">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.?</span>
+              <span className="text-gradient-brand">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies?</span>
             </h1>
 
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
               Send course, enrollment, or partnership questions and we will
-              keep the next step clear.
+              keep the next step clear
               </p>
               <p>
               Email us at{" "}<a
@@ -95,7 +95,38 @@ export default function Contact() {
               </a>
             </p>
           </div>
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          {/* Team Section */}
+<div className="mt-20">
+  <div className="text-center">
+    <h2 className="font-display text-5xl font-bold text-[color:var(--brand-navy)]">
+      Our Team
+    </h2>
+
+    <p className="mt-3 text-lg text-[color:var(--muted-foreground)]">
+      Meet the people behind the programme.
+    </p>
+  </div>
+
+  <div className="mt-12 flex flex-wrap justify-center gap-x-12 gap-y-10">
+    {teamMembers.map((member) => (
+      <div
+        key={member.name}
+        className="w-[220px] flex flex-col items-center text-center"
+      >
+        <img
+          src={member.photo}
+          alt={member.name}
+          className="h-36 w-36 sm:h-44 sm:w-44 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-md"
+        />
+
+        <h3 className="mt-4 text-lg font-semibold text-[color:var(--brand-navy)]">
+          {member.name}
+        </h3>
+      </div>
+    ))}
+  </div>
+</div>
+      <div className="mt-12 grid gap-8 lg:grid-cols-2">
 
   {/* Left Contact Card */}
   <div className="rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm">
@@ -231,40 +262,8 @@ export default function Contact() {
     </div>
   </div>
   </div>
-
-{/* Team Section */}
-<div className="mt-20">
-  <div className="text-center">
-    <h2 className="font-display text-5xl font-bold text-[color:var(--brand-navy)]">
-      Our Team
-    </h2>
-
-    <p className="mt-3 text-lg text-[color:var(--muted-foreground)]">
-      Meet the people behind the programme.
-    </p>
-  </div>
-
-  <div className="mt-12 flex flex-wrap justify-center gap-x-12 gap-y-10">
-    {teamMembers.map((member) => (
-      <div
-        key={member.name}
-        className="w-[220px] flex flex-col items-center text-center"
-      >
-        <img
-          src={member.photo}
-          alt={member.name}
-          className="h-36 w-36 sm:h-44 sm:w-44 rounded-full object-cover border-4 border-[color:var(--brand-teal)] shadow-md"
-        />
-
-        <h3 className="mt-4 text-lg font-semibold text-[color:var(--brand-navy)]">
-          {member.name}
-        </h3>
-      </div>
-    ))}
-  </div>
 </div>
-</div>
-      </section>
+</section>
 
       {/* Profile Modal */}
       {showProfile && (
@@ -312,7 +311,7 @@ export default function Contact() {
                     Experience & Impact
                   </h3>
                   <p className="mt-3 text-[color:var(--muted-foreground)] leading-relaxed">
-                    With over two decades of distinguished experience in academia and industry research, Prof. Bashambu has been instrumental in bridging the gap between theoretical knowledge and practical industry applications. He has successfully led multiple capacity-building programs and spearheads initiatives in emerging technologies.
+                    With over two decades of distinguished experience in academia and industry research, Prof. Bashambu has been instrumental in bridging the gap between theoretical knowledge and practical industry applications. He has successfully led multiple capacity-building programs and spearheads initiatives in emerging technologies
                   </p>
                 </div>
 

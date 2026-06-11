@@ -8,7 +8,7 @@ const ELIGIBILITY = [
   "Minimum batch of 20+ students per cohort willing to enroll",
   "Dedicated faculty co-ordinator appointed by the institution",
   "Basic lab infrastructure with internet access available",
-  "Willingness to integrate MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. modules within the academic calendar",
+  "Willingness to integrate MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies modules within the academic calendar",
   "Institution must be AICTE / UGC / State board recognised",
 ];
 
@@ -22,7 +22,7 @@ const WHAT_INSTITUTION_GETS = [
 
 const PROCESS_STEPS = [
   { step: "01", title: "Submit Expression of Interest", desc: "Fill the Google Form below with your institution's details." },
-  { step: "02", title: "Eligibility Review", desc: "The MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. team verifies credentials and batch readiness within 5 working days." },
+  { step: "02", title: "Eligibility Review", desc: "The MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies team verifies credentials and batch readiness within 5 working days." },
   { step: "03", title: "MoU Signing", desc: "Formal agreement signed between your institution, IIIT Delhi, and MeitY." },
   { step: "04", title: "Cohort Onboarding", desc: "Students enroll, orientation conducted, and learning begins." },
 ];
@@ -31,10 +31,10 @@ export default function InstituteEnroll() {
   return (
     <>
       <Helmet>
-        <title>Institute Enrollment — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. IIITD × MeitY</title>
+        <title>Institute Enrollment — MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies IIITD × MeitY</title>
         <meta
           name="description"
-          content="Partner with MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. to bring government-backed tech skilling to your institution's students."
+          content="Partner with MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies to bring government-backed tech skilling to your institution's students."
         />
       </Helmet>
 
@@ -58,7 +58,7 @@ export default function InstituteEnroll() {
             <span className="text-gradient-brand">Enrollment</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-            Bring MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies. to your campus. Register your institution to provide your students
+            Bring MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies to your campus. Register your institution to provide your students
             with free, IIIT Delhi-certified training in industry-aligned emerging technologies.
           </p>
         </div>

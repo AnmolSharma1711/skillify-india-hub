@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CircleCheck as CheckCircle2 } from "lucide-react";
 
 const HOME_HIGHLIGHTS = [
-"Industry-focused training in Electronics and IT designed to build job-ready skills.",
-"Hands-on learning through practical sessions, bootcamps, and real-world projects.",
-"Expert mentorship from leading faculty and industry professionals.",
-"Career enhancement opportunities including workshops, networking, and job fairs.",
+"Industry-focused training in Electronics and IT designed to build job-ready skills",
+"Hands-on learning through practical sessions, bootcamps, and real-world projects",
+"Expert mentorship from leading faculty and industry professionals",
+"Career enhancement opportunities including workshops, networking, and job fairs",
 ];
 
 const WHO_CAN_JOIN = [
@@ -16,10 +16,10 @@ const WHO_CAN_JOIN = [
 ];
 
 const WHY_JOIN = [
-"Mentor-led cohorts guided by experts.",
-"Industry-relevant projects to strengthen your portfolio.",
-"Recognized certification from prestigious institutions.",
-"Access to a growing community of learners, mentors, and alumni.",
+"Mentor-led cohorts guided by experts",
+"Industry-relevant projects to strengthen your portfolio",
+"Recognized certification from prestigious institutions",
+"Access to a growing community of learners, mentors, and alumni",
 ];
 
 
@@ -38,21 +38,21 @@ export function AboutSection() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         {/* Header */}
-        <div className="mb-16 max-w-4xl">
+        <div className="mb-16 w-full">
           <p className="text-xs font-semibold uppercase tracking-widest text-[color:var(--brand-teal)]">
             About the Project
           </p>
           <h2 className="mt-3 font-display text-4xl font-bold text-[color:var(--brand-navy)] sm:text-5xl">
             Skilling the youth of{" "}
-            <span className="text-gradient-brand">India.</span>
+            <span className="text-gradient-brand">India</span>
           </h2>
-          <p className="mt-5 max-w-3xl text-base leading-relaxed text-[color:var(--muted-foreground)]">
-            <strong className="text-[color:var(--brand-navy)]">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies.</strong> is a joint initiative between{" "}
+          <p className="mt-5 w-full text-base leading-relaxed text-[color:var(--muted-foreground)]">
+            <strong className="text-[color:var(--brand-navy)]">MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies</strong> is a joint initiative between{" "}
             <strong className="text-[color:var(--brand-navy)]">IIIT Delhi</strong> and the{" "}
             <strong className="text-[color:var(--brand-navy)]">
               Ministry of Electronics and Information Technology (MeitY)
             </strong>
-            , aimed at bridging the gap between education and industry. Through free, industry-aligned training, hands-on projects, expert mentorship, and emerging technology programs, the initiative empowers students, graduates, and aspiring professionals across India to develop future-ready skills and enhance their career opportunities.
+            , aimed at bridging the gap between education and industry Through free, industry-aligned training, hands-on projects, expert mentorship, and emerging technology programs, the initiative empowers students, graduates, and aspiring professionals across India to develop future-ready skills and enhance their career opportunities
           </p>
         </div>
 

@@ -51,7 +51,7 @@ export function Hero() {
           style={{ animationDelay: "0.1s" }}
         >
           <span className="text-gradient-brand"></span>MultiLevel Capacity Building and Skilling<br />
-          <span className="text-gradient-brand">in Industry-aligned Emerging Technologies.</span>
+          <span className="text-gradient-brand">in Industry-aligned Emerging Technologies</span>
         </h1>
 
         <p
