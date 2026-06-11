@@ -61,7 +61,7 @@ export function CourseCardLight({
         }
       `}</style>
       <article
-        className="group relative overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] cursor-pointer"
+        className="group relative overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] cursor-pointer flex flex-col h-full"
         style={{
           animation: "fadeInScale 0.5s ease-out",
         }}
@@ -135,7 +135,7 @@ export function CourseCardLight({
         </div>
 
         <div
-          className="mt-6 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+          className="mt-auto pt-6 inline-flex items-center gap-1 text-xs font-medium transition-colors"
           style={{ color: accent.icon }}
         >
           Click to view details
