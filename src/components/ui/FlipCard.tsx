@@ -132,12 +132,24 @@ export function FlipCard({
 
             {/* Enrollment Buttons */}
             <div className="mt-auto pt-4">
-              <button
-                onClick={(e) => { e.stopPropagation(); setEnrollmentType(context); }}
-                className="w-full rounded-lg bg-[image:var(--gradient-brand)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02] active:scale-95"
-              >
-                Enroll Now
-              </button>
+              {course.externalLink ? (
+                <a
+                  href={course.externalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center w-full rounded-lg bg-[image:var(--gradient-brand)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02] active:scale-95"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Enroll Now
+                </a>
+              ) : (
+                <button
+                  onClick={(e) => { e.stopPropagation(); setEnrollmentType(context); }}
+                  className="w-full rounded-lg bg-[image:var(--gradient-brand)] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02] active:scale-95"
+                >
+                  Enroll Now
+                </button>
+              )}
             </div>
           </div>
         </div>
