@@ -18,7 +18,7 @@ export function Hero() {
         src={heroClassroomBg}
         alt=""
         aria-hidden
-        className="absolute inset-0 z-0 h-full w-full object-cover object-center opacity-[1]"
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center"
       />
 
       <div
@@ -33,38 +33,47 @@ export function Hero() {
       <div aria-hidden className="absolute inset-0 z-[3] bg-dots opacity-20" />
 
       <div
-        className="relative z-10 mx-auto max-w-8xl px-4 pb-24 pt-12 text-center sm:px-6 sm:pt-16"
+        className="relative z-10 mx-auto max-w-8xl px-4 pb-20 pt-0 text-center sm:px-6 sm:pt-4"
         style={{
           animation: "fadeInUp 0.6s ease-out, staggerChildren 0.8s ease-out",
         }}
       >
+        {/* Badge */}
         <div
-          className="mx-auto inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-teal)]/40 bg-white/80 px-4 py-1.5 text-xl font-semibold text-[color:var(--brand-navy)] shadow-sm backdrop-blur"
+          className="mx-auto inline-flex items-center gap-2 rounded-full border border-[color:var(--brand-teal)]/40 bg-white/80 px-4 py-1.5 text-sm sm:text-lg font-semibold text-[color:var(--brand-navy)] shadow-sm backdrop-blur"
           style={{ animationDelay: "0s" }}
         >
-          <Sparkles className="h-6.5 w-8.5 text-[color:var(--brand-saffron)]" />
+          <Sparkles className="h-5 w-5 text-[color:var(--brand-saffron)]" />
           A MeitY-Powered Initiative
         </div>
 
+        {/* Heading */}
         <h1
-          className="mt-5 font-display text-4xl font-bold leading-[1.07] text-[color:var(--brand-navy)] sm:text-7xl md:text-5xl"
+          className="mt-5 font-display text-4xl font-bold leading-tight text-[color:var(--brand-navy)] sm:text-5xl md:text-6xl lg:text-7xl"
           style={{ animationDelay: "0.1s" }}
         >
-          <span className="text-gradient-brand"></span>MultiLevel Capacity Building and Skilling<br />
-          <span className="text-gradient-brand">in Industry-aligned Emerging Technologies</span>
+          MultiLevel Capacity Building and Skilling
+          <br />
+          <span className="text-gradient-brand">
+            in Industry-aligned Emerging Technologies
+          </span>
         </h1>
 
+        {/* Tagline */}
         <p
-          className="mx-auto mt-8 max-w-7xl text-xl leading-relaxed text-gray-900 sm:text-3xl"
+          className="mx-auto mt-8 max-w-6xl text-base leading-relaxed text-gray-900 sm:text-xl md:text-2xl"
           style={{ animationDelay: "0.2s" }}
         >
           <b>
-          Free Learning | Hands-On Training | Industry-Ready Skills | Certifications
-          <br />
-          Future Technologies| Expert Mentorship | IIIT Delhi |
-          MeitY | Digital India
+            Free Learning | Hands-On Training | Industry-Ready Skills |
+            Certifications
+            <br />
+            Future Technologies | Expert Mentorship | IIIT Delhi | MeitY |
+            Digital India
           </b>
         </p>
+
+        {/* CTA */}
         <div
           className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
           style={{ animationDelay: "0.3s" }}
@@ -78,21 +87,57 @@ export function Hero() {
           </Link>
         </div>
 
+        {/* Stats */}
         <dl
-          className="mx-auto mt-16 grid max-w-3xl grid-cols-3 gap-4 text-left"
+          className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3 text-left"
           style={{ animationDelay: "0.4s" }}
         >
           {[
-            { k: "3 Courses", v: <b>More are coming...</b> },
-            { k: "100% Free", v: <b>Free for All</b> },
-            { k: "IIITD", v: <b>Faculty Driven</b> },
+            { k: "3 Courses", v: "More are coming..." },
+            { k: "100% Free", v: "Free for All" },
+            { k: "IIITD", v: "Faculty Driven" },
           ].map((s) => (
             <div
               key={s.k}
               className="rounded-xl border border-[color:var(--brand-navy)]/12 bg-white/85 p-4 shadow-sm backdrop-blur"
             >
-              <dt className="font-display text-2xl font-bold text-gradient-brand">{s.k}</dt>
-              <dd className="mt-0.5 text-xs text-[color:var(--muted-foreground)]">{s.v}</dd>
+              <dt className="font-display text-2xl font-bold text-gradient-brand">
+                {s.k}
+              </dt>
+              <dd className="mt-1 text-sm text-[color:var(--muted-foreground)]">
+                {s.v}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        {/* Beneficiaries */}
+        <h3 className="mt-8 mb-4 font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)]">
+          Targeted Beneficiaries
+        </h3>
+
+        <dl
+          className="mx-auto mt-4 grid max-w-8xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 text-left"
+          style={{ animationDelay: "0.4s" }}
+        >
+          {[
+            {
+              v: "Engineering and Non-engineering students/graduates",
+            },
+            {
+              v: "Research scholars and PhD candidates",
+            },
+            {
+              v: "Working professionals and aspiring job seekers",
+            },
+          ].map((s, index) => (
+            <div
+              key={index}
+              className="rounded-xl border border-[color:var(--brand-navy)]/12 bg-white/85 p-5 shadow-sm backdrop-blur"
+            >
+              <dd className="text-sm sm:text-base text-center font-medium text-[color:var(--muted-foreground)]">
+                {s.v}
+              </dd>
             </div>
           ))}
         </dl>
@@ -109,6 +154,7 @@ export function Hero() {
             transform: translateY(0);
           }
         }
+
         @keyframes staggerChildren {
           0% {
             animation-delay: 0s !important;
@@ -117,6 +163,7 @@ export function Hero() {
             animation-delay: 0.12s !important;
           }
         }
+
         [style*="animationDelay"] {
           animation: fadeInUp 0.7s ease-out forwards;
         }

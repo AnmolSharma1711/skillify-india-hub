@@ -2,17 +2,10 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CircleCheck as CheckCircle2 } from "lucide-react";
 
 const HOME_HIGHLIGHTS = [
-"Industry-focused training in Electronics and IT designed to build job-ready skills",
+"Industry-focused training in Electronics and IT, designed to build job-ready skills",
 "Hands-on learning through practical sessions, bootcamps, and real-world projects",
 "Expert mentorship from leading faculty and industry professionals",
 "Career enhancement opportunities including workshops, networking, and job fairs",
-];
-
-const WHO_CAN_JOIN = [
-"Engineering students and graduates",
-"Non-engineering students and graduates",
-"Research scholars and PhD candidates",
-"Working professionals and aspiring job seekers",
 ];
 
 const WHY_JOIN = [
@@ -75,28 +68,6 @@ export function AboutSection() {
                   </div>
                 ))}
                 </b>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-4 font-display text-2xl font-bold text-[color:var(--brand-navy)]">
-                Targeted Beneficiaries
-              </h3>
-              <div className="grid gap-3">
-                <b>
-                {WHO_CAN_JOIN.map((b, idx) => (
-                  <div
-                    key={idx}
-                    className="flex gap-4 rounded-xl border border-[color:var(--border)] bg-white/80 p-4 shadow-sm backdrop-blur"
-                  >
-                    <div
-                      className="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full"
-                      style={{ background: "var(--brand-teal)" }}
-                    />
-                    <span className="text-sm leading-relaxed text-[color:var(--muted-foreground)]">{b}</span>
-                  </div>
-                ))}
-              </b>
               </div>
             </div>
           </div>
