@@ -49,7 +49,7 @@ export function Hero() {
 
         {/* Heading */}
         <h1
-          className="mt-5 font-display text-4xl font-bold leading-tight text-[color:var(--brand-navy)] sm:text-5xl md:text-6xl lg:text-7xl"
+          className="mt-5 font-display text-4xl font-bold leading-tight text-[color:var(--brand-navy)] sm:text-5xl md:text-5xl lg:text-5xl"
           style={{ animationDelay: "0.1s" }}
         >
           MultiLevel Capacity Building and Skilling
@@ -61,7 +61,7 @@ export function Hero() {
 
         {/* Tagline */}
         <p
-          className="mx-auto mt-8 max-w-6xl text-base leading-relaxed text-gray-900 sm:text-xl md:text-2xl"
+          className="mx-auto mt-8 max-w-6xl text-base leading-relaxed text-gray-900 sm:text-xl md:text-xl"
           style={{ animationDelay: "0.2s" }}
         >
           <b>
@@ -75,7 +75,7 @@ export function Hero() {
 
         {/* CTA */}
         <div
-          className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row"
           style={{ animationDelay: "0.3s" }}
         >
           <Link
@@ -112,7 +112,7 @@ export function Hero() {
         </dl>
 
         {/* Beneficiaries */}
-        <h3 className="mt-8 mb-4 font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)]">
+        <h3 className="mt-6 mb-4 font-display text-2xl sm:text-3xl font-bold text-[color:var(--brand-navy)]">
           Targeted Beneficiaries
         </h3>
 
