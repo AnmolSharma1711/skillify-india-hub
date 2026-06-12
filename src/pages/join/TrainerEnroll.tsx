@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import { BookOpen, Award, Briefcase, Star, CircleCheck as CheckCircle2, Loader as Loader2 } from "lucide-react";
-import { submitToGoogleForm } from "@/lib/googleForms";
 
 // TODO: Replace with your actual Google Form ID and entry IDs
 const TRAINER_FORM_ID = "1FAIpQLSd8LXsTN0cBvhXEMFjvO7GRoe_Ma19-eO9l62rxTxF-FKdi2A";
@@ -10,6 +9,7 @@ const TRAINER_FIELDS = {
   EMAIL: "entry.1478895290",
   DESIGNATION: "entry.403901445",
   EXPERTISE: "entry.1172900388", // Checkbox group
+  EXPERTISE_OTHER: "entry.1172900388.other_option_response", 
   EXPERIENCE: "entry.662668080",
   RESUME_LINK: "entry.678900614",
   QUALIFICATION: "entry.1628470396",
@@ -72,21 +72,49 @@ const BENEFITS = [
 export default function TrainerEnroll() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [otherExpertise, setOtherExpertise] = useState("");
+  const [showOtherExpertise, setShowOtherExpertise] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setSubmitting(true);
-    
+
     const formData = new FormData(e.currentTarget);
-    const data: Record<string, string> = {};
-    formData.forEach((value, key) => {
-      data[key] = value.toString();
+    const params = new URLSearchParams();
+
+    // Append standard string fields
+    for (const [key, value] of formData.entries()) {
+      if (key !== TRAINER_FIELDS.EXPERTISE) {
+        params.append(key, value.toString());
+      }
+    }
+
+    // Append all selected checkboxes properly under the same entry key
+    const selectedExpertise = formData.getAll(TRAINER_FIELDS.EXPERTISE);
+    selectedExpertise.forEach((value) => {
+      params.append(TRAINER_FIELDS.EXPERTISE, value.toString());
     });
 
+    // Handle Google Forms custom "Other" field payload structure
+    if (showOtherExpertise && otherExpertise.trim() !== "") {
+      params.append(TRAINER_FIELDS.EXPERTISE_OTHER, otherExpertise.trim());
+    }
+
+    const googleFormUrl = `https://docs.google.com/forms/d/e/${TRAINER_FORM_ID}/formResponse`;
+
     try {
-      await submitToGoogleForm(TRAINER_FORM_ID, data);
+      // Use no-cors to bypass cross-origin browser blocking since Google Form endpoints don't return standard CORS headers
+      await fetch(googleFormUrl, {
+        method: "POST",
+        body: params,
+        mode: "no-cors",
+      });
+      
       setDone(true);
-    } catch {
+      setOtherExpertise("");
+      setShowOtherExpertise(false);
+    } catch (error) {
+      console.error("Submission error:", error);
       setDone(true);
     } finally {
       setSubmitting(false);
@@ -302,13 +330,38 @@ export default function TrainerEnroll() {
                       "App Development",
                       "Cloud Computing",
                       "Cybersecurity",
-                      "VLSI & Semiconductor",
+                      "VLSI & Semiconductor"
                     ].map((item) => (
                       <label key={item} className="flex items-center gap-2.5 cursor-pointer">
                         <input type="checkbox" name={TRAINER_FIELDS.EXPERTISE} value={item} className="w-4 h-4 rounded text-[color:var(--brand-teal)] border-[color:var(--border)] focus:ring-[color:var(--brand-teal)]" />
                         <span className="text-sm text-[color:var(--foreground)]">{item}</span>
                       </label>
                     ))}
+                    
+                    <label className="flex items-center gap-2.5 cursor-pointer">
+                      <input 
+                        type="checkbox" 
+                        name={TRAINER_FIELDS.EXPERTISE} 
+                        value="__other_option__" 
+                        checked={showOtherExpertise}
+                        onChange={(e) => setShowOtherExpertise(e.target.checked)}
+                        className="w-4 h-4 rounded text-[color:var(--brand-teal)] border-[color:var(--border)] focus:ring-[color:var(--brand-teal)]" 
+                      />
+                      <span className="text-sm text-[color:var(--foreground)]">Other</span>
+                    </label>
+
+                    {showOtherExpertise && (
+                      <div className="pt-1 pl-6.5 animate-in fade-in duration-200">
+                        <input 
+                          type="text" 
+                          placeholder="Please specify your expertise" 
+                          value={otherExpertise}
+                          onChange={(e) => setOtherExpertise(e.target.value)}
+                          required={showOtherExpertise}
+                          className="w-full max-w-md rounded-md border border-[color:var(--border)] bg-white px-3 py-2 text-sm text-[color:var(--foreground)] outline-none focus:border-[color:var(--brand-teal)] focus:ring-1 focus:ring-[color:var(--brand-teal)]" 
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
 
