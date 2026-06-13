@@ -89,17 +89,24 @@ export function CourseCardLight({
               return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
             })()}
           </div>
-          {course.status && course.status !== "active" && (
-            <span
-              className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                course.status === "upcoming"
-                  ? "bg-amber-100 text-amber-700"
-                  : "bg-slate-100 text-slate-700"
-              }`}
-            >
-              {course.status === "upcoming" ? "Coming Soon" : "Completed"}
-            </span>
-          )}
+          <div className="flex gap-2 items-center text-right">
+            {course.tentativeDates && (
+              <span className="inline-flex rounded-full px-3 py-1 text-xs font-semibold bg-[color:var(--brand-teal)]/10 text-[color:var(--brand-teal)] border border-[color:var(--brand-teal)]/20">
+                {course.tentativeDates}
+              </span>
+            )}
+            {course.status && course.status !== "active" && (
+              <span
+                className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+                  course.status === "upcoming"
+                    ? "bg-amber-100 text-amber-700"
+                    : "bg-slate-100 text-slate-700"
+                }`}
+              >
+                {course.status === "upcoming" ? "Coming Soon" : "Completed"}
+              </span>
+            )}
+          </div>
         </div>
 
         <h3 className="font-display text-xl font-bold text-[color:var(--brand-navy)]">
@@ -135,11 +142,6 @@ export function CourseCardLight({
           {course.mode && (
             <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2 py-1">
               <MonitorSmartphone className="h-3 w-3 flex-shrink-0" /> <span className="truncate">{course.mode}</span>
-            </span>
-          )}
-          {course.tentativeDates && (
-            <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2 py-1">
-              <Calendar className="h-3 w-3 flex-shrink-0" /> <span className="truncate">{course.tentativeDates}</span>
             </span>
           )}
         </div>
