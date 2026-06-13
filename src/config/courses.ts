@@ -17,7 +17,7 @@
  */
 
 export type Course = {
-  id: "python" | "llm" | "genai" | "vlsi";
+  id: "python" | "llm" | "genai" | "vlsi" | "audio";
   title: string;
   category: string;
   tagline: string;
@@ -52,6 +52,55 @@ export type Course = {
 };
 
 export const COURSES: Course[] = [
+  {
+    id: "audio",
+    title: "10-Days Boot Camp: Building the Future of Voice & Audio",
+    category: "AI & Audio",
+    icon: "Mic",
+    tagline: "Transition from the physical foundations of sound to state-of-the-art AI applications",
+    description: "This intensive upskilling course bridges classical digital signal processing with modern neural architectures. Move beyond simple classification and build sophisticated, end-to-end generative and analytical audio systems.",
+    duration: "10 Days",
+    tentativeDates: "TBA",
+    mode: "Online / Hybrid",
+    level: "Intermediate",
+    accent: "cyan",
+    stats: [
+      { label: "Course Duration", value: "10 Days" },
+      { label: "Format", value: "3-4hr Lectures + 3hr Lab" },
+      { label: "Eligibility", value: "2nd-year+ UG" },
+      { label: "Mode", value: "Online / Hybrid" },
+    ],
+    techs: [
+      { icon: "Brain", label: "PyTorch" },
+      { icon: "Waves", label: "Librosa" },
+      { icon: "Sparkles", label: "Hugging Face" },
+    ],
+    highlights: [
+      "Master Audio Fundamentals & Signal Mechanics",
+      "Implement Sequence-to-Sequence (Seq2Seq) neural models",
+      "Build Integrated Apps: Meeting Transcribers, Voice Assistants",
+    ],
+    syllabus: [
+      "Day 1: Signal Mechanics & Spectral Representations",
+      "Day 2: Dissecting Audio Domains: Traits & Classical ML",
+      "Day 3: Transitioning from Statistical ML to Deep Pipelines",
+      "Day 4: Deep Representation Learning & Speech Transformers",
+      "Day 5: Synthesis, Embeddings & Production Orchestration",
+      "Day 6-10: Project Work & Demo",
+    ],
+    googleForm: {
+      formId: "1FAIpQLSdiEY5qM9AHD8aD85RzPeSiVtIdTpEHmgvOXy0JrSbccdRYiw",
+      fields: {
+        name: "entry.512721180",
+        email: "entry.1771973368",
+        phone: "entry.1798785379",
+        institution: "entry.1696048112",
+        year: "entry.1281950865",
+        designation: "entry.1289524753",
+        motivation: "entry.240615900",
+      },
+    },
+  },
   {
     id: "python",
     title: "Python Programming",
