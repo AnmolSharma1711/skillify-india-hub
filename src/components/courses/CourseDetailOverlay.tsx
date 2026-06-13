@@ -217,9 +217,9 @@ export function CourseDetailOverlay({
                 >
                   Enroll Now
                 </a>
-              ) : context === "individual" ? (
+              ) : context === "individual" && course.individualEnrollLink ? (
                 <a
-                  href={`https://docs.google.com/forms/d/e/${course.googleForm.formId}/viewform`}
+                  href={course.individualEnrollLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full inline-flex h-12 items-center justify-center rounded-lg bg-[image:var(--gradient-brand)] text-sm font-semibold text-white shadow-[var(--shadow-navy)] transition-transform hover:scale-[1.02]"

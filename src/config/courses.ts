@@ -35,18 +35,7 @@ export type Course = {
   icon: string;
   /** Tech stack badges — icon name from lucide-react + label. */
   techs: Array<{ icon: string; label: string }>;
-  googleForm: {
-    formId: string;
-    fields: {
-      name: string;
-      email: string;
-      phone: string;
-      institution: string;
-      year: string;
-      designation: string;
-      motivation: string;
-    };
-  };
+  individualEnrollLink?: string;
   externalLink?: string;
   status?: "active" | "completed" | "upcoming";
 };
@@ -88,18 +77,7 @@ export const COURSES: Course[] = [
       "Day 5: Synthesis, Embeddings & Production Orchestration",
       "Day 6-10: Project Work & Demo",
     ],
-    googleForm: {
-      formId: "1FAIpQLSdiEY5qM9AHD8aD85RzPeSiVtIdTpEHmgvOXy0JrSbccdRYiw",
-      fields: {
-        name: "entry.512721180",
-        email: "entry.1771973368",
-        phone: "entry.1798785379",
-        institution: "entry.1696048112",
-        year: "entry.1281950865",
-        designation: "entry.1289524753",
-        motivation: "entry.240615900",
-      },
-    },
+    individualEnrollLink: "https://docs.google.com/forms/d/e/1FAIpQLSe_Vs-XKtxWyfBPEXnf-upHKxnRY3Ymw9d8O7kt_HrXArJKcw/viewform?usp=header",
   },
   {
     id: "python",
@@ -137,18 +115,7 @@ export const COURSES: Course[] = [
       "Intro to NumPy & Pandas",
       "Capstone: build a CLI data tool",
     ],
-    googleForm: {
-      formId: "1FAIpQLSdiEY5qM9AHD8aD85RzPeSiVtIdTpEHmgvOXy0JrSbccdRYiw",
-      fields: {
-        name: "entry.512721180",
-        email: "entry.1771973368",
-        phone: "entry.1798785379",
-        institution: "entry.1696048112",
-        year: "entry.1281950865",
-        designation: "entry.1289524753",
-        motivation: "entry.240615900",
-      },
-    },
+    individualEnrollLink: "https://docs.google.com/forms/d/e/1FAIpQLSdiEY5qM9AHD8aD85RzPeSiVtIdTpEHmgvOXy0JrSbccdRYiw/viewform",
   },
   {
     id: "llm",
@@ -186,18 +153,7 @@ export const COURSES: Course[] = [
       "Day 5: GenAI SDLC",
       "Day 6-10: Gen AI Project work",
     ],
-    googleForm: {
-      formId: "1FAIpQLSfjxXK5IvmFnynxQ9bjS9UtXuFHvxIZCrpprghkb0obmRIwkA",
-      fields: {
-        name: "entry.1314184296",
-        email: "entry.588026433",
-        phone: "entry.518301378",
-        institution: "entry.977125670",
-        year: "entry.5555555555",
-        designation: "entry.1775123361",
-        motivation: "entry.1668991990",
-      },
-    },
+    individualEnrollLink: "https://docs.google.com/forms/d/e/1FAIpQLSfjxXK5IvmFnynxQ9bjS9UtXuFHvxIZCrpprghkb0obmRIwkA/viewform",
   },
   {
     id: "genai",
@@ -235,18 +191,7 @@ export const COURSES: Course[] = [
       "Evaluation, safety & guardrails",
       "Capstone: ship a GenAI product",
     ],
-    googleForm: {
-      formId: "1FAIpQLSfXMj0n-tmbh0Tbla0Y_DSQ3xdkUquf1oKoSn919Twgo-ti0g",
-      fields: {
-        name: "entry.492756643",
-        email: "entry.555274686",
-        phone: "entry.1091198701",
-        institution: "entry.179070552",
-        year: "entry.5555555555",
-        designation: "entry.1458402060",
-        motivation: "entry.1427641699",
-      },
-    },
+    individualEnrollLink: "https://docs.google.com/forms/d/e/1FAIpQLSfXMj0n-tmbh0Tbla0Y_DSQ3xdkUquf1oKoSn919Twgo-ti0g/viewform",
   },
   {
     id: "vlsi",
@@ -273,13 +218,7 @@ export const COURSES: Course[] = [
       { icon: "Cpu", label: "VLSI" },
       { icon: "CircuitBoard", label: "Embedded" }
     ],
-    externalLink: "https://iiitd.ac.in/vlsirevisited2026/",
-    googleForm: {
-      formId: "",
-      fields: {
-        name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: ""
-      }
-    }
+    individualEnrollLink: "https://iiitd.ac.in/vlsirevisited2026/",
   }
 ];
 
