@@ -21,7 +21,6 @@ const PREVIOUS_COURSES: Course[] = [
     highlights: ["Frontend Basics", "Backend APIs", "Database Design"],
     syllabus: ["HTML/CSS/JS", "React JS", "Node & Express", "MongoDB"],
     status: "completed",
-    googleForm: { formId: "", fields: { name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: "" } }
   },
   {
     id: "datascience" as any,
@@ -36,7 +35,6 @@ const PREVIOUS_COURSES: Course[] = [
     highlights: ["Data Wrangling", "Statistical Analysis", "Visualization"],
     syllabus: ["Python for Data", "Pandas & NumPy", "Matplotlib", "Basic Stats"],
     status: "completed",
-    googleForm: { formId: "", fields: { name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: "" } }
   },
   {
     id: "cyber" as any,
@@ -51,7 +49,6 @@ const PREVIOUS_COURSES: Course[] = [
     highlights: ["Network Security", "Ethical Hacking", "Cryptography basics"],
     syllabus: ["Intro to CyberSec", "Networking Basics", "Web Vulnerabilities", "Cryptography"],
     status: "completed",
-    googleForm: { formId: "", fields: { name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: "" } }
   },
 ];
 
@@ -69,7 +66,6 @@ const UPCOMING_COURSES: Course[] = [
     highlights: ["Computer Vision", "Path Planning", "ROS framework"],
     syllabus: ["Intro to Robotics", "Kinematics", "Computer Vision", "ROS Basics"],
     status: "upcoming",
-    googleForm: { formId: "", fields: { name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: "" } }
   },
   {
     id: "cloud" as any,
@@ -84,7 +80,6 @@ const UPCOMING_COURSES: Course[] = [
     highlights: ["Cloud Architecture", "Docker & K8s", "CI/CD"],
     syllabus: ["Cloud Basics", "Containerization", "Microservices", "Deployment"],
     status: "upcoming",
-    googleForm: { formId: "", fields: { name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: "" } }
   },
   {
     id: "blockchain" as any,
@@ -99,7 +94,6 @@ const UPCOMING_COURSES: Course[] = [
     highlights: ["Smart Contracts", "DApps", "Crypto Protocols"],
     syllabus: ["Intro to Web3", "Ethereum & Solidity", "DApp Development", "Security"],
     status: "upcoming",
-    googleForm: { formId: "", fields: { name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: "" } }
   },
 ];
 
