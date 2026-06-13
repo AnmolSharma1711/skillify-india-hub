@@ -6,6 +6,7 @@ import meitLogo from "@/assets/meit_logo-removebg-preview.svg";
 
 import type { Course } from "@/config/courses";
 import { CourseCardLight } from "@/components/courses/CourseCardLight";
+import { StudentFeedbackSection } from "@/components/courses/StudentFeedbackSection";
 
 const PREVIOUS_COURSES: Course[] = [
   {
@@ -169,6 +170,9 @@ export default function Courses() {
             ))}
           </div>
         </section>
+
+        {/* Student Feedback */}
+        <StudentFeedbackSection />
       </div>
 
     </>
