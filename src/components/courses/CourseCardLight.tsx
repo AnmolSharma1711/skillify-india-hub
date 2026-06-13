@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { KeyboardEvent } from "react";
-import { Clock, GraduationCap } from "lucide-react";
+import { Clock, GraduationCap, Calendar, MonitorSmartphone } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
 import { CourseDetailOverlay } from "@/components/courses/CourseDetailOverlay";
@@ -132,6 +132,16 @@ export function CourseCardLight({
           <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2 py-1">
             <GraduationCap className="h-3 w-3 flex-shrink-0" /> <span className="truncate">{course.level}</span>
           </span>
+          {course.mode && (
+            <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2 py-1">
+              <MonitorSmartphone className="h-3 w-3 flex-shrink-0" /> <span className="truncate">{course.mode}</span>
+            </span>
+          )}
+          {course.tentativeDates && (
+            <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2 py-1">
+              <Calendar className="h-3 w-3 flex-shrink-0" /> <span className="truncate">{course.tentativeDates}</span>
+            </span>
+          )}
         </div>
 
         <div

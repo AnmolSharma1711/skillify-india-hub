@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
-import { X, Clock, GraduationCap } from "lucide-react";
+import { X, Clock, GraduationCap, Calendar, MonitorSmartphone } from "lucide-react";
 import * as Icons from "lucide-react";
 import type { Course } from "@/config/courses";
 
@@ -105,8 +105,8 @@ export function CourseDetailOverlay({
 
           {/* Content */}
           <div className="p-6 sm:p-8 space-y-8">
-            {/* Duration & Level */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* Duration, Level, Mode, Dates */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <div className="flex items-center gap-3 rounded-lg border border-[color:var(--border)] bg-[color:var(--muted)] px-4 py-3">
                 <Clock className="h-5 w-5 text-[color:var(--muted-foreground)]" />
                 <div>
@@ -121,6 +121,24 @@ export function CourseDetailOverlay({
                   <p className="text-sm font-semibold text-[color:var(--brand-navy)]">{course.level}</p>
                 </div>
               </div>
+              {course.mode && (
+                <div className="flex items-center gap-3 rounded-lg border border-[color:var(--border)] bg-[color:var(--muted)] px-4 py-3">
+                  <MonitorSmartphone className="h-5 w-5 text-[color:var(--muted-foreground)]" />
+                  <div>
+                    <p className="text-xs font-semibold text-[color:var(--muted-foreground)]">Mode</p>
+                    <p className="text-sm font-semibold text-[color:var(--brand-navy)]">{course.mode}</p>
+                  </div>
+                </div>
+              )}
+              {course.tentativeDates && (
+                <div className="flex items-center gap-3 rounded-lg border border-[color:var(--border)] bg-[color:var(--muted)] px-4 py-3">
+                  <Calendar className="h-5 w-5 text-[color:var(--muted-foreground)]" />
+                  <div>
+                    <p className="text-xs font-semibold text-[color:var(--muted-foreground)]">Dates</p>
+                    <p className="text-sm font-semibold text-[color:var(--brand-navy)]">{course.tentativeDates}</p>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Highlights */}

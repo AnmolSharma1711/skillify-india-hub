@@ -17,12 +17,14 @@
  */
 
 export type Course = {
-  id: "python" | "ml" | "genai" | "ewct" | "vlsi";
+  id: "python" | "llm" | "genai" | "ewct" | "vlsi";
   title: string;
   category: string;
   tagline: string;
   description?: string;
   duration: string;
+  tentativeDates?: string;
+  mode?: string;
   level: string;
   highlights: string[];
   syllabus: string[];
@@ -98,38 +100,40 @@ export const COURSES: Course[] = [
     },
   },
   {
-    id: "ml",
-    title: "Machine Learning",
-    category: "Data Science",
-    icon: "Brain",
-    tagline: "Build real ML models — from regression to neural networks",
-    description: "Learn machine learning fundamentals and build real-world ML models. Work with industry-standard datasets and compete in Kaggle-style competitions",
-    duration: "8 weeks · 4 hrs/week",
+    id: "llm",
+    title: "LLM Applications and Prompt Design",
+    category: "AI & LLMs",
+    icon: "Bot",
+    tagline: "Design and develop production-ready applications using Large Language Models",
+    description: "To enable students to design and develop production-ready applications using Large Language Models. It aims to build strong foundations in prompt engineering, RAG, agent orchestration, and GenAI system design. By the end of the course, learners will be prepared to apply LLM technologies effectively.",
+    duration: "10 Days",
+    tentativeDates: "TBA",
+    mode: "Online / Hybrid",
     level: "Intermediate",
     accent: "mixed",
     stats: [
-      { label: "Course Duration", value: "8 Weeks" },
-      { label: "Weekly Commitment", value: "4 Hours" },
-      { label: "Batches Run", value: "Multiple" },
+      { label: "Course Duration", value: "10 Days" },
+      { label: "Mode", value: "Online / Hybrid" },
+      { label: "Batches Run", value: "Upcoming" },
       { label: "Certification", value: "IIITD + MeitY" },
     ],
     techs: [
-      { icon: "BarChart3", label: "NumPy" },
-      { icon: "TrendingUp", label: "Scikit-learn" },
-      { icon: "Zap", label: "PyTorch" },
+      { icon: "Brain", label: "LLMs" },
+      { icon: "MessageSquare", label: "Prompting" },
+      { icon: "Database", label: "RAG" },
     ],
     highlights: [
-      "Real-world datasets",
-      "Kaggle-style competition",
-      "Mentorship from IIITD faculty",
+      "Production-ready LLM apps",
+      "Advanced RAG techniques",
+      "Hands-on GenAI project work",
     ],
     syllabus: [
-      "Math refresher: linear algebra & probability",
-      "Supervised learning: regression & classification",
-      "Model evaluation, bias-variance, regularization",
-      "Unsupervised learning & clustering",
-      "Intro to neural networks with PyTorch",
-      "Capstone: end-to-end ML pipeline",
+      "Day 1: Foundation of Gen AI, LLMs",
+      "Day 2: The Art and Science of Prompting",
+      "Day 3: Retrieval-Augmented Generation (RAG)",
+      "Day 4: LLM Orchestration & Agents",
+      "Day 5: GenAI SDLC",
+      "Day 6-10: Gen AI Project work",
     ],
     googleForm: {
       formId: "1FAIpQLSfjxXK5IvmFnynxQ9bjS9UtXuFHvxIZCrpprghkb0obmRIwkA",
