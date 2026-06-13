@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Building2, GraduationCap, CheckCircle } from "lucide-react";
 import { COURSES } from "@/config/courses";
-import { FlipCard } from "@/components/ui/FlipCard";
+import { CourseCardLight } from "@/components/courses/CourseCardLight";
 
 const ELIGIBILITY = [
   "Recognised university, deemed institution, or affiliated college",
@@ -157,13 +157,13 @@ export default function InstituteEnroll() {
             Select a Course to Enroll Your Institute
           </h2>
           <p className="mt-3 text-sm text-[color:var(--muted-foreground)] max-w-2xl mx-auto">
-            Browse our catalog below. Click "Enroll Now" on any course to open the Institute Enrollment form.
+            Browse our catalog below. Click on a course card to view details and open the Institute Enrollment form.
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {COURSES.map((course) => (
-            <FlipCard key={course.id} course={course} context="institute" />
+            <CourseCardLight key={course.id} course={course} context="institute" />
           ))}
         </div>
       </section>

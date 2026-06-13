@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { COURSES } from "@/config/courses";
-import { FlipCard } from "@/components/ui/FlipCard";
+import { CourseCardLight } from "@/components/courses/CourseCardLight";
 
 export default function Enroll() {
   return (
@@ -24,18 +24,13 @@ export default function Enroll() {
           </p>
 
           <p className="mt-4 text-sm font-medium text-[color:var(--brand-teal)]">
-            <span className="hidden md:inline">
-              Hover over a course card to enroll
-            </span>
-            <span className="inline md:hidden">
-              Tap on a course card to enroll
-            </span>
+            Click on a course card to view details and enroll
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {COURSES.map((course) => (
-            <FlipCard key={course.id} course={course} context="individual" />
+            <CourseCardLight key={course.id} course={course} context="individual" />
           ))}
         </div>
       </div>

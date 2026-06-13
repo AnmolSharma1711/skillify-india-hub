@@ -1,5 +1,5 @@
 import { COURSES } from "@/config/courses";
-import { FlipCard } from "@/components/ui/FlipCard";
+import { CourseCardLight } from "@/components/courses/CourseCardLight";
 import courseShowcaseBg from "@/assets/course-showcase-bg.svg";
 
 export function CoursesShowcase() {
@@ -28,7 +28,7 @@ export function CoursesShowcase() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {COURSES.map((course) => (
-            <FlipCard key={course.id} course={course} />
+            <CourseCardLight key={course.id} course={course} />
           ))}
         </div>
       </div>
