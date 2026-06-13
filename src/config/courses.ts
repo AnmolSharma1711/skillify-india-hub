@@ -77,7 +77,7 @@ export const COURSES: Course[] = [
       "Day 5: Synthesis, Embeddings & Production Orchestration",
       "Day 6-10: Project Work & Demo",
     ],
-    externalLink: "https://docs.google.com/forms/d/e/1FAIpQLSe_Vs-XKtxWyfBPEXnf-upHKxnRY3Ymw9d8O7kt_HrXArJKcw/viewform?usp=header",
+    individualEnrollLink: "https://docs.google.com/forms/d/e/1FAIpQLSe_Vs-XKtxWyfBPEXnf-upHKxnRY3Ymw9d8O7kt_HrXArJKcw/viewform?usp=header",
   },
   {
     id: "python",
