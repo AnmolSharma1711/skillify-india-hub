@@ -43,7 +43,7 @@ export type Course = {
 export const COURSES: Course[] = [
   {
     id: "audio",
-    title: "10-Days Boot Camp: Building the Future of Voice & Audio",
+    title: "Building the Future of Voice & Audio",
     category: "AI & Audio",
     icon: "Mic",
     tagline: "Transition from the physical foundations of sound to state-of-the-art AI applications",

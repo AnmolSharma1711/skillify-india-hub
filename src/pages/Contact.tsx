@@ -22,7 +22,7 @@ const teamMembers = [
     photo: member1,
   },
   {
-    name: "Dr. Sujay Dev",
+    name: "Dr. Sujay Deb",
     photo: member2,
   },
 ];
@@ -81,10 +81,10 @@ export default function Contact() {
               </p>
               <p>
               Email us at{" "}<a
-                href="mailto:info@example.com"
+                href="mailto:saksham.tech@iiitd.ac.in"
                 className="text-base sm:text-xl text-[color:var(--brand-teal)] hover:underline"
               >
-                info@example.com
+                saksham.tech@iiitd.ac.in
               </a>
             </p>
           </div>
