@@ -17,7 +17,7 @@
  */
 
 export type Course = {
-  id: "python" | "llm" | "genai" | "ewct" | "vlsi";
+  id: "python" | "llm" | "genai" | "vlsi";
   title: string;
   category: string;
   tagline: string;
@@ -60,6 +60,8 @@ export const COURSES: Course[] = [
     tagline: "From zero to writing real-world Python in 6 weeks",
     description: "Master Python fundamentals through hands-on learning. Build practical projects while learning from IIIT Delhi faculty in this beginner-friendly program",
     duration: "6 weeks · 3 hrs/week",
+    tentativeDates: "1st July 2026 - 12th July 2026",
+    mode: "Online",
     level: "Beginner friendly",
     accent: "cyan",
     stats: [
@@ -107,8 +109,8 @@ export const COURSES: Course[] = [
     tagline: "Design and develop production-ready applications using Large Language Models",
     description: "To enable students to design and develop production-ready applications using Large Language Models. It aims to build strong foundations in prompt engineering, RAG, agent orchestration, and GenAI system design. By the end of the course, learners will be prepared to apply LLM technologies effectively.",
     duration: "10 Days",
-    tentativeDates: "TBA",
-    mode: "Online / Hybrid",
+    tentativeDates: "1st July 2026 - 12th July 2026",
+    mode: "Hybrid",
     level: "Intermediate",
     accent: "mixed",
     stats: [
@@ -156,6 +158,8 @@ export const COURSES: Course[] = [
     tagline: "Ship AI products with LLMs, embeddings & agents",
     description: "Learn to build and deploy generative AI applications. Master LLM APIs, embeddings, RAG systems, and intelligent agents in this advanced bootcamp",
     duration: "6 weeks · 4 hrs/week",
+    tentativeDates: "1st July 2026 - 12th July 2026", 
+    mode: "Hybrid",
     level: "Intermediate · Advanced",
     accent: "violet",
     stats: [
@@ -194,38 +198,6 @@ export const COURSES: Course[] = [
         motivation: "entry.1427641699",
       },
     },
-  },
-  {
-    id: "ewct",
-    title: "Emerging Wireless Communication Technologies",
-    category: "Communication",
-    icon: "Wifi",
-    tagline: "Learn the future of wireless communication and network technologies",
-    description: "Explore the cutting-edge developments in wireless communication, 5G/6G networks, and IoT connectivity",
-    duration: "Flexible",
-    level: "Intermediate to Advanced",
-    accent: "violet",
-    highlights: [
-      "5G/6G Architecture",
-      "IoT Connectivity",
-      "Network Protocols"
-    ],
-    syllabus: [
-      "Introduction to Wireless Comms",
-      "5G Architecture",
-      "IoT Protocols",
-      "Future 6G Concepts"
-    ],
-    techs: [
-      { icon: "Wifi", label: "Wireless" }
-    ],
-    externalLink: "https://iiitd.ac.in/ewct/",
-    googleForm: {
-      formId: "",
-      fields: {
-        name: "", email: "", phone: "", institution: "", year: "", designation: "", motivation: ""
-      }
-    }
   },
   {
     id: "vlsi",
