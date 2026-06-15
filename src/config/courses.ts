@@ -17,7 +17,7 @@
  */
 
 export type Course = {
-  id: "python" | "llm" | "genai" | "vlsi" | "audio";
+  id: "python" | "llm" | "vlsi" | "audio";
   title: string;
   category: string;
   tagline: string;
@@ -48,13 +48,13 @@ export const COURSES: Course[] = [
     icon: "Mic",
     tagline: "Transition from the physical foundations of sound to state-of-the-art AI applications",
     description: "This intensive upskilling course bridges classical digital signal processing with modern neural architectures. Move beyond simple classification and build sophisticated, end-to-end generative and analytical audio systems.",
-    duration: "10 Days",
+    duration: "70-80 Hours",
     tentativeDates: "1st July 2026 - 12th July 2026",
     mode: "Hybrid",
     level: "Intermediate",
     accent: "cyan",
     stats: [
-      { label: "Course Duration", value: "10 Days" },
+      { label: "Course Duration", value: "70-80 Hours" },
       { label: "Format", value: "3-4hr Lectures + 3hr Lab" },
       { label: "Eligibility", value: "2nd-year+ UG" },
       { label: "Mode", value: "Online / Hybrid" },
@@ -86,13 +86,13 @@ export const COURSES: Course[] = [
     icon: "Code2",
     tagline: "10 Days Comprehensive Curriculum from zero to AI-assisted coding",
     description: "Write syntactically correct Python code, manipulate data structures, perform file operations, analyze data with Matplotlib, and utilize AI-assisted coding tools like GitHub Copilot and Claude to build interactive applications.",
-    duration: "10 Days",
+    duration: "40 Hours",
     tentativeDates: "1st July 2026 - 12th July 2026",
     mode: "Online (Google Colab)",
     level: "Beginner friendly",
     accent: "cyan",
     stats: [
-      { label: "Course Duration", value: "10 Days" },
+      { label: "Course Duration", value: "40 Hours" },
       { label: "Session Format", value: "1hr lecture + 2hr lab" },
       { label: "Prerequisites", value: "None" },
       { label: "Assessment", value: "Lab Exercises & Final Quiz" },
@@ -123,13 +123,13 @@ export const COURSES: Course[] = [
     icon: "Bot",
     tagline: "Design and develop production-ready applications using Large Language Models",
     description: "To enable students to design and develop production-ready applications using Large Language Models. It aims to build strong foundations in prompt engineering, RAG, agent orchestration, and GenAI system design. By the end of the course, learners will be prepared to apply LLM technologies effectively.",
-    duration: "10 Days",
+    duration: "70-80 Hours",
     tentativeDates: "1st July 2026 - 12th July 2026",
     mode: "Hybrid",
     level: "Intermediate",
     accent: "mixed",
     stats: [
-      { label: "Course Duration", value: "10 Days" },
+      { label: "Course Duration", value: "70-80 Hours" },
       { label: "Mode", value: "Online / Hybrid" },
       { label: "Batches Run", value: "Upcoming" },
       { label: "Certification", value: "IIITD + MeitY" },
@@ -154,44 +154,7 @@ export const COURSES: Course[] = [
 ],
     individualEnrollLink: "https://docs.google.com/forms/d/e/1FAIpQLSfqXbisGF96ZKGflC2tWYhuRlJWMnCwHflgpTud-j_AQ1FuVg/viewform?usp=publish-editor",
   },
-  {
-    id: "genai",
-    title: "Generative AI",
-    category: "AI & LLMs",
-    icon: "Sparkles",
-    tagline: "Ship AI products with LLMs, embeddings & agents",
-    description: "Learn to build and deploy generative AI applications. Master LLM APIs, embeddings, RAG systems, and intelligent agents in this advanced bootcamp",
-    duration: "10 Days",
-    tentativeDates: "1st July 2026 - 12th July 2026", 
-    mode: "Hybrid",
-    level: "Intermediate · Advanced",
-    accent: "violet",
-    stats: [
-      { label: "Course Duration", value: "6 Weeks" },
-      { label: "Weekly Commitment", value: "4 Hours" },
-      { label: "Batches Run", value: "Multiple" },
-      { label: "Certification", value: "IIITD + MeitY" },
-    ],
-    techs: [
-      { icon: "Brain", label: "LLMs" },
-      { icon: "Network", label: "Embeddings" },
-      { icon: "Workflow", label: "Agents" },
-    ],
-    highlights: [
-      "Build with modern LLM APIs",
-      "RAG, agents & evaluations",
-      "Demo day with industry mentors",
-    ],
-    syllabus: [
-      "Foundations: transformers & tokenization",
-      "Prompt engineering & structured outputs",
-      "Embeddings & retrieval-augmented generation",
-      "Tool use, function calling & agents",
-      "Evaluation, safety & guardrails",
-      "Capstone: ship a GenAI product",
-    ],
-    individualEnrollLink: "https://docs.google.com/forms/d/e/1FAIpQLSeNoEM1JGShwcP9vdKnvtj4SyvdYw5d4yQ7tqamJXFGi2h5hA/viewform?usp=publish-editor",
-  },
+  
   {
     id: "vlsi",
     title: "VLSI and Embedded Systems",
