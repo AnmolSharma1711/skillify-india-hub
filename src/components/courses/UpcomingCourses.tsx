@@ -1,50 +1,5 @@
 import { CourseCardLight } from "./CourseCardLight";
-import type { Course } from "@/config/courses";
-
-const UPCOMING_COURSES: Course[] = [
-  {
-    id: "ai" as any,
-    title: "AI & Robotics",
-    category: "AI",
-    tagline: "Build intelligent robotic systems using AI, computer vision and automation.",
-    duration: "Flexible",
-    level: "Advanced",
-    accent: "mixed",
-    icon: "Bot",
-    techs: [{ icon: "Cpu", label: "AI" }, { icon: "Aperture", label: "Vision" }],
-    highlights: ["Computer Vision", "Path Planning", "ROS framework"],
-    syllabus: ["Intro to Robotics", "Kinematics", "Computer Vision", "ROS Basics"],
-    status: "upcoming",
-  },
-  {
-    id: "cloud" as any,
-    title: "Cloud Computing",
-    category: "Cloud",
-    tagline: "Learn cloud infrastructure, deployment pipelines and scalable applications.",
-    duration: "Flexible",
-    level: "Intermediate",
-    accent: "cyan",
-    icon: "Cloud",
-    techs: [{ icon: "Server", label: "AWS" }, { icon: "Database", label: "Azure" }],
-    highlights: ["Cloud Architecture", "Docker & K8s", "CI/CD"],
-    syllabus: ["Cloud Basics", "Containerization", "Microservices", "Deployment"],
-    status: "upcoming",
-  },
-  {
-    id: "blockchain" as any,
-    title: "Blockchain Technology",
-    category: "Web3",
-    tagline: "Explore decentralized systems, smart contracts and Web3 development.",
-    duration: "Flexible",
-    level: "Intermediate",
-    accent: "violet",
-    icon: "Boxes",
-    techs: [{ icon: "Link", label: "Web3" }, { icon: "Code", label: "Solidity" }],
-    highlights: ["Smart Contracts", "DApps", "Crypto Protocols"],
-    syllabus: ["Intro to Web3", "Ethereum & Solidity", "DApp Development", "Security"],
-    status: "upcoming",
-  },
-];
+import { UPCOMING_COURSES } from "@/config/courses";
 
 export function UpcomingCourses() {
   return (

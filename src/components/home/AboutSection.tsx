@@ -1,20 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CircleCheck as CheckCircle2 } from "lucide-react";
-
-const HOME_HIGHLIGHTS = [
-"Industry-focused training in Electronics and IT, designed to build job-ready skills",
-"Hands-on learning through practical sessions, bootcamps, and real-world projects",
-"Expert mentorship from leading faculty and industry professionals",
-"Career enhancement opportunities including workshops, networking, and job fairs",
-];
-
-const WHY_JOIN = [
-"Mentor-led cohorts guided by experts",
-"Industry-relevant projects to strengthen your portfolio",
-"Recognized certification from prestigious institutions",
-"Access to a growing community of learners, mentors, and alumni",
-];
-
+import { HOME_HIGHLIGHTS, WHY_JOIN } from "@/config/about";
 
 export function AboutSection() {
   return (

@@ -54,6 +54,27 @@ The site introduces three free, mentor-led programmes — **Python**, **Machine 
 
 ---
 
+## Content Management (Modular Architecture)
+
+The site's content is completely separated from its UI components, making it incredibly easy for non-developers to update text, courses, and team members without touching complex React code. 
+
+All content lives as simple arrays in the `src/config/` directory:
+
+| To update this... | Edit this file... | What's inside? |
+|---|---|---|
+| **Courses** | `src/config/courses.ts` | The main `COURSES`, `PREVIOUS_COURSES`, and `UPCOMING_COURSES` arrays. Modify these to add/remove courses across the site. |
+| **Team Members** | `src/config/team.tsx` | The `PIS_AND_COPIS` and `COORDINATORS` arrays. Edit these to add new faculty coordinators or update their profiles/bios. |
+| **Testimonials** | `src/config/feedbacks.ts` | The `FEEDBACKS` array. Edit this to add new student reviews to the course page carousel. |
+| **About / Hero Text** | `src/config/about.ts` | `OBJECTIVES`, `BENEFICIARIES`, `WHY_JOIN`, and hero stats. Edit this to change the marketing copy on the Home and About pages. |
+
+**Example: Adding a new Past Course:**
+1. Open `src/config/courses.ts`.
+2. Scroll to the `PREVIOUS_COURSES` array.
+3. Copy an existing object and paste it below, updating the details (title, syllabus, etc).
+4. Save and push to GitHub. The UI will automatically update!
+
+---
+
 ## Quick Start (Local Development)
 
 ### Prerequisites

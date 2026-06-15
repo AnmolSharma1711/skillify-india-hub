@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroClassroomBg from "@/assets/hero-classroom-bg.jpeg";
+import { HERO_STATS } from "@/config/about";
 
 export function Hero() {
   return (
@@ -92,11 +93,7 @@ export function Hero() {
           className="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3 text-left"
           style={{ animationDelay: "0.4s" }}
         >
-          {[
-            { k: "3 Courses", v: "More are coming..." },
-            { k: "100% Free", v: "Free for All" },
-            { k: "IIITD", v: "Faculty Driven" },
-          ].map((s) => (
+          {HERO_STATS.map((s) => (
             <div
               key={s.k}
               className="rounded-xl border border-[color:var(--brand-navy)]/12 bg-white/85 p-4 shadow-sm backdrop-blur"
