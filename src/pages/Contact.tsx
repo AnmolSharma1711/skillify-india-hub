@@ -14,7 +14,7 @@ export interface TeamMember {
   photo: string;
   email?: string;
   address?: string;
-  experience?: string;
+  experience?: React.ReactNode;
   education?: string[];
   skills?: string[];
 }
@@ -44,7 +44,27 @@ const COORDINATORS: TeamMember[] = [
     photo: coordinatorPhoto2,
     email: "rudali.huidrom@iiitd.ac.in",
     address: "IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020",
-    experience: "Rudali Huidrom is a computer scientist and engineer working in natural language processing, machine translation, and natural language generation. She holds a PhD from the ADAPT Research Centre at Dublin City University, where her research focused on how to generate semantically consistent text and evaluate it, including work on large language models as evaluators and on the meta-evaluation of automatic metrics. She has also made significant contributions to developing computational resources and tools for Manipuri (Meiteilon), including creating the largest open-source datasets to date for the language and developing the first ALBERT-based model and fastText embeddings for Manipuri.\n\nRudali has worked across both academic and applied research, contributing to projects in data-to-text generation, multilingual AI, and evaluation methods. More broadly, her interests centre on evaluation methodologies for AI systems, especially the reliable assessment of generated text and large language models, as well as language technology for underrepresented languages and the preservation and digital empowerment of minority languages.",
+    experience: (
+      <div className="space-y-4 text-[color:var(--muted-foreground)] leading-relaxed">
+        <p>
+          Rudali Huidrom is a computer scientist and engineer specializing in <strong className="text-[color:var(--brand-navy)]">natural language processing</strong>, <strong className="text-[color:var(--brand-navy)]">machine translation</strong>, and <strong className="text-[color:var(--brand-navy)]">natural language generation</strong>.
+        </p>
+        <ul className="mt-4 space-y-3">
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Research Focus:</strong> Generating semantically consistent text and evaluating it, including using large language models as evaluators.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Open-Source Impact:</strong> Created the largest open-source datasets for Manipuri (Meiteilon) and developed its first ALBERT-based model and fastText embeddings.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Core Mission:</strong> Passionate about building inclusive technologies and preserving minority languages through digital empowerment.</span>
+          </li>
+        </ul>
+      </div>
+    ),
     education: [
       "PhD from the ADAPT Research Centre at Dublin City University"
     ],
@@ -57,7 +77,23 @@ const COORDINATORS: TeamMember[] = [
     photo: coordinatorPhoto1,
     email: "arunbashambu@rediffmail.com",
     address: "IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020",
-    experience: "With over two decades of distinguished experience in academia and industry research, Prof. Bashambu has been instrumental in bridging the gap between theoretical knowledge and practical industry applications. He has successfully led multiple capacity-building programs and spearheads initiatives in emerging technologies.",
+    experience: (
+      <div className="space-y-4 text-[color:var(--muted-foreground)] leading-relaxed">
+        <p>
+          With over two decades of distinguished experience in academia and industry research, Prof. Bashambu has been instrumental in bridging the gap between theoretical knowledge and practical industry applications.
+        </p>
+        <ul className="mt-4 space-y-3">
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Leadership:</strong> Successfully led multiple large-scale capacity-building programs.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Innovation:</strong> Spearheads deep-tech initiatives and industry partnerships in emerging technologies.</span>
+          </li>
+        </ul>
+      </div>
+    ),
     education: [
       "Ph.D. in Computer Science & Engineering",
       "M.Tech in Information Technology"
@@ -289,9 +325,9 @@ export default function Contact() {
                       <span className="h-6 w-1.5 rounded-full bg-[color:var(--brand-teal)]"></span>
                       Experience &amp; Impact
                     </h3>
-                    <p className="mt-3 text-[color:var(--muted-foreground)] leading-relaxed">
+                    <div className="mt-3">
                       {selectedProfile.experience}
-                    </p>
+                    </div>
                   </div>
                 ) : (
                   <div>
