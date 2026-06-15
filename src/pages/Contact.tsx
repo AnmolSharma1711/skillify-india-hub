@@ -44,14 +44,26 @@ const COORDINATORS: TeamMember[] = [
     photo: coordinatorPhoto2,
     email: "rudali.huidrom@iiitd.ac.in",
     address: "IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020",
-    experience: "Dr. Rudali Huidrom is a dedicated faculty coordinator instrumental in bridging the gap between theoretical knowledge and practical industry applications. She spearheads initiatives in emerging technologies.",
+    experience: "Rudali Huidrom is a computer scientist and engineer working in natural language processing, machine translation, and natural language generation. She holds a PhD from the ADAPT Research Centre at Dublin City University, where her research focused on how to generate semantically consistent text and evaluate it, including work on large language models as evaluators and on the meta-evaluation of automatic metrics. She has also made significant contributions to developing computational resources and tools for Manipuri (Meiteilon), including creating the largest open-source datasets to date for the language and developing the first ALBERT-based model and fastText embeddings for Manipuri.\n\nRudali has worked across both academic and applied research, contributing to projects in data-to-text generation, multilingual AI, and evaluation methods. More broadly, her interests centre on evaluation methodologies for AI systems, especially the reliable assessment of generated text and large language models, as well as language technology for underrepresented languages and the preservation and digital empowerment of minority languages.",
     education: [
-      "Ph.D. in related field",
-      "M.Tech / Higher Education Degree"
+      "PhD from the ADAPT Research Centre at Dublin City University"
     ],
-    skills: ["Emerging Technologies", "Capacity Building", "Curriculum Design", "Mentorship"]
+    skills: ["Natural Language Processing", "Machine Translation", "NLG", "LLM Evaluation", "Multilingual AI"]
   },
-  // Add more coordinators here just by copying the object above!
+  {
+    id: "arun_bashambu",
+    name: "Prof. Arun Kumar Bashambu",
+    role: "Faculty Coordinator",
+    photo: coordinatorPhoto1,
+    email: "arunbashambu@rediffmail.com",
+    address: "IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020",
+    experience: "With over two decades of distinguished experience in academia and industry research, Prof. Bashambu has been instrumental in bridging the gap between theoretical knowledge and practical industry applications. He has successfully led multiple capacity-building programs and spearheads initiatives in emerging technologies.",
+    education: [
+      "Ph.D. in Computer Science & Engineering",
+      "M.Tech in Information Technology"
+    ],
+    skills: ["Emerging Technologies", "Capacity Building", "Curriculum Design", "Industry Partnerships"]
+  }
 ];
 
 export default function Contact() {
