@@ -80,16 +80,16 @@ const COORDINATORS: TeamMember[] = [
     experience: (
       <div className="space-y-4 text-[color:var(--muted-foreground)] leading-relaxed">
         <p>
-          With over two decades of distinguished experience in academia and industry research, Prof. Bashambu has been instrumental in bridging the gap between theoretical knowledge and practical industry applications.
+          25+ years experienced professional apt in leading <strong className="text-[color:var(--brand-navy)]">enterprise digital and process transformation</strong> programmes — from strategy through operationalisation to scaled enterprise adoption.
         </p>
         <ul className="mt-4 space-y-3">
           <li className="flex items-start gap-3">
             <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
-            <span><strong className="text-[color:var(--brand-navy)]">Leadership:</strong> Successfully led multiple large-scale capacity-building programs.</span>
+            <span><strong className="text-[color:var(--brand-navy)]">AI-Led Transformation:</strong> Proven track record driving AI-led transformation at scale across enterprise environments.</span>
           </li>
           <li className="flex items-start gap-3">
             <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
-            <span><strong className="text-[color:var(--brand-navy)]">Innovation:</strong> Spearheads deep-tech initiatives and industry partnerships in emerging technologies.</span>
+            <span><strong className="text-[color:var(--brand-navy)]">Emerging Technologies:</strong> Deep, hands-on understanding of GenAI/LLMs, agentic workflows, and cloud-native architectures.</span>
           </li>
         </ul>
       </div>
