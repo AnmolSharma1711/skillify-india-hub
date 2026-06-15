@@ -55,7 +55,7 @@ export default function Contact() {
           </div>
 
           {/* Team Section (PIs and CoPIs) */}
-          <div className="mt-20">
+          <div className="mt-15">
             <div className="text-center">
               <h2 className="font-display text-5xl font-bold text-[color:var(--brand-navy)]">
                 PIs and CoPIs
@@ -93,7 +93,7 @@ export default function Contact() {
           </div>
 
           {/* Coordinators Section */}
-          <div className="mt-28">
+          <div className="mt-15">
             <div className="text-center">
               <h2 className="font-display text-5xl font-bold text-[color:var(--brand-navy)]">
                 Programme Coordinators

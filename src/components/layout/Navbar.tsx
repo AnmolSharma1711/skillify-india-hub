@@ -1,6 +1,6 @@
 import { PillNav } from "./PillNav";
 import iiitdLogo from "../../assets/iiitd_logo-removebg-preview.svg";
-import meitLogo from "../../assets/meit_logo-removebg-preview.svg";
+import meitLogo from "../../assets/Ministry_of_Electronics_and_Information_Technology.svg";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
