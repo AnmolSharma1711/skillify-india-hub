@@ -1,4 +1,13 @@
-export const FEEDBACKS = [
+export interface Feedback {
+  id: number | string;
+  name: string;
+  role: string;
+  course: string;
+  content: string;
+  rating: number;
+}
+
+export const FEEDBACKS: Feedback[] = [
   // {
   //   id: 1,
   //   name: "Aarav Sharma",
