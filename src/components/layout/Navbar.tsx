@@ -31,7 +31,7 @@ const NAV_ITEMS = [
       {
         label: "Partnering Organizations",
         href: "/join/partner",
-        description: "Academic institutions & industry orgs",
+        description: "Industry orgs",
       },
       {
         label: "Others",

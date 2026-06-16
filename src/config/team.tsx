@@ -69,7 +69,7 @@ export const COORDINATORS: TeamMember[] = [
   },
   {
     id: "arun_bashambu",
-    name: "Prof. Arun Kumar Bashambu",
+    name: "Mr. Arun Kumar Bashambu",
     role: "Faculty Coordinator",
     photo: coordinatorPhoto1,
     email: "arunbashambu@rediffmail.com",
