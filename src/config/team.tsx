@@ -23,6 +23,33 @@ export const PIS_AND_COPIS: TeamMember[] = [
     role: "PI",
     photo: member1,
     email: "vikram@iiitd.ac.in",
+    address: "IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020",
+    experience: (
+      <div className="space-y-4 text-[color:var(--muted-foreground)] leading-relaxed">
+        <p>
+          Dr. Vikram Goyal is a professor in the Department of Computer Science and Engineering at IIIT Delhi and a member of the <strong className="text-[color:var(--brand-navy)]">Infosys Center of Artificial Intelligence</strong>.
+        </p>
+        <ul className="mt-4 space-y-3">
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Research & Leadership:</strong> Primary research focus is Data Science and Big Data Analytics. Secured a DST Technology Innovation Hub project worth Rs. 100 crores for Cognitive computing and social sensing.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Academic Excellence:</strong> Work published at top-tier conferences and journals including NAACL, ICDE, WSDM, TIST, ECML PKDD, and ECIR.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Mentorship:</strong> Co-chaired the committee that designed the CBSE's K-12 Computer Science curriculum. Supervised numerous Ph.D., M.Tech, and B.Tech students.</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    education: [
+      "Ph.D. from IIT Delhi",
+      "M.Tech. from NSUT Delhi"
+    ],
+    skills: ["Data Mining", "Databases", "Spatial Data Analytics", "Spatial Query Evaluation", "Big Data Analytics", "Cognitive Computing"]
   },
   {
     id: "sujay_deb",
@@ -30,6 +57,32 @@ export const PIS_AND_COPIS: TeamMember[] = [
     role: "Co-PI",
     photo: member2,
     email: "sdeb@iiitd.ac.in",
+    address: "IIIT Delhi, Okhla Phase III, Industrial Estate, New Delhi - 110020",
+    experience: (
+      <div className="space-y-4 text-[color:var(--muted-foreground)] leading-relaxed">
+        <p>
+          Sujay Deb is a Professor in Electronics & Communication Engineering and Computer Science & Engineering at IIIT-D. He is affiliated with the <strong className="text-[color:var(--brand-navy)]">Center for Design and New Media</strong> (TCS Foundation Initiative).
+        </p>
+        <ul className="mt-4 space-y-3">
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Awards & Achievements:</strong> Recipient of the DST INSPIRE Faculty award (2012) and Outstanding Ph.D. student award in Computer Engineering at WSU (2011).</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Innovation:</strong> Winner of the India-US Grand Challenge Initiative for Affordable Blood Pressure measurement technologies (2014).</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[color:var(--brand-teal)] flex-shrink-0" />
+            <span><strong className="text-[color:var(--brand-navy)]">Industry Experience:</strong> Former intern at Intel Labs, Hillsboro, OR.</span>
+          </li>
+        </ul>
+      </div>
+    ),
+    education: [
+      "Ph.D. in Computer Engineering, Washington State University (2012)"
+    ],
+    skills: ["Heterogeneous System Architectures", "SoC Design & Test", "Interconnect Architectures", "Hardware Security", "Bio-sensors", "Computer Architecture", "Digital VLSI Design"]
   },
 ];
 
