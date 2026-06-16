@@ -55,8 +55,8 @@ const WHO_CAN_APPLY = [
 
 const GENERAL_REQUIREMENTS = [
   "Valid government-issued photo ID and professional proof of credentials",
-  "Signed engagement agreement with IIIT Delhi and MeitY",
-  "Complete an onboarding orientation session before cohort begins",
+  "Sign an engagement agreement with IIIT Delhi prior to commencement of training activities.",
+  "Deliver training sessions as per the approved curriculum, schedule, and quality standards.",
   "Adhere to MultiLevel Capacity Building and Skilling in Industry-aligned Emerging Technologies's code of conduct and academic integrity policy",
   "Provide timely feedback and assessment within agreed SLA",
 ];
