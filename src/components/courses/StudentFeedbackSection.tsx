@@ -16,7 +16,7 @@ export function StudentFeedbackSection() {
         </p>
       </div>
 
-      <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 snap-x snap-mandatory scrollbar-hide">
+      <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 snap-x snap-mandatory carousel-scrollbar">
         {FEEDBACKS.map((feedback) => (
           <div key={feedback.id} className="w-80 sm:w-96 shrink-0 snap-start">
             <div className="group relative flex h-full flex-col rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md">

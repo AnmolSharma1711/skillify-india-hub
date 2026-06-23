@@ -144,7 +144,27 @@ export function CourseCardLight({
               <MonitorSmartphone className="h-3 w-3 flex-shrink-0" /> <span className="truncate">{course.mode}</span>
             </span>
           )}
+          {course.startDate && course.endDate && (
+            <span className="inline-flex w-fit max-w-full items-center gap-1 rounded-full border border-[color:var(--border)] bg-[color:var(--muted)] px-2 py-1">
+              <Calendar className="h-3 w-3 flex-shrink-0" /> <span className="truncate">{course.startDate} - {course.endDate}</span>
+            </span>
+          )}
         </div>
+
+        {/* Registration Deadline / Closed */}
+        {(course.registrationDeadline || course.registrationClosed) && (
+          <div className="mt-4">
+            {course.registrationClosed ? (
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">
+                Registration Closed
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-2 py-1 text-xs font-medium text-amber-700 ring-1 ring-inset ring-amber-600/10">
+                Register by: {course.registrationDeadline}
+              </span>
+            )}
+          </div>
+        )}
 
         <div
           className="mt-auto pt-6 inline-flex items-center gap-1 text-xs font-medium transition-colors"

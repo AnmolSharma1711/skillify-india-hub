@@ -38,6 +38,10 @@ export type Course = {
   individualEnrollLink?: string;
   externalLink?: string;
   status?: "active" | "completed" | "upcoming";
+  registrationDeadline?: string;
+  registrationClosed?: boolean;
+  startDate?: string;
+  endDate?: string;
 };
 
 export const COURSES: Course[] = [
@@ -50,6 +54,8 @@ export const COURSES: Course[] = [
     description: "This intensive upskilling course bridges classical digital signal processing with modern neural architectures. Move beyond simple classification and build sophisticated, end-to-end generative and analytical audio systems.",
     duration: "70-80 Hours",
     tentativeDates: "1st July 2026 - 12th July 2026",
+    registrationDeadline: "28th June 2026",
+    registrationClosed: false,
     mode: "Hybrid",
     level: "Intermediate",
     accent: "cyan",
@@ -88,6 +94,8 @@ export const COURSES: Course[] = [
     description: "Write syntactically correct Python code, manipulate data structures, perform file operations, analyze data with Matplotlib, and utilize AI-assisted coding tools like GitHub Copilot and Claude to build interactive applications.",
     duration: "40 Hours",
     tentativeDates: "1st July 2026 - 12th July 2026",
+    registrationDeadline: "28th June 2026",
+    registrationClosed: false,
     mode: "Online (Google Colab)",
     level: "Beginner friendly",
     accent: "cyan",
@@ -125,6 +133,8 @@ export const COURSES: Course[] = [
     description: "To enable students to design and develop production-ready applications using Large Language Models. It aims to build strong foundations in prompt engineering, RAG, agent orchestration, and GenAI system design. By the end of the course, learners will be prepared to apply LLM technologies effectively.",
     duration: "70-80 Hours",
     tentativeDates: "1st July 2026 - 12th July 2026",
+    registrationDeadline: "28th June 2026",
+    registrationClosed: false,
     mode: "Hybrid",
     level: "Intermediate",
     accent: "mixed",
@@ -163,6 +173,7 @@ export const COURSES: Course[] = [
     tagline: "Deep dive into VLSI design and embedded systems architecture",
     description: "Master the fundamentals and advanced concepts of VLSI design, semiconductor technologies, and embedded systems programming",
     duration: "Flexible",
+    registrationClosed: true,
     level: "Intermediate",
     accent: "cyan",
     highlights: [
@@ -188,48 +199,54 @@ export const getCourse = (id: Course["id"]) =>
   COURSES.find((c) => c.id === id);
 
 export const PREVIOUS_COURSES: Course[] = [
-  // {
-  //   id: "fullstack" as any,
-  //   title: "Full Stack Web Development",
-  //   category: "Web",
-  //   tagline: "Learned modern frontend and backend development with industry-standard technologies.",
-  //   duration: "8 weeks",
-  //   level: "Beginner",
-  //   accent: "mixed",
-  //   icon: "Monitor",
-  //   techs: [{ icon: "Code", label: "React" }, { icon: "Server", label: "Node.js" }],
-  //   highlights: ["Frontend Basics", "Backend APIs", "Database Design"],
-  //   syllabus: ["HTML/CSS/JS", "React JS", "Node & Express", "MongoDB"],
-  //   status: "completed",
-  // },
-  // {
-  //   id: "datascience" as any,
-  //   title: "Data Science Foundations",
-  //   category: "Data",
-  //   tagline: "Built strong foundations in data analysis, visualization and statistics.",
-  //   duration: "6 weeks",
-  //   level: "Beginner",
-  //   accent: "violet",
-  //   icon: "Database",
-  //   techs: [{ icon: "LineChart", label: "Analysis" }, { icon: "PieChart", label: "Viz" }],
-  //   highlights: ["Data Wrangling", "Statistical Analysis", "Visualization"],
-  //   syllabus: ["Python for Data", "Pandas & NumPy", "Matplotlib", "Basic Stats"],
-  //   status: "completed",
-  // },
-  // {
-  //   id: "cyber" as any,
-  //   title: "Cyber Security Essentials",
-  //   category: "Security",
-  //   tagline: "Explored digital security, ethical hacking concepts and cyber awareness.",
-  //   duration: "6 weeks",
-  //   level: "Intermediate",
-  //   accent: "cyan",
-  //   icon: "Shield",
-  //   techs: [{ icon: "Lock", label: "Security" }, { icon: "Key", label: "Cryptography" }],
-  //   highlights: ["Network Security", "Ethical Hacking", "Cryptography basics"],
-  //   syllabus: ["Intro to CyberSec", "Networking Basics", "Web Vulnerabilities", "Cryptography"],
-  //   status: "completed",
-  // },
+  {
+    id: "fullstack" as any,
+    title: "Full Stack Web Development",
+    category: "Web",
+    tagline: "Learned modern frontend and backend development with industry-standard technologies.",
+    duration: "8 weeks",
+    startDate: "1st Jan 2026",
+    endDate: "28th Feb 2026",
+    level: "Beginner",
+    accent: "mixed",
+    icon: "Monitor",
+    techs: [{ icon: "Code", label: "React" }, { icon: "Server", label: "Node.js" }],
+    highlights: ["Frontend Basics", "Backend APIs", "Database Design"],
+    syllabus: ["HTML/CSS/JS", "React JS", "Node & Express", "MongoDB"],
+    status: "completed",
+  },
+  {
+    id: "datascience" as any,
+    title: "Data Science Foundations",
+    category: "Data",
+    tagline: "Built strong foundations in data analysis, visualization and statistics.",
+    duration: "6 weeks",
+    startDate: "15th Feb 2026",
+    endDate: "30th Mar 2026",
+    level: "Beginner",
+    accent: "violet",
+    icon: "Database",
+    techs: [{ icon: "LineChart", label: "Analysis" }, { icon: "PieChart", label: "Viz" }],
+    highlights: ["Data Wrangling", "Statistical Analysis", "Visualization"],
+    syllabus: ["Python for Data", "Pandas & NumPy", "Matplotlib", "Basic Stats"],
+    status: "completed",
+  },
+  {
+    id: "cyber" as any,
+    title: "Cyber Security Essentials",
+    category: "Security",
+    tagline: "Explored digital security, ethical hacking concepts and cyber awareness.",
+    duration: "6 weeks",
+    startDate: "1st Mar 2026",
+    endDate: "15th Apr 2026",
+    level: "Intermediate",
+    accent: "cyan",
+    icon: "Shield",
+    techs: [{ icon: "Lock", label: "Security" }, { icon: "Key", label: "Cryptography" }],
+    highlights: ["Network Security", "Ethical Hacking", "Cryptography basics"],
+    syllabus: ["Intro to CyberSec", "Networking Basics", "Web Vulnerabilities", "Cryptography"],
+    status: "completed",
+  },
 ];
 
 export const UPCOMING_COURSES: Course[] = [

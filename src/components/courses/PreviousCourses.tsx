@@ -12,7 +12,7 @@ export function PreviousCourses() {
         Successful programs conducted in previous cohorts.
       </p>
 
-      <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 -mx-2 snap-x snap-mandatory scrollbar-hide">
+      <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 -mx-2 snap-x snap-mandatory carousel-scrollbar">
         {PREVIOUS_COURSES.map((course) => (
           <div key={course.id} className="w-80 sm:w-96 shrink-0 snap-start">
             <CourseCardLight course={course} />
