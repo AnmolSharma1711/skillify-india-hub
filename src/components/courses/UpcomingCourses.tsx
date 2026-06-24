@@ -1,5 +1,6 @@
 import { CourseCardLight } from "./CourseCardLight";
 import { UPCOMING_COURSES } from "@/config/courses";
+import { CarouselWrapper } from "@/components/ui/CarouselWrapper";
 
 export function UpcomingCourses() {
   return (
@@ -12,13 +13,15 @@ export function UpcomingCourses() {
         New programs currently being prepared by IIIT Delhi and MeitY.
       </p>
 
-      <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 -mx-2 snap-x snap-mandatory carousel-scrollbar">
-        {UPCOMING_COURSES.map((course) => (
-          <div key={course.id} className="w-80 sm:w-96 shrink-0 snap-start">
-            <CourseCardLight course={course} />
-          </div>
-        ))}
-      </div>
+      <CarouselWrapper>
+        <div className="flex gap-6 overflow-x-auto pb-6 pt-2 px-2 -mx-2 snap-x snap-mandatory carousel-scrollbar">
+          {UPCOMING_COURSES.map((course) => (
+            <div key={course.id} className="w-80 sm:w-96 shrink-0 snap-start">
+              <CourseCardLight course={course} />
+            </div>
+          ))}
+        </div>
+      </CarouselWrapper>
     </section>
   );
 }
