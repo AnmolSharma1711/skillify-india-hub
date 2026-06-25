@@ -39,6 +39,19 @@ export function CourseCardLight({
     setShowOverlay(true);
   };
 
+  const handleEnrollClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (course.registrationClosed) return;
+    
+    if (course.externalLink) {
+      window.open(course.externalLink, "_blank");
+    } else if (context === "individual" && course.individualEnrollLink) {
+      window.open(course.individualEnrollLink, "_blank");
+    } else {
+      setEnrollmentType(context);
+    }
+  };
+
   const handleCardKeyDown = (event: KeyboardEvent<HTMLElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
@@ -61,7 +74,7 @@ export function CourseCardLight({
         }
       `}</style>
       <article
-        className="group relative overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] cursor-pointer flex flex-col h-full"
+        className="group relative overflow-hidden rounded-2xl border border-[color:var(--border)] bg-white p-6 pt-10 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-navy)] cursor-pointer flex flex-col h-full"
         style={{
           animation: "fadeInScale 0.5s ease-out",
         }}
@@ -78,6 +91,27 @@ export function CourseCardLight({
           aria-hidden
         />
 
+        {/* Floating Enroll Now Button - only for active/ongoing courses */}
+        {(!course.status || course.status === "active") && (
+          <div className="absolute right-6 bottom-6 z-10">
+            <button
+              onClick={handleEnrollClick}
+              disabled={course.registrationClosed}
+              className={`h-14 w-14 rounded-full flex flex-col items-center justify-center text-center shadow-md transition-all font-bold tracking-wide ${
+                course.registrationClosed
+                  ? "bg-red-600 text-white cursor-not-allowed border border-red-700 text-[9px] leading-tight"
+                  : "bg-green-600 text-white hover:bg-green-700 animate-[pulse_2s_ease-in-out_infinite] border border-green-700 hover:scale-105 text-[10px] leading-tight"
+              }`}
+            >
+              {course.registrationClosed ? (
+                <>Reg.<br/>Closed</>
+              ) : (
+                <>Enroll<br/>Now</>
+              )}
+            </button>
+          </div>
+        )}
+
         {/* Header with icon and optional status badge */}
         <div className="mb-3 flex items-start justify-between">
           <div
@@ -89,15 +123,15 @@ export function CourseCardLight({
               return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
             })()}
           </div>
-          <div className="flex gap-2 items-center text-right">
+          <div className="flex gap-2 items-center text-right mt-1">
             {course.tentativeDates && (
-              <span className="inline-flex rounded-full px-3 py-1 text-xs font-semibold bg-[color:var(--brand-teal)]/10 text-[color:var(--brand-teal)] border border-[color:var(--brand-teal)]/20">
+              <span className="inline-flex rounded-full px-3 py-1 text-xs font-semibold bg-[color:var(--brand-teal)]/10 text-[color:var(--brand-teal)] border border-[color:var(--brand-teal)]/20 mt-6 sm:mt-0">
                 {course.tentativeDates}
               </span>
             )}
             {course.status && course.status !== "active" && (
               <span
-                className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+                className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold mt-6 sm:mt-0 ${
                   course.status === "upcoming"
                     ? "bg-amber-100 text-amber-700"
                     : "bg-slate-100 text-slate-700"
