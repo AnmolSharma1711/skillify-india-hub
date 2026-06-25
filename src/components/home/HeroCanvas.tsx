@@ -80,7 +80,14 @@ export function HeroCanvas({ className }: { className?: string }) {
     scene.add(lineGroup);
 
     function updateLines() {
+      // Dispose old geometries to prevent massive memory leaks
+      lineGroup.children.forEach((child) => {
+        if ((child as THREE.Line).geometry) {
+          (child as THREE.Line).geometry.dispose();
+        }
+      });
       lineGroup.clear();
+      
       const THRESHOLD = 18;
       for (let i = 0; i < meshes.length; i++) {
         for (let j = i + 1; j < meshes.length; j++) {
@@ -147,6 +154,17 @@ export function HeroCanvas({ className }: { className?: string }) {
       cancelAnimationFrame(frameId);
       ro.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
+      
+      // Complete cleanup of Three.js objects to prevent GPU memory leaks
+      geo.dispose();
+      lineMat.dispose();
+      meshes.forEach(mesh => (mesh.material as THREE.Material).dispose());
+      lineGroup.children.forEach((child) => {
+        if ((child as THREE.Line).geometry) {
+          (child as THREE.Line).geometry.dispose();
+        }
+      });
+      
       renderer.dispose();
       if (mount.contains(renderer.domElement)) {
         mount.removeChild(renderer.domElement);
